@@ -14,7 +14,7 @@
 
 ### Pending
 
-- Resolve Phase 1 question batch 3.
+- Resolve Phase 1 question batch 4.
 
 ## 2026-08-14 — Phase 1 question batch 2
 

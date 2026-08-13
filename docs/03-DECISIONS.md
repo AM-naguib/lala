@@ -22,7 +22,7 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** Design for a global launch from day one.
 - **Reason:** Founder explicitly selected global rather than Egypt, the Arab region, or another limited geography.
-- **Constraint:** Operational meaning of global support is still unresolved and must not be inferred.
+- **Constraint:** D-014 partially defines the operational meaning for the MVP; exact country availability and legal/compliance coverage remain unresolved.
 
 ## D-004 — Broad target audience
 
@@ -92,3 +92,26 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** Each merchant selects one operating currency for the entire store; all product prices and COD orders in that store use it.
 - **Reason:** Founder selected a single merchant-chosen currency rather than multi-currency selling or one platform-wide currency.
 - **Open detail:** The rules for changing currency after products or orders exist are not yet decided.
+
+## D-013 — Shipping zones and delivery prices
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** A merchant defines shipping zones and assigns one delivery price to each zone in the initial release.
+- **Reason:** Founder selected zone-based shipping pricing rather than one platform-wide rate or pricing after an order is placed.
+- **Open detail:** How geographic areas are assigned to zones is not yet decided.
+
+## D-014 — One operating country per store
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Each store operates and delivers within one merchant-selected country in the initial release; its shipping zones are inside that country.
+- **Reason:** Founder selected one country with internal delivery regions instead of multi-country delivery per store.
+- **Implication:** The global launch ambition means `lala` can serve merchants in different countries, while an individual MVP store remains single-country.
+
+## D-015 — No tax feature in the initial release
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not add a tax section to the initial release. The platform does not configure or calculate tax and does not add a separate tax line to an order.
+- **Reason:** Founder explicitly excluded the tax part from the MVP.

@@ -14,7 +14,7 @@
 
 ### Pending
 
-- Resolve Phase 1 question batch 4.
+- Resolve Phase 1 question batch 5.
 
 ## 2026-08-14 — Phase 1 question batch 2
 
@@ -51,3 +51,13 @@
 - Applied that currency to all product prices and COD orders in the store.
 - Left post-order currency-change rules explicitly unresolved.
 - Advanced active questions to shipping coverage, delivery pricing, and tax/fee behavior.
+
+## 2026-08-14 — Phase 1 shipping scope and tax exclusion
+
+### Added
+
+- Confirmed merchant-defined shipping zones with one delivery price per zone.
+- Confirmed one operating country per store, with delivery zones inside it.
+- Clarified that global launch supports stores across different countries while each MVP store remains single-country.
+- Excluded tax configuration, calculation, and a separate tax line from the initial release.
+- Advanced active questions to zone construction, delivery handoff, and customer address fields.

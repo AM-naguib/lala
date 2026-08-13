@@ -19,7 +19,8 @@ This can eventually include individuals, social sellers, existing online merchan
 ## Market scope
 
 - **Confirmed ambition:** global from day one.
-- **Not yet defined:** initial languages, currencies, countries supported operationally, payment coverage, tax handling, shipping coverage, and legal/compliance boundaries.
+- **Defined MVP baseline:** Arabic and English interfaces, one currency and one operating country per store, COD only, internal shipping zones, and no tax feature.
+- **Not yet defined:** exact country availability, detailed address and fulfillment behavior, and legal/compliance boundaries.
 
 “Global” must not silently be interpreted as full localization or regulatory support for every country in the first release.
 
@@ -33,6 +34,9 @@ This can eventually include individuals, social sellers, existing online merchan
 - Online payment gateways are not included in the current MVP.
 - Arabic and English are required for both the merchant dashboard and customer storefront.
 - Each merchant selects one operating currency for the whole store.
+- Each store operates in one merchant-selected country and delivers through merchant-defined zones inside that country.
+- The merchant assigns one delivery price to each shipping zone.
+- The initial release has no tax configuration, calculation, or separate tax line.
 
 The original physical-and-digital scope was narrowed because COD has no natural collection event for a non-physical delivery. Digital sales can be reconsidered when a suitable payment and delivery flow is introduced.
 
@@ -55,6 +59,6 @@ The following have not been selected:
 - Technology stack and cloud provider.
 - Pricing or subscription tiers.
 - Exact merchant segment for first acquisition.
-- Cart, shipping, taxation, and localization rules.
+- Cart and detailed shipping/fulfillment rules.
 - Merchant catalog-content translation behavior.
 - Themes, integrations, applications, or marketplace scope.

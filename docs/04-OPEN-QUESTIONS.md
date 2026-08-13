@@ -30,19 +30,33 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** Each merchant selects one operating currency for the whole store. See D-012.
 
-## Now — Batch 4
+## Resolved in Batch 4
 
 ### Q-007 — Shipping rate model
 
-How does a merchant define delivery cost in the initial release?
+**Resolved:** The merchant creates shipping zones and assigns a delivery price to each zone. See D-013.
 
 ### Q-008 — Shipping coverage
 
-How does a merchant choose the countries or regions to which the store can deliver?
+**Resolved:** Each store operates in one country and delivers to zones inside that country. See D-014.
 
 ### Q-009 — Taxes and extra fees
 
-Does the initial release calculate taxes, or does the merchant enter prices and any extra fees manually?
+**Resolved:** The initial release has no tax section, calculation, or separate tax line. See D-015.
+
+## Now — Batch 5
+
+### Q-010 — Building shipping zones
+
+How are geographic areas assigned to a shipping zone?
+
+### Q-011 — Delivery handoff
+
+Does the merchant arrange delivery outside `lala`, or must the MVP connect to shipping companies?
+
+### Q-012 — Customer delivery address
+
+Which customer address details are required during checkout?
 
 ## Later in Phase 1
 

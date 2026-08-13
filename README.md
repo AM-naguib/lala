@@ -26,6 +26,8 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Initial payment method: cash on delivery (COD) only.
 - Launch interface languages: Arabic and English for both the merchant dashboard and storefront.
 - Currency model: each merchant selects one operating currency for the entire store.
+- Shipping model: one operating country per store, with merchant-defined shipping zones and one delivery price per zone.
+- Taxes: no tax configuration, calculation, or separate tax line in the initial release.
 - Immediate focus: define the smallest useful Phase 1 MVP before choosing architecture or writing product code.
 
 Last updated: 2026-08-14 (Africa/Cairo)

@@ -34,7 +34,8 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Payment baseline: **decided — COD only for the initial release**.
 - Paid digital-product handling: **decided — postponed from the initial release**.
 - Order lifecycle and merchant fulfillment workflow.
-- Minimum shipping model.
+- Shipping pricing: **decided — merchant-defined shipping zones with one delivery price per zone**.
+- Delivery handoff and shipping-company integration scope.
 
 ### Global baseline
 
@@ -42,8 +43,10 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Merchant catalog-content translation behavior.
 - Store currency model: **decided — one merchant-selected operating currency per store**.
 - Store-currency change rules after products or orders exist.
-- Country and address model.
-- What taxes, payments, and shipping coverage are included versus delegated to merchants or integrations.
+- Store country: **decided — one merchant-selected operating country per store**.
+- Shipping coverage: **decided — zones inside the selected country only**.
+- Customer address fields and zone-matching behavior.
+- Taxes: **decided — no tax feature or separate tax line in the initial release**.
 
 ### Business validation
 
@@ -68,5 +71,6 @@ Phase 1 is complete when all of the following exist:
 - Finalizing a long-term architecture prematurely.
 - Planning an app marketplace or broad enterprise feature set without MVP evidence.
 - Building every feature found in reference platforms.
+- Tax configuration, tax calculation, and separate tax display.
 
 These exclusions govern the planning process, not the eventual product roadmap.

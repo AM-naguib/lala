@@ -22,14 +22,19 @@
 8. The only payment method in the initial release is cash on delivery (COD); online payment gateways are not part of the current MVP.
 9. Arabic and English are required for both the merchant dashboard and customer storefront in the initial release.
 10. Each merchant selects one operating currency for the entire store; product prices and COD orders use that currency.
+11. Each store operates and delivers within one merchant-selected country in the initial release.
+12. The merchant defines shipping zones inside the store's country and sets one delivery price for each zone.
+13. The initial release has no tax section: no tax configuration, automatic calculation, or separate tax line in an order.
 
 ## Current interpretation
 
 - “Anyone who wants to create an online store” is the broad vision, not yet a sufficiently narrow first-use-case definition.
-- “Global from day one” is a product requirement, but its exact operational meaning is unresolved. Currency, language, tax, payments, shipping, and legal coverage must not be assumed.
+- “Global from day one” is partially defined: `lala` can host merchants in different countries, while each MVP store operates in one country. Detailed country availability and legal/compliance coverage remain unresolved.
 - The earlier plan to sell physical and digital products in the MVP was narrowed: paid digital selling is postponed because COD has no physical collection event.
 - Arabic and English interface support is confirmed. Whether merchants enter bilingual catalog content or choose one content language is not yet decided.
 - The rule for changing a store's currency after products or orders exist is not yet decided.
+- “Global from day one” now means the platform can host stores in different countries; it does not mean that a single store sells or delivers across multiple countries in the MVP.
+- The detailed method for building a shipping zone (official regions versus free-form areas), delivery handoff, and customer address fields is not yet decided.
 - The remaining MVP feature set and technical architecture are not decided yet.
 
 ## Active objective
@@ -42,9 +47,9 @@ Define a coherent Phase 1 MVP by answering only the decisions that materially af
 
 ## Next decisions to obtain
 
-1. What is the minimum shipping and delivery model?
-2. How are countries and customer addresses handled in the MVP?
-3. How are taxes and additional fees handled in the MVP?
+1. How does a merchant build shipping zones within the selected country?
+2. Does `lala` only manage the order while the merchant arranges delivery, or must the MVP include a shipping-company connection?
+3. Which customer address fields are required at checkout?
 
 ## Guardrails for future sessions
 

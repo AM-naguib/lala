@@ -25,6 +25,7 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Storefront publishing: a hosted `lala` subdomain with optional custom-domain connection.
 - Initial payment method: cash on delivery (COD) only.
 - Launch interface languages: Arabic and English for both the merchant dashboard and storefront.
+- Currency model: each merchant selects one operating currency for the entire store.
 - Immediate focus: define the smallest useful Phase 1 MVP before choosing architecture or writing product code.
 
 Last updated: 2026-08-14 (Africa/Cairo)

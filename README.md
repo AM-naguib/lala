@@ -27,6 +27,9 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Launch interface languages: Arabic and English for both the merchant dashboard and storefront.
 - Currency model: each merchant selects one operating currency for the entire store.
 - Shipping model: one operating country per store, with merchant-defined shipping zones and one delivery price per zone.
+- Geography: use preloaded country subdivisions, such as Egypt and its governorates, instead of requiring merchants to type every area from scratch.
+- Fulfillment: merchants can optionally connect a supported shipping company, with an integration model intended to add more providers over time.
+- Checkout contact/address fields include name, primary phone, address, city, email, notes, and an alternate phone.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
 - Immediate focus: define the smallest useful Phase 1 MVP before choosing architecture or writing product code.
 

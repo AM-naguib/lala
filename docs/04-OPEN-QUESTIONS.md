@@ -44,19 +44,33 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** The initial release has no tax section, calculation, or separate tax line. See D-015.
 
-## Now — Batch 5
+## Resolved in Batch 5
 
 ### Q-010 — Building shipping zones
 
-How are geographic areas assigned to a shipping zone?
+**Partially resolved:** Use preloaded country subdivisions, such as Egypt and its governorates. Whether subdivisions can be grouped into custom zones remains open. See D-016.
 
 ### Q-011 — Delivery handoff
 
-Does the merchant arrange delivery outside `lala`, or must the MVP connect to shipping companies?
+**Resolved at the product level:** Shipping-company connections are optional and the provider model must support Bosta-like and future integrations. The first launch provider remains open. See D-017.
 
 ### Q-012 — Customer delivery address
 
-Which customer address details are required during checkout?
+**Partially resolved:** Include name, primary phone, address, city, email, notes, and alternate phone. Required versus optional status remains open. See D-018.
+
+## Now — Batch 6
+
+### Q-013 — Subdivisions and custom zones
+
+Does a merchant price every governorate/state separately, or group several preloaded subdivisions into a named shipping zone?
+
+### Q-014 — First shipping provider
+
+Which provider connection must be available in the first release, if any?
+
+### Q-015 — Required checkout fields
+
+Which contact and address fields block checkout when missing?
 
 ## Later in Phase 1
 

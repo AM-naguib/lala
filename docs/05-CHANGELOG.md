@@ -14,7 +14,7 @@
 
 ### Pending
 
-- Resolve Phase 1 question batch 5.
+- Resolve Phase 1 question batch 6.
 
 ## 2026-08-14 — Phase 1 question batch 2
 
@@ -61,3 +61,12 @@
 - Clarified that global launch supports stores across different countries while each MVP store remains single-country.
 - Excluded tax configuration, calculation, and a separate tax line from the initial release.
 - Advanced active questions to zone construction, delivery handoff, and customer address fields.
+
+## 2026-08-14 — Phase 1 geography, shipping connections, and checkout fields
+
+### Added
+
+- Confirmed preloaded geographic subdivisions for supported store countries, using Egypt and its governorates as the example.
+- Confirmed optional shipping-company connections and an extensible provider-integration model; Bosta is an example provider.
+- Added name, primary phone, address, city, email, notes, and alternate phone to the checkout data model.
+- Kept subdivision grouping, first launch provider, and mandatory-field rules explicitly unresolved.

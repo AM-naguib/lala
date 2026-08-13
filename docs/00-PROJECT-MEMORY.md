@@ -25,6 +25,9 @@
 11. Each store operates and delivers within one merchant-selected country in the initial release.
 12. The merchant defines shipping zones inside the store's country and sets one delivery price for each zone.
 13. The initial release has no tax section: no tax configuration, automatic calculation, or separate tax line in an order.
+14. `lala` provides preloaded geographic subdivisions for supported countries, such as Egypt and its governorates, so merchants select known areas instead of typing all geography manually.
+15. Shipping-company connections are optional for merchants. The integration design must support providers such as Bosta and allow other providers to be added over time.
+16. Checkout captures these customer contact/address fields: name, primary phone, address, city, email, notes, and an alternate phone.
 
 ## Current interpretation
 
@@ -33,8 +36,9 @@
 - The earlier plan to sell physical and digital products in the MVP was narrowed: paid digital selling is postponed because COD has no physical collection event.
 - Arabic and English interface support is confirmed. Whether merchants enter bilingual catalog content or choose one content language is not yet decided.
 - The rule for changing a store's currency after products or orders exist is not yet decided.
-- “Global from day one” now means the platform can host stores in different countries; it does not mean that a single store sells or delivers across multiple countries in the MVP.
-- The detailed method for building a shipping zone (official regions versus free-form areas), delivery handoff, and customer address fields is not yet decided.
+- Whether shipping rates apply directly to each administrative subdivision or merchants can group several subdivisions into a custom zone is not yet decided.
+- The first shipping provider(s) shipped with the MVP are not yet decided; Bosta is an example, not yet the exclusive or confirmed launch integration.
+- Which checkout contact/address fields are mandatory versus optional is not yet decided.
 - The remaining MVP feature set and technical architecture are not decided yet.
 
 ## Active objective
@@ -47,9 +51,9 @@ Define a coherent Phase 1 MVP by answering only the decisions that materially af
 
 ## Next decisions to obtain
 
-1. How does a merchant build shipping zones within the selected country?
-2. Does `lala` only manage the order while the merchant arranges delivery, or must the MVP include a shipping-company connection?
-3. Which customer address fields are required at checkout?
+1. Does each preloaded subdivision have its own rate, or can a merchant group subdivisions into zones?
+2. Which shipping provider integration is included first?
+3. Which checkout fields are mandatory and which are optional?
 
 ## Guardrails for future sessions
 

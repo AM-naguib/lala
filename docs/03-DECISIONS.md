@@ -99,7 +99,7 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** A merchant defines shipping zones and assigns one delivery price to each zone in the initial release.
 - **Reason:** Founder selected zone-based shipping pricing rather than one platform-wide rate or pricing after an order is placed.
-- **Open detail:** How geographic areas are assigned to zones is not yet decided.
+- **Open detail:** D-016 establishes preloaded administrative subdivisions; whether merchants can group several subdivisions into a custom zone is not yet decided.
 
 ## D-014 — One operating country per store
 
@@ -115,3 +115,27 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** Do not add a tax section to the initial release. The platform does not configure or calculate tax and does not add a separate tax line to an order.
 - **Reason:** Founder explicitly excluded the tax part from the MVP.
+
+## D-016 — Preloaded country geography
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Provide preloaded geographic subdivisions for supported store countries, such as Egypt and its governorates, for merchants to use when configuring shipping.
+- **Reason:** Founder prefers ready geographic data instead of requiring each merchant to enter areas manually.
+- **Open detail:** Whether a delivery price applies directly to every subdivision or multiple subdivisions can be grouped into a custom shipping zone is not yet decided.
+
+## D-017 — Optional and extensible shipping-provider connections
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow merchants to optionally connect a supported shipping company. Design the provider model so integrations such as Bosta and additional companies can be added over time.
+- **Reason:** Founder wants merchants to choose whether to connect a shipping company rather than making a single provider mandatory.
+- **Open detail:** Bosta is a named example; the exact provider integrations included in the first release are not yet confirmed.
+
+## D-018 — Checkout contact and address field set
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include name, primary phone, address, city, email, notes, and an alternate phone in the checkout contact/address data model.
+- **Reason:** Founder explicitly listed these customer details.
+- **Open detail:** Which fields are mandatory and which are optional is not yet decided.

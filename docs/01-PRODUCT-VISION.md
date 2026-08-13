@@ -36,6 +36,9 @@ This can eventually include individuals, social sellers, existing online merchan
 - Each merchant selects one operating currency for the whole store.
 - Each store operates in one merchant-selected country and delivers through merchant-defined zones inside that country.
 - The merchant assigns one delivery price to each shipping zone.
+- Supported countries provide preloaded administrative subdivisions, such as Egypt and its governorates.
+- A merchant may optionally connect a supported shipping company; the provider model must allow integrations such as Bosta and additional providers over time.
+- Checkout includes name, primary phone, address, city, email, notes, and an alternate phone.
 - The initial release has no tax configuration, calculation, or separate tax line.
 
 The original physical-and-digital scope was narrowed because COD has no natural collection event for a non-physical delivery. Digital sales can be reconsidered when a suitable payment and delivery flow is introduced.
@@ -61,4 +64,4 @@ The following have not been selected:
 - Exact merchant segment for first acquisition.
 - Cart and detailed shipping/fulfillment rules.
 - Merchant catalog-content translation behavior.
-- Themes, integrations, applications, or marketplace scope.
+- Themes, non-shipping integrations, applications, or marketplace scope.

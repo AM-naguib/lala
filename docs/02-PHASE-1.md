@@ -35,7 +35,9 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Paid digital-product handling: **decided — postponed from the initial release**.
 - Order lifecycle and merchant fulfillment workflow.
 - Shipping pricing: **decided — merchant-defined shipping zones with one delivery price per zone**.
-- Delivery handoff and shipping-company integration scope.
+- Shipping geography source: **decided — preloaded country subdivisions, such as governorates for Egypt**.
+- Delivery connections: **decided — optional shipping-provider integrations with an extensible provider model**.
+- First supported shipping provider(s) and the non-integrated/manual fallback flow.
 
 ### Global baseline
 
@@ -45,7 +47,8 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Store-currency change rules after products or orders exist.
 - Store country: **decided — one merchant-selected operating country per store**.
 - Shipping coverage: **decided — zones inside the selected country only**.
-- Customer address fields and zone-matching behavior.
+- Checkout field set: **decided — name, primary phone, address, city, email, notes, and alternate phone**.
+- Required versus optional checkout fields and subdivision-to-zone matching behavior.
 - Taxes: **decided — no tax feature or separate tax line in the initial release**.
 
 ### Business validation

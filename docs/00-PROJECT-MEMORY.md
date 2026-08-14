@@ -108,9 +108,9 @@ Define a coherent Phase 1 MVP by answering only the decisions that materially af
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Counter reset point:** after the GitHub commit containing Q-010 through Q-012.
-- **Answered questions since last push:** 50/50 (Q-013 through Q-061, including the clarified Q-057 shipping and merchant-email decisions).
-- **Pending unpushed documentation:** synchronization cadence, interactive-question format, and decisions through Q-061. The 50-answer synchronization threshold has been reached.
+- **Counter reset point:** after the completed GitHub synchronization containing Q-013 through Q-061.
+- **Answered questions since last push:** 0/50.
+- **Pending unpushed documentation:** none.
 
 ## Next decisions to obtain
 

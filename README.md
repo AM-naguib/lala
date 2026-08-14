@@ -19,20 +19,53 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 ## Current snapshot
 
 - Repository target: private GitHub repository named `lala`.
-- Launch ambition: global from day one.
+- Market ambition: global over time; Phase 1 shipping coverage is Egypt only.
 - Broad target audience: anyone who wants to create an online store.
+- Merchant account creation requires an email address, phone number, and password.
+- The merchant phone number must be verified through WhatsApp during sign-up; email verification is not required in the MVP.
+- One merchant account can own multiple stores, each with independent settings and data.
+- The number of stores per merchant account is unlimited in the MVP.
+- Only the account owner can access and manage stores in the MVP; team invitations are deferred.
+- Initial store setup requires store name, `lala` subdomain, currency, and primary language; the store has no store-level operating country.
+- The storefront becomes publicly accessible immediately after the merchant completes initial setup, even before adding a product.
+- Merchants choose from multiple ready-made storefront themes.
+- Merchants preview a theme before applying it, and switching themes preserves storefront content.
+- Store branding controls include logo, colors, fonts, and favicon.
+- The homepage uses predefined sections that the merchant can add, hide, and reorder.
+- The initial homepage section catalog contains a Hero or Slider section.
+- Editable static pages include About Us, Contact, Shipping and Returns, Privacy Policy, and Terms and Conditions.
+- Merchants can create an unlimited number of additional custom static pages.
+- Static pages have separate Arabic and English fields and fall back to the store's primary language when a translation is missing.
+- The Contact page includes a customer contact form and merchant-configured store contact details.
+- Removing a store from active use disables it without deleting its stored data.
+- A disabled store can be reactivated only through `lala` support, and visitors see a clear store-unavailable page while it is disabled.
+- Merchants can change the `lala` subdomain from settings up to three times per store. The old subdomain does not redirect and remains reserved for 10 days.
 - MVP selling scope: physical products; paid digital-product selling is postponed.
 - Storefront publishing: a hosted `lala` subdomain with optional custom-domain connection.
 - Initial payment method: cash on delivery (COD) only.
 - Launch interface languages: Arabic and English for both the merchant dashboard and storefront.
 - Currency model: each merchant selects one operating currency for the entire store.
-- Shipping model: one operating country per store, with merchant-defined shipping zones and one delivery price per zone.
+- Merchants can change the store currency at any time, including after receiving orders.
+- Existing orders preserve the destination and currency captured when each order was created.
+- Changing the store currency keeps every existing product and variant price number unchanged and only changes the currency code/symbol; no conversion is performed.
+- Shipping model: no store-level operating country. A store can use any number of platform-supported shipping countries, but Egypt is the only supported country in Phase 1, with one delivery price per zone.
 - Geography: use preloaded country subdivisions, such as Egypt and its governorates, instead of requiring merchants to type every area from scratch.
+- Checkout hides the country field and stores Egypt automatically. The customer selects a preloaded governorate, then a city or area.
 - Zone pricing: merchants can either price each subdivision separately or group several subdivisions into a named zone with one price.
+- A city or area cannot belong to more than one active shipping zone in the same store.
+- Checkout calculates and displays shipping immediately after the customer selects the governorate and city or area.
+- Merchants can add a store-specific custom city or area under a governorate when it is missing from the preloaded list.
+- Custom cities and areas are visible only within the merchant's own store.
+- A zone price of zero is allowed and appears to customers as free shipping.
+- Existing orders keep the shipping price captured at creation; orders created after a zone-price change use the new price immediately.
+- If the selected address is outside all merchant-enabled shipping zones, checkout is blocked with a shipping-unavailable message.
 - Fulfillment: Bosta is the first shipping integration; the provider model must support adding more companies later, and connecting a provider remains optional.
+- A merchant connects a supported shipping provider using the credentials for the merchant's own provider account.
 - Orders are never sent to a shipping provider automatically; the merchant selects the orders and explicitly triggers submission.
 - The merchant can submit one order or a selected group of orders to the connected shipping provider.
 - If provider submission fails, the affected order remains Not Sent, shows the failure reason, and provides a retry action.
+- After a successful submission, store the provider shipment number, shipment status, and shipping label without changing the order's core status automatically.
+- Without a connected provider, fulfillment is managed only by changing the order status; the MVP does not store manual carrier or tracking data.
 - Checkout contact/address fields include name, primary phone, address, city, email, notes, and an alternate phone.
 - Merchants choose which supported checkout fields are required or optional.
 - Storefront purchase actions include both a multi-product cart and direct Buy Now.
@@ -57,6 +90,16 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Products support multiple images and one optional merchant-uploaded video file.
 - Product content uses separate Arabic and English fields, with one merchant-selected primary language; missing translations fall back to that primary-language content.
 - Products can be organized using categories, collections, and tags.
+- Storefront product search matches the product name only; it does not search descriptions, SKUs, or tags.
+- Product browsing filters include price, category or collection, availability, and product options.
+- Product sorting options are Featured, Newest, Price Low to High, Price High to Low, and Name.
+- Long product lists load automatically as the customer scrolls.
+- Featured is the default product-list sort.
+- Merchants choose which products are Featured and manually control their order.
+- Product cards show the product image, name, selling price, compare-at price when present, and inventory state.
+- Out of Stock products remain in their assigned list position and display an Out of Stock label.
+- On a product page with variants, the first available variant is selected automatically; customers can then change the option selections.
+- Each variant can have its own selling price, compare-at price, cost, SKU, inventory quantity, and image.
 - Products have two storefront visibility states: Published and Hidden.
 - New products are Published immediately when saved.
 - Immediate publication requires a product name in the store's primary language and a selling price.

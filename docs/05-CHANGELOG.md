@@ -296,3 +296,180 @@
 
 - Synchronized the accumulated Phase 1 planning documents through Q-061 to the private `AM-naguib/lala` repository.
 - Reset the post-push planning-question counter to 0/50 with no pending documentation.
+
+## 2026-08-14 — Shipping connection, accepted shipments, and manual fulfillment
+
+### Added
+
+- Required merchants to connect their own shipping-provider accounts using their provider credentials.
+- Stored the provider shipment number, shipment status, and label after successful submission without automatically changing the core order status.
+- Limited non-integrated fulfillment to manual order-status changes without a manual carrier or tracking record.
+- Advanced active questions to merchant account creation, first-time store setup, and initial storefront availability.
+- Advanced the GitHub synchronization counter to 3/50 without uploading.
+
+## 2026-08-14 — Merchant sign-up and immediate storefront availability
+
+### Added
+
+- Defined merchant account creation using email address, phone number, and password.
+- Required store name, `lala` subdomain, operating country, currency, and primary language during first-time setup.
+- Made the storefront publicly accessible immediately after setup, without requiring a product or separate publish action.
+- Advanced active questions to merchant contact verification, subdomain changes, and country or currency changes after orders.
+- Advanced the GitHub synchronization counter to 6/50 without uploading.
+
+## 2026-08-14 — Phone verification and mutable store identity
+
+### Added
+
+- Required merchant phone-number verification and excluded merchant email verification from the MVP.
+- Allowed self-service hosted-subdomain changes without redirecting the previous subdomain.
+- Allowed merchants to change the store country and currency at any time, including after receiving orders.
+- Advanced active questions to historical-order preservation, product-price handling, and shipping-zone handling after these changes.
+- Advanced the GitHub synchronization counter to 9/50 without uploading.
+
+## 2026-08-14 — Historical order snapshots and unchanged catalog numbers
+
+### Added
+
+- Preserved each historical order's country and currency as captured at order creation.
+- Kept all existing product and variant price numbers unchanged when the store currency changes, updating only the currency code or symbol without conversion.
+- Clarified that hiding previous-country shipping zones means retaining them saved but inactive while another country is selected; the founder's choice remains open.
+- Advanced the GitHub synchronization counter to 11/50 without uploading.
+
+## 2026-08-14 — Store-country model removed
+
+### Changed
+
+- Removed the store-level operating country, superseding the earlier one-country-per-store model and removing country from initial onboarding.
+- Made shipping geography independent from a store-country setting; multi-country coverage and zone composition remain to be defined.
+- Reserved a previous hosted subdomain for 10 days after a change and limited each store to three hosted-subdomain changes.
+- Selected WhatsApp as the only merchant phone-verification delivery channel in the MVP.
+- Advanced the GitHub synchronization counter to 14/50 without uploading.
+
+## 2026-08-14 — Egypt-only Phase 1 shipping coverage
+
+### Changed
+
+- Allowed each store to configure zones in any number of platform-supported shipping countries.
+- Limited the actual Phase 1 supported shipping-country catalog to Egypt, so customers do not choose between delivery countries yet.
+- Reframed global coverage as a later expansion ambition rather than full Phase 1 operational country support.
+- Deferred cross-country zone composition because no selection was made and it does not affect the Egypt-only MVP.
+- Advanced the GitHub synchronization counter to 16/50 without uploading.
+
+## 2026-08-14 — Egypt checkout geography and coverage blocking
+
+### Added
+
+- Hid the country field at checkout and stored Egypt automatically for Phase 1 orders.
+- Added preloaded governorate followed by city or area selection for Egyptian checkout and shipping configuration.
+- Blocked order submission with a shipping-unavailable message when the selected location is outside all merchant-enabled zones.
+- Advanced active questions to overlapping zones, shipping-price display timing, and missing preloaded geography.
+- Advanced the GitHub synchronization counter to 19/50 without uploading.
+
+## 2026-08-14 — Conflict-free zones and extensible Egypt geography
+
+### Added
+
+- Prevented a city or area from belonging to more than one active zone in the same store.
+- Displayed shipping cost immediately after the customer selects the governorate and city or area.
+- Allowed merchants to add custom cities or areas beneath a governorate when the preloaded list is incomplete.
+- Advanced active questions to custom-location visibility, zero-price zones, and zone-price changes.
+- Advanced the GitHub synchronization counter to 22/50 without uploading.
+
+## 2026-08-14 — Store-specific geography and immutable shipping snapshots
+
+### Added
+
+- Limited merchant-added custom cities and areas to the merchant's own store.
+- Allowed a zero-price shipping zone and displayed it as free shipping.
+- Preserved shipping prices on existing orders while applying zone-price changes immediately to later orders.
+- Advanced active questions to stores per merchant account, team access, and store deletion.
+- Advanced the GitHub synchronization counter to 25/50 without uploading.
+
+## 2026-08-14 — Multi-store ownership with owner-only access
+
+### Added
+
+- Allowed one merchant account to own multiple stores with independent settings and data.
+- Limited MVP store access to the account owner and deferred team invitations and roles.
+- Defined store removal as data-preserving deactivation rather than deletion.
+- Advanced active questions to store-count limits, reactivation, and the disabled-store visitor experience.
+- Advanced the GitHub synchronization counter to 28/50 without uploading.
+
+## 2026-08-14 — Unlimited stores and support-controlled reactivation
+
+### Added
+
+- Removed the per-account store-count limit in the MVP.
+- Required `lala` support to reactivate a disabled store.
+- Added a clear visitor-facing store-unavailable page for disabled hosted and custom domains.
+- Advanced active questions to storefront themes, brand controls, and homepage composition.
+- Advanced the GitHub synchronization counter to 31/50 without uploading.
+
+## 2026-08-14 — Ready storefront themes and section-based homepage
+
+### Added
+
+- Added multiple ready-made storefront themes.
+- Added merchant brand controls for logo, colors, fonts, and favicon.
+- Defined the homepage as predefined sections that merchants can add, hide, and reorder.
+- Advanced active questions to theme switching, the initial homepage-section catalog, and static storefront pages.
+- Advanced the GitHub synchronization counter to 34/50 without uploading.
+
+## 2026-08-14 — Theme preview and baseline storefront pages
+
+### Added
+
+- Added theme preview before application and preserved storefront content when switching themes.
+- Selected Hero or Slider as the currently included homepage section type.
+- Added editable About Us, Contact, Shipping and Returns, Privacy Policy, and Terms and Conditions pages.
+- Advanced active questions to custom pages, bilingual page authoring, and Contact-page functionality.
+- Advanced the GitHub synchronization counter to 37/50 without uploading.
+
+## 2026-08-14 — Unlimited bilingual pages and complete Contact page
+
+### Added
+
+- Allowed unlimited custom static pages in addition to the five built-in pages.
+- Added separate Arabic and English static-page fields with primary-language fallback.
+- Added a customer contact form and store contact details to the Contact page.
+- Advanced active questions to storefront product search, filters, and sorting.
+- Advanced the GitHub synchronization counter to 40/50 without uploading.
+
+## 2026-08-14 — Storefront search, filters, and sorting
+
+### Added
+
+- Limited storefront catalog search to product names only.
+- Added product filters for price, category or collection, availability, and product options.
+- Added sorting by Featured, Newest, ascending or descending price, and Name.
+- Advanced active questions to product-list loading, the default sort, and Featured-product curation.
+- Advanced the GitHub synchronization counter to 43/50 without uploading.
+
+## 2026-08-14 — Infinite product loading and merchant-curated Featured order
+
+### Added
+
+- Selected automatic loading while the customer scrolls through long product lists.
+- Set Featured as the default storefront product sort.
+- Gave merchants manual control over Featured-product selection and display order.
+- Advanced active questions to product-card content, Out of Stock list presentation, and product-option selection.
+- Advanced the GitHub synchronization counter to 46/50 without uploading.
+
+## 2026-08-14 — Product cards, stock labels, and default variant selection
+
+### Added
+
+- Added product image, name, selling price, compare-at price, and inventory state to storefront product cards.
+- Kept Out of Stock products in their assigned list positions with a clear label.
+- Automatically selected the first available variant while allowing customers to change product options.
+- Advanced the active question to variant-specific product data.
+- Advanced the GitHub synchronization counter to 49/50 without uploading.
+
+## 2026-08-14 — Complete variant-specific commerce data
+
+### Added
+
+- Allowed every variant to independently define selling price, compare-at price, cost, SKU, inventory quantity, and image.
+- Advanced active questions to unavailable variants, product quantity selection, and related products.
+- Reached the 50/50 GitHub synchronization threshold and prepared the accumulated planning batch for upload.

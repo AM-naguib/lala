@@ -40,6 +40,8 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** Each store operates in one country and delivers to zones inside that country. See D-014.
 
+**Superseded:** D-084 removes the store-level country; D-087 and D-088 define current shipping-country capacity and Egypt-only Phase 1 availability.
+
 ### Q-009 — Taxes and extra fees
 
 **Resolved:** The initial release has no tax section, calculation, or separate tax line. See D-015.
@@ -308,19 +310,269 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** Keep the order Not Sent, display the failure reason, and provide a retry action. See D-072.
 
-## Now — Batch 23
+## Resolved in Batch 23
 
 ### Q-062 — Shipping-provider account connection
 
-How does a merchant connect their own account with a supported shipping provider?
+**Resolved:** Enter credentials for the merchant's own provider account. See D-073.
 
 ### Q-063 — Successful shipping submission effect
 
-What should happen to the order and its shipping data after the provider accepts a submission?
+**Resolved:** Store the shipment number, provider status, and label without changing the order's core status. See D-074.
 
 ### Q-064 — Fulfillment without an integration
 
-What fulfillment record should the merchant use when no shipping provider is connected?
+**Resolved:** Change the order status only; do not store manual carrier or tracking data. See D-075.
+
+## Resolved in Batch 24
+
+### Q-065 — Merchant account creation
+
+**Resolved:** Email address, phone number, and password. See D-076.
+
+### Q-066 — First-time store setup
+
+**Resolved:** Store name, `lala` subdomain, operating country, currency, and primary language. See D-077.
+
+**Revised:** D-084 removes operating country from the setup requirements.
+
+### Q-067 — Initial storefront availability
+
+**Resolved:** Immediately after initial setup, without requiring a product or separate publish action. See D-078.
+
+## Resolved in Batch 25
+
+### Q-068 — Merchant contact verification
+
+**Resolved:** Verify the phone number only; email verification is not required in the MVP. See D-079.
+
+### Q-069 — Store subdomain changes
+
+**Resolved:** Yes, from settings, without redirecting the old subdomain. See D-080.
+
+### Q-070 — Country and currency changes after orders
+
+**Resolved:** Both can change at any time. See D-081.
+
+**Revised:** D-084 removes the store-country setting; unrestricted currency changes remain.
+
+## Partially resolved in Batch 26
+
+### Q-071 — Historical orders after store-setting changes
+
+**Resolved:** Preserve the country and currency captured when the order was created. See D-082.
+
+**Revised:** After D-084, orders preserve recorded destination data and currency; there is no store-country setting to snapshot.
+
+### Q-072 — Product prices after currency change
+
+**Resolved:** Keep the same numeric values and change only the currency code or symbol. See D-083.
+
+### Q-073 — Shipping zones after country change
+
+**Needs clarification:** “Hide” means keeping the previous country's zones and rates saved but inactive while another country is selected. See Q-073A.
+
+## Resolved in Batch 27
+
+### Q-073A — Previous-country shipping configuration
+
+**Resolved by model correction:** The store has no country, so zones are not hidden or removed by a store-country change. See D-084.
+
+### Q-074 — Previous subdomain reuse
+
+**Resolved:** Reserve it for 10 days, with a maximum of three hosted-subdomain changes per store. See D-085.
+
+### Q-075 — Phone-verification delivery channel
+
+**Resolved:** WhatsApp only. See D-086.
+
+## Partially resolved in Batch 28
+
+### Q-076 — Shipping-country coverage
+
+**Resolved:** Any number of platform-supported countries. See D-087.
+
+### Q-077 — Delivery country at checkout
+
+**Resolved for Phase 1:** Egypt is the only supported shipping country, so no multi-country customer choice is needed. See D-088.
+
+### Q-078 — Cross-country shipping zones
+
+**Not selected and deferred:** This does not affect Phase 1 while Egypt is the only supported country. Reopen when a second country is introduced.
+
+## Resolved in Batch 29
+
+### Q-079 — Egypt country field at checkout
+
+**Resolved:** Hide it and store Egypt automatically. See D-089.
+
+### Q-080 — Egypt geography depth
+
+**Resolved:** Governorate followed by city or area. See D-090.
+
+### Q-081 — Address outside configured zones
+
+**Resolved:** Block order submission and explain that shipping is unavailable. See D-091.
+
+## Resolved in Batch 30
+
+### Q-082 — Overlapping shipping zones
+
+**Resolved:** No; prevent overlap between active zones. See D-092.
+
+### Q-083 — Shipping-price display timing
+
+**Resolved:** Immediately after governorate and city or area selection. See D-093.
+
+### Q-084 — Missing preloaded geography
+
+**Resolved:** Yes; add a custom location under its governorate. See D-094.
+
+## Resolved in Batch 31
+
+### Q-085 — Custom-location visibility
+
+**Resolved:** Only within that merchant's store. See D-095.
+
+### Q-086 — Zero-price shipping zone
+
+**Resolved:** Yes; display it as free shipping. See D-096.
+
+### Q-087 — Zone-price changes
+
+**Resolved:** Existing orders retain their captured price; orders created afterward use the new price immediately. See D-097.
+
+## Resolved in Batch 32
+
+### Q-088 — Stores per merchant account
+
+**Resolved:** Multiple stores with independent settings and data. See D-098.
+
+### Q-089 — Store team access
+
+**Resolved:** No; owner-only access in the MVP. See D-099.
+
+### Q-090 — Store deletion
+
+**Resolved:** Disable it without deleting its data. See D-100.
+
+## Resolved in Batch 33
+
+### Q-091 — Store-count limit
+
+**Resolved:** Unlimited. See D-101.
+
+### Q-092 — Store reactivation
+
+**Resolved:** Through `lala` support only. See D-102.
+
+### Q-093 — Disabled-store visitor experience
+
+**Resolved:** A clear page stating that the store is currently unavailable. See D-103.
+
+## Resolved in Batch 34
+
+### Q-094 — Storefront theme choice
+
+**Resolved:** Multiple ready-made themes. See D-104.
+
+### Q-095 — Storefront brand controls
+
+**Resolved:** Logo, colors, fonts, and favicon. See D-105.
+
+### Q-096 — Homepage composition
+
+**Resolved:** Add, hide, and reorder predefined sections. See D-106.
+
+## Resolved in Batch 35
+
+### Q-097 — Theme switching
+
+**Resolved:** Preview before applying and preserve storefront content. See D-107.
+
+### Q-098 — Initial homepage sections
+
+**Resolved:** Hero or Slider only from the proposed initial set. See D-108.
+
+### Q-099 — Static storefront pages
+
+**Resolved:** About Us, Contact, Shipping and Returns, Privacy Policy, and Terms and Conditions. See D-109.
+
+## Resolved in Batch 36
+
+### Q-100 — Custom static pages
+
+**Resolved:** Yes; unlimited custom static pages. See D-110.
+
+### Q-101 — Bilingual static-page content
+
+**Resolved:** Separate fields with primary-language fallback. See D-111.
+
+### Q-102 — Contact-page functionality
+
+**Resolved:** Customer contact form plus store contact details. See D-112.
+
+## Resolved in Batch 37
+
+### Q-103 — Storefront product search
+
+**Resolved:** Product name only. See D-113.
+
+### Q-104 — Storefront product filters
+
+**Resolved:** Price, category or collection, availability, and product options. See D-114.
+
+### Q-105 — Storefront product sorting
+
+**Resolved:** Featured, Newest, Price Low to High, Price High to Low, and Name. See D-115.
+
+## Resolved in Batch 38
+
+### Q-106 — Product-list loading
+
+**Resolved:** Automatically while the customer scrolls. See D-116.
+
+### Q-107 — Default product sort
+
+**Resolved:** Featured. See D-117.
+
+### Q-108 — Featured-product curation
+
+**Resolved:** The merchant manually selects Featured products and freely controls their order. See D-118.
+
+## Resolved in Batch 39
+
+### Q-109 — Product-card content
+
+**Resolved:** Product image, name, selling price, compare-at price when present, and inventory state. See D-119.
+
+### Q-110 — Out of Stock list presentation
+
+**Resolved:** They remain in their assigned position and show an Out of Stock label. See D-120.
+
+### Q-111 — Product-option selection
+
+**Resolved:** The first available variant is selected automatically, and the customer can change options afterward. See D-121.
+
+## Resolved in Batch 40
+
+### Q-112 — Variant-specific data
+
+**Resolved:** Selling price, compare-at price, cost, SKU, inventory quantity, and image. See D-122.
+
+## Now — Batch 41
+
+### Q-113 — Unavailable variant combinations
+
+How are unavailable or Out of Stock variant combinations presented to the customer?
+
+### Q-114 — Product quantity selection
+
+Where can the customer choose the quantity of a product?
+
+### Q-115 — Related products
+
+Does the product page include related products, and how are they selected?
 
 ## Later in Phase 1
 
@@ -335,3 +587,4 @@ What fulfillment record should the merchant use when no shipping provider is con
 - Full enterprise feature set.
 - App/integration marketplace.
 - Later-phase growth roadmap.
+- Cross-country shipping-zone composition, to be reopened when a second shipping country is supported.

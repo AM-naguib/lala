@@ -19,10 +19,11 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-003 — Launch market ambition
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Refined by D-088
 - **Decision:** Design for a global launch from day one.
 - **Reason:** Founder explicitly selected global rather than Egypt, the Arab region, or another limited geography.
 - **Constraint:** D-014 partially defines the operational meaning for the MVP; exact country availability and legal/compliance coverage remain unresolved.
+- **Effect:** D-088 limits operational Phase 1 shipping coverage to Egypt while preserving global expansion as a later product ambition.
 
 ## D-004 — Broad target audience
 
@@ -104,10 +105,11 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-014 — One operating country per store
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Superseded by D-084
 - **Decision:** Each store operates and delivers within one merchant-selected country in the initial release; its shipping zones are inside that country.
 - **Reason:** Founder selected one country with internal delivery regions instead of multi-country delivery per store.
 - **Implication:** The global launch ambition means `lala` can serve merchants in different countries, while an individual MVP store remains single-country.
+- **Effect:** D-084 removes the store-level operating country entirely; shipping coverage is now configured independently.
 
 ## D-015 — No tax feature in the initial release
 
@@ -559,3 +561,377 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** If a shipping-provider submission fails, keep the affected order marked as Not Sent, display the failure reason, and provide a manual retry action.
 - **Reason:** Founder selected explicit recoverability without silently switching fulfillment modes or adding automatic retries.
 - **Constraint:** A bulk submission must preserve and show the result for each affected order independently.
+
+## D-073 — Merchant-owned shipping-provider credentials
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let each merchant connect a supported shipping provider by entering credentials for the merchant's own account with that provider.
+- **Reason:** Founder selected direct merchant account ownership rather than platform-managed shipping accounts.
+- **Constraint:** Credentials are secrets and must be stored securely; they must never be written to project documentation, source control, or logs.
+
+## D-074 — Successful submission stores shipment data without changing order status
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** After a shipping provider accepts a submission, store the provider shipment number, provider shipment status, and shipping label. Do not automatically change the order's core status.
+- **Reason:** Founder selected shipment-data synchronization while preserving manual control over the freely selectable order statuses.
+
+## D-075 — Status-only fulfillment without a provider integration
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** If a merchant has not connected a shipping provider, fulfillment is represented only by changing the order's core status. Do not store a manual carrier name or tracking number in the MVP.
+- **Reason:** Founder explicitly selected the simplest non-integrated workflow.
+
+## D-076 — Merchant sign-up with email, phone, and password
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Require an email address, phone number, and password to create a merchant account.
+- **Reason:** Founder explicitly selected these three account-creation fields.
+- **Resolution:** D-079 requires phone verification only.
+
+## D-077 — Required initial store settings
+
+- **Date:** 2026-08-14
+- **Status:** Partially superseded by D-084
+- **Decision:** During initial onboarding, require the merchant to enter the store name, select the desired `lala` subdomain, operating country, operating currency, and primary language.
+- **Reason:** Founder selected the recommended minimum setup set needed to create a usable store identity and operating baseline.
+- **Effect:** D-084 removes operating country from initial setup. Store name, subdomain, currency, and primary language remain required.
+
+## D-078 — Storefront is public immediately after setup
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Make the storefront publicly accessible immediately after the merchant completes initial setup. Do not require the merchant to add a product or press a separate store-publish action first.
+- **Reason:** Founder selected immediate availability after setup.
+- **Implication:** A newly public storefront can be empty until the merchant adds the first product.
+
+## D-079 — Verify merchant phone number only
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Require verification of the merchant's phone number during sign-up. Do not require merchant email verification in the MVP.
+- **Reason:** Founder explicitly selected phone-number verification.
+- **Resolution:** D-086 selects WhatsApp as the only verification delivery channel. Code lifetime, resend rules, and attempt limits remain undecided.
+
+## D-080 — Subdomain changes without redirect
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let the merchant change the hosted `lala` subdomain from store settings. The previous subdomain stops serving the store and does not redirect to the new subdomain.
+- **Reason:** Founder selected a self-service change without preserving the old URL through a redirect.
+- **Resolution:** D-085 reserves the previous subdomain for 10 days and limits each store to three hosted-subdomain changes.
+
+## D-081 — Store country and currency can change at any time
+
+- **Date:** 2026-08-14
+- **Status:** Partially superseded by D-084
+- **Decision:** Let the merchant change the store's operating country and operating currency at any time, including after the store has received orders.
+- **Reason:** Founder explicitly selected unrestricted changes rather than locking either setting after the first order.
+- **Constraint:** The store still has one active country and one active currency at a time.
+- **Resolution:** D-082 preserves historical order snapshots and D-083 defines existing catalog-price behavior. Shipping-zone behavior remains open.
+- **Effect:** D-084 removes the store-country setting, so only unrestricted currency changes remain applicable.
+
+## D-082 — Historical orders preserve country and currency snapshots
+
+- **Date:** 2026-08-14
+- **Status:** Partially superseded by D-084
+- **Decision:** Keep the operating country and currency captured when each order was created. Later store-country or store-currency changes do not rewrite historical orders.
+- **Reason:** Founder selected immutable historical context so old orders remain accurate.
+- **Effect:** D-084 removes the store operating country. Historical currency and recorded delivery-destination data remain preserved; there is no store-country setting to snapshot.
+
+## D-083 — Currency changes keep existing numeric prices unchanged
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When the merchant changes the store currency, keep the numeric values of all existing product and variant selling prices, compare-at prices, and costs unchanged. Change only the currency code or symbol and perform no conversion.
+- **Reason:** Founder explicitly selected retaining the same numbers rather than manual or automatic conversion.
+- **Implication:** For example, a numeric price of 100 remains 100 after the currency change, but it is displayed in the newly selected currency.
+
+## D-084 — No store-level operating country
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not assign an operating country to a store. Shipping geography is configured independently through shipping zones rather than activated, hidden, or replaced by changing a store-country setting.
+- **Reason:** Founder explicitly corrected the previous model and stated that the store has no country.
+- **Effect:** Supersedes D-014, removes country from D-077 onboarding, and removes the country-change portion of D-081 and D-082.
+- **Resolution:** D-087 permits any number of platform-supported shipping countries per store, and D-088 makes Egypt the only supported Phase 1 country. Cross-country zone composition is deferred until a second country is supported.
+
+## D-085 — Ten-day old-subdomain reservation and three-change limit
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** After a hosted-subdomain change, reserve the previous subdomain for 10 days without redirecting it. Limit each store to a maximum of three hosted-subdomain changes.
+- **Reason:** Founder explicitly selected the reservation duration and change limit.
+
+## D-086 — Merchant phone verification through WhatsApp only
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Deliver the merchant phone-verification code through WhatsApp only in the MVP.
+- **Reason:** Founder explicitly selected WhatsApp rather than SMS or a merchant choice of channels.
+
+## D-087 — Any number of platform-supported shipping countries per store
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow one store to configure shipping zones in any number of countries that `lala` supports.
+- **Reason:** Founder selected no per-store country-count limit.
+- **Constraint:** D-088 limits the actual Phase 1 supported-country catalog to Egypt only.
+
+## D-088 — Egypt-only shipping coverage in Phase 1
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Make Egypt the only supported shipping country in Phase 1. Customers do not choose between multiple delivery countries while Egypt is the only available country.
+- **Reason:** Founder narrowed current shipping availability to Egypt only.
+- **Effect:** Refines D-003 from global launch coverage to global expansion ambition and postpones cross-country zone behavior until another country is supported.
+- **Resolution:** D-089 hides the country field and stores Egypt automatically, D-090 defines the preloaded geography depth, and D-091 blocks uncovered addresses.
+
+## D-089 — Egypt is implicit at checkout
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Hide the delivery-country field from Phase 1 checkout and store Egypt automatically on the order.
+- **Reason:** Founder selected the recommended single-country checkout behavior for the Egypt-only MVP.
+
+## D-090 — Preloaded governorate then city or area
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Provide preloaded Egyptian geography in two checkout and shipping-configuration levels: first governorate, then city or area.
+- **Reason:** Founder selected a structured location hierarchy rather than governorate-only pricing or free-text cities.
+
+## D-091 — Uncovered locations cannot submit an order
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** If the customer's selected governorate and city or area are outside every merchant-enabled shipping zone, prevent order submission and show that shipping is unavailable to the selected location.
+- **Reason:** Founder selected explicit blocking rather than accepting an order with free or unresolved shipping cost.
+
+## D-092 — Prevent overlap between active shipping zones
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Prevent the same city or area from belonging to more than one active shipping zone in the same store.
+- **Reason:** Founder selected the recommended conflict-free model rather than resolving overlapping prices by rate or priority.
+
+## D-093 — Show shipping price immediately after location selection
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Calculate and display the shipping price immediately after the customer selects the governorate and city or area at checkout.
+- **Reason:** Founder selected early price visibility rather than delaying delivery cost until the final step or after order creation.
+
+## D-094 — Merchant can add missing custom geography
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow a merchant to add a custom city or area under an Egyptian governorate when that location is missing from the preloaded list.
+- **Reason:** Founder selected merchant self-service rather than free-text customer geography or waiting for platform administration.
+- **Resolution:** D-095 makes merchant-added locations store-specific.
+
+## D-095 — Custom geography is store-specific
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Make a merchant-added custom city or area visible only within that merchant's store. Do not add it automatically to the platform-wide geography list.
+- **Reason:** Founder selected the recommended isolated customization model.
+
+## D-096 — Zero-price zones provide free shipping
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow a merchant to set a shipping-zone price to zero and display it to customers as free shipping.
+- **Reason:** Founder selected zone-level free shipping without requiring a coupon.
+
+## D-097 — Zone-price changes affect only later orders
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Preserve the shipping price captured by every existing order. After a merchant changes a zone's price, orders created afterward use the new price immediately.
+- **Reason:** Founder selected immutable historical order totals with immediate application to new purchases.
+
+## D-098 — Multiple independent stores per merchant account
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow one merchant account to own multiple stores, with independent settings and data for each store.
+- **Reason:** Founder selected multi-store ownership rather than one store per account or a parent-and-branch model.
+- **Resolution:** D-101 makes the store count unlimited in the MVP.
+
+## D-099 — Owner-only store access in the MVP
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow only the merchant account owner to access and manage the account's stores in the MVP. Do not include team-member invitations or roles.
+- **Reason:** Founder explicitly selected owner-only access for now.
+
+## D-100 — Store removal disables without deleting data
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When the owner removes a store from active use, disable the store without deleting its stored data.
+- **Reason:** Founder selected data-preserving deactivation rather than permanent deletion or time-limited soft deletion.
+- **Resolution:** D-102 makes reactivation support-only and D-103 defines the disabled-store visitor page.
+
+## D-101 — Unlimited stores per merchant account
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not impose a maximum number of stores that one merchant account can own in the MVP.
+- **Reason:** Founder explicitly selected an unlimited store count.
+
+## D-102 — Disabled-store reactivation through support only
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Require the owner to contact `lala` support to reactivate a disabled store; do not provide owner self-service reactivation in the MVP.
+- **Reason:** Founder selected support-controlled restoration.
+
+## D-103 — Disabled stores show an unavailable page
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When a visitor opens a disabled store's hosted subdomain or custom domain, show a clear page stating that the store is currently unavailable.
+- **Reason:** Founder selected an explicit visitor-facing status rather than a 404 page or redirect to the `lala` website.
+
+## D-104 — Multiple ready-made storefront themes
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Offer multiple ready-made storefront themes in the MVP.
+- **Reason:** Founder selected theme choice rather than one default theme or a completely free design editor.
+
+## D-105 — Logo, colors, fonts, and favicon brand controls
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let each merchant customize the storefront logo, color palette, fonts, and favicon.
+- **Reason:** Founder selected the recommended brand-control set.
+
+## D-106 — Homepage built from manageable predefined sections
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Build the storefront homepage from predefined sections that the merchant can add, hide, and reorder.
+- **Reason:** Founder selected flexible section management without requiring a fully free-form page builder.
+- **Resolution:** D-108 selects Hero or Slider as the initial section type. Per-section content controls remain undecided.
+
+## D-107 — Preview themes and preserve content when switching
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let the merchant preview a storefront theme before applying it. Applying a different theme preserves the merchant's storefront content.
+- **Reason:** Founder selected a reversible evaluation step and content continuity during theme changes.
+- **Open detail:** Mapping theme-specific layout settings between themes remains undecided.
+
+## D-108 — Hero or Slider as the initial homepage section
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include Hero or Slider as the currently selected initial homepage section type in the MVP.
+- **Reason:** Founder selected only this option from the proposed initial homepage-section catalog.
+
+## D-109 — Five editable static storefront pages
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include editable About Us, Contact, Shipping and Returns, Privacy Policy, and Terms and Conditions pages in each storefront.
+- **Reason:** Founder selected the recommended baseline page set.
+- **Resolution:** D-110 adds unlimited custom pages, D-111 defines bilingual authoring, and D-112 adds a contact form plus store details. Contact-form delivery remains undecided.
+
+## D-110 — Unlimited custom static pages
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow each merchant to create an unlimited number of custom static storefront pages in addition to the five built-in pages.
+- **Reason:** Founder selected unrestricted custom-page creation.
+
+## D-111 — Bilingual static pages with primary-language fallback
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Provide separate Arabic and English content fields for static pages. If the selected-language content is missing, display the store's primary-language version.
+- **Reason:** Founder selected the same explicit bilingual and fallback model used for product content.
+
+## D-112 — Contact form and store contact details
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include both a customer contact form and merchant-configured store contact details on the Contact page.
+- **Reason:** Founder selected the complete recommended contact baseline.
+- **Open detail:** Form-submission destination, notifications, and retention remain undecided.
+
+## D-113 — Storefront search by product name only
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Search the storefront product catalog using the product name only. Product descriptions, SKUs, and tags are not search inputs in the MVP.
+- **Reason:** Founder explicitly selected product-name-only search for the initial release.
+
+## D-114 — Storefront product filters
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let customers filter storefront products by price, category or collection, availability, and product options.
+- **Reason:** Founder selected the complete recommended filter set.
+
+## D-115 — Storefront product sorting options
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let customers sort storefront products by Featured, Newest, Price Low to High, Price High to Low, and Name.
+- **Reason:** Founder selected the complete recommended sorting set.
+- **Resolution:** D-117 sets Featured as the default sort, and D-118 defines manual merchant curation and ordering.
+
+## D-116 — Automatic product loading while scrolling
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Automatically load more products as the customer scrolls through a long storefront product list.
+- **Reason:** Founder selected continuous automatic loading instead of numbered pagination or a manual Load More action.
+
+## D-117 — Featured as the default product sort
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Use Featured as the default sorting mode for storefront product lists.
+- **Reason:** Founder selected Featured first while retaining merchant control over the Featured order.
+
+## D-118 — Manual Featured-product selection and ordering
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let the merchant manually select which products are Featured and freely control their display order.
+- **Reason:** Founder selected direct manual curation over automatic ordering or sales-based selection.
+
+## D-119 — Complete storefront product cards
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Show the product image, name, selling price, compare-at price when present, and inventory state on each storefront product card.
+- **Reason:** Founder selected the complete recommended product-card information set.
+
+## D-120 — Keep Out of Stock products in place
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Keep an Out of Stock product in its assigned storefront-list position and display a clear Out of Stock label. Do not automatically move it to the end or hide it.
+- **Reason:** Founder explicitly selected position preservation with an availability label.
+
+## D-121 — Automatically select the first available variant
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When a customer opens a product with variants, automatically select the first available variant. The customer can change the selected product options before adding it to the cart or using Buy Now.
+- **Reason:** Founder selected automatic first-available selection instead of requiring an initial manual selection or a merchant-defined default variant.
+
+## D-122 — Complete independent variant data
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow each variant to independently define its selling price, compare-at price, cost, SKU, inventory quantity, and image.
+- **Reason:** Founder selected the complete recommended variant-specific commerce-data set.

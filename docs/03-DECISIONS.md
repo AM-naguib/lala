@@ -935,3 +935,358 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** Allow each variant to independently define its selling price, compare-at price, cost, SKU, inventory quantity, and image.
 - **Reason:** Founder selected the complete recommended variant-specific commerce-data set.
+
+## D-123 — Visible but disabled unavailable variants
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Keep unavailable or Out of Stock variant choices visible on the product page, but disable them and show a clear Unavailable label.
+- **Reason:** Founder selected transparency about existing choices without allowing customers to select an unavailable combination.
+
+## D-124 — Quantity controls on product page and cart
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let customers change product quantity on both the product page and in the cart. For tracked inventory, the selected quantity cannot exceed the currently available stock.
+- **Reason:** Founder selected the complete recommended quantity-control behavior.
+
+## D-125 — Automatic related products by catalog organization
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Automatically choose related products for a product page from products in the same category or collection.
+- **Reason:** Founder selected automatic related-product generation instead of manual merchant curation or omitting the section.
+
+## D-126 — Success message after Add to Cart
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** After adding an item to the cart, show a success message and keep the customer on the current page. Do not automatically open a cart drawer or navigate to the cart.
+- **Reason:** Founder explicitly selected lightweight success feedback only.
+
+## D-127 — Thirty-day guest-cart persistence
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Preserve a guest customer's cart on the same device for 30 days.
+- **Reason:** Founder selected the recommended persistence period.
+
+## D-128 — Revalidate cart price and stock with notice
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Before order submission, update cart items to their current selling prices and reduce any quantity above current available tracked stock to the available amount. Show the customer a clear notice describing the changes.
+- **Reason:** Founder selected automatic reconciliation with transparent customer feedback.
+
+## D-129 — Isolated Buy Now checkout
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Buy Now opens checkout for only the currently selected product and quantity. Products already stored in the customer's cart remain unchanged.
+- **Reason:** Founder selected an isolated express purchase that does not merge with or replace the saved cart.
+
+## D-130 — Single-page checkout
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Present checkout as one complete page rather than dividing it into multiple steps.
+- **Reason:** Founder selected the recommended low-friction checkout structure.
+
+## D-131 — Coupon entry in cart and checkout
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow customers to enter and apply a coupon code from both the cart and checkout. The applied coupon state is shared so the customer does not need to re-enter it.
+- **Reason:** Founder selected coupon access in both purchase-flow locations.
+
+## D-132 — Successful-order page without tracking link
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** After successful order submission, show the order number, order summary, and current order status on the confirmation page. Do not display the tracking link on that page.
+- **Reason:** Founder first selected the complete confirmation set, then specified that the tracking link is sent by email only; the more specific placement decision controls.
+- **Exception:** D-135 shows the tracking link once on this page when the order has no customer email address.
+
+## D-133 — Email-only unique guest tracking link
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let a guest customer track an order through a unique link sent only to the email address provided with the order. Do not provide order-number-and-phone lookup in the MVP.
+- **Reason:** Founder explicitly selected email-only link delivery.
+- **Exception:** D-135 defines one-time success-page delivery when the customer did not provide an email address.
+
+## D-134 — No checkout policy acceptance requirement
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not require a Terms and Conditions or Privacy Policy acceptance checkbox at checkout. These policies remain available as storefront pages but do not have to appear in the checkout interface.
+- **Reason:** Founder explicitly stated that the policies do not need to appear during payment or checkout.
+
+## D-135 — One-time tracking-link display without email
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** If an order has no customer email address, show its unique tracking link once on the successful-order page. This is the only success-page exception to D-132 and the only non-email delivery exception to D-133.
+- **Reason:** Founder selected a one-time link display so a guest without email can retain self-service tracking.
+
+## D-136 — Complete guest tracking-page information
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Show the current order status and its progression, ordered products, order totals, and available shipment details from the connected shipping provider on the guest tracking page.
+- **Reason:** Founder selected the complete recommended tracking information set.
+
+## D-137 — Complete order-confirmation email
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include the order number, order summary, delivery address, totals, current status, and unique tracking link in the initial order-confirmation email.
+- **Reason:** Founder selected the complete recommended confirmation-email content.
+
+## D-138 — Customer account by email or phone
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let a customer optionally create an account using either an email address or a phone number plus a password.
+- **Reason:** Founder selected both supported customer identifiers instead of limiting sign-up to one contact channel.
+
+## D-139 — Automatic verified guest-order linking
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** After the customer verifies an email address or phone number, automatically link earlier guest orders that contain the matching verified contact value to the new account.
+- **Reason:** Founder selected automatic historical-order recovery after ownership of the contact channel is confirmed.
+
+## D-140 — Complete customer self-service account
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Give signed-in customers access to order history and tracking, saved addresses, and profile management.
+- **Reason:** Founder selected the complete recommended customer-account feature set.
+
+## D-141 — Storefront-scoped customer accounts
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Scope every customer account to one storefront. A customer account and credentials are not automatically shared with other `lala` storefronts.
+- **Reason:** Founder selected isolated store-branded customer identity over a platform-wide account.
+
+## D-142 — Channel-specific customer verification
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Verify an email-based customer account through an email link and a phone-based account through a WhatsApp code.
+- **Reason:** Founder selected the recommended verification channel for each supported identifier.
+
+## D-143 — Channel-specific customer password recovery
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Reset a customer password using an email reset link for an email account or a WhatsApp code for a phone account.
+- **Reason:** Founder selected recovery through the same verified contact channel used by the account.
+
+## D-144 — Unlimited saved addresses with a default
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow a customer to save an unlimited number of delivery addresses and select one saved address as the default.
+- **Reason:** Founder selected unrestricted address storage with a default-address convenience.
+
+## D-145 — Verify new customer contact before replacement
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When a customer changes the account email address or phone number, keep the existing verified value active until the new value is successfully verified through its supported channel.
+- **Reason:** Founder selected verification of the new contact before replacement.
+
+## D-146 — Delete customer account but retain order history
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Customer-account deletion removes the login account, profile data, and saved addresses. Historical order records remain stored for the merchant as transaction history.
+- **Reason:** Founder selected removal of reusable account data without deleting the store's historical orders.
+
+## D-147 — No signed-in customer self-cancellation
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not let a signed-in customer cancel an order directly. The customer must contact the merchant, matching the existing guest-customer cancellation policy.
+- **Reason:** Founder selected one consistent merchant-controlled cancellation flow for guests and account holders.
+
+## D-148 — Repeat orders use current catalog data
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Repeat Order adds products that are currently available to the cart using current prices. Clearly notify the customer about unavailable products, price changes, or other differences from the original order.
+- **Reason:** Founder selected a safe cart reconstruction instead of blindly copying historical order data.
+
+## D-149 — Default address with explicit save after editing
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Preselect the customer's default saved address at checkout. Allow the customer to choose another saved address or make a one-time edit, but do not modify saved address data unless the customer explicitly chooses to save the change.
+- **Reason:** Founder selected checkout convenience without silently overwriting the customer's address book.
+
+## D-150 — Automatic merchant customer-record consolidation
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Automatically consolidate guest and registered-customer orders into one merchant customer record when a normalized email address or phone number matches. If the identifiers imply conflicting customer records, preserve the records and show the merchant a review alert instead of silently merging them.
+- **Reason:** Founder selected automatic consolidation with explicit conflict handling.
+
+## D-151 — Internal merchant customer notes and tags
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let merchants attach internal notes and tags to customer records. These annotations are visible only in the merchant dashboard.
+- **Reason:** Founder selected both recommended customer-organization tools.
+
+## D-152 — Identifier-based customer blocking
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let a merchant block new order submissions that match a selected customer email address or phone number. Blocking does not cancel, delete, or otherwise modify existing orders.
+- **Reason:** Founder selected future-order blocking with historical-order preservation.
+
+## D-153 — Complete merchant customer record
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Show customer identity and contact data, saved or observed addresses, order history and order count, total spend, average spend per order, last order, tags, and blocked status in the merchant customer record.
+- **Reason:** Founder selected the complete recommended customer detail and metric set.
+- **Resolution:** D-158 includes every order status in customer total-spend and average-spend metrics.
+
+## D-154 — Complete merchant customer search and filters
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Support customer search by name, phone number, and email address. Support filters for tags, blocked status, order count, spend, and last-order date.
+- **Reason:** Founder selected the complete recommended customer-list discovery set.
+
+## D-155 — All-or-filtered customer CSV export
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let merchants export customer records as CSV for either the full customer list or the currently filtered result set.
+- **Reason:** Founder selected flexible CSV export scope.
+
+## D-156 — Complete merchant dashboard home
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Show sales, orders grouped by status, average order value, customer metrics, top products, low-stock items, recent orders, and operational alerts on the merchant dashboard home.
+- **Reason:** Founder selected the complete recommended dashboard summary.
+
+## D-157 — Standard and custom analytics periods with comparison
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Provide Today, Yesterday, Last 7 Days, Last 30 Days, and custom date ranges. Compare the selected period with the immediately previous period of equal length.
+- **Reason:** Founder selected the complete recommended date and comparison controls.
+
+## D-158 — All order statuses count toward sales
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Include every order in headline sales, average-order-value, and customer-spend metrics regardless of its status. Cancelled and Returned orders remain included and are not deducted from these totals.
+- **Reason:** Founder explicitly selected all orders rather than limiting sales recognition to delivered or non-cancelled orders.
+- **Interpretation:** These metrics represent gross created-order value, even when labeled as sales in the merchant interface.
+
+## D-159 — Separate count and value for every order status
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Beside the headline all-orders sales total, show order count and order value separately for every core and custom order status.
+- **Reason:** Founder selected complete per-status context for the gross sales total.
+
+## D-160 — No estimated-profit report in Phase 1
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not calculate or display estimated profit in Phase 1. Continue storing product and variant cost for merchant reference and possible future reporting.
+- **Reason:** Founder explicitly deferred profit reporting.
+
+## D-161 — Filtered analytics CSV export
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let merchants export sales and analytics data as CSV using the currently selected date range and filters.
+- **Reason:** Founder selected filter-preserving report export.
+
+## D-162 — Fixed Cairo reporting timezone
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Use the Cairo timezone for analytics period boundaries and displayed order timestamps for every Phase 1 store.
+- **Reason:** Founder explicitly selected fixed Cairo time instead of a merchant-selected or browser-derived timezone.
+
+## D-163 — Top Products ranking toggle
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let merchants switch Top Products ranking between units ordered and total order value.
+- **Reason:** Founder selected both ranking perspectives with a merchant-controlled toggle.
+- **Metric scope:** Both modes follow D-158 and include products from orders in every status.
+
+## D-164 — Analytics freshness within one minute
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Reflect new orders and catalog changes in dashboard analytics within approximately one minute.
+- **Reason:** Founder selected near-real-time dashboard updates.
+
+## D-165 — Partial-success product and variant CSV import
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Preview and validate a product-and-variant CSV before confirmation. Import valid rows and generate a downloadable error file for invalid rows instead of rejecting the entire import.
+- **Reason:** Founder selected the recommended partial-success import flow with actionable validation feedback.
+
+## D-166 — All-or-filtered product and variant CSV export
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Export products and their variants as CSV for either the full catalog or the current filtered product result set.
+- **Reason:** Founder selected complete filtered export including variant data.
+
+## D-167 — Complete product bulk-edit actions
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Support bulk changes to Published or Hidden state; category, collection, and tag assignments; price fields; inventory; and product soft deletion.
+- **Reason:** Founder selected the complete recommended bulk-action set.
+
+## D-168 — Copy imported images from public URLs
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Let product and variant CSV rows contain public image URLs. Download successful images into `lala`-managed storage and serve the stored copies instead of continuing to depend on the source URLs.
+- **Reason:** Founder selected URL-based media import with platform-owned copies.
+
+## D-169 — CSV matching by `lala` ID then SKU
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When importing a CSV row, match an existing product or variant by `lala` record ID first, then by SKU when no ID match exists. Create a new record when neither identifier matches.
+- **Reason:** Founder selected stable round-trip identity with an external-friendly SKU fallback.
+
+## D-170 — Background CSV import with dashboard results
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Run large CSV imports in the background so the merchant can continue using the dashboard. On completion, show a dashboard notification and provide a downloadable result file with successes and errors.
+- **Reason:** Founder selected non-blocking processing with in-product completion feedback.
+
+## D-171 — Reject conflicting CSV identities
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** If a CSV row contains a `lala` ID and SKU that point to different existing records, reject that row as an error and do not modify either record.
+- **Reason:** Founder selected the safest conflict behavior instead of silently trusting one identifier.
+
+## D-172 — Detailed confirmation for large or destructive bulk actions
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Before a large or destructive product bulk action, show the affected record count and a summary of proposed changes, then require explicit merchant confirmation. After processing, provide a downloadable results file.
+- **Reason:** Founder selected complete preview, confirmation, and outcome safeguards.

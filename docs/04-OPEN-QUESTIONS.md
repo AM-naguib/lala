@@ -560,19 +560,253 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** Selling price, compare-at price, cost, SKU, inventory quantity, and image. See D-122.
 
-## Now — Batch 41
+## Resolved in Batch 41
 
 ### Q-113 — Unavailable variant combinations
 
-How are unavailable or Out of Stock variant combinations presented to the customer?
+**Resolved:** They remain visible but disabled with a clear Unavailable label. See D-123.
 
 ### Q-114 — Product quantity selection
 
-Where can the customer choose the quantity of a product?
+**Resolved:** On both the product page and in the cart, up to available tracked inventory. See D-124.
 
 ### Q-115 — Related products
 
-Does the product page include related products, and how are they selected?
+**Resolved:** Yes; automatically from the same category or collection. See D-125.
+
+## Resolved in Batch 42
+
+### Q-116 — Post-add-to-cart behavior
+
+**Resolved:** Show a success message and keep the customer on the current page. See D-126.
+
+### Q-117 — Guest-cart persistence
+
+**Resolved:** 30 days. See D-127.
+
+### Q-118 — Cart price and stock revalidation
+
+**Resolved:** Use current prices, reduce quantities to current availability, and clearly notify the customer. See D-128.
+
+## Resolved in Batch 43
+
+### Q-119 — Buy Now and existing cart
+
+**Resolved:** Checkout the current product only and preserve the existing cart unchanged. See D-129.
+
+### Q-120 — Checkout page structure
+
+**Resolved:** One complete page. See D-130.
+
+### Q-121 — Coupon-entry placement
+
+**Resolved:** In both cart and checkout, sharing the same applied coupon state. See D-131.
+
+## Resolved in Batch 44
+
+### Q-122 — Successful-order confirmation
+
+**Resolved:** Order number, order summary, and current status. The tracking link is omitted because D-133 limits it to email. See D-132.
+
+### Q-123 — Guest order tracking
+
+**Resolved:** Through a unique link sent only by email. See D-133.
+
+### Q-124 — Checkout policy acceptance
+
+**Resolved:** No; the policies do not have to appear during checkout. See D-134.
+
+## Resolved in Batch 45
+
+### Q-125 — Tracking without customer email
+
+**Resolved:** Show the unique tracking link once on the successful-order page. See D-135.
+
+### Q-126 — Guest tracking-page content
+
+**Resolved:** Status and progression, products, totals, and available shipment details. See D-136.
+
+### Q-127 — Order-confirmation email content
+
+**Resolved:** Order number, summary, delivery address, totals, current status, and tracking link. See D-137.
+
+## Resolved in Batch 46
+
+### Q-128 — Customer-account credentials
+
+**Resolved:** Email address or phone number plus password. See D-138.
+
+### Q-129 — Linking guest orders
+
+**Resolved:** Automatically after verifying the matching email address or phone number. See D-139.
+
+### Q-130 — Customer-account self-service
+
+**Resolved:** Order history and tracking, saved addresses, and profile management. See D-140.
+
+## Resolved in Batch 47
+
+### Q-131 — Customer-account scope
+
+**Resolved:** One independent account per storefront. See D-141.
+
+### Q-132 — Customer contact verification
+
+**Resolved:** Email link for email accounts and WhatsApp code for phone accounts. See D-142.
+
+### Q-133 — Customer password recovery
+
+**Resolved:** Email reset link or WhatsApp code according to the verified account channel. See D-143.
+
+## Resolved in Batch 48
+
+### Q-134 — Saved-address capacity
+
+**Resolved:** Unlimited saved addresses with one default. See D-144.
+
+### Q-135 — Changing customer contact details
+
+**Resolved:** Verify the new value before it replaces the old one. See D-145.
+
+### Q-136 — Customer-account deletion
+
+**Resolved:** Delete the account profile and saved addresses while retaining historical order records. See D-146.
+
+## Resolved in Batch 49
+
+### Q-137 — Signed-in customer cancellation
+
+**Resolved:** No; the customer contacts the merchant like a guest. See D-147.
+
+### Q-138 — Repeat a past order
+
+**Resolved:** Add currently available products at current prices and notify the customer about changes. See D-148.
+
+### Q-139 — Default address at checkout
+
+**Resolved:** Preselect it, allow selection or editing, and save changes only after explicit customer choice. See D-149.
+
+## Resolved in Batch 50
+
+### Q-140 — Merchant customer-record consolidation
+
+**Resolved:** Automatically by normalized email or phone, with a merchant alert for conflicts. See D-150.
+
+### Q-141 — Merchant customer notes and tags
+
+**Resolved:** Yes; both internal notes and tags. See D-151.
+
+### Q-142 — Merchant customer blocking
+
+**Resolved:** Yes; by matching email address or phone number without affecting old orders. See D-152.
+
+## Resolved in Batch 51
+
+### Q-143 — Merchant customer-record details
+
+**Resolved:** Identity, addresses, orders and count, total and average spend, last order, tags, and blocked status. See D-153.
+
+### Q-144 — Merchant customer search and filters
+
+**Resolved:** Search by name, phone, and email; filter by tags, block status, order count, spend, and last order. See D-154.
+
+### Q-145 — Customer-data export
+
+**Resolved:** Yes; CSV for all customers or the filtered result set. See D-155.
+
+## Resolved in Batch 52
+
+### Q-146 — Merchant dashboard summary
+
+**Resolved:** Sales, orders by status, average order value, customers, top products, low stock, recent orders, and alerts. See D-156.
+
+### Q-147 — Analytics date ranges and comparison
+
+**Resolved:** Today, Yesterday, 7 days, 30 days, and custom range with previous-period comparison. See D-157.
+
+### Q-148 — Sales recognition
+
+**Resolved:** Every order status, including Cancelled and Returned. See D-158.
+
+## Resolved in Batch 53
+
+### Q-149 — Separate status values
+
+**Resolved:** Yes; both count and value for every status. See D-159.
+
+### Q-150 — Estimated profit
+
+**Resolved:** No estimated-profit report in Phase 1. See D-160.
+
+### Q-151 — Analytics export
+
+**Resolved:** Yes; CSV preserving the selected date range and filters. See D-161.
+
+## Resolved in Batch 54
+
+### Q-152 — Store reporting timezone
+
+**Resolved:** Fixed Cairo timezone. See D-162.
+
+### Q-153 — Top Products ranking
+
+**Resolved:** Merchant toggle between units ordered and total order value. See D-163.
+
+### Q-154 — Analytics freshness
+
+**Resolved:** Within approximately one minute. See D-164.
+
+## Resolved in Batch 55
+
+### Q-155 — Product CSV import
+
+**Resolved:** Preview and validate, import valid rows, and provide an error file for invalid rows. See D-165.
+
+### Q-156 — Product CSV export
+
+**Resolved:** Yes; all or filtered products with variants. See D-166.
+
+### Q-157 — Product bulk editing
+
+**Resolved:** Publication state, organization and tags, prices, inventory, and soft deletion. See D-167.
+
+## Resolved in Batch 56
+
+### Q-158 — Product images in CSV import
+
+**Resolved:** Public URLs that `lala` downloads and stores as copies. See D-168.
+
+### Q-159 — CSV updates versus new records
+
+**Resolved:** Match by `lala` ID first, then SKU; create when unmatched. See D-169.
+
+### Q-160 — Large CSV import processing
+
+**Resolved:** Background job with dashboard notification and downloadable result file. See D-170.
+
+## Resolved in Batch 57
+
+### Q-161 — CSV identity conflict
+
+**Resolved:** Reject the row and modify neither record. See D-171.
+
+### Q-162 — Bulk-action safeguards
+
+**Resolved:** Show affected count and changes, require explicit confirmation, and provide a result file. See D-172.
+
+## Now — Batch 58
+
+### Q-163 — Manual merchant order creation
+
+Can merchants create orders manually from the dashboard, and which catalog and customer data can they use?
+
+### Q-164 — Order CSV export
+
+Can merchants export all orders or the current filtered order result set as CSV?
+
+### Q-165 — Order bulk updates
+
+Which order fields and operational actions support bulk updates?
 
 ## Later in Phase 1
 

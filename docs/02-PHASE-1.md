@@ -46,7 +46,7 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Disabled storefront: **decided — show visitors a clear store-unavailable page**.
 - Hosted subdomain changes: **decided — self-service, maximum three changes per store, no redirect, and a 10-day reservation for the previous subdomain**.
 - Phone-verification code rules, behavior after exhausting subdomain changes, and the empty-store storefront experience.
-- Contact-form delivery, unavailable-variant presentation, product quantity selection, and related-product behavior.
+- Contact-form delivery, manual merchant order creation, order CSV export, and order bulk updates.
 - Storefront product search: **decided — match product name only; do not search descriptions, SKUs, or tags**.
 - Storefront product filters: **decided — price, category or collection, availability, and product options**.
 - Storefront product sorting: **decided — Featured, Newest, Price Low to High, Price High to Low, and Name**.
@@ -58,6 +58,56 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Product-option selection: **decided — automatically select the first available variant and allow the customer to change options afterward**.
 - Product variants: **decided — flexible options with independent inventory per variant when tracking is enabled**.
 - Variant-specific data: **decided — selling price, compare-at price, cost, SKU, inventory quantity, and image**.
+- Unavailable variants: **decided — remain visible but disabled with a clear Unavailable label**.
+- Quantity selection: **decided — available on the product page and in the cart, capped by available tracked inventory**.
+- Related products: **decided — selected automatically from the same category or collection**.
+- Add-to-cart feedback: **decided — show a success message and remain on the current page without opening the cart automatically**.
+- Guest-cart persistence: **decided — 30 days on the same device**.
+- Cart revalidation: **decided — use current prices, reduce over-stock quantities to current availability, and clearly notify the customer before order submission**.
+- Buy Now with an existing cart: **decided — checkout the current product only and preserve the saved cart unchanged**.
+- Checkout structure: **decided — one complete page**.
+- Coupon entry: **decided — available in both cart and checkout with one shared applied-coupon state**.
+- Successful-order page: **decided — order number, order summary, and current status; no tracking link**.
+- Guest tracking: **decided — unique link sent only by email; no order-number-and-phone lookup**.
+- Tracking without email: **decided — show the unique tracking link once on the successful-order page**.
+- Tracking-page content: **decided — status and progression, products, totals, and available shipping-provider shipment details**.
+- Order-confirmation email: **decided — order number, summary, delivery address, totals, current status, and tracking link**.
+- Customer-account credentials: **decided — email address or phone number plus password**.
+- Customer-account scope: **decided — isolated to one storefront**.
+- Customer contact verification: **decided — email link for email accounts and WhatsApp code for phone accounts**.
+- Customer password recovery: **decided — email reset link or WhatsApp code according to the verified sign-in channel**.
+- Saved addresses: **decided — unlimited with one customer-selected default address**.
+- Customer contact changes: **decided — verify the new email address or phone number before replacing the old value**.
+- Customer-account deletion: **decided — remove profile and saved addresses while retaining historical order records**.
+- Signed-in customer cancellation: **decided — no self-service cancellation; contact the merchant like a guest customer**.
+- Repeat Order: **decided — add currently available products at current prices and clearly report unavailable items or changes**.
+- Default address at checkout: **decided — preselect it, allow selection or one-time editing, and save changes only with explicit customer consent**.
+- Merchant customer consolidation: **decided — automatically match normalized email address or phone number and flag identifier conflicts for review**.
+- Merchant customer annotations: **decided — internal notes and tags**.
+- Merchant customer blocking: **decided — block new orders matching a selected email address or phone number without changing historical orders**.
+- Merchant customer-record content: **decided — identity and contact data, addresses, order history and count, total and average spend, last order, tags, and blocked status**.
+- Merchant customer search and filters: **decided — search name, phone, or email; filter tags, blocked status, order count, spend, and last-order date**.
+- Customer export: **decided — CSV for all customer records or the current filtered result set**.
+- Merchant dashboard home: **decided — sales, orders by status, average order value, customers, top products, low stock, recent orders, and operational alerts**.
+- Analytics date controls: **decided — Today, Yesterday, Last 7 Days, Last 30 Days, and custom range with previous equivalent-period comparison**.
+- Sales metric status scope: **decided — include all orders in every status, including Cancelled and Returned, without deductions**.
+- Per-status reporting: **decided — show both order count and order value for every status beside the all-orders sales total**.
+- Estimated profit: **decided — no profit report in Phase 1; retain product cost data for reference and future use**.
+- Analytics export: **decided — CSV using the current date range and filters**.
+- Reporting timezone: **decided — fixed Cairo timezone in Phase 1**.
+- Top Products ranking: **decided — merchant toggle between units ordered and total order value**.
+- Analytics freshness: **decided — reflect order and catalog changes within approximately one minute**.
+- Product CSV import: **decided — preview and validate, import valid product and variant rows, and provide an error file for invalid rows**.
+- Product CSV export: **decided — all products or the current filtered result set, including variants**.
+- Product bulk editing: **decided — publication state, catalog organization and tags, prices, inventory, and soft deletion**.
+- CSV-imported images: **decided — public URLs downloaded and copied into `lala` storage**.
+- CSV update matching: **decided — `lala` ID first, SKU second, and create a new record when unmatched**.
+- Large CSV imports: **decided — background processing with dashboard notification and downloadable result file**.
+- CSV identity conflicts: **decided — reject the row and modify neither record when `lala` ID and SKU point to different records**.
+- Product bulk-action safeguards: **decided — affected-count and change preview, explicit confirmation, and result file**.
+- Linking guest orders: **decided — automatically after verifying the matching email address or phone number**.
+- Customer-account self-service: **decided — order history and tracking, saved addresses, and profile management**.
+- Checkout policy acceptance: **decided — no required checkbox or required Terms and Privacy display during checkout**.
 - Inventory tracking: **decided — optional, with quantity required when enabled**.
 - Zero-stock behavior: **decided — block purchasing until restocked or tracking is disabled**.
 - Product identifier: **decided — SKU supported; barcode deferred**.

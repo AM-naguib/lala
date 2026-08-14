@@ -481,3 +481,172 @@
 - Uploaded the accumulated planning documentation through D-122 and Q-112 to the private `AM-naguib/lala` repository on `main`.
 - Reset the GitHub synchronization counter to 0/50.
 - Retained unavailable variants, product quantity selection, and related products as the next active storefront decisions.
+
+## 2026-08-14 — Unavailable variants, quantity controls, and related products
+
+### Added
+
+- Kept unavailable variant choices visible but disabled with a clear label.
+- Added quantity controls to both the product page and cart, limited by available tracked inventory.
+- Added automatically selected related products from the same category or collection.
+- Advanced active questions to cart feedback, guest-cart persistence, and price or stock revalidation.
+- Advanced the GitHub synchronization counter to 3/50 without uploading.
+
+## 2026-08-14 — Cart feedback, persistence, and revalidation
+
+### Added
+
+- Added success-message-only feedback after Add to Cart while keeping the customer on the current page.
+- Preserved guest carts on the same device for 30 days.
+- Revalidated current prices and stock before order submission, reduced excessive quantities, and added a clear customer notice.
+- Advanced active questions to Buy Now behavior, checkout structure, and coupon-entry placement.
+- Advanced the GitHub synchronization counter to 6/50 without uploading.
+
+## 2026-08-14 — Isolated Buy Now and single-page checkout
+
+### Added
+
+- Made Buy Now open a single-product checkout while preserving the existing cart unchanged.
+- Selected a one-page checkout flow.
+- Made coupon entry available in both cart and checkout with a shared applied-coupon state.
+- Advanced active questions to successful-order confirmation, guest tracking, and checkout policy acceptance.
+- Advanced the GitHub synchronization counter to 9/50 without uploading.
+
+## 2026-08-14 — Order confirmation and email-only guest tracking
+
+### Added
+
+- Added order number, summary, and current status to the successful-order page.
+- Limited guest self-service tracking to a unique link sent only by email and omitted the link from the successful-order page.
+- Removed any checkout requirement to display or explicitly accept the store's Terms and Privacy policies.
+- Advanced active questions to tracking without an email, tracking-page content, and order-confirmation email content.
+- Advanced the GitHub synchronization counter to 12/50 without uploading.
+
+## 2026-08-14 — Tracking fallback and complete order communications
+
+### Added
+
+- Added a one-time successful-order-page tracking link when the customer does not provide an email address.
+- Added status progression, products, totals, and available shipment details to the guest tracking page.
+- Added order number, summary, address, totals, current status, and tracking link to the confirmation email.
+- Advanced active questions to optional customer-account credentials, guest-order linking, and account self-service.
+- Advanced the GitHub synchronization counter to 15/50 without uploading.
+
+## 2026-08-14 — Optional customer accounts and historical-order linking
+
+### Added
+
+- Added customer account creation by email address or phone number plus password.
+- Automatically linked earlier guest orders after verification of a matching email address or phone number.
+- Added order history and tracking, saved addresses, and profile management to customer accounts.
+- Advanced active questions to account scope, contact verification, and password recovery.
+- Advanced the GitHub synchronization counter to 18/50 without uploading.
+
+## 2026-08-14 — Storefront-scoped customer identity and recovery
+
+### Added
+
+- Scoped customer accounts independently to each storefront.
+- Added email-link verification for email accounts and WhatsApp-code verification for phone accounts.
+- Added password recovery through the account's verified email or WhatsApp channel.
+- Advanced active questions to saved addresses, contact changes, and account deletion with historical orders.
+- Advanced the GitHub synchronization counter to 21/50 without uploading.
+
+## 2026-08-14 — Customer addresses, contact changes, and account deletion
+
+### Added
+
+- Added unlimited saved customer addresses with one default address.
+- Required verification of a new customer email address or phone number before replacing the existing contact.
+- Removed account profiles and saved addresses on customer-account deletion while retaining historical store order records.
+- Advanced active questions to signed-in cancellation, repeat orders, and default-address checkout behavior.
+- Advanced the GitHub synchronization counter to 24/50 without uploading.
+
+## 2026-08-14 — Customer cancellation, repeat orders, and checkout addresses
+
+### Added
+
+- Applied the merchant-contact cancellation policy to signed-in customers as well as guests.
+- Added Repeat Order using current availability and prices with clear change notices.
+- Preselected the default address at checkout while requiring explicit consent to save one-time edits.
+- Advanced active questions to merchant customer records, internal notes and tags, and customer blocking.
+- Advanced the GitHub synchronization counter to 27/50 without uploading.
+
+## 2026-08-14 — Merchant customer consolidation and blocking
+
+### Added
+
+- Consolidated guest and account orders by normalized email address or phone number and flagged identity conflicts for merchant review.
+- Added internal merchant notes and tags to customer records.
+- Added email-or-phone blocking for future order submissions without changing historical orders.
+- Advanced active questions to customer-record metrics, search and filters, and customer-data export.
+- Advanced the GitHub synchronization counter to 30/50 without uploading.
+
+## 2026-08-14 — Complete merchant customer records and export
+
+### Added
+
+- Added identity, addresses, order and spend metrics, last order, tags, and block status to merchant customer records.
+- Added customer search by name, phone, and email plus filters for tags, blocking, orders, spend, and last order.
+- Added CSV export for all customers or the current filtered result set.
+- Advanced active questions to dashboard metrics, analytics date comparisons, and sales recognition.
+- Advanced the GitHub synchronization counter to 33/50 without uploading.
+
+## 2026-08-14 — Merchant dashboard and all-status sales metrics
+
+### Added
+
+- Added sales, order, customer, product, stock, recent-order, and alert summaries to the merchant dashboard home.
+- Added standard and custom analytics date ranges with previous equivalent-period comparison.
+- Included all order statuses, including Cancelled and Returned, in headline sales and customer-spend metrics.
+- Advanced active questions to separate status values, estimated profit, and analytics export.
+- Advanced the GitHub synchronization counter to 36/50 without uploading.
+
+## 2026-08-14 — Per-status analytics and filtered report export
+
+### Added
+
+- Added separate order count and value for every status beside the all-orders sales total.
+- Deferred estimated-profit reporting while retaining product cost data.
+- Added CSV analytics export using the current date range and filters.
+- Advanced active questions to reporting timezone, Top Products ranking, and analytics freshness.
+- Advanced the GitHub synchronization counter to 39/50 without uploading.
+
+## 2026-08-14 — Cairo-time near-real-time merchant analytics
+
+### Added
+
+- Fixed analytics periods and displayed order timestamps to the Cairo timezone for Phase 1.
+- Added a Top Products toggle between units ordered and total order value.
+- Set dashboard analytics freshness to approximately one minute.
+- Advanced active questions to product CSV import, product CSV export, and product bulk editing.
+- Advanced the GitHub synchronization counter to 42/50 without uploading.
+
+## 2026-08-14 — Product CSV and bulk catalog operations
+
+### Added
+
+- Added previewed and validated product-and-variant CSV import with valid-row success and an invalid-row error file.
+- Added all-or-filtered product and variant CSV export.
+- Added bulk visibility, organization, price, inventory, and soft-delete operations.
+- Advanced active questions to imported images, existing-record matching, and large-import processing.
+- Advanced the GitHub synchronization counter to 45/50 without uploading.
+
+## 2026-08-14 — Imported media, CSV identity, and background processing
+
+### Added
+
+- Added public image URLs to product and variant CSV import and copied downloaded images into `lala` storage.
+- Matched CSV updates by `lala` ID first and SKU second, creating unmatched records.
+- Processed large CSV imports in the background with dashboard notification and a downloadable result file.
+- Advanced active questions to CSV identity conflicts and bulk-action safeguards.
+- Advanced the GitHub synchronization counter to 48/50 without uploading.
+
+## 2026-08-14 — CSV conflict safety and guarded bulk changes
+
+### Added
+
+- Rejected CSV rows whose `lala` ID and SKU point to different records without modifying either record.
+- Added affected-count and change previews, explicit confirmation, and result files to large or destructive product bulk actions.
+- Advanced active questions to manual order creation, order CSV export, and order bulk updates.
+- Reached the 50/50 GitHub synchronization threshold and prepared the accumulated planning batch for upload.

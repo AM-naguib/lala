@@ -100,6 +100,56 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Out of Stock products remain in their assigned list position and display an Out of Stock label.
 - On a product page with variants, the first available variant is selected automatically; customers can then change the option selections.
 - Each variant can have its own selling price, compare-at price, cost, SKU, inventory quantity, and image.
+- Unavailable or Out of Stock variant choices remain visible but disabled with a clear Unavailable label.
+- Customers can change product quantity on both the product page and in the cart, up to the currently available tracked inventory.
+- Product pages automatically show related products from the same category or collection.
+- Adding an item to the cart shows a success message while keeping the customer on the current page; no cart drawer opens automatically.
+- A guest cart persists on the same device for 30 days.
+- Before order submission, cart items use current prices and available inventory; quantities above current stock are reduced and the customer receives a clear notice.
+- Buy Now opens a checkout containing only the currently selected product and leaves the customer's existing cart unchanged.
+- Checkout uses one complete page rather than a multi-step flow.
+- Customers can enter and apply the same coupon code from either the cart or checkout.
+- After a successful order, the confirmation page shows the order number, order summary, and current status; the tracking link is not displayed there.
+- Guest self-service tracking uses a unique link sent only by email; there is no order-number-and-phone lookup in the MVP.
+- If no email is provided, the unique tracking link is shown once on the successful-order page instead.
+- The tracking page shows status and its progression, ordered products, totals, and available shipping-provider shipment details.
+- The order-confirmation email includes the order number, summary, delivery address, totals, current status, and unique tracking link.
+- Customers can optionally create an account using either an email address or phone number plus a password.
+- Customer accounts are isolated per storefront rather than shared across all `lala` stores.
+- Email-based accounts are verified through an email link; phone-based accounts are verified through a WhatsApp code.
+- Password recovery uses an email reset link or WhatsApp code according to the account's verified sign-in channel.
+- After a matching email address or phone number is verified, earlier guest orders are linked to the customer account automatically.
+- Customer self-service includes order history and tracking, saved addresses, and profile management.
+- Customers can save an unlimited number of delivery addresses and select one as the default.
+- Changing a customer email address or phone number requires verification of the new value before it replaces the old one.
+- Customer-account deletion removes the account profile and saved addresses while preserving historical order records for the store.
+- Signed-in customers cannot cancel orders themselves and must contact the merchant, matching the guest flow.
+- Repeat Order adds currently available products to the cart at current prices and clearly reports unavailable items or other changes.
+- Checkout preselects the customer's default address; temporary edits are not saved unless the customer explicitly chooses to save them.
+- Merchant customer records automatically consolidate guest and account orders by matching normalized email address or phone number and flag identity conflicts for review.
+- Merchants can attach internal notes and tags to customer records.
+- Merchants can block new checkout submissions that match a selected customer email address or phone number without changing historical orders.
+- A merchant customer record shows identity and contact data, addresses, order history and count, total and average spend, last order, tags, and blocked status.
+- The merchant customer list supports search by name, phone, or email and filters for tags, blocked status, order count, spend, and last-order date.
+- Merchants can export all customers or the current filtered customer result set as CSV.
+- The merchant dashboard home shows sales, orders by status, average order value, customers, top products, low-stock items, recent orders, and operational alerts.
+- Analytics provides Today, Yesterday, Last 7 Days, Last 30 Days, and custom date ranges, with comparison to the immediately previous equivalent period.
+- Sales totals include every order regardless of status, including Cancelled and Returned orders; those statuses are not deducted from the headline sales value.
+- Beside the all-orders sales total, the dashboard shows order count and order value separately for every status.
+- Estimated-profit reporting is not included in Phase 1; product cost remains stored for merchant reference and future reporting.
+- Merchants can export analytics as CSV using the currently selected date range and filters.
+- Merchant analytics periods and displayed order timestamps use the fixed Cairo timezone in Phase 1.
+- Top Products can be ranked by either units ordered or total order value, with a merchant-controlled toggle.
+- Dashboard analytics reflect order and catalog changes within approximately one minute.
+- Product and variant CSV import includes preview and validation, imports valid rows, and returns an error file for invalid rows.
+- Merchants can export all products or the current filtered product result set, including variants, as CSV.
+- Product bulk actions cover publishing and hiding, categories, collections, and tags, prices, inventory, and soft deletion.
+- CSV imports accept public product and variant image URLs, and `lala` downloads and stores its own image copies.
+- CSV update matching uses a `lala` record ID first and SKU second; a row with no match creates a new product or variant.
+- Large CSV imports run in the background and finish with a dashboard notification and downloadable result file.
+- If a CSV row's `lala` ID and SKU point to different existing records, the row is rejected and neither record is modified.
+- Large or destructive product bulk actions show the affected count and proposed changes, require explicit confirmation, and produce a result file.
+- Checkout does not require a Terms or Privacy acceptance checkbox, and those policies do not have to appear in the checkout interface.
 - Products have two storefront visibility states: Published and Hidden.
 - New products are Published immediately when saved.
 - Immediate publication requires a product name in the store's primary language and a selling price.

@@ -127,6 +127,56 @@
 113. Out of Stock products remain in their assigned list position and display an Out of Stock label.
 114. A product page automatically selects the first available variant, while allowing the customer to change the selected options.
 115. Every variant can independently define selling price, compare-at price, cost, SKU, inventory quantity, and image.
+116. Unavailable or Out of Stock variant options remain visible but disabled with a clear Unavailable label.
+117. Customers can change product quantity on the product page and in the cart, up to available tracked inventory.
+118. Product pages automatically select related products from the same category or collection.
+119. Adding an item to the cart displays a success message and keeps the customer on the current page without automatically opening the cart.
+120. A guest customer's cart remains available on the same device for 30 days.
+121. Before order submission, cart items update to current prices and quantities above current stock are reduced to the available amount, with a clear customer notice.
+122. Buy Now opens checkout for the currently selected product only and leaves every existing cart item unchanged.
+123. Checkout is presented as one complete page rather than multiple steps.
+124. Customers can enter and apply a coupon code in both the cart and checkout, with the same applied coupon state shared between them.
+125. After successful order submission, the confirmation page shows the order number, order summary, and current status, but not the tracking link.
+126. A guest customer tracks an order through a unique link sent only to the provided email address; order-number-and-phone lookup is not included.
+127. Checkout does not require acceptance of Terms and Conditions or Privacy Policy, and those policy links do not have to appear during checkout.
+128. If the customer does not provide an email address, the unique tracking link is shown once on the successful-order page as an exception to email delivery.
+129. The guest tracking page shows order status and progression, products, totals, and available shipment details from the connected shipping provider.
+130. The initial order-confirmation email includes order number, order summary, delivery address, totals, current status, and the unique tracking link.
+131. A customer can optionally create an account using either an email address or a phone number plus a password.
+132. After a matching email address or phone number is verified, earlier guest orders are linked to the new customer account automatically.
+133. A signed-in customer can view order history and tracking, manage saved addresses, and manage a customer profile.
+134. A customer account belongs to one storefront and is not shared across other `lala` stores.
+135. Verify an email-based customer account through an email link and a phone-based account through a WhatsApp code.
+136. Customer password recovery uses an email reset link or WhatsApp code according to the account's verified sign-in channel.
+137. A customer can save an unlimited number of delivery addresses and choose one default address.
+138. A changed customer email address or phone number replaces the old value only after the new value is verified.
+139. Deleting a customer account removes the account profile and saved addresses but retains historical order records for the store.
+140. Signed-in customers cannot cancel orders themselves and must contact the merchant, matching the guest-customer flow.
+141. Repeat Order adds currently available products to the cart at current prices and informs the customer about unavailable products or other changes.
+142. Checkout preselects the default saved address; the customer can select or edit an address, and changes are saved only after explicit customer consent.
+143. Merchant customer records automatically consolidate guest and registered-customer orders by matching normalized email address or phone number, with a review alert when identifiers conflict.
+144. Merchants can add internal notes and tags to customer records; these are not customer-visible.
+145. Merchants can block new order submissions by customer email address or phone number without changing existing orders.
+146. Merchant customer records show identity and contact data, addresses, order history and count, total and average spend, last order, tags, and blocked status.
+147. Merchant customer-list search covers name, phone number, and email address; filters cover tags, blocked status, order count, spend, and last-order date.
+148. Merchants can export either all customer records or the current filtered result set as a CSV file.
+149. The merchant dashboard home shows sales, orders by status, average order value, customers, top products, low-stock items, recent orders, and operational alerts.
+150. Analytics date controls include Today, Yesterday, Last 7 Days, Last 30 Days, and a custom range, with comparison to the immediately previous equivalent period.
+151. Headline sales and customer-spend metrics include every order regardless of status, including Cancelled and Returned orders, without deducting those statuses.
+152. Show order count and order value separately for every status beside the headline all-orders sales total.
+153. Phase 1 does not include estimated-profit reporting; product cost remains stored for merchant reference and future use.
+154. Analytics and sales reports can be exported as CSV using the currently selected date range and filters.
+155. Phase 1 analytics periods and displayed order timestamps use the fixed Cairo timezone.
+156. Merchants can switch Top Products ranking between units ordered and total order value.
+157. Dashboard analytics reflect order and catalog changes within approximately one minute.
+158. Product and variant CSV import provides preview and validation, imports valid rows, and produces an error file for invalid rows.
+159. Merchants can export all products or the current filtered product result set, including variant rows, as CSV.
+160. Product bulk editing supports Published and Hidden state changes, category, collection, and tag organization, price and inventory updates, and soft deletion.
+161. CSV imports accept public product and variant image URLs, and `lala` downloads and stores its own copies instead of hotlinking them.
+162. CSV import matches an existing record by `lala` ID first and SKU second; a row without either match creates a new product or variant.
+163. Large CSV imports run as background jobs and provide a dashboard completion notification plus a downloadable results file.
+164. If a CSV row's `lala` ID and SKU identify different existing records, reject the row as an error and modify neither record.
+165. Before a large or destructive product bulk action, show the affected record count and proposed changes, require explicit confirmation, and generate a results file.
 
 ## Current interpretation
 
@@ -146,6 +196,22 @@
 - Storefront catalog discovery uses product-name-only search, filters for price, category or collection, availability, and product options, and sorting by Featured, Newest, ascending or descending price, and Name. Featured is the default sort, Featured products are selected and ordered manually by the merchant, and long product lists load automatically as the customer scrolls.
 - Product cards include image, name, selling and compare-at prices, and inventory state. Out of Stock products remain in their current list positions with a clear label. Variant products initially select the first available variant automatically, after which the customer can change options.
 - Variant-level commerce data includes independent selling price, compare-at price, cost, SKU, inventory quantity, and image.
+- Unavailable variants stay visible as disabled choices. Customers can select quantity on both the product page and cart within available-stock limits. Related products are generated automatically from the same category or collection.
+- Add to Cart uses lightweight success feedback without navigation or an automatic cart drawer. Guest carts persist for 30 days on the same device. Prices and available stock are revalidated before order submission, with quantity correction and a visible change notice.
+- Buy Now uses an isolated single-product checkout without modifying the saved cart. The normal checkout is a one-page flow, and the same coupon can be entered from either the cart or checkout.
+- Successful checkout shows order number, summary, and status. Guest tracking uses a unique link sent by email; when no email exists, the link is shown once on the success page. There is no order-number-and-phone lookup. The tracking page contains status progression, products, totals, and shipment details. Store policies remain accessible as static pages but are not required in checkout and have no acceptance checkbox.
+- Optional customer accounts support email-or-phone credentials with a password. Verified contact matching links earlier guest orders automatically, and the account provides order history and tracking, saved addresses, and profile management.
+- Customer identity is isolated per storefront. Verification and password recovery follow the chosen channel: email links for email accounts and WhatsApp codes for phone accounts.
+- Customer accounts support unlimited saved addresses with one default. Contact changes are pending until the new value is verified. Account deletion removes profile and saved-address data while preserving the store's historical transaction records.
+- Signed-in customers follow the same merchant-contact cancellation policy as guests. Repeat Order reconstructs a cart from current catalog data and reports differences. Checkout preselects the default address without silently overwriting saved addresses after a one-time edit.
+- Merchant customer management consolidates orders by normalized email or phone and flags conflicts, supports internal notes and tags, and allows identifier-based blocking of future order submissions while preserving order history.
+- Customer records and lists expose complete identity, address, order, value, annotation, and blocking information, with focused search and filters. Customer CSV export supports both all records and the current filtered selection. Total and average customer spend include orders in every status.
+- The merchant dashboard combines sales and order KPIs, customers, product performance, stock warnings, recent activity, and operational alerts. Analytics supports common and custom periods with previous-period comparisons. Per founder direction, headline sales and customer-spend metrics are gross created-order values across every status, including Cancelled and Returned; separate status views remain necessary for interpretation.
+- Status views expose both count and value for every order status. Profit reporting is deferred even though cost data is stored. Analytics CSV export preserves the selected reporting period and filters.
+- Reporting uses Cairo time across Phase 1 stores. Top Products supports units and order-value ranking modes, and operational analytics refresh within approximately one minute.
+- Catalog bulk tooling includes partial-success CSV import with validation feedback, all-or-filtered product and variant CSV export, and bulk lifecycle, organization, price, inventory, and soft-delete actions.
+- Imported media is copied from public URLs into `lala` storage. Round-trip updates prefer `lala` IDs and fall back to SKU, while unmatched rows create catalog records. Large imports do not block the dashboard and return structured completion results.
+- Conflicting CSV identities are rejected safely without modifying either candidate record. Large or destructive bulk catalog actions require a detailed preview and explicit confirmation, then return a result file.
 - Merchant accounts can own unlimited stores, but access is owner-only in the MVP. Store removal means deactivation with retained data, reactivation is support-only, and visitors see a store-unavailable page while disabled.
 - Provider credentials belong to each merchant's own shipping account and must be stored securely outside source control. Provider-specific required fields and credential-validation behavior are not yet defined.
 - Shipping-provider submission is merchant-initiated and supports individual or bulk selection. Failed submissions remain Not Sent with the reason and a manual retry action.
@@ -169,14 +235,14 @@ Define a coherent Phase 1 MVP by answering only the decisions that materially af
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Counter reset point:** after the completed GitHub synchronization containing Q-062 through Q-112.
-- **Answered questions since last push:** 0/50.
-- **Pending unpushed documentation:** none.
+- **Answered questions since last push:** 50/50 (Q-113 through Q-162).
+- **Pending unpushed documentation:** decisions through Q-162; the 50-answer synchronization threshold has been reached.
 
 ## Next decisions to obtain
 
-1. How are unavailable variant combinations presented?
-2. Where can the customer select product quantity?
-3. Does the product page include related products, and how are they chosen?
+1. Can merchants create orders manually from the dashboard?
+2. Can merchants export all or filtered orders as CSV?
+3. Which order fields and actions support bulk updates?
 
 ## Guardrails for future sessions
 

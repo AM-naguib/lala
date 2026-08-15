@@ -298,9 +298,9 @@ Phase 1 MVP definition is complete. Preserve this scope until the founder explic
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Counter reset point:** after the completed GitHub synchronization containing Q-113 through Q-162.
-- **Answered questions since last push:** 50/50 (Q-163 through Q-213, excluding skipped Q-210).
-- **Pending unpushed documentation:** decisions through Q-213; the synchronization threshold has been reached.
+- **Counter reset point:** after the completed GitHub synchronization containing Q-163 through Q-213, excluding skipped Q-210.
+- **Answered questions since last push:** 0/50.
+- **Pending unpushed documentation:** none.
 
 ## Next decisions to obtain
 

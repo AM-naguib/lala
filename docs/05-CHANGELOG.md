@@ -1,5 +1,90 @@
 # Documentation Changelog
 
+## 2026-08-15 — Architecture planning started
+
+### Added
+
+- Started the architecture and delivery-planning phase after Phase 1 product-definition completion.
+- Recorded that the founder will build the first release with AI assistance.
+- Limited Phase 1 delivery to Web applications without a mobile app.
+- Recorded that no fixed pilot delivery deadline currently constrains the architecture.
+- Added `07-ARCHITECTURE-PLAN.md` for proposals and technical decisions.
+- Advanced the GitHub synchronization counter to 3/50 without uploading.
+
+## 2026-08-15 — Laravel backend selected
+
+### Changed
+
+- Rejected the unaccepted TypeScript/NestJS backend proposal.
+- Selected PHP with Laravel for the complete backend, matching the founder's existing experience.
+- Narrowed active architecture questions to the frontend boundary, frontend language, and primary relational database.
+- Advanced the GitHub synchronization counter to 4/50 without uploading.
+
+## 2026-08-15 — MySQL and traditional Laravel structure selected
+
+### Changed
+
+- Selected MySQL as the primary relational database instead of the proposed PostgreSQL option.
+- Selected Laravel's traditional application structure instead of the proposed explicit domain-module structure.
+- Left the frontend approach unanswered after the founder made no selection.
+- Advanced the GitHub synchronization counter to 6/50; the skipped frontend question was not counted.
+
+## 2026-08-15 — Frontend constraints recorded
+
+### Added
+
+- Recorded that the founder has no strong existing frontend-framework experience and wants a concrete comparison before selection.
+- Confirmed that the customer storefront and merchant dashboard will use different frontend technologies.
+- Kept the Laravel-integrated versus separately deployed frontend boundary unresolved.
+- Advanced the GitHub synchronization counter to 8/50; the unresolved comparison answer was not counted as a decision.
+
+## 2026-08-15 — Laravel-integrated frontend selected
+
+### Added
+
+- Selected Livewire with Blade for the merchant dashboard.
+- Selected Blade with Alpine.js for the customer storefront.
+- Kept both interfaces inside the same Laravel application and excluded React, Vue, Inertia, Next.js, and a separate frontend API from Phase 1.
+- Resolved the earlier frontend-boundary comparison questions.
+- Advanced the GitHub synchronization counter to 10/50.
+
+## 2026-08-15 — Runtime and frontend language stack completed
+
+### Added
+
+- Selected Laravel 13 on PHP 8.5 for initial implementation.
+- Selected Tailwind CSS for the dashboard and storefront.
+- Selected plain JavaScript for Alpine.js behavior and excluded TypeScript from the initial stack.
+- Advanced the GitHub synchronization counter to 13/50.
+
+## 2026-08-15 — Queue, testing, and pilot storage selected
+
+### Added
+
+- Selected Redis as the queue backend and Laravel Horizon for queue monitoring.
+- Selected Pest for automated PHP tests.
+- Selected local server file storage for the pilot with mandatory Laravel filesystem abstraction and a later S3-compatible migration path.
+- Added persistent-volume and backup requirements for pilot files.
+- Advanced the GitHub synchronization counter to 16/50.
+
+## 2026-08-15 — Shared-database multi-tenancy selected
+
+### Added
+
+- Selected one shared MySQL database and schema with `store_id` on every store-owned table.
+- Required layered tenant isolation through context resolution, Eloquent scopes, policies, relationships, database constraints, and cross-store tests.
+- Selected separate Admin, Merchant, and Customer tables, guards, and providers.
+- Selected a custom exact-host tenant resolver backed by a domains table for hosted subdomains and verified custom domains.
+- Advanced the GitHub synchronization counter to 19/50.
+
+## 2026-08-15 — Architecture planning GitHub synchronization completed
+
+### Changed
+
+- Prepared the complete architecture-planning documentation through Q-235 and D-241 for upload to private `AM-naguib/lala` on `main` at the founder's explicit request.
+- Included the accepted Laravel application stack, queues, tests, pilot storage, shared-database tenancy, identity boundaries, and hostname tenant resolution.
+- Reset the GitHub synchronization counter to 0/50 and recorded no pending unpushed documentation.
+
 ## 2026-08-14 — Initial project memory
 
 ### Added

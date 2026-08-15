@@ -1051,3 +1051,103 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 - App/integration marketplace.
 - Later-phase growth roadmap.
 - Cross-country shipping-zone composition, to be reopened when a second shipping country is supported.
+
+## Architecture planning — Resolved Batch 1
+
+### Q-214 — First-release implementer
+
+**Resolved:** The founder will build the first release with AI assistance. See D-223.
+
+### Q-215 — Phase 1 mobile applications
+
+**Resolved:** Web only; no merchant or customer mobile app in Phase 1. See D-224.
+
+### Q-216 — Pilot delivery deadline
+
+**Resolved:** There is currently no fixed delivery deadline. See D-225.
+
+## Architecture planning — Active Batch 2
+
+### Q-217 — Backend programming language and framework
+
+**Resolved:** Use PHP with Laravel for the complete backend. The TypeScript/NestJS backend proposal was rejected before acceptance. See D-226.
+
+### Q-218 — Frontend approach and application boundary
+
+**Resolved after comparison:** Both interfaces remain inside Laravel. The dashboard uses Livewire with Blade and the storefront uses Blade with Alpine.js. See D-231 and D-232.
+
+### Q-219 — Primary relational database
+
+**Resolved:** Use MySQL. See D-227.
+
+### Q-220 — Frontend programming language
+
+**Superseded:** React and Vue were not selected. Whether Alpine-related modules use plain JavaScript or TypeScript remains a smaller implementation decision.
+
+### Q-221 — Laravel code organization
+
+**Resolved:** Use Laravel's traditional application structure rather than explicit domain modules or microservices. See D-228.
+
+## Architecture planning — Frontend discovery
+
+### Q-222 — Existing frontend experience
+
+**Resolved as a delivery input:** No strong existing frontend-framework experience; compare the realistic options before choosing. See D-229.
+
+### Q-223 — Laravel-integrated or separate frontend
+
+**Resolved after comparison:** Keep the storefront and dashboard integrated with Laravel without a separate frontend application or frontend API. See D-231 and D-232.
+
+### Q-224 — Shared or different frontend technology
+
+**Resolved:** Use different frontend technologies for the storefront and merchant dashboard. See D-230.
+
+### Q-225 — Merchant dashboard technology
+
+**Resolved:** Livewire with Blade inside Laravel. See D-231.
+
+### Q-226 — Customer storefront technology
+
+**Resolved:** Blade with Alpine.js inside Laravel. See D-232.
+
+## Architecture planning — Runtime and styling
+
+### Q-227 — Laravel and PHP versions
+
+**Resolved:** Laravel 13 on PHP 8.5. See D-233.
+
+### Q-228 — CSS framework
+
+**Resolved:** Tailwind CSS for both interfaces. See D-234.
+
+### Q-229 — Alpine.js source language
+
+**Resolved:** Plain JavaScript rather than TypeScript. See D-235.
+
+## Architecture planning — Queues, tests, and files
+
+### Q-230 — Queue backend
+
+**Resolved:** Redis with Laravel Horizon. See D-236.
+
+### Q-231 — PHP test framework
+
+**Resolved:** Pest. See D-237.
+
+### Q-232 — Pilot file storage
+
+**Resolved:** Local server storage during the pilot, designed for a later S3-compatible object-storage migration. See D-238.
+
+## Architecture planning — Multi-tenancy and identities
+
+### Q-233 — MySQL tenant-isolation model
+
+**Resolved:** One shared database and schema with `store_id` on store-owned tables. See D-239.
+
+### Q-234 — Authentication boundaries
+
+**Resolved:** Separate tables and guards for platform admins, merchant accounts, and storefront customers. See D-240.
+
+### Q-235 — Store resolution from domains
+
+**Resolved:** A domains table and custom Laravel middleware for hosted subdomains and verified custom domains. See D-241.

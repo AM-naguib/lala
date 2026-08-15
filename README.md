@@ -4,7 +4,9 @@
 
 Private source repository: `AM-naguib/lala`.
 
-**Phase 1: discovery and MVP definition is complete.** Architecture and implementation have not started, and no technology stack has been selected yet.
+**Phase 1: discovery and MVP definition is complete.** Architecture and delivery planning is now active; implementation has not started. The confirmed application stack is PHP 8.5 with Laravel 13, MySQL, Laravel's traditional structure, Livewire with Blade for the merchant dashboard, Blade with Alpine.js using plain JavaScript for the customer storefront, Tailwind CSS, Redis with Horizon, and Pest. Pilot files use local server storage through Laravel's storage abstraction before a later object-storage migration.
+
+Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate Admin, Merchant, and Customer authentication tables and guards, and a custom domain-resolution middleware backed by a domains table.
 
 ## Project documents
 
@@ -15,6 +17,7 @@ Private source repository: `AM-naguib/lala`.
 - [`docs/04-OPEN-QUESTIONS.md`](docs/04-OPEN-QUESTIONS.md) — unresolved decisions, ordered by priority.
 - [`docs/05-CHANGELOG.md`](docs/05-CHANGELOG.md) — chronological documentation changes.
 - [`docs/06-WORKING-AGREEMENT.md`](docs/06-WORKING-AGREEMENT.md) — rules for maintaining memory and planning.
+- [`docs/07-ARCHITECTURE-PLAN.md`](docs/07-ARCHITECTURE-PLAN.md) — active architecture inputs, proposals, and unresolved technical decisions.
 
 ## Current snapshot
 

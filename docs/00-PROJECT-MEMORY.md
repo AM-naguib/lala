@@ -7,8 +7,8 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Phase 1 — product discovery and MVP definition, completed; the next phase has not started.
-- **Status date:** 2026-08-14 (Africa/Cairo).
+- **Current phase:** Architecture and delivery planning, active after completing Phase 1 product discovery.
+- **Status date:** 2026-08-15 (Africa/Cairo).
 
 ## Confirmed decisions
 
@@ -285,11 +285,20 @@
 - Because editing remains available after delivery, downstream reporting behavior and status-specific inventory safeguards still need definition; the audit history preserves the original change trail.
 - Coupon abuse mitigation beyond the total usage limit is not yet defined.
 - Permanent product deletion behavior is not yet defined.
-- The remaining MVP feature set and technical architecture are not decided yet.
+- Phase 1 implementation will be done by the founder with AI assistance, is Web-only, and has no fixed pilot-delivery deadline.
+- The complete backend will use PHP with Laravel, matching the founder's existing backend experience. The earlier TypeScript/NestJS backend proposal was rejected before acceptance.
+- MySQL is the primary database, and the codebase will use Laravel's traditional application structure rather than an explicit domain-module architecture. The frontend choice remains open.
+- The founder has no strong existing frontend-framework experience. The merchant dashboard uses Livewire with Blade, while the customer storefront uses Blade with Alpine.js. Both remain inside the Laravel application; React, Vue, Inertia, Next.js, and a separate frontend application are excluded from the initial stack.
+- Initial implementation targets Laravel 13 on PHP 8.5. Both interfaces use Tailwind CSS, and Alpine.js behavior is written in plain JavaScript rather than TypeScript.
+- Background work uses Redis queues monitored by Laravel Horizon, and automated application tests use Pest.
+- Pilot uploads and generated files use local server storage through Laravel's configurable filesystem abstraction. The code must remain disk-agnostic so files can later migrate to S3-compatible object storage without rewriting feature logic.
+- Multi-tenancy uses one shared MySQL database and shared schema. Every store-owned row carries `store_id`; tenant isolation must be enforced through the resolved tenant context, Eloquent scopes, authorization policies, scoped relationships, database constraints, and tests.
+- Platform admins, global merchant accounts, and store-scoped customer accounts use separate tables, guards, and providers.
+- A custom Laravel middleware resolves the current store by exact hostname lookup in a domains table covering hosted subdomains and verified custom domains.
 
 ## Active objective
 
-Phase 1 MVP definition is complete. Preserve this scope until the founder explicitly starts architecture, delivery planning, or another phase.
+Define a maintainable architecture and delivery plan for the completed Phase 1 MVP, then prepare implementation without expanding the agreed product scope.
 
 ## Current blockers
 
@@ -298,13 +307,16 @@ Phase 1 MVP definition is complete. Preserve this scope until the founder explic
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Counter reset point:** after the completed GitHub synchronization containing Q-163 through Q-213, excluding skipped Q-210.
+- **Counter reset point:** after the completed GitHub synchronization containing architecture inputs Q-214 through Q-235, excluding comparison-only Q-218 and Q-223, through D-241.
 - **Answered questions since last push:** 0/50.
 - **Pending unpushed documentation:** none.
 
 ## Next decisions to obtain
 
-- No active Phase 1 product questions. Pilot-specific pricing from Q-210 was intentionally deferred to pilot preparation and does not block Phase 1 closure.
+- Select session, cache, distributed-lock, and rate-limit storage.
+- Select internal and public identifier formats.
+- Select Laravel's authentication foundation and customization boundary.
+- Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions
 
@@ -317,7 +329,8 @@ Phase 1 MVP definition is complete. Preserve this scope until the founder explic
 ## Detailed references
 
 - Product direction: [`01-PRODUCT-VISION.md`](01-PRODUCT-VISION.md)
-- Current phase: [`02-PHASE-1.md`](02-PHASE-1.md)
+- Completed product phase: [`02-PHASE-1.md`](02-PHASE-1.md)
+- Active architecture planning: [`07-ARCHITECTURE-PLAN.md`](07-ARCHITECTURE-PLAN.md)
 - Decisions: [`03-DECISIONS.md`](03-DECISIONS.md)
 - Open questions: [`04-OPEN-QUESTIONS.md`](04-OPEN-QUESTIONS.md)
 - History: [`05-CHANGELOG.md`](05-CHANGELOG.md)

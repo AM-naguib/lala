@@ -1641,3 +1641,155 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** Allow each store wallet to fall as low as EGP -10 while the merchant can continue seeing order customer data. If the balance falls below EGP -10, continue recording orders and applying their configured fees, but replace customer identity, contact, and delivery data in merchant order views with `****`. Restore visibility when the wallet is recharged to EGP -10 or higher.
 - **Reason:** Founder selected a limited overdraft followed by data-level access restriction rather than stopping customer order creation.
+
+## D-223 — Founder and AI implementation model
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The founder will implement the first `lala` release with AI assistance rather than beginning with a hired software team or external agency.
+- **Reason:** Founder selected this as the intended Phase 1 delivery model.
+- **Architecture effect:** Favor a small number of languages, strong static checking, established frameworks, generated types, automated tests, and low operational overhead.
+
+## D-224 — Web-only Phase 1 delivery
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Deliver the merchant dashboard and customer storefront as Web applications in Phase 1. Do not build a native or cross-platform mobile app in this phase.
+- **Reason:** Founder explicitly selected Web only for the initial release.
+- **Architecture effect:** Mobile code sharing does not need to influence the initial framework or repository design.
+
+## D-225 — No fixed pilot delivery deadline
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Architecture planning and MVP implementation currently have no fixed pilot delivery deadline.
+- **Reason:** Founder selected no specific deadline.
+- **Architecture effect:** Prefer maintainability and correctness over deadline-driven shortcuts while keeping the system appropriately simple for one founder.
+
+## D-226 — PHP and Laravel for the complete backend
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Implement the complete `lala` backend in PHP using Laravel. Do not use TypeScript, NestJS, or another language/framework for core backend application code.
+- **Reason:** The founder is a Laravel backend developer and explicitly selected PHP with Laravel for the backend.
+- **Architecture effect:** Use Laravel-native routing, controllers, Eloquent, validation, authorization, queues, events, scheduled jobs, notifications, and testing as the default backend building blocks. Keep the initial system a modular Laravel monolith unless a measured operational need later justifies extracting a service.
+
+## D-227 — MySQL as the primary database
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use MySQL as the primary relational database for `lala` instead of PostgreSQL.
+- **Reason:** Founder explicitly selected MySQL.
+- **Architecture effect:** Design orders, inventory, wallet ledger entries, coupons, audit records, and tenant isolation around MySQL transactions, constraints, indexes, and Laravel migrations.
+
+## D-228 — Traditional Laravel application structure
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; supersedes the modular-monolith architecture recommendation attached to D-226
+- **Decision:** Organize the initial backend using Laravel's traditional application structure rather than introducing explicit domain modules or microservices.
+- **Reason:** Founder explicitly selected the traditional Laravel structure.
+- **Architecture effect:** Use standard Laravel directories and conventions for controllers, models, requests, policies, services, jobs, events, listeners, notifications, and console commands. Domain boundaries may be expressed through naming and focused service classes without adding a module framework.
+
+## D-229 — No strong existing frontend-framework experience
+
+- **Date:** 2026-08-15
+- **Status:** Accepted delivery input
+- **Decision:** Treat the founder as not having strong prior experience in React, Vue, Livewire, or another frontend framework when choosing the initial frontend technologies.
+- **Reason:** Founder explicitly stated that there is no strong current frontend experience and requested a comparison before choosing.
+- **Architecture effect:** Prefer conventional, well-documented frontend choices with strong Laravel integration and predictable AI-assisted development. Budget learning and frontend testing into delivery planning.
+
+## D-230 — Different frontend technologies for storefront and dashboard
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use different frontend technologies for the customer storefront and merchant dashboard rather than one shared frontend framework across both surfaces.
+- **Reason:** Founder explicitly selected two different technologies.
+- **Open detail:** The technology for each surface and whether the storefront is deployed separately from Laravel are not yet selected.
+
+## D-231 — Livewire and Blade merchant dashboard
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; resolves the dashboard part of D-230
+- **Decision:** Build the merchant dashboard with Laravel Livewire and Blade. Do not use React, Vue, Inertia, or a separately deployed dashboard application in Phase 1.
+- **Reason:** Founder selected Livewire with Blade after comparing the realistic frontend combinations.
+- **Architecture effect:** Dashboard routes, authorization, validation, and UI state remain integrated with Laravel. Use Livewire components for interactive tables, filters, forms, bulk actions, and dashboard widgets.
+
+## D-232 — Blade and Alpine.js customer storefront
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; resolves the storefront part of D-230 and closes Q-218/Q-223
+- **Decision:** Build the customer storefront with Blade and Alpine.js inside the same Laravel application. Do not use Next.js or another separately deployed storefront in Phase 1.
+- **Reason:** Founder selected the recommended Laravel-integrated storefront after comparison.
+- **Architecture effect:** Render storefront HTML through Laravel and use Alpine.js for focused browser interactions such as variants, cart feedback, filters, quantity controls, and UI state. No separate public frontend API is required for the first release.
+
+## D-233 — Laravel 13 on PHP 8.5
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Start implementation with Laravel 13 running on PHP 8.5.
+- **Reason:** Founder selected the current recommended stable framework and runtime combination.
+- **Architecture effect:** Pin compatible framework, runtime, extension, Composer-package, CI, local-development, and production-environment versions. Reassess upgrades deliberately rather than drifting automatically.
+
+## D-234 — Tailwind CSS for both interfaces
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use Tailwind CSS to style both the merchant dashboard and customer storefront.
+- **Reason:** Founder selected the recommended Laravel-compatible styling approach.
+- **Architecture effect:** Define shared design tokens for colors, spacing, typography, directionality, breakpoints, and reusable Blade components while allowing each storefront theme to map those tokens differently.
+
+## D-235 — Plain JavaScript for Alpine.js behavior
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Write Alpine.js behavior in plain JavaScript rather than TypeScript for the initial release.
+- **Reason:** Founder selected the simpler language choice for the deliberately limited browser-side behavior.
+- **Architecture effect:** Keep JavaScript components small and focused, use linting and browser tests for safety, and do not introduce TypeScript unless frontend complexity later provides a concrete reason.
+
+## D-236 — Redis queues with Laravel Horizon
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use Redis as the Laravel queue backend and Laravel Horizon for queue configuration and monitoring.
+- **Reason:** Founder selected the recommended queue stack.
+- **Architecture effect:** Execute email, WhatsApp, CSV import/export, Bosta submission and webhook follow-up, media processing, report generation, and other slow work as retryable jobs. Define queue names, retry limits, timeouts, backoff, idempotency, and failed-job handling explicitly.
+
+## D-237 — Pest for automated PHP tests
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use Pest as the primary automated PHP testing framework for the initial application.
+- **Reason:** Founder selected the recommended concise Laravel testing style.
+- **Architecture effect:** Cover tenant isolation, authorization, checkout, inventory, wallet charging and masking, coupon limits, order edits, shipping integration, and webhook idempotency primarily through feature tests, with focused unit and browser tests where appropriate.
+
+## D-238 — Local pilot file storage with later object-storage migration
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Store uploaded and generated files on the application server's local Laravel filesystem during the pilot, then migrate them to S3-compatible object storage later.
+- **Reason:** Founder selected local pilot storage rather than object storage from the first deployment.
+- **Architecture effect:** All feature code must use Laravel's `Storage` abstraction and configured disks, never hard-coded filesystem paths. The pilot deployment requires persistent storage and backups. Store logical disk and object path metadata so a controlled copy-and-switch migration can preserve product media, videos, CSV results, invoices, and shipping labels.
+
+## D-239 — Shared MySQL schema with store_id isolation
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use one shared MySQL database and shared schema for all stores. Add `store_id` to every store-owned record instead of creating a separate database per store or a hybrid database model.
+- **Reason:** Founder selected the recommended row-level multi-tenancy model.
+- **Architecture effect:** Resolve one tenant context per store request and job, apply a store scope to tenant-owned Eloquent models, authorize every resource through its store relationship, use composite indexes and uniqueness constraints beginning with `store_id`, and test cross-store denial. Global platform tables remain unscoped by design.
+
+## D-240 — Separate Admin, Merchant, and Customer authentication boundaries
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Store platform admins, merchant accounts, and storefront customers in separate database tables and authenticate them through separate Laravel guards and providers.
+- **Reason:** Founder selected explicit identity boundaries rather than one polymorphic users table with roles.
+- **Architecture effect:** Merchant identities remain global and can own multiple stores; customer identities include `store_id` and remain isolated per storefront; platform admins use a separate protected entry point. Password reset, verification, session cookie, rate-limit, and authorization rules are configured per identity class.
+
+## D-241 — Domains table and custom tenant-resolution middleware
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Resolve the current storefront by exact hostname lookup in a domains table through custom Laravel middleware. Use this model for both hosted `lala` subdomains and verified custom domains rather than a third-party tenancy package or subdomain-only parsing.
+- **Reason:** Founder selected the recommended lightweight custom resolution model.
+- **Architecture effect:** Store normalized hostname, store reference, domain type, verification and health state, canonical state, and timestamps. Resolve only active exact matches, establish the tenant context before model access, reject unknown hosts safely, and keep central platform and merchant-dashboard hosts outside storefront tenant resolution.

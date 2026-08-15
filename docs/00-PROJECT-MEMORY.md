@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Phase 1 — product discovery and MVP definition.
+- **Current phase:** Phase 1 — product discovery and MVP definition, completed; the next phase has not started.
 - **Status date:** 2026-08-14 (Africa/Cairo).
 
 ## Confirmed decisions
@@ -36,7 +36,7 @@
 22. Customer accounts are optional, and guest checkout is the default purchase path.
 23. A COD order is created immediately after checkout submission without OTP or other pre-verification.
 24. Ask planning questions through interactive buttons in batches of up to three, placing the recommended MVP choice first and labeling it “(Recommended)”.
-25. Provide core order statuses and allow merchants to add custom statuses.
+25. Provide one controlled core order-status field and a separate merchant-defined Labels field; merchants do not create additional core statuses.
 26. Deduct inventory immediately when a COD order is created and restore it automatically if the order is cancelled.
 27. Provide order notifications through the merchant dashboard and email in the initial release.
 28. Products support flexible options and variants, such as size and color, with independent inventory per variant when inventory tracking is enabled.
@@ -63,17 +63,17 @@
 49. A product requires a name in the store's primary language and a selling price before it can be saved and Published.
 50. A product restored from Trash returns as Hidden so the merchant can review it before republishing.
 51. The MVP does not enforce a coupon usage limit per customer; only the configured total usage limit applies.
-52. The built-in order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned; merchants can still add custom statuses.
+52. The core order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned; additional merchant classifications belong in separate Labels rather than custom statuses.
 53. Merchants can edit all order data after a COD order is created.
 54. Guest customers cannot cancel orders themselves; cancellation requires contacting the merchant.
 55. Merchants can edit all order data in any order status, including after delivery.
 56. Editing order products or quantities automatically recalculates totals and adjusts inventory by the resulting difference.
 57. Keep an audit history for every order edit showing who changed what and when.
 58. Recording returned items does not automatically restore them to available inventory.
-59. Merchants can move orders freely between all statuses; the MVP has no default or enforced status progression.
+59. Merchants can move orders freely between the known core statuses; the MVP has no default or enforced merchant transition path, while Bosta events can also update this field.
 60. The MVP supports recording a full-order return only; partial item or quantity returns are deferred.
 61. If a returned item is saleable, the merchant adds it back to inventory manually from the product page.
-62. Merchant-defined custom order statuses are informational labels only and do not trigger automatic email, inventory, shipping, or other actions.
+62. Merchant-defined Labels are separate from the core order status and do not trigger automatic email, inventory, shipping, or other actions.
 63. Orders are not submitted to a shipping company automatically. The merchant selects the orders to ship and explicitly sends them to the connected provider.
 64. When a customer provides an email address, send an order confirmation and email notifications for changes to core order statuses.
 65. For tracked inventory, the merchant can define a low-stock threshold per product or variant and receive dashboard and email warnings when it is reached.
@@ -81,7 +81,7 @@
 67. The merchant can submit either one order or a selected group of orders to the connected shipping provider.
 68. If shipping-provider submission fails, keep the affected order marked as Not Sent, show the failure reason, and provide a manual retry action.
 69. A merchant connects a supported shipping provider by entering credentials for the merchant's own account with that provider.
-70. After the provider accepts a shipment, store the shipment number, provider shipment status, and shipping label; do not change the order's core status automatically.
+70. After the provider accepts a shipment, store the shipment number, provider shipment status, and shipping label. Normalized Bosta events then update the order's core status according to D-214.
 71. If no shipping provider is connected, the merchant fulfills the order by changing its core status only; do not add a manual carrier or tracking record in the MVP.
 72. A merchant creates a `lala` account using an email address, phone number, and password.
 73. Initial store setup requires the store name, desired `lala` subdomain, operating currency, and primary language; it does not ask for a store country.
@@ -177,6 +177,55 @@
 163. Large CSV imports run as background jobs and provide a dashboard completion notification plus a downloadable results file.
 164. If a CSV row's `lala` ID and SKU identify different existing records, reject the row as an error and modify neither record.
 165. Before a large or destructive product bulk action, show the affected record count and proposed changes, require explicit confirmation, and generate a results file.
+166. Merchants can create orders manually from the dashboard using an existing customer or newly entered customer data, but can add catalog products only; custom non-catalog line items are not allowed.
+167. Merchants can export either all orders or the current filtered order result set as CSV, including the products and line items in each order.
+168. Bulk order operations support changing order status, submitting selected orders to a connected shipping provider, and printing shipping labels.
+169. Saving a manually created order immediately deducts tracked inventory for its catalog products, and cancelling that order restores the deducted inventory automatically.
+170. A manually created order defaults to New, while the merchant can select another known core status during creation and manage Labels separately.
+171. When a manually created order contains a customer email address, send the order-confirmation email automatically without asking the merchant whether to send it.
+172. While creating a manual order, the merchant can use a configured shipping zone or enter a manual shipping price, add a manual percentage or fixed-amount discount, and have the final total calculated automatically.
+173. A manually created order sends the merchant the same new-order email used for a storefront-created order, even though the merchant initiated it.
+174. Order-list search matches order number, customer name, and customer phone number only; customer email and shipment number are excluded from Phase 1 search.
+175. Order-list filters include order status, date, order source, shipping-submission status, and shipping zone.
+176. The order list defaults to newest first and also supports oldest first, highest order value first, and lowest order value first.
+177. Phase 1 distinguishes two order sources: Storefront for customer-submitted orders and Dashboard Manual for merchant-created orders.
+178. Merchants can print both an invoice and a packing slip for one order or a selected group of orders, in addition to shipping-provider labels.
+179. The printable invoice includes store, order, and customer data; products and prices; shipping, discount, and final total; and order notes.
+180. The packing slip includes order number, customer name, delivery address, phone number, product and variant details, quantities, and notes, without any prices.
+181. Printable invoices and packing slips use the store's primary language only; the merchant cannot select another language at print time.
+182. Merchants can rename the displayed labels of built-in core order statuses, but cannot delete those statuses or change their underlying semantics and automatic behavior.
+183. Each merchant-defined order Label has an Arabic name, English name, color, and merchant-controlled display position.
+184. The earlier replacement-status migration rule does not apply to Labels because they no longer occupy the order's core status field.
+185. A merchant-renamed built-in status uses one replacement label that appears identically in both Arabic and English interfaces; it does not have separate translations.
+186. Each store can create at most 10 order Labels in Phase 1.
+187. Label changes are organizational metadata changes and do not send customer core-status emails.
+188. A WhatsApp verification code for a merchant phone number remains valid for 10 minutes.
+189. A merchant can request another verification code after 60 seconds, with a maximum of five code sends per phone number per rolling hour.
+190. After five incorrect entries, invalidate the current merchant verification code and require the merchant to request a new code.
+191. Customer WhatsApp codes for phone verification and password recovery use the same 10-minute lifetime, 60-second resend cooldown, five-send hourly limit, and five-attempt invalidation rules as merchant codes.
+192. A customer account remains inactive until its selected email address or phone number is verified; the customer can continue ordering as a guest before activation.
+193. If merchant WhatsApp verification cannot be completed after the available retries, keep the account unverified and allow a later retry or contact with `lala` support; do not fall back to email or bypass verification.
+194. After a store uses its three allowed hosted-subdomain changes, that store's hosted subdomain can never be changed again, including by `lala` support.
+195. A public store with no Published products still renders its theme, homepage sections, navigation, and static pages, with a clear “No products available currently” message in product areas.
+196. Contact-page form submissions are stored in a merchant-dashboard inbox and also trigger an email notification to the merchant.
+197. Custom-domain connections are independent from hosted-subdomain change limits; a merchant can connect, replace, or remove the store's custom domain without a numeric change limit.
+198. The Contact form contains required name, required email, optional phone number, required subject, and required message fields.
+199. Merchants can reply to Contact messages from the dashboard; `lala` sends the reply to the customer's email address and stores it in the dashboard conversation history.
+200. Once a custom domain is verified and active, it becomes the storefront's primary address and the hosted `lala` subdomain redirects visitors to it.
+201. `lala` issues and renews HTTPS certificates for connected custom domains automatically and without an extra merchant charge.
+202. If a custom domain is removed or stops resolving correctly, the hosted subdomain remains available, automatically becomes primary again, and `lala` alerts the merchant.
+203. When a merchant saves Bosta credentials, test the connection immediately and show either Connected or the provider failure reason.
+204. If an order already has an active Bosta shipment, block another submission and show the existing shipment details.
+205. Synchronize Bosta shipment-status changes automatically and use them to update the order's controlled core status, while additional merchant classification remains in separate Labels.
+206. Map normalized Bosta events as follows: Accepted to Processing; picked up or in transit to Shipped; delivered to Delivered; cancelled to Cancelled; returned to Returned; other exceptions alert the merchant without changing core status.
+207. Extra merchant classifications belong in the separate Labels field rather than in custom statuses; Bosta continues to control the known core lifecycle through synchronized events.
+208. Bosta-driven core status changes send the same customer status emails as merchant-driven core status changes when a customer email address exists.
+209. The first Phase 1 pilot recruits a mix of new merchants and merchants who already sell, rather than limiting validation to one experience level.
+210. Run the first pilot with 10 merchants for 30 days.
+211. The pilot succeeds if at least 7 of the 10 merchants publish their stores and each of those merchants receives at least 10 real orders during the 30-day period.
+212. `lala` monetization is prepaid pay-per-order rather than a recurring store subscription: every store has an operating wallet that the merchant funds to use order intake and management.
+213. The `lala` platform owner configures the fee charged for each created order; the initial fee is EGP 1 per order.
+214. A store wallet may fall to EGP -10. If it falls below EGP -10, orders continue to be recorded and charged, but the merchant sees `****` instead of customer data until the wallet is recharged to EGP -10 or higher.
 
 ## Current interpretation
 
@@ -212,20 +261,35 @@
 - Catalog bulk tooling includes partial-success CSV import with validation feedback, all-or-filtered product and variant CSV export, and bulk lifecycle, organization, price, inventory, and soft-delete actions.
 - Imported media is copied from public URLs into `lala` storage. Round-trip updates prefer `lala` IDs and fall back to SKU, while unmatched rows create catalog records. Large imports do not block the dashboard and return structured completion results.
 - Conflicting CSV identities are rejected safely without modifying either candidate record. Large or destructive bulk catalog actions require a detailed preview and explicit confirmation, then return a result file.
+- Dashboard-created orders support stored or new customer details but catalog products only; custom non-catalog line items are excluded. Order CSV export preserves the current filters and includes item details. Bulk order actions cover status changes, shipping submission, and shipping-label printing.
+- Manual orders follow the standard inventory lifecycle for catalog items, default to New with an optional merchant-selected initial status, and automatically send customer confirmation when an email address exists.
+- Manual-order totals are system-calculated from items, zone-based or manually entered shipping, and an optional manual percentage or fixed discount. Both the customer and merchant receive the standard order emails when their respective email addresses are available.
+- Order operations include focused search, operational filters, newest-first and alternative sorting, explicit Storefront versus Dashboard Manual source labels, and individual or bulk invoice and packing-slip printing.
+- The invoice is the priced customer-facing order record, while the packing slip is a price-free fulfillment document. Both render only in the store's primary language.
+- Core status identities remain stable behind merchant-renamed display names. Additional organization uses a separate bilingual, colored, manually ordered Labels model capped at 10 definitions per store.
+- Renamed core status names are intentionally single-language values shown unchanged in both interfaces. Labels never trigger customer core-status notifications or lifecycle automation.
+- Merchant WhatsApp verification uses a 10-minute code, a 60-second resend cooldown, a five-send hourly limit, and five attempts before the current code is invalidated.
+- Customer phone verification and recovery reuse the same throttling. Customer accounts activate only after contact verification, while guest checkout remains available. Failed merchant WhatsApp delivery never silently activates the account.
+- Hosted-subdomain changes end permanently after the third change. Empty public stores retain their complete storefront shell, and Contact-form submissions are preserved in a dashboard inbox with merchant email alerts.
+- Custom domains remain independently changeable without a count limit. Contact conversations combine structured customer details, dashboard replies, email delivery, and retained message history.
+- An active custom domain is canonical with hosted-subdomain redirection and automatically managed HTTPS. The hosted subdomain remains the resilient fallback and becomes primary again when custom-domain health fails.
+- Bosta connection credentials are validated immediately, duplicate active shipments are blocked, and normalized provider events drive known core order statuses and their customer emails. Other merchant classifications remain separate Labels.
+- Phase 1 validation uses a 10-merchant, 30-day mixed-experience pilot. Success requires at least seven merchants to publish and receive at least 10 real orders each.
+- Monetization uses a prepaid store wallet and a platform-owner-configurable fee for every created order, starting at EGP 1. Recurring subscriptions are not the Phase 1 model.
+- The wallet has an EGP 10 overdraft allowance. Beyond it, order intake continues but customer data is masked until sufficient recharge restores the balance to at least EGP -10.
 - Merchant accounts can own unlimited stores, but access is owner-only in the MVP. Store removal means deactivation with retained data, reactivation is support-only, and visitors see a store-unavailable page while disabled.
-- Provider credentials belong to each merchant's own shipping account and must be stored securely outside source control. Provider-specific required fields and credential-validation behavior are not yet defined.
+- Provider credentials belong to each merchant's own shipping account and must be stored securely outside source control. Bosta credentials are tested on save; remaining provider-specific shipment fields are not yet defined.
 - Shipping-provider submission is merchant-initiated and supports individual or bulk selection. Failed submissions remain Not Sent with the reason and a manual retry action.
-- Successful submission stores provider shipment data and a label without changing the core order status. A store without an integration manages fulfillment through order statuses only.
-- Order statuses are freely selectable. Customer emails cover confirmation and core-status changes; merchant order-event email covers new orders only. Low-stock warnings remain separate dashboard and email notifications.
+- Successful submission stores provider shipment data and a shipping label. Later normalized Bosta events update the known core order status automatically; a store without an integration manages that field manually.
+- Core order statuses are separate from merchant Labels. Customer emails cover confirmation and core-status changes from either the merchant or Bosta; Labels remain organizational only. Merchant order-event email covers new orders only, and low-stock warnings remain separate dashboard and email notifications.
 - Because editing remains available after delivery, downstream reporting behavior and status-specific inventory safeguards still need definition; the audit history preserves the original change trail.
-- Custom-status placement, colors, and ordering are not yet defined.
 - Coupon abuse mitigation beyond the total usage limit is not yet defined.
 - Permanent product deletion behavior is not yet defined.
 - The remaining MVP feature set and technical architecture are not decided yet.
 
 ## Active objective
 
-Define a coherent Phase 1 MVP by answering only the decisions that materially affect the first usable release.
+Phase 1 MVP definition is complete. Preserve this scope until the founder explicitly starts architecture, delivery planning, or another phase.
 
 ## Current blockers
 
@@ -235,14 +299,12 @@ Define a coherent Phase 1 MVP by answering only the decisions that materially af
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Counter reset point:** after the completed GitHub synchronization containing Q-113 through Q-162.
-- **Answered questions since last push:** 0/50.
-- **Pending unpushed documentation:** none.
+- **Answered questions since last push:** 50/50 (Q-163 through Q-213, excluding skipped Q-210).
+- **Pending unpushed documentation:** decisions through Q-213; the synchronization threshold has been reached.
 
 ## Next decisions to obtain
 
-1. Can merchants create orders manually from the dashboard?
-2. Can merchants export all or filtered orders as CSV?
-3. Which order fields and actions support bulk updates?
+- No active Phase 1 product questions. Pilot-specific pricing from Q-210 was intentionally deferred to pilot preparation and does not block Phase 1 closure.
 
 ## Guardrails for future sessions
 

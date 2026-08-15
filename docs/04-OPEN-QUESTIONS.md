@@ -92,7 +92,7 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 ### Q-019 — Order statuses
 
-**Resolved at the product level:** Provide core statuses and merchant-defined custom statuses. The exact core list remains a detailed requirement. See D-027.
+**Resolved at the product level:** Initially selected core and custom statuses in D-027; D-215 later replaced custom statuses with separate Labels.
 
 ### Q-020 — Inventory reservation
 
@@ -218,7 +218,7 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 ### Q-045 — Core order statuses
 
-**Resolved:** New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned, plus custom statuses. See D-055.
+**Resolved:** New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. D-215 later moved additional merchant organization to separate Labels. See D-055 and D-215.
 
 ### Q-046 — Merchant order editing
 
@@ -318,7 +318,7 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 ### Q-063 — Successful shipping submission effect
 
-**Resolved:** Store the shipment number, provider status, and label without changing the order's core status. See D-074.
+**Resolved at the time:** Store shipment data without changing core status. D-213 and D-214 later partially superseded this with automatic Bosta-driven core status updates. See D-074.
 
 ### Q-064 — Fulfillment without an integration
 
@@ -794,26 +794,255 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 **Resolved:** Show affected count and changes, require explicit confirmation, and provide a result file. See D-172.
 
-## Now — Batch 58
+## Resolved in Batch 58
 
 ### Q-163 — Manual merchant order creation
 
-Can merchants create orders manually from the dashboard, and which catalog and customer data can they use?
+**Resolved:** Use an existing customer or new customer data, with catalog products or custom line items. See D-173.
 
 ### Q-164 — Order CSV export
 
-Can merchants export all orders or the current filtered order result set as CSV?
+**Resolved:** Export all or currently filtered orders with product and line-item details. See D-174.
 
 ### Q-165 — Order bulk updates
 
-Which order fields and operational actions support bulk updates?
+**Resolved:** Change status, submit to shipping, and print shipping labels. See D-175.
 
-## Later in Phase 1
+## Resolved in Batch 59
 
-- Merchant onboarding steps.
-- Catalog variants, inventory, discounts, and order-management depth.
-- MVP success metric and beta approach.
-- Initial monetization hypothesis.
+### Q-166 — Inventory impact of manual orders
+
+**Resolved:** Deduct tracked catalog inventory immediately on save and restore it automatically on cancellation. See D-176.
+
+### Q-167 — Manual-order initial status
+
+**Resolved:** Default to New and allow the merchant to select another available status. See D-177.
+
+### Q-168 — Manual-order customer confirmation
+
+**Resolved:** Send confirmation automatically when an email address exists, without a send toggle. See D-178.
+
+## Partially resolved in Batch 60
+
+### Q-169 — Custom line-item fields
+
+**Clarification requested at the time:** The later Q-169 follow-up rejected non-catalog items entirely. See D-181.
+
+### Q-170 — Manual-order shipping and discounts
+
+**Resolved:** Select a shipping zone or enter shipping manually, add a manual percentage or fixed discount, and calculate the total automatically. See D-179.
+
+### Q-171 — Merchant notification for self-created orders
+
+**Resolved:** Send the same new-order email to the merchant. See D-180.
+
+## Resolved in Batch 61
+
+### Q-169 — Clarified custom order item
+
+**Resolved:** Do not allow non-catalog items in manual orders. See D-181, which partially supersedes D-173.
+
+### Q-172 — Order search fields
+
+**Resolved:** Search by order number, customer name, and customer phone only. See D-182.
+
+### Q-173 — Order-list filters
+
+**Resolved:** Status, date, order source, shipping-submission status, and shipping zone. See D-183.
+
+## Resolved in Batch 62
+
+### Q-174 — Order-list sorting
+
+**Resolved:** Newest first by default, plus oldest first and value high-to-low or low-to-high. See D-184.
+
+### Q-175 — Phase 1 order sources
+
+**Resolved:** Storefront and Dashboard Manual. See D-185.
+
+### Q-176 — Printable order documents
+
+**Resolved:** Invoice and packing slip, printable individually or in bulk. See D-186.
+
+## Resolved in Batch 63
+
+### Q-177 — Invoice content
+
+**Resolved:** Complete store, order, customer, product, price, shipping, discount, total, and note details. See D-187.
+
+### Q-178 — Packing-slip content
+
+**Resolved:** Order and fulfillment details without prices. See D-188.
+
+### Q-179 — Printed-document language
+
+**Resolved:** Use the store's primary language only. See D-189.
+
+## Resolved in Batch 64
+
+### Q-180 — Built-in status mutability
+
+**Resolved:** Rename displayed labels only; built-in statuses cannot be deleted or semantically changed. See D-190.
+
+### Q-181 — Custom-status presentation
+
+**Resolved:** Arabic and English names, color, and manual ordering. See D-191.
+
+### Q-182 — Deleting an in-use custom status
+
+**Resolved:** Require a replacement status, migrate affected orders, then delete. See D-192.
+
+## Resolved in Batch 65
+
+### Q-183 — Bilingual core-status renaming
+
+**Resolved:** Enter one label that appears identically in Arabic and English. See D-193.
+
+### Q-184 — Custom-status count limit
+
+**Resolved at the time:** Maximum 10 custom statuses. D-215 later reinterpreted this as a maximum of 10 Label definitions per store. See D-194 and D-215.
+
+### Q-185 — Notifications during status deletion migration
+
+**Resolved:** No emails; record the administrative migration in audit history. See D-195.
+
+## Resolved in Batch 66
+
+### Q-186 — Merchant verification-code lifetime
+
+**Resolved:** 10 minutes. See D-196.
+
+### Q-187 — Merchant verification-code resend rules
+
+**Resolved:** 60-second cooldown and maximum five sends per rolling hour. See D-197.
+
+### Q-188 — Incorrect merchant verification attempts
+
+**Resolved:** Invalidate the code after five incorrect entries and require a new code. See D-198.
+
+## Resolved in Batch 67
+
+### Q-189 — Customer WhatsApp code rules
+
+**Resolved:** Apply the same rules to customer verification and recovery. See D-199.
+
+### Q-190 — Customer account activation
+
+**Resolved:** Activate only after verification; guest checkout remains available. See D-200.
+
+### Q-191 — Failed merchant WhatsApp delivery
+
+**Resolved:** Remain unverified and retry later or contact support; no fallback or bypass. See D-201.
+
+## Resolved in Batch 68
+
+### Q-192 — Exhausted subdomain changes
+
+**Resolved:** Hosted-subdomain changes stop permanently, including through support. See D-202.
+
+### Q-193 — Empty-store visitor experience
+
+**Resolved:** Render the complete storefront with a no-products message. See D-203.
+
+### Q-194 — Contact-form delivery
+
+**Resolved:** Dashboard inbox plus merchant email notification. See D-204.
+
+## Resolved in Batch 69
+
+### Q-195 — Custom domains after hosted-subdomain lock
+
+**Resolved:** Yes; custom-domain changes are independent and unlimited. See D-205.
+
+### Q-196 — Contact-form fields
+
+**Resolved:** Required name, email, subject, and message; optional phone. See D-206.
+
+### Q-197 — Contact-message replies
+
+**Resolved:** Reply from the dashboard, deliver by email, and retain conversation history. See D-207.
+
+## Resolved in Batch 70
+
+### Q-198 — Primary custom domain
+
+**Resolved:** Custom domain becomes primary and the hosted subdomain redirects to it. See D-208.
+
+### Q-199 — Custom-domain HTTPS
+
+**Resolved:** `lala` issues and renews HTTPS automatically without extra charge. See D-209.
+
+### Q-200 — Custom-domain failure fallback
+
+**Resolved:** Hosted subdomain remains available, becomes primary, and merchant is alerted. See D-210.
+
+## Resolved in Batch 71
+
+### Q-201 — Bosta credential validation
+
+**Resolved:** Test immediately on save and show Connected or the failure reason. See D-211.
+
+### Q-202 — Duplicate shipment prevention
+
+**Resolved:** Block submission and open the current shipment details. See D-212.
+
+### Q-203 — Bosta shipment-status synchronization
+
+**Resolved:** Synchronize automatically and update the core order status. See D-213, which partially supersedes D-074.
+
+## Resolved in Batch 72
+
+### Q-204 — Bosta-to-order status mapping
+
+**Resolved:** Accepted to Processing; picked up or in transit to Shipped; delivered, cancelled, and returned to their matching core statuses; other exceptions alert only. See D-214.
+
+### Q-205 — Manual override versus future Bosta events
+
+**Resolved by model revision:** Keep known lifecycle state in the synchronized core status and put every additional merchant classification in a separate Labels field. See D-215.
+
+### Q-206 — Customer emails for Bosta-driven status changes
+
+**Resolved:** Yes, send the standard core-status emails. See D-216.
+
+## Resolved in Batch 73
+
+### Q-207 — First pilot merchant profile
+
+**Resolved:** Use a mix of new and already-selling merchants. See D-217.
+
+### Q-208 — Pilot size and duration
+
+**Resolved:** 10 merchants for 30 days. See D-218.
+
+### Q-209 — Pilot success metric
+
+**Resolved:** At least 7 publish and each receives at least 10 real orders. See D-219.
+
+## Partially resolved in Batch 74
+
+### Q-210 — Pilot pricing
+
+**Skipped:** Pilot-specific pricing remains open.
+
+### Q-211 — Initial recurring pricing model
+
+**Resolved by replacement:** Use a prepaid per-store wallet and pay-per-order model instead of recurring subscriptions. See D-220.
+
+### Q-212 — Order transaction fee
+
+**Resolved:** Platform-owner-configurable fee on every created order, initially EGP 1, with no recurring subscription. See D-221.
+
+## Resolved in Batch 75
+
+### Q-213 — Insufficient store-wallet balance
+
+**Resolved:** Allow balance to EGP -10; below that, keep recording orders but mask customer data until sufficient recharge. See D-222.
+
+## Phase 1 closure
+
+- No active Phase 1 product questions remain.
+- Q-210 pilot-specific pricing was skipped and is deferred to pilot preparation; it does not block architecture planning.
+- Operational limits and implementation-level details not explicitly decided remain architecture or delivery-planning inputs, not implied product decisions.
 
 ## Explicitly deferred beyond Phase 1
 

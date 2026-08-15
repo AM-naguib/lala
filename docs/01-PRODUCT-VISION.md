@@ -14,7 +14,7 @@ The confirmed broad audience is:
 
 > Anyone who wants to create an online store.
 
-This can eventually include individuals, social sellers, existing online merchants, traditional shops, and larger teams. The first-use-case priority within that broad audience is still unresolved and must be derived from the MVP decisions rather than guessed.
+This can eventually include individuals, social sellers, existing online merchants, traditional shops, and larger teams. The first Phase 1 pilot intentionally includes a mix of merchants who are starting for the first time and merchants who already sell, so validation covers both onboarding and migration from an existing sales workflow.
 
 ## Market scope
 
@@ -74,15 +74,15 @@ The platform model permits future supported countries without assigning a countr
 - Shipping-provider submission is merchant-initiated: the merchant selects orders and explicitly sends them rather than relying on automatic submission.
 - Provider submission supports both one order and a selected group of orders.
 - A failed provider submission leaves the order Not Sent, displays the provider failure reason, and can be retried manually.
-- A successful submission stores the provider shipment number, shipment status, and shipping label without automatically changing the order's core status.
+- A successful submission stores the provider shipment number, shipment status, and shipping label. Normalized Bosta events then update the core order status automatically and send the standard customer status email when an email address exists.
 - Without a connected provider, the merchant manages fulfillment through order-status changes only; the MVP does not store manual carrier or tracking data.
 - Checkout includes name, primary phone, address, city, email, notes, and an alternate phone.
 - Merchants choose which supported checkout fields are required or optional.
 - Storefronts support both a multi-product cart and direct Buy Now.
 - Customer accounts are optional and guest checkout is the primary flow.
 - COD orders are recorded immediately without OTP or pre-verification.
-- Core order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned, with merchant-defined custom statuses also supported.
-- Custom statuses are informational organization labels without automatic email, inventory, shipping, or other actions.
+- Core order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. Additional merchant organization uses a separate Labels field rather than custom statuses.
+- Labels are informational only and do not trigger email, inventory, shipping, or other actions.
 - Merchants can edit all order data in any status, including after delivery; product and quantity edits automatically recalculate totals and inventory differences.
 - Order edits retain an audit history of who changed what and when.
 - Returns do not automatically restore inventory.
@@ -172,6 +172,20 @@ The platform model permits future supported countries without assigning a countr
 - The initial release has no tax configuration, calculation, or separate tax line.
 
 The original physical-and-digital scope was narrowed because COD has no natural collection event for a non-physical delivery. Digital sales can be reconsidered when a suitable payment and delivery flow is introduced.
+
+## Phase 1 pilot
+
+- Recruit a mix of new and already-selling merchants.
+- Run with 10 merchants for 30 days.
+- Treat the MVP as validated when at least 7 merchants publish their stores and each receives at least 10 real orders during the pilot.
+
+## Monetization hypothesis
+
+- Each store has a prepaid `lala` wallet funded by its merchant.
+- Charge the wallet for every order created through that store.
+- The `lala` platform owner can change the per-order fee globally; the initial fee is EGP 1.
+- Phase 1 does not use a recurring monthly store subscription.
+- Each store can use an overdraft allowance down to EGP -10. Below that threshold, orders continue to accrue but customer data is masked from the merchant until recharge restores the balance to EGP -10 or higher.
 
 ## Value proposition
 

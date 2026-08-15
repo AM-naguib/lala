@@ -4,7 +4,7 @@
 
 Private source repository: `AM-naguib/lala`.
 
-The product is currently in **Phase 1: discovery and MVP definition**. No implementation stack has been selected yet.
+**Phase 1: discovery and MVP definition is complete.** Architecture and implementation have not started, and no technology stack has been selected yet.
 
 ## Project documents
 
@@ -43,6 +43,7 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - MVP selling scope: physical products; paid digital-product selling is postponed.
 - Storefront publishing: a hosted `lala` subdomain with optional custom-domain connection.
 - Initial payment method: cash on delivery (COD) only.
+- `lala` monetization uses a prepaid wallet per store and a configurable fee per created order, initially EGP 1; wallets can reach EGP -10 before customer data is masked pending recharge.
 - Launch interface languages: Arabic and English for both the merchant dashboard and storefront.
 - Currency model: each merchant selects one operating currency for the entire store.
 - Merchants can change the store currency at any time, including after receiving orders.
@@ -64,15 +65,15 @@ The product is currently in **Phase 1: discovery and MVP definition**. No implem
 - Orders are never sent to a shipping provider automatically; the merchant selects the orders and explicitly triggers submission.
 - The merchant can submit one order or a selected group of orders to the connected shipping provider.
 - If provider submission fails, the affected order remains Not Sent, shows the failure reason, and provides a retry action.
-- After a successful submission, store the provider shipment number, shipment status, and shipping label without changing the order's core status automatically.
+- After a successful submission, store the provider shipment number, shipment status, and shipping label; normalized Bosta events automatically update the core order status and trigger its standard customer email.
 - Without a connected provider, fulfillment is managed only by changing the order status; the MVP does not store manual carrier or tracking data.
 - Checkout contact/address fields include name, primary phone, address, city, email, notes, and an alternate phone.
 - Merchants choose which supported checkout fields are required or optional.
 - Storefront purchase actions include both a multi-product cart and direct Buy Now.
 - Customer accounts are optional; guest checkout is the default purchase path.
 - COD orders are created immediately after checkout submission without OTP or pre-verification.
-- Core order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned, plus merchant-defined custom statuses.
-- Custom statuses are informational labels for organizing orders and do not trigger automatic email, inventory, shipping, or other actions.
+- Core order statuses are New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. Additional merchant organization uses a separate Labels field.
+- Labels do not trigger automatic email, inventory, shipping, or other actions.
 - Merchants can edit all order data in any status, including after delivery.
 - Product and quantity edits automatically recalculate order totals and apply the inventory difference.
 - Every order edit is recorded with who changed what and when.

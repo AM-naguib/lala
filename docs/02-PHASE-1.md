@@ -2,8 +2,9 @@
 
 ## Status
 
-- **State:** active
+- **State:** completed
 - **Started:** 2026-08-14
+- **Completed:** 2026-08-15
 - **Planning principle:** answer only what is needed to define the first usable release.
 
 ## Purpose
@@ -30,6 +31,10 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Store-count limit: **decided — unlimited in the MVP**.
 - Store access: **decided — account owner only; team invitations are deferred**.
 - Merchant contact verification: **decided — verify the phone number through WhatsApp only; email verification is not required in the MVP**.
+- Merchant WhatsApp code lifetime: **decided — 10 minutes**.
+- Merchant WhatsApp resend rules: **decided — 60-second cooldown and maximum five sends per phone number per rolling hour**.
+- Merchant WhatsApp attempt limit: **decided — invalidate the current code after five incorrect entries and require a new code**.
+- Failed merchant WhatsApp verification: **decided — remain unverified, retry later or contact `lala` support; no email fallback or verification bypass**.
 - Initial store setup: **revised — store name, `lala` subdomain, currency, and primary language; no store country**.
 - Initial storefront availability: **decided — public immediately after setup, without requiring a product or separate publish action**.
 - Storefront themes: **decided — multiple ready-made themes**.
@@ -41,12 +46,19 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Custom static pages: **decided — unlimited**.
 - Static-page languages: **decided — separate Arabic and English fields with primary-language fallback**.
 - Contact page: **decided — customer form plus store contact details**.
+- Contact-form delivery: **decided — store submissions in a dashboard inbox and send the merchant an email notification**.
+- Contact-form fields: **decided — required name, email, subject, and message; optional phone number**.
+- Contact-message replies: **decided — reply from the dashboard, deliver by customer email, and retain the full conversation in the dashboard**.
 - Store removal: **decided — disable the store without deleting its data**.
 - Store reactivation: **decided — through `lala` support only**.
 - Disabled storefront: **decided — show visitors a clear store-unavailable page**.
 - Hosted subdomain changes: **decided — self-service, maximum three changes per store, no redirect, and a 10-day reservation for the previous subdomain**.
-- Phone-verification code rules, behavior after exhausting subdomain changes, and the empty-store storefront experience.
-- Contact-form delivery, manual merchant order creation, order CSV export, and order bulk updates.
+- Hosted subdomain after the third change: **decided — permanently immutable, with no support override**.
+- Custom-domain change limit: **decided — independent from hosted-subdomain limits and unlimited**.
+- Custom-domain primary routing: **decided — active custom domain is primary and the hosted subdomain redirects to it**.
+- Custom-domain HTTPS: **decided — `lala` issues and renews certificates automatically without extra charge**.
+- Custom-domain failure fallback: **decided — hosted subdomain remains available, becomes primary automatically, and merchant is alerted**.
+- Empty-store storefront: **decided — render the complete storefront shell and static content with a clear no-products message**.
 - Storefront product search: **decided — match product name only; do not search descriptions, SKUs, or tags**.
 - Storefront product filters: **decided — price, category or collection, availability, and product options**.
 - Storefront product sorting: **decided — Featured, Newest, Price Low to High, Price High to Low, and Name**.
@@ -75,6 +87,8 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Customer-account credentials: **decided — email address or phone number plus password**.
 - Customer-account scope: **decided — isolated to one storefront**.
 - Customer contact verification: **decided — email link for email accounts and WhatsApp code for phone accounts**.
+- Customer WhatsApp code rules: **decided — same 10-minute lifetime, 60-second cooldown, five-send hourly limit, and five-attempt invalidation as merchant verification**.
+- Customer account activation: **decided — inactive until the selected email or phone is verified; guest checkout remains available before activation**.
 - Customer password recovery: **decided — email reset link or WhatsApp code according to the verified sign-in channel**.
 - Saved addresses: **decided — unlimited with one customer-selected default address**.
 - Customer contact changes: **decided — verify the new email address or phone number before replacing the old value**.
@@ -128,26 +142,50 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - COD submission: **decided — create the order immediately without OTP or pre-verification**.
 - Payment baseline: **decided — COD only for the initial release**.
 - Paid digital-product handling: **decided — postponed from the initial release**.
-- Core order statuses: **decided — New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned, plus custom statuses**.
+- Core order statuses: **revised — New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned only; additional organization uses separate Labels**.
 - Merchant order editing: **decided — all order data can be edited in any status, including after delivery; product and quantity edits automatically recalculate totals and inventory differences; every edit is audited**.
+- Manual merchant order creation: **revised — use an existing customer or newly entered customer data and add catalog products only; custom non-catalog line items are not allowed**.
+- Manual-order inventory: **decided — deduct tracked catalog inventory immediately on save and restore it automatically on cancellation**.
+- Manual-order initial status: **revised — default to New while allowing another known core status; Labels are managed separately**.
+- Manual-order customer confirmation: **decided — send automatically when a customer email address exists, without a per-order send choice**.
+- Manual-order totals: **decided — choose a shipping zone or enter shipping manually, apply a manual percentage or fixed discount, and calculate the final total automatically**.
+- Manual-order merchant notification: **decided — send the standard new-order email even though the merchant created the order**.
+- Order CSV export: **decided — export all orders or the current filtered result set with product and line-item details**.
+- Order bulk operations: **decided — change order status, submit selected orders to a connected shipping provider, and print shipping labels**.
+- Order-list search: **decided — order number, customer name, and customer phone number only**.
+- Order-list filters: **decided — status, date, order source, shipping-submission status, and shipping zone**.
+- Order-list sorting: **decided — newest first by default, with oldest first and order value high-to-low or low-to-high alternatives**.
+- Order sources: **decided — Storefront and Dashboard Manual only in Phase 1**.
+- Printable order documents: **decided — invoice and packing slip for one order or a selected group, in addition to shipping labels**.
+- Invoice content: **decided — store, order, and customer data; products and prices; shipping, discount, total, and notes**.
+- Packing-slip content: **decided — order number, customer and delivery data, products, variants, quantities, and notes without prices**.
+- Printed-document language: **decided — store primary language only, with no print-time language choice**.
 - Customer cancellation: **decided — no guest self-service cancellation; the customer contacts the merchant**.
 - Returned inventory: **decided — recording a return does not automatically restore stock; merchants manually adjust saleable returned inventory from the product page**.
 - Return scope: **decided — full-order return only; partial item or quantity returns deferred**.
-- Status transitions: **decided — all statuses are freely selectable without a default or enforced path**.
-- Custom-status behavior: **decided — informational labels only, without automatic side effects**.
-- Custom-status presentation and merchant fulfillment workflow.
+- Status transitions: **revised — known core statuses remain freely selectable by merchants without a default path, and connected Bosta events can also update the same core field**.
+- Order Labels: **revised — additional merchant classifications are a separate Labels field, not custom status values, and have no automatic side effects**.
+- Built-in status customization: **decided — merchant can rename displayed labels only; deletion and semantic or behavioral changes are not allowed**.
+- Label presentation: **revised — Arabic name, English name, color, and merchant-controlled order**.
+- Built-in status rename language: **decided — one replacement label displayed identically in Arabic and English**.
+- Label limit: **revised — maximum 10 label definitions per store**.
+- Label behavior: **decided — organizational only and never sends customer core-status emails**.
 - Shipping pricing: **decided — merchant-defined shipping zones with one delivery price per zone**.
 - Shipping geography source: **decided — preloaded country subdivisions, such as governorates for Egypt**.
 - Zone construction: **decided — support direct subdivision pricing and grouping multiple subdivisions into custom zones**.
 - Delivery connections: **decided — optional shipping-provider integrations with an extensible provider model**.
 - First shipping provider: **decided — Bosta first, then additional providers**.
 - Shipping-provider account connection: **decided — merchant enters credentials for the merchant's own provider account**.
+- Bosta credential validation: **decided — test immediately on save and show Connected or the provider failure reason**.
 - Shipping submission initiation: **decided — merchant selects orders and explicitly sends them; no automatic provider submission**.
 - Shipping submission selection: **decided — submit one order or a selected group of orders**.
 - Failed shipping submission: **decided — keep the order Not Sent, show the failure reason, and provide manual retry**.
-- Successful shipping submission: **decided — store shipment number, provider status, and label without automatically changing the core order status**.
+- Successful shipping submission: **revised — store shipment number, provider status, and label; subsequent Bosta events update the core order status under the normalized mapping in D-214**.
+- Duplicate Bosta submission: **decided — block when an active shipment exists and show that shipment's details**.
+- Bosta status synchronization: **decided — Accepted maps to Processing; picked up or in transit to Shipped; delivered to Delivered; cancelled to Cancelled; returned to Returned; other exceptions alert only**.
+- Bosta-driven customer emails: **decided — send the standard customer email for each resulting core status change**.
 - Fulfillment without an integration: **decided — merchant changes order status only; no manual carrier or tracking record**.
-- Provider credential validation, shipment-field validation, label operations, and duplicate-submission protection.
+- Shipment-field validation and remaining provider label operations.
 
 ### Global baseline
 
@@ -172,7 +210,7 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 - Cross-country zone composition is deferred until a second country is supported.
 - Checkout field set: **decided — name, primary phone, address, city, email, notes, and alternate phone**.
 - Checkout field requiredness: **decided — configurable by the merchant**.
-- Order statuses: **decided — New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned, plus merchant-defined custom statuses**.
+- Order statuses: **revised — New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned as the controlled core field, plus a separate merchant-defined Labels field**.
 - Inventory timing: **decided — deduct on COD order creation and restore on cancellation**.
 - Order notification channels: **decided — merchant dashboard and email**.
 - Customer email events: **decided — order confirmation and core-status changes when an email address is provided**.
@@ -183,9 +221,11 @@ Turn the broad `lala` vision into a focused, testable MVP scope before architect
 
 ### Business validation
 
-- MVP success metric.
-- Pilot/beta approach.
-- Monetization assumptions only to the depth needed to validate the MVP.
+- MVP success metric: **decided — at least 7 of 10 pilot merchants publish and each receives at least 10 real orders within 30 days**.
+- Pilot/beta approach: **decided — mixed new and already-selling merchant cohort, 10 merchants, 30 days**.
+- Pilot pricing: **open — skipped by the founder in Batch 74**.
+- Monetization model: **decided — prepaid wallet per store and a platform-owner-configurable fee for each created order, initially EGP 1; no recurring subscription**.
+- Insufficient wallet balance: **decided — allow balance to EGP -10; below it continue recording and charging orders but mask customer data until recharge restores balance to EGP -10 or higher**.
 
 ## Phase exit criteria
 
@@ -207,3 +247,12 @@ Phase 1 is complete when all of the following exist:
 - Tax configuration, tax calculation, and separate tax display.
 
 These exclusions govern the planning process, not the eventual product roadmap.
+
+## Completion assessment
+
+- The MVP target and Egypt-first COD use case are defined.
+- End-to-end merchant, storefront, order, fulfillment, and customer-account journeys are defined.
+- Included features, exclusions, and later-phase boundaries are documented.
+- The 10-merchant, 30-day pilot and measurable success threshold are defined.
+- The prepaid per-order wallet monetization hypothesis is defined.
+- Q-210 pilot-specific pricing is intentionally deferred to pilot preparation and does not block architecture planning.

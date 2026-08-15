@@ -658,3 +658,183 @@
 - Uploaded the accumulated planning documentation through D-172 and Q-162 to the private `AM-naguib/lala` repository on `main`.
 - Reset the GitHub synchronization counter to 0/50.
 - Retained manual order creation, order CSV export, and order bulk updates as the next active decisions.
+
+## 2026-08-14 — Manual orders, order export, and bulk processing
+
+### Added
+
+- Added manual dashboard order creation using an existing or newly entered customer and catalog products or custom line items.
+- Added detailed CSV export for all orders or the current filtered result set.
+- Added bulk order-status changes, shipping-provider submission, and shipping-label printing.
+- Advanced active questions to manual-order inventory, initial values, and customer confirmation.
+- Advanced the GitHub synchronization counter to 3/50 without uploading.
+
+## 2026-08-15 — Manual-order inventory, status, and confirmation
+
+### Added
+
+- Applied immediate tracked-inventory deduction and automatic cancellation restoration to manually created orders.
+- Defaulted manual orders to New while allowing a different initial status at creation.
+- Made customer order-confirmation email automatic for manual orders containing an email address.
+- Advanced active questions to custom line-item data, manual shipping and discounts, and merchant self-notifications.
+- Advanced the GitHub synchronization counter to 6/50 without uploading.
+
+## 2026-08-15 — Manual-order totals and merchant notification
+
+### Added
+
+- Added zone-based or manually entered shipping and manual percentage or fixed discounts to manual orders while retaining automatic total calculation.
+- Applied the standard merchant new-order email to manually created orders.
+- Kept custom line-item fields open and added a concrete clarification for the next question batch.
+- Advanced active questions to the clarified custom item, order search, and order-list filters.
+- Advanced the GitHub synchronization counter to 8/50 without uploading.
+
+## 2026-08-15 — Catalog-only manual orders and order-list discovery
+
+### Changed
+
+- Partially superseded D-173 by limiting manual orders to saved catalog products while retaining existing-or-new customer selection.
+- Added order-list search by order number, customer name, and phone number.
+- Added filters for status, date, order source, shipping-submission status, and shipping zone.
+- Advanced active questions to order sorting, Phase 1 source labels, and printable documents.
+- Advanced the GitHub synchronization counter to 11/50 without uploading.
+
+## 2026-08-15 — Order sorting, sources, and printable documents
+
+### Added
+
+- Added newest-first default order sorting with oldest-first and value-based alternatives.
+- Defined Storefront and Dashboard Manual as the two Phase 1 order sources.
+- Added individual and bulk invoice and packing-slip printing alongside shipping labels.
+- Advanced active questions to invoice content, packing-slip content, and print language.
+- Advanced the GitHub synchronization counter to 14/50 without uploading.
+
+## 2026-08-15 — Invoice and packing-slip content
+
+### Added
+
+- Defined a complete priced invoice containing store, order, customer, item, shipping, discount, total, and note details.
+- Defined a fulfillment packing slip with customer, address, item, variant, quantity, and note details but no prices.
+- Limited both printed documents to the store's primary language without a print-time language selector.
+- Advanced active questions to built-in and custom order-status management.
+- Advanced the GitHub synchronization counter to 17/50 without uploading.
+
+## 2026-08-15 — Configurable order-status presentation and safe deletion
+
+### Added
+
+- Allowed merchant renaming of built-in status labels while preserving their core identities and preventing deletion.
+- Added Arabic and English names, color selection, and manual ordering to custom statuses.
+- Required an explicit replacement status and order migration before deleting an in-use custom status.
+- Advanced active questions to bilingual core labels, custom-status limits, and migration notifications.
+- Advanced the GitHub synchronization counter to 20/50 without uploading.
+
+## 2026-08-15 — Core-label language and custom-status safeguards
+
+### Added
+
+- Made a renamed core-status label one shared value displayed in both interface languages.
+- Limited each store to 10 custom order statuses.
+- Made status-deletion migrations silent for customers while recording every affected order in audit history.
+- Advanced active questions to WhatsApp merchant verification-code lifetime, resend rules, and failed attempts.
+- Advanced the GitHub synchronization counter to 23/50 without uploading.
+
+## 2026-08-15 — Merchant WhatsApp verification limits
+
+### Added
+
+- Set merchant verification-code lifetime to 10 minutes.
+- Added a 60-second resend cooldown and a maximum of five code sends per phone number per rolling hour.
+- Invalidated the active code after five incorrect entries and required a new code.
+- Advanced active questions to customer verification rules, account activation, and failed merchant-message delivery.
+- Advanced the GitHub synchronization counter to 26/50 without uploading.
+
+## 2026-08-15 — Customer activation and WhatsApp failure handling
+
+### Added
+
+- Reused merchant WhatsApp code limits for customer phone verification and password recovery.
+- Required customer contact verification before account activation while preserving guest checkout.
+- Kept merchant accounts unverified after failed WhatsApp delivery, with later retry or support contact and no fallback bypass.
+- Advanced active questions to exhausted subdomain changes, the empty storefront, and Contact-form delivery.
+- Advanced the GitHub synchronization counter to 29/50 without uploading.
+
+## 2026-08-15 — Permanent subdomain lock and storefront Contact inbox
+
+### Added
+
+- Permanently locked a store's hosted subdomain after its third change, without support override.
+- Kept the complete storefront visible when no products are Published and added a clear empty-catalog message.
+- Stored Contact-form messages in the merchant dashboard and added merchant email alerts.
+- Advanced active questions to custom-domain independence, Contact-form fields, and dashboard replies.
+- Advanced the GitHub synchronization counter to 32/50 without uploading.
+
+## 2026-08-15 — Independent custom domains and dashboard Contact replies
+
+### Added
+
+- Made custom-domain connection and replacement unlimited and independent from hosted-subdomain change limits.
+- Defined required Contact-form name, email, subject, and message fields with optional phone number.
+- Added dashboard replies delivered to customer email and retained in the Contact conversation history.
+- Advanced active questions to custom-domain primary routing, HTTPS, and failure fallback.
+- Advanced the GitHub synchronization counter to 35/50 without uploading.
+
+## 2026-08-15 — Primary custom domains with secure fallback
+
+### Added
+
+- Made a verified custom domain the primary storefront address and redirected the hosted subdomain to it.
+- Added automatic no-extra-charge HTTPS certificate issuance and renewal for custom domains.
+- Restored the hosted subdomain as primary and alerted the merchant when custom-domain health fails.
+- Advanced active questions to Bosta connection validation, duplicate protection, and shipment-status synchronization.
+- Advanced the GitHub synchronization counter to 38/50 without uploading.
+
+## 2026-08-15 — Validated Bosta connections and automatic order-status sync
+
+### Added
+
+- Added immediate Bosta credential validation with Connected or actionable failure feedback.
+- Blocked duplicate submission when an order already has an active Bosta shipment and linked to its details.
+- Partially superseded D-074 by allowing synchronized Bosta events to update core order statuses automatically.
+- Advanced active questions to provider-event mapping, manual overrides, and customer emails.
+- Advanced the GitHub synchronization counter to 41/50 without uploading.
+
+## 2026-08-15 — Bosta mapping and separate order Labels
+
+### Changed
+
+- Mapped normalized Bosta events to Processing, Shipped, Delivered, Cancelled, and Returned, with alert-only exception handling.
+- Replaced merchant-defined custom statuses with a separate Labels field while preserving one controlled core lifecycle status.
+- Reinterpreted bilingual name, color, ordering, and ten-definition limits as Label rules and retired replacement-status migration.
+- Applied standard customer core-status emails to Bosta-driven status changes.
+- Advanced active questions to pilot merchant profile, pilot shape, and MVP success measurement.
+- Advanced the GitHub synchronization counter to 44/50 without uploading.
+
+## 2026-08-15 — Phase 1 pilot and measurable success
+
+### Added
+
+- Selected a mixed cohort of new and already-selling merchants for the first pilot.
+- Set the pilot at 10 merchants for 30 days.
+- Defined success as at least 7 merchants publishing and each receiving at least 10 real orders during the pilot.
+- Advanced active questions to pilot pricing, recurring monetization, and order transaction fees.
+- Advanced the GitHub synchronization counter to 47/50 without uploading.
+
+## 2026-08-15 — Prepaid per-order wallet monetization
+
+### Changed
+
+- Replaced recurring store subscriptions with a prepaid pay-per-order wallet for each store.
+- Gave the `lala` platform owner control over the per-created-order fee and set the initial fee to EGP 1.
+- Left pilot-specific pricing open after the founder skipped that question.
+- Advanced the final active question to insufficient store-wallet balance behavior.
+- Advanced the GitHub synchronization counter to 49/50 without uploading.
+
+## 2026-08-15 — Wallet overdraft and Phase 1 completion
+
+### Added
+
+- Allowed a store wallet overdraft down to EGP -10.
+- Continued order creation below the overdraft limit while masking customer data until the merchant recharges sufficiently.
+- Completed Phase 1 product discovery and MVP definition, with pilot-specific pricing deferred as a non-blocking pilot-preparation decision.
+- Reached the 50/50 GitHub synchronization threshold through D-222 and Q-213, excluding skipped Q-210.

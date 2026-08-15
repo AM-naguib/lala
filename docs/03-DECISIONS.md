@@ -207,9 +207,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-027 — Core and custom order statuses
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Partially superseded by D-215
 - **Decision:** Provide a core set of order statuses and allow merchants to add custom statuses.
-- **Reason:** Founder selected a usable default workflow with merchant flexibility.
+- **Reason:** The core-status requirement remains, but D-215 replaces custom statuses with a separate Labels field.
 - **Resolution:** D-055 defines the core status list.
 - **Open detail:** Permitted transitions are not yet defined.
 
@@ -426,11 +426,12 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-055 — Core order status list
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Partially superseded by D-215
 - **Decision:** Include New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned as the built-in order statuses. Merchants can still add custom statuses under D-027.
-- **Reason:** Founder selected the recommended end-to-end COD fulfillment baseline.
+- **Reason:** The core list remains accepted, but D-215 removes custom statuses from the status field and uses separate Labels instead.
 - **Resolution:** D-065 allows free movement between all statuses without a default path.
 - **Resolution:** D-066 makes custom statuses informational only; their ordering, placement, and color presentation remain open.
+- **Revision:** D-215 later replaces custom statuses with separate order Labels.
 
 ## D-056 — Merchant can edit all order data
 
@@ -511,9 +512,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-066 — Custom statuses are informational only
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Superseded by D-215
 - **Decision:** Treat merchant-defined custom order statuses as informational labels for organization only. They do not trigger automatic email, inventory, shipping, or other actions in the MVP.
-- **Reason:** Founder selected the recommended low-complexity custom-status behavior after the distinction was clarified.
+- **Reason:** D-215 formalizes these classifications as a separate Labels field rather than status values.
 - **Open detail:** Custom-status ordering, placement, and color presentation are not yet defined.
 
 ## D-067 — Merchant-initiated shipping-provider submission
@@ -573,9 +574,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-074 — Successful submission stores shipment data without changing order status
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Partially superseded by D-213
 - **Decision:** After a shipping provider accepts a submission, store the provider shipment number, provider shipment status, and shipping label. Do not automatically change the order's core status.
-- **Reason:** Founder selected shipment-data synchronization while preserving manual control over the freely selectable order statuses.
+- **Reason:** Shipment-data storage remains accepted, but D-213 later replaced manual-only core-status control for Bosta events with automatic synchronization.
 
 ## D-075 — Status-only fulfillment without a provider integration
 
@@ -1195,9 +1196,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-159 — Separate count and value for every order status
 
 - **Date:** 2026-08-14
-- **Status:** Accepted
+- **Status:** Partially superseded by D-215
 - **Decision:** Beside the headline all-orders sales total, show order count and order value separately for every core and custom order status.
-- **Reason:** Founder selected complete per-status context for the gross sales total.
+- **Reason:** Per-core-status count and value remain accepted; D-215 removes custom statuses and treats Labels as separate filters instead.
 
 ## D-160 — No estimated-profit report in Phase 1
 
@@ -1290,3 +1291,353 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted
 - **Decision:** Before a large or destructive product bulk action, show the affected record count and a summary of proposed changes, then require explicit merchant confirmation. After processing, provide a downloadable results file.
 - **Reason:** Founder selected complete preview, confirmation, and outcome safeguards.
+
+## D-173 — Flexible manual order creation
+
+- **Date:** 2026-08-14
+- **Status:** Partially superseded by D-181
+- **Decision:** Allow merchants to create orders manually from the dashboard using either an existing customer or newly entered customer data. The order may contain catalog products, merchant-defined custom line items, or both.
+- **Reason:** Founder retained flexible customer selection but later excluded custom non-catalog line items in D-181.
+
+## D-174 — Detailed all-or-filtered order CSV export
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow merchants to export either all orders or the current filtered order result set as CSV, including the products and custom line items within each order.
+- **Reason:** Founder selected a filter-preserving operational export with item-level detail.
+
+## D-175 — Core bulk order operations
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Bulk order operations support changing the order status, submitting selected orders to a connected shipping provider, and printing shipping labels.
+- **Reason:** Founder selected the operationally complete MVP set for processing groups of orders.
+
+## D-176 — Immediate inventory handling for manual orders
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** When a merchant saves a manually created order, immediately deduct tracked inventory for its catalog products. If that order is cancelled, restore the deducted inventory automatically. Custom line items have no catalog inventory to adjust.
+- **Reason:** Founder selected the same predictable inventory lifecycle used by customer-created COD orders.
+
+## D-177 — New default with selectable manual-order status
+
+- **Date:** 2026-08-15
+- **Status:** Partially superseded by D-215
+- **Decision:** A manually created order defaults to New, but the merchant can choose another available core or custom status during creation.
+- **Reason:** The New default and selectable core status remain accepted; D-215 moves additional classification to separate Labels.
+
+## D-178 — Automatic customer confirmation for manual orders
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** If a manually created order includes a customer email address, send its order-confirmation email automatically when the order is saved. Do not present a per-order send toggle.
+- **Reason:** Founder selected automatic customer communication rather than optional or suppressed confirmation.
+
+## D-179 — Calculated manual orders with flexible shipping and discounts
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** During manual order creation, let the merchant select a configured shipping zone or enter a shipping price manually and add either a percentage or fixed-amount manual discount. Calculate the final order total automatically from the entered components rather than allowing an arbitrary final-total override.
+- **Reason:** Founder selected operational flexibility while preserving transparent and consistent order arithmetic.
+
+## D-180 — Merchant email for self-created manual orders
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Send the merchant the same new-order email for a manually created order that is sent for a storefront-created order, even though the merchant created it.
+- **Reason:** Founder explicitly chose consistent merchant email notifications across order sources.
+
+## D-181 — Catalog-only manual orders
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; partially supersedes D-173
+- **Decision:** A manually created order can contain saved catalog products only. Do not allow custom products, services, fees, or other non-catalog line items. The merchant may still use an existing customer or enter new customer data.
+- **Reason:** After clarification, the founder explicitly rejected adding anything that is not already present in the store catalog.
+
+## D-182 — Focused order-list search
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Search the merchant order list by order number, customer name, and customer phone number only. Do not include customer email or shipment number in Phase 1 order search.
+- **Reason:** Founder selected the smaller operational search set.
+
+## D-183 — Operational order-list filters
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Filter the merchant order list by order status, date, order source, shipping-submission status, and shipping zone.
+- **Reason:** Founder selected the complete proposed operational filter set.
+
+## D-184 — Newest-first order sorting with operational alternatives
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Sort the merchant order list by newest order first by default. Also allow oldest first, highest order value first, and lowest order value first.
+- **Reason:** Founder selected the proposed set that prioritizes recent fulfillment work while supporting chronological and value-based review.
+
+## D-185 — Storefront and dashboard-manual order sources
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Identify each Phase 1 order as either Storefront when submitted by a customer or Dashboard Manual when created by the merchant. No additional source types are included initially.
+- **Reason:** Founder selected explicit source visibility for the two order-entry paths in scope.
+
+## D-186 — Individual and bulk invoice and packing-slip printing
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** In addition to shipping-provider labels, allow merchants to print an invoice and a packing slip for one order or a selected group of orders.
+- **Reason:** Founder selected both customer-facing and fulfillment-facing documents with individual and bulk operation support.
+
+## D-187 — Complete printable invoice content
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The printable invoice contains store details, order number and date, customer and delivery details, products and variants, quantities and prices, shipping charge, discount, final total, and order notes.
+- **Reason:** Founder selected the complete proposed invoice rather than a reduced summary.
+
+## D-188 — Price-free packing slip
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The packing slip contains order number, customer name, delivery address, phone number, products and variants, quantities, and order notes. It does not display product prices or order totals.
+- **Reason:** Founder selected a fulfillment-focused document that can be used for picking and packing without exposing financial values.
+
+## D-189 — Primary-language-only printed documents
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Render invoices and packing slips in the store's current primary language only. Do not provide a print-time Arabic or English selector and do not render both languages together.
+- **Reason:** Founder selected the simplest consistent language behavior for Phase 1 printed documents.
+
+## D-190 — Rename-only built-in order statuses
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Allow merchants to rename the displayed labels of New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. Do not allow deleting a built-in status or changing its stable semantic identity and associated automatic behavior.
+- **Reason:** Founder chose naming flexibility without permitting the core workflow concepts to be removed.
+
+## D-191 — Bilingual colored and ordered custom statuses
+
+- **Date:** 2026-08-15
+- **Status:** Reinterpreted as order-Label presentation by D-215
+- **Decision:** A custom order status has separate Arabic and English names, a merchant-selected color, and a merchant-controlled display position among available statuses.
+- **Reason:** Founder selected the complete proposed presentation controls.
+
+## D-192 — Replacement migration before deleting an in-use status
+
+- **Date:** 2026-08-15
+- **Status:** Superseded by D-215
+- **Decision:** When deleting a custom status assigned to existing orders, require the merchant to choose another available status. Move all affected orders to that replacement and only then delete the custom status.
+- **Reason:** Labels no longer occupy the required core-status field, so replacement status migration is not part of the revised model.
+
+## D-193 — One shared label for renamed core statuses
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** When a merchant renames a built-in core status, accept one replacement label and display that exact label in both Arabic and English interfaces. Do not provide separate translated rename fields.
+- **Reason:** Founder selected one shared name across both interface languages.
+
+## D-194 — Ten custom statuses per store
+
+- **Date:** 2026-08-15
+- **Status:** Reinterpreted as a ten-Label limit by D-215
+- **Decision:** Limit each store to 10 custom order statuses in Phase 1. Built-in core statuses do not count toward this limit.
+- **Reason:** Founder selected a fixed, manageable limit rather than unlimited custom statuses.
+
+## D-195 — Silent audited status-deletion migration
+
+- **Date:** 2026-08-15
+- **Status:** Superseded by D-215
+- **Decision:** Moving orders to a replacement status as part of deleting a custom status does not send customer status-change emails, even when the replacement is a core status. Record the administrative migration in every affected order's audit history.
+- **Reason:** D-215 removes custom statuses from the core-status field; Label changes remain non-notifying organizational metadata.
+
+## D-196 — Ten-minute merchant WhatsApp code
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** A WhatsApp verification code for a merchant phone number expires 10 minutes after issuance.
+- **Reason:** Founder selected the proposed balance between delivery delay tolerance and security.
+
+## D-197 — Merchant verification resend throttling
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Allow another merchant verification-code request after a 60-second cooldown and permit at most five code sends to the same phone number in a rolling hour.
+- **Reason:** Founder selected the proposed resend controls to limit abuse while allowing recovery from delayed messages.
+
+## D-198 — Five attempts per merchant verification code
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Invalidate the current merchant WhatsApp verification code after five incorrect entries. The merchant must request and use a new code to continue verification.
+- **Reason:** Founder selected per-code invalidation after five failed attempts rather than a longer account lockout.
+
+## D-199 — Shared customer WhatsApp verification limits
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Apply the merchant WhatsApp code rules to customer phone verification and phone-based password recovery: 10-minute validity, 60-second resend cooldown, maximum five sends per phone number per rolling hour, and invalidation after five incorrect entries.
+- **Reason:** Founder selected one consistent WhatsApp verification policy for merchants and customers.
+
+## D-200 — Customer activation only after contact verification
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Keep a newly registered customer account inactive until its selected email address or phone number is verified. Before activation, the person can still place orders through the standard guest checkout flow.
+- **Reason:** Founder selected verified account identity without blocking the guest-first purchase path.
+
+## D-201 — No fallback activation after failed merchant WhatsApp delivery
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** If merchant phone-verification messages cannot be delivered after the allowed attempts, keep the account unverified. Offer another attempt after the limits reset or contact with `lala` support; do not send an email code or let support bypass verification manually.
+- **Reason:** Founder selected the proposed recovery path while preserving WhatsApp-only phone verification.
+
+## D-202 — Permanent hosted-subdomain lock after three changes
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Once a store uses its three allowed hosted-subdomain changes, permanently disable further hosted-subdomain changes for that store. `lala` support cannot override or reset the limit.
+- **Reason:** Founder explicitly selected a final hard stop rather than support-assisted or periodically renewed changes.
+
+## D-203 — Complete empty-store storefront
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** If a public store has no Published products, continue rendering its theme, homepage sections, navigation, and static pages. Product areas display a clear localized message that no products are currently available.
+- **Reason:** Founder selected the full storefront experience instead of replacing it with a Coming Soon or unavailable page.
+
+## D-204 — Dashboard Contact inbox with merchant email alerts
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Store every storefront Contact-form submission in a merchant-dashboard inbox and send the merchant an email notification for each new submission.
+- **Reason:** Founder selected persistent in-product message management plus immediate external awareness.
+
+## D-205 — Unlimited custom-domain changes independent of subdomain lock
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Treat the store's custom domain independently from its hosted-subdomain change counter. Allow the merchant to connect, replace, or remove a custom domain without a numeric change limit, including after the hosted subdomain is permanently locked.
+- **Reason:** Founder selected unrestricted custom-domain management while retaining the hard hosted-subdomain limit.
+
+## D-206 — Contact-form field set
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The storefront Contact form requires customer name, email address, subject, and message. Phone number is supported but optional.
+- **Reason:** Founder selected the proposed contact set with guaranteed email reply capability and optional phone context.
+
+## D-207 — Dashboard Contact replies with email delivery and history
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Allow the merchant to reply to a Contact-form submission from the dashboard. Send the reply to the customer's submitted email address and retain the outgoing reply with the original message as a dashboard conversation history.
+- **Reason:** Founder selected an integrated merchant workflow rather than requiring replies from an external mailbox.
+
+## D-208 — Custom domain as primary storefront address
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** After a connected custom domain is verified and active, make it the storefront's primary canonical address and redirect requests from the hosted `lala` subdomain to that custom domain.
+- **Reason:** Founder selected one clear customer-facing address rather than serving duplicate storefront URLs independently.
+
+## D-209 — Automatically managed custom-domain HTTPS
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Issue and renew HTTPS certificates for connected custom domains automatically through `lala`, without an additional certificate charge to the merchant. Do not require merchant-uploaded certificates or permit HTTP-only operation.
+- **Reason:** Founder selected secure zero-maintenance custom-domain operation.
+
+## D-210 — Automatic hosted-subdomain fallback
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** If a custom domain is removed or no longer resolves correctly to `lala`, keep the hosted subdomain available, automatically restore it as the storefront's primary address, stop redirecting it to the failed custom domain, and alert the merchant.
+- **Reason:** Founder selected continuous storefront availability with an explicit merchant warning.
+
+## D-211 — Immediate Bosta credential validation
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Test the merchant's Bosta credentials immediately when they are saved. Show Connected on success or the provider's actionable failure reason on failure, and do not mark the connection active when validation fails.
+- **Reason:** Founder selected early connection feedback rather than discovering invalid credentials during shipment submission.
+
+## D-212 — Block duplicate active Bosta shipments
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** If an order already has an active Bosta shipment, block another Bosta submission and take the merchant to the existing shipment details instead of creating a duplicate.
+- **Reason:** Founder selected strict duplicate prevention with direct access to the current shipment.
+
+## D-213 — Bosta events automatically update core order status
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; partially supersedes D-074
+- **Decision:** Synchronize Bosta shipment-status changes automatically and use those events to update the order's core status. The normalized event-to-status mapping, manual-override behavior, and customer-email behavior are decided separately.
+- **Reason:** Founder explicitly replaced manual-only order-status control for connected Bosta shipments with automatic synchronization.
+
+## D-214 — Normalized Bosta event mapping
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Map normalized Bosta shipment events to core order statuses as follows: provider Accepted to Processing; provider picked up or in transit to Shipped; delivered to Delivered; cancelled to Cancelled; and returned to Returned. Other delivery exceptions or unrecognized events do not change the core status and instead create a merchant alert.
+- **Reason:** Founder selected the proposed lifecycle mapping with alert-only handling for exceptional events.
+
+## D-215 — Separate core order status and merchant Labels
+
+- **Date:** 2026-08-15
+- **Status:** Accepted; supersedes the custom-status model in D-027, D-055, D-066, D-192, and D-195
+- **Decision:** Keep one controlled core order-status field for known lifecycle states such as New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. Put any additional merchant-defined classification in a separate Labels field rather than creating custom statuses. Existing presentation and count decisions for custom statuses are reinterpreted as Label-definition rules; Labels do not drive lifecycle automation or customer status emails.
+- **Reason:** Founder explicitly separated recognized order lifecycle state from arbitrary merchant organization.
+
+## D-216 — Customer emails for Bosta-driven core status changes
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** When a synchronized Bosta event changes the core order status, send the customer the same core-status email that would be sent after a merchant-driven change, provided the order has a customer email address.
+- **Reason:** Founder selected consistent customer communication regardless of who caused the core status change.
+
+## D-217 — Mixed-experience first pilot cohort
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Recruit a mix of merchants who are starting to sell online and merchants who already sell for the first Phase 1 pilot. Do not restrict the cohort to only one experience level.
+- **Reason:** Founder selected a mixed cohort to validate both first-time setup and adoption by existing sellers.
+
+## D-218 — Ten-merchant 30-day pilot
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Run the first Phase 1 pilot with 10 merchants for a 30-day measurement period.
+- **Reason:** Founder selected the proposed small, time-boxed validation cohort.
+
+## D-219 — Seven activated merchants with ten real orders each
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Consider the Phase 1 MVP pilot successful when at least 7 of the 10 participating merchants publish their storefronts and each of those merchants receives at least 10 real customer orders during the 30-day pilot.
+- **Reason:** Founder selected a behavioral outcome that measures both successful activation and repeated real-world commerce use.
+
+## D-220 — Prepaid pay-per-order store wallet
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Use a prepaid pay-per-order monetization model instead of recurring store subscriptions. Give each store its own `lala` operating wallet, funded by the merchant, and charge that wallet for use of the order intake and management flow.
+- **Reason:** Founder explicitly replaced the proposed subscription model with usage-based order monetization.
+
+## D-221 — Owner-configurable fee starting at EGP 1 per created order
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Let the `lala` platform owner configure the fee charged for every order created by a store. Set the initial Phase 1 fee to EGP 1 per created order.
+- **Reason:** Founder selected centrally controlled per-order pricing and specified the initial amount.
+
+## D-222 — EGP 10 wallet overdraft with customer-data masking
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Allow each store wallet to fall as low as EGP -10 while the merchant can continue seeing order customer data. If the balance falls below EGP -10, continue recording orders and applying their configured fees, but replace customer identity, contact, and delivery data in merchant order views with `****`. Restore visibility when the wallet is recharged to EGP -10 or higher.
+- **Reason:** Founder selected a limited overdraft followed by data-level access restriction rather than stopping customer order creation.

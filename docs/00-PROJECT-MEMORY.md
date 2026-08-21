@@ -20,7 +20,7 @@
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
 - Design Batch 4 is delivered and published as Sites version 6 for review: catalog organization, featured-product ordering, product Trash with restore-as-Hidden, CSV mapping/validation/background processing, and import results.
-- The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is implemented and awaiting its next published checkpoint.
+- The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is published as Sites version 8.
 - `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
@@ -329,7 +329,7 @@ Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of tru
 - Laravel implementation is deliberately postponed, not blocked.
 - Design Batches 2, 3, and 4 await founder acceptance or revision.
 - Batch 4 is delivered; Batch 5 must not start until the founder passes the Batch 4 review gate.
-- The incorrect version 7 information architecture has been corrected in the static source and documentation; visual review of the new checkpoint is the active UX gate.
+- The incorrect version 7 information architecture has been corrected and published as Sites version 8; founder review of that hierarchy is the active UX gate.
 
 ## GitHub sync status
 

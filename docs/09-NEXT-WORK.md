@@ -5,7 +5,7 @@
 ## Immediate static-design queue
 
 1. **Review Design Batches 2 and 3** — record acceptance or requested revisions for Orders plus Products and Inventory.
-2. **Review Design Batch 4 — Product organization and tools** at https://lala-design-system.curbs-storm-80.chatgpt.site after the corrected navigation checkpoint:
+2. **Review Design Batch 4 — Product organization and tools** at https://lala-design-system.curbs-storm-80.chatgpt.site using the corrected Sites version 8 hierarchy:
    - `catalog-organization.html`
    - `featured-products.html`
    - `product-trash.html`

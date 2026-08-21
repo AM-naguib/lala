@@ -12,10 +12,11 @@
    - `product-import.html`
    - `product-import-results.html`
 3. **Stop before Batch 5** — do not start Customers until the founder accepts Batch 4 or records requested changes.
-4. **On acceptance, execute Batch 5 — Customers** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md).
-5. **Preserve the static delivery contract** — one plain HTML file per screen, Tailwind CSS v4-compatible token bridges and classes, Alpine.js CDN markup, extraction markers, real Arabic/English copy, and RTL/LTR parity.
-6. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
-7. **Keep pilot-specific pricing deferred** until pilot preparation.
+4. **On acceptance, execute Batch 5 — Customers** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) and the binding [`ux/`](ux/README.md) operating guide.
+5. **Apply the UX gate to every new screen** — define navigation parent, entry/exit, primary action, mobile access, recovery, and pass every P0 item in [`ux/02-SCREEN-CHECKLIST.md`](ux/02-SCREEN-CHECKLIST.md).
+6. **Preserve the static delivery contract** — one plain HTML file per screen, Tailwind CSS v4-compatible token bridges and classes, Alpine.js CDN markup, extraction markers, real Arabic/English copy, and RTL/LTR parity.
+7. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
+8. **Keep pilot-specific pricing deferred** until pilot preparation.
 
 The accepted roadmap covers Batches 4–17. Batch 4 is delivered and published as Sites version 6; the current execution state is its review gate.
 

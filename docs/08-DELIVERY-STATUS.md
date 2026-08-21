@@ -110,3 +110,22 @@ Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 | Inventory management | https://lala-design-system.curbs-storm-80.chatgpt.site/inventory.html |
 
 Implemented review states include catalog filters and empty/loading/no-results previews, bilingual media and pricing fields, flexible variants, exact inventory pills, optional thresholds, stock-adjustment history, manual adjustment drawer, return non-restock guidance, and static cross-navigation with Batches 1–2.
+
+## Design system — Batch 4
+
+**State: Delivered and published; awaiting founder review.**
+
+Published as Sites version 6: https://lala-design-system.curbs-storm-80.chatgpt.site
+
+| Screen | Review URL |
+|---|---|
+| Catalog organization | https://lala-design-system.curbs-storm-80.chatgpt.site/catalog-organization.html |
+| Featured products | https://lala-design-system.curbs-storm-80.chatgpt.site/featured-products.html |
+| Product Trash | https://lala-design-system.curbs-storm-80.chatgpt.site/product-trash.html |
+| CSV import | https://lala-design-system.curbs-storm-80.chatgpt.site/product-import.html |
+| Import results | https://lala-design-system.curbs-storm-80.chatgpt.site/product-import-results.html |
+
+Delivered behavior includes Categories/Collections/Tags tabs, review-only similar-name warnings, featured-product ordering, soft-delete restoration as Hidden, CSV mapping and validation, lala ID/SKU conflict rejection without mutation, public-image URL success/failure, large-import background processing, valid/rejected results, and downloadable result/error states.
+
+Existing Products list now includes all/filtered export controls and a destructive bulk-action preview. Product editor links directly to organization management and Trash.
+

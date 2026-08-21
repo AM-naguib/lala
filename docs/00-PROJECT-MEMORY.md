@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Static design-system delivery. Design Batch 1 is accepted, Design Batch 2 is delivered for review, and Laravel implementation is intentionally postponed.
+- **Current phase:** Static design-system delivery. Design Batch 1 is accepted; Design Batches 2 and 3 are delivered for review; Laravel implementation is intentionally postponed.
 - **Status date:** 2026-08-21 (Africa/Cairo).
 
 ## Latest delivery checkpoint
@@ -18,6 +18,8 @@
 - The MVP has no payment-status field or payment pills. COD is the only payment method, and cash collection is not modeled.
 - Inventory presentation uses In stock, Low stock, and Out of stock.
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
+- Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
+- Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 - Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.
@@ -315,25 +317,25 @@
 
 ## Active objective
 
-Review Design Batch 2, define the exact Batch 3 screen group, and continue producing portable static HTML screens with Tailwind CSS v4 and Alpine.js. Do not start Laravel implementation yet.
+Review Design Batches 2 and 3, record founder revisions or acceptance, and define the next static screen group before producing it. Do not start Laravel implementation yet.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
-- Design Batch 2 still awaits founder acceptance or revision.
-- The exact Design Batch 3+ screen plan has not been approved and must not be invented.
+- Design Batches 2 and 3 await founder acceptance or revision.
+- The exact Batch 4+ screen plan has not been approved and must not be invented.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** refreshed memory, completed architecture baseline, Design Batch 2 acceptance, and the exact Design Batch 3 scope.
+- **Pending review:** refreshed memory, completed architecture baseline, and founder review of Design Batches 2–3.
 
 ## Next decisions to obtain
 
-- Accept or revise Design Batch 2.
-- Define the exact scope and screens for Design Batch 3.
+- Accept or revise Design Batches 2 and 3.
+- Define the exact scope and screens for the next static batch.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

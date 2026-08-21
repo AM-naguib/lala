@@ -22,6 +22,7 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 - [`docs/07-ARCHITECTURE-PLAN.md`](docs/07-ARCHITECTURE-PLAN.md) — active architecture inputs, proposals, and unresolved technical decisions.
 - [`docs/08-DELIVERY-STATUS.md`](docs/08-DELIVERY-STATUS.md) — completed and delivered work, including Design Batches 1–2.
 - [`docs/09-NEXT-WORK.md`](docs/09-NEXT-WORK.md) — immediate review queue, remaining decisions, and proposed implementation sequence.
+- [`docs/10-FRONTEND-DELIVERY-PLAN.md`](docs/10-FRONTEND-DELIVERY-PLAN.md) — accepted Batches 4–17 roadmap for completing the static frontend.
 
 ## Current snapshot
 

@@ -20,6 +20,7 @@
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
+- The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 - Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.

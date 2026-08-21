@@ -23,7 +23,7 @@
 
 ## Confirmed decisions
 
-1. The GitHub repository must be private and named `lala`.
+1. The GitHub repository is public and named `lala`; secrets, credentials, personal data, and production customer data must never be committed.
 2. The product keeps a global long-term ambition, while Phase 1 supports shipping coverage in Egypt only.
 3. The broad intended audience is anyone who wants to create an online store.
 4. Planning questions must stay limited to the current phase; do not jump ahead to later phases.
@@ -237,6 +237,10 @@
 212. `lala` monetization is prepaid pay-per-order rather than a recurring store subscription: every store has an operating wallet that the merchant funds to use order intake and management.
 213. The `lala` platform owner configures the fee charged for each created order; the initial fee is EGP 1 per order.
 214. A store wallet may fall to EGP -10. If it falls below EGP -10, orders continue to be recorded and charged, but the merchant sees `****` instead of customer data until the wallet is recharged to EGP -10 or higher.
+215. `AM-naguib/lala` remains public by explicit founder approval; sensitive data and secrets remain prohibited.
+216. Redis through PhpRedis stores sessions, cache, distributed locks, rate-limit counters, and Horizon queues with isolated connections or prefixes.
+217. Internal records use unsigned BIGINT primary keys; externally exposed records also receive immutable unique ULID `public_id` values, while human order numbers remain a separate store-scoped sequence.
+218. Merchant authentication uses the Laravel 13 Livewire starter kit and Fortify foundation with custom WhatsApp behavior; Admin and store-scoped Customer identities use separate Laravel guards, providers, brokers, and custom flows.
 
 ## Current interpretation
 
@@ -244,15 +248,15 @@
 - The global ambition is now a later expansion direction rather than full Phase 1 country coverage. Phase 1 shipping is Egypt only, although the model allows a store to use any number of platform-supported countries when more are introduced.
 - The earlier plan to sell physical and digital products in the MVP was narrowed: paid digital selling is postponed because COD has no physical collection event.
 - Arabic and English interface support and bilingual catalog entry are confirmed. Products have separate fields for each language and one primary language.
-- Merchant sign-up requires WhatsApp phone-number verification only. Code lifetime, resend rules, and attempt limits are not yet defined.
+- Merchant sign-up requires WhatsApp phone-number verification only: codes last 10 minutes, resend has a 60-second cooldown, each phone can receive five sends per rolling hour, and five wrong attempts invalidate the active code.
 - Currency can change after orders exist. Historical orders keep their original destination and currency snapshots. Current catalog price numbers remain unchanged when the currency code changes, so a value of 100 becomes 100 in the newly selected currency without conversion.
 - Because the store has no operating country, shipping zones are independent from store identity. Egypt is the only supported shipping country in Phase 1; cross-country zone composition is deferred until a second country is introduced.
 - Egypt is implicit at checkout. Customers select a governorate and then a city or area from preloaded geography; checkout cannot continue when that location is not covered by an enabled merchant zone.
 - Active shipping zones cannot overlap at the city or area level. Shipping cost appears as soon as the location is selected, and merchants can extend their own geography with custom cities or areas.
 - Custom locations remain store-specific. Zero-price zones provide free shipping. Every order snapshots its shipping price at creation, while later orders use the current zone price.
 - A changed subdomain stops serving the store without redirecting, remains reserved for 10 days, and each store has a maximum of three hosted-subdomain changes.
-- The store is public immediately after onboarding and may initially be empty. Storefront empty-state presentation is not yet defined.
-- The storefront supports multiple ready themes, theme preview with content preservation, brand controls, and reorderable predefined homepage sections. Hero or Slider is the initial selected section type. Five built-in pages plus unlimited custom pages use bilingual fields with primary-language fallback. Contact includes a form and store details; form-delivery behavior remains unresolved.
+- The store is public immediately after onboarding and may initially be empty; it still renders the full theme, navigation, homepage sections, and static pages with a clear empty-catalog message.
+- The storefront supports multiple ready themes, theme preview with content preservation, brand controls, and reorderable predefined homepage sections. Hero or Slider is the initial selected section type. Five built-in pages plus unlimited custom pages use bilingual fields with primary-language fallback. Contact submissions are stored in the dashboard, alert the merchant by email, and support dashboard replies delivered to the customer by email.
 - Storefront catalog discovery uses product-name-only search, filters for price, category or collection, availability, and product options, and sorting by Featured, Newest, ascending or descending price, and Name. Featured is the default sort, Featured products are selected and ordered manually by the merchant, and long product lists load automatically as the customer scrolls.
 - Product cards include image, name, selling and compare-at prices, and inventory state. Out of Stock products remain in their current list positions with a clear label. Variant products initially select the first available variant automatically, after which the customer can change options.
 - Variant-level commerce data includes independent selling price, compare-at price, cost, SKU, inventory quantity, and image.
@@ -298,7 +302,7 @@
 - Permanent product deletion behavior is not yet defined.
 - Phase 1 implementation will be done by the founder with AI assistance, is Web-only, and has no fixed pilot-delivery deadline.
 - The complete backend will use PHP with Laravel, matching the founder's existing backend experience. The earlier TypeScript/NestJS backend proposal was rejected before acceptance.
-- MySQL is the primary database, and the codebase will use Laravel's traditional application structure rather than an explicit domain-module architecture. The frontend choice remains open.
+- MySQL is the primary database, and the codebase uses Laravel's traditional application structure. The frontend choices are accepted: Livewire + Blade for the merchant dashboard and Blade + Alpine.js for the storefront.
 - The founder has no strong existing frontend-framework experience. The merchant dashboard uses Livewire with Blade, while the customer storefront uses Blade with Alpine.js. Both remain inside the Laravel application; React, Vue, Inertia, Next.js, and a separate frontend application are excluded from the initial stack.
 - Initial implementation targets Laravel 13 on PHP 8.5. Both interfaces use Tailwind CSS, and Alpine.js behavior is written in plain JavaScript rather than TypeScript.
 - Background work uses Redis queues monitored by Laravel Horizon, and automated application tests use Pest.
@@ -309,30 +313,27 @@
 
 ## Active objective
 
-Review Design Batch 2, define the exact next design batch, complete the three remaining architecture inputs, and prepare production implementation without expanding the accepted MVP scope.
+Start the production Laravel foundation using the completed architecture baseline while Design Batch 2 is reviewed and the exact Batch 3 scope is defined.
 
 ## Current blockers
 
-- Repository visibility mismatch: D-002 requires a private repository, while GitHub currently reports `AM-naguib/lala` as public.
+- No architecture decision blocks bootstrapping the Laravel application.
+- Design Batch 2 still awaits founder acceptance or revision.
 - The exact Design Batch 3+ screen plan has not been approved and must not be invented.
-- Production implementation should not begin without resolving or deliberately deferring the active architecture questions.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** delivery status, next-work queue, design decisions, and public/private visibility mismatch.
+- **Pending review:** refreshed memory, completed architecture baseline, Design Batch 2 acceptance, and the exact Design Batch 3 scope.
 
 ## Next decisions to obtain
 
 - Accept or revise Design Batch 2.
 - Define the exact scope and screens for Design Batch 3.
-- Select session, cache, distributed-lock, and rate-limit storage.
-- Select internal and public identifier formats.
-- Select Laravel's authentication foundation and customization boundary.
-- Reconcile the repository's current public visibility with the accepted private-repository decision.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
+- Choose production hosting, backup, monitoring, and recovery targets during deployment planning.
 
 ## Guardrails for future sessions
 

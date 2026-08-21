@@ -7,8 +7,8 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Static frontend delivery. Design Batch 1 is accepted; Batches 2–3 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
-- **Status date:** 2026-08-21 (Africa/Cairo).
+- **Current phase:** Static frontend delivery. Design Batches 1 and 4 are accepted; Batches 2–3 and 5 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
+- **Status date:** 2026-08-22 (Africa/Cairo).
 
 ## Latest delivery checkpoint
 
@@ -19,7 +19,8 @@
 - Inventory presentation uses In stock, Low stock, and Out of stock.
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
-- Design Batch 4 is delivered and published as Sites version 6 for review: catalog organization, featured-product ordering, product Trash with restore-as-Hidden, CSV mapping/validation/background processing, and import results.
+- Design Batch 4 is accepted after the D-259 hierarchy correction published in Sites version 8.
+- Design Batch 5 is delivered as Sites version 9: Customers list, unified Customer detail, and identity-conflict review with Guest/Account states, blocking, multiple addresses, order metrics/history, and wallet masking.
 - The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is published as Sites version 8.
 - `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
@@ -322,13 +323,13 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–4 open for founder review and stop before Batch 5 Customers. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet.
+Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–3 and 5 open for founder review and stop before Batch 6 Discounts. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
-- Design Batches 2, 3, and 4 await founder acceptance or revision.
-- Batch 4 is delivered; Batch 5 must not start until the founder passes the Batch 4 review gate.
+- Design Batches 2, 3, and 5 await founder acceptance or revision.
+- Batch 4 is accepted; Batch 6 must not start until the founder passes the Batch 5 review gate.
 - The incorrect version 7 information architecture has been corrected and published as Sites version 8; founder review of that hierarchy is the active UX gate.
 
 ## GitHub sync status
@@ -336,12 +337,12 @@ Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of tru
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** refreshed memory and founder review of delivered Batches 2–4 before Batch 5.
+- **Pending review:** refreshed memory and founder review of delivered Batches 2–3 and 5 before Batch 6.
 
 ## Next decisions to obtain
 
-- Accept or revise Design Batches 2, 3, and 4.
-- After Batch 4 acceptance, execute Batch 5 Customers according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
+- Accept or revise Design Batches 2, 3, and 5.
+- After Batch 5 acceptance, execute Batch 6 Discounts according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

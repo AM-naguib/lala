@@ -29,7 +29,9 @@
 - Batches 4–17 define 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
 - Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
-- Batch 5 — Customers is delivered as Sites version 9 and is the current review gate.
+- Batch 5 — Customers is accepted.
+- Batch 6 — Discounts is delivered and is the current review gate.
+- The complete portable static source is versioned under `prototype/` in the public repository.
 - Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
@@ -105,7 +107,7 @@ Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 
 ## Design system — Batch 5
 
-**State: Delivered as Sites version 9; awaiting founder review.**
+**State: Accepted by the founder.**
 
 | Screen | Review URL |
 |---|---|
@@ -116,6 +118,17 @@ Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 Delivered behavior includes name/phone/email search, type/status/tag filters, customer metrics, Guest and Account states, optional email, multiple addresses, order history and spend, internal notes and tags, blocking by phone or email, empty/no-results states, and identity-conflict review without silent merging.
 
 Wallet overdraft masks phone, email, and addresses while preserving customer IDs, order numbers, statuses, and totals. Sensitive export and conflict resolution are disabled until recharge restores the balance to at least EGP -10.00.
+
+## Design system — Batch 6
+
+**State: Delivered; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| Discounts list | https://lala-design-system.curbs-storm-80.chatgpt.site/discounts-list.html |
+| Coupon editor | https://lala-design-system.curbs-storm-80.chatgpt.site/discount-editor.html |
+
+Delivered behavior includes active/scheduled/expired/exhausted lifecycle states, search and type/state filters, percentage/fixed/free-shipping rewards, validity dates, total usage limit, optional minimum products subtotal, and previews for invalid dates, duplicate codes, exhausted usage, and expiry. The UI explicitly preserves whole-order scope, one coupon per order, and the minimum-subtotal basis before discount excluding shipping.
 
 | Screen | Review URL |
 |---|---|

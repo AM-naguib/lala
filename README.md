@@ -27,6 +27,12 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 
 Current Merchant navigation rule: Dashboard, Orders, and Products are the active level-one modules. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
 
+## Static frontend prototype
+
+The actual portable HTML source is checked in under [`prototype/`](prototype/). It includes every current screen, the Tailwind CSS v4 token bridge, self-hosted font files, Alpine.js prototype markup, extraction markers, and the design-contract test. The published review site remains https://lala-design-system.curbs-storm-80.chatgpt.site.
+
+Current Merchant level-one modules are Dashboard, Orders, Products, Customers, and Discounts. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
+
 ## Current snapshot
 
 - Repository: public GitHub repository `AM-naguib/lala` by explicit founder approval.
@@ -177,6 +183,6 @@ Current Merchant navigation rule: Dashboard, Orders, and Products are the active
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: remain static, review Design Batch 2, define the exact Batch 3 scope, and continue portable Tailwind CSS v4 + Alpine.js HTML screens. Laravel implementation is postponed until explicit founder approval.
+- Immediate focus: remain static, review delivered Batches 2–3 and Batch 6, then continue with Batch 7 Shipping zones and Bosta after acceptance. Laravel implementation is postponed until explicit founder approval.
 
 Last updated: 2026-08-21 (Africa/Cairo)

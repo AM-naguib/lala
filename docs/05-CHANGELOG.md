@@ -1055,3 +1055,16 @@
 - Uploaded the completed Phase 1 planning documentation through D-222 and Q-213 to private `AM-naguib/lala` on `main`.
 - Reset the GitHub synchronization counter to 0/50.
 - Left Q-210 pilot-specific pricing explicitly deferred and recorded no active Phase 1 product questions.
+
+## 2026-08-22 — Batch 6 Discounts and portable source publication
+
+### Added
+
+- Accepted Batch 5 Customers after founder review.
+- Delivered Discounts list and Coupon editor with only the three approved reward types and the controlled coupon lifecycle states.
+- Added the complete portable static frontend source under `prototype/`, including all current HTML screens, token and font assets, Alpine markup, extraction markers, constants reference, and the static contract test.
+
+### Changed
+
+- Added Discounts as a level-one Merchant module on desktop and mobile navigation.
+- Advanced the frontend review gate to Batch 6 before Batch 7 Shipping zones and Bosta.

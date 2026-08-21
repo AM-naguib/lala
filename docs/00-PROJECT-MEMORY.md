@@ -323,13 +323,13 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–3 and 5 open for founder review and stop before Batch 6 Discounts. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet.
+Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–3 and 6 open for founder review and stop before Batch 7 Shipping zones and Bosta. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet. The complete static prototype is versioned under `prototype/`.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
 - Design Batches 2, 3, and 5 await founder acceptance or revision.
-- Batch 4 is accepted; Batch 6 must not start until the founder passes the Batch 5 review gate.
+- Batches 4 and 5 are accepted; Batch 7 must not start until the founder passes the Batch 6 review gate.
 - The incorrect version 7 information architecture has been corrected and published as Sites version 8; founder review of that hierarchy is the active UX gate.
 
 ## GitHub sync status
@@ -337,12 +337,12 @@ Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of tru
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** refreshed memory and founder review of delivered Batches 2–3 and 5 before Batch 6.
+- **Pending review:** founder review of delivered Batches 2–3 and 6 before Batch 7.
 
 ## Next decisions to obtain
 
 - Accept or revise Design Batches 2, 3, and 5.
-- After Batch 5 acceptance, execute Batch 6 Discounts according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
+- After Batch 6 acceptance, execute Batch 7 Shipping zones and Bosta according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

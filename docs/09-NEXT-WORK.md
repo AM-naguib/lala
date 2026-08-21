@@ -5,18 +5,17 @@
 ## Immediate static-design queue
 
 1. **Review Design Batches 2 and 3** — record acceptance or requested revisions for Orders plus Products and Inventory.
-2. **Review Design Batch 5 — Customers** at https://lala-design-system.curbs-storm-80.chatgpt.site:
-   - `customers-list.html`
-   - `customer-detail.html`
-   - `customer-identity-review.html`
-3. **Stop before Batch 6** — do not start Discounts until the founder accepts Batch 5 or records requested changes.
-4. **On acceptance, execute Batch 6 — Discounts** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) and the binding [`ux/`](ux/README.md) operating guide.
+2. **Review Design Batch 6 — Discounts** at https://lala-design-system.curbs-storm-80.chatgpt.site:
+   - `discounts-list.html`
+   - `discount-editor.html`
+3. **Stop before Batch 7** — do not start Shipping zones and Bosta until the founder accepts Batch 6 or records requested changes.
+4. **On acceptance, execute Batch 7 — Shipping zones and Bosta** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) and the binding [`ux/`](ux/README.md) operating guide.
 5. **Apply the UX gate to every new screen** — define navigation parent, entry/exit, primary action, mobile access, recovery, and pass every P0 item in [`ux/02-SCREEN-CHECKLIST.md`](ux/02-SCREEN-CHECKLIST.md).
 6. **Preserve the static delivery contract** — one plain HTML file per screen, Tailwind CSS v4-compatible token bridges and classes, Alpine.js CDN markup, extraction markers, real Arabic/English copy, and RTL/LTR parity.
 7. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
 8. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The accepted roadmap covers Batches 4–17. Batch 4 is accepted; the current execution state is Batch 5 founder review before Batch 6.
+The accepted roadmap covers Batches 4–17. Batches 4 and 5 are accepted; the current execution state is Batch 6 founder review before Batch 7.
 
 ## Future implementation sequence — postponed
 

@@ -24,7 +24,8 @@
 | 3 | Products list، Product editor، Variants، Inventory | Delivered — awaiting review |
 | 3.1 | Unified constants contract | Implemented and published |
 | 4 | Product organization، Featured products، Product tools: Trash/CSV import/results | Accepted |
-| 5 | Customers list، Customer detail، Identity conflict review | Delivered — awaiting review |
+| 5 | Customers list، Customer detail، Identity conflict review | Accepted |
+| 6 | Discounts list، Coupon editor | Delivered — awaiting review |
 
 الموقع المرجعي الحالي: https://lala-design-system.curbs-storm-80.chatgpt.site
 
@@ -117,6 +118,8 @@
 
 ## Batch 5 — Customers
 
+**الحالة:** Accepted.  
+
 **الهدف:** تقديم سجل موحد للعميل مرتبط بالطلبات مع حماية البيانات عند عجز المحفظة.
 
 | File | Screen |
@@ -139,6 +142,8 @@
 **بوابة القبول:** كل بيانات العميل المؤكدة موجودة من غير اختراع CRM features جديدة.
 
 ## Batch 6 — Discounts
+
+**الحالة:** Delivered — awaiting founder review.  
 
 **الهدف:** إدارة Coupons فقط طبقًا للـMVP.
 

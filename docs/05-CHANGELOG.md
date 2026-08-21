@@ -1,5 +1,23 @@
 # Documentation Changelog
 
+## 2026-08-21 — Design delivery memory refreshed
+
+### Added
+
+- Added `08-DELIVERY-STATUS.md` for accepted, delivered, and not-started work.
+- Added `09-NEXT-WORK.md` for the review queue, open architecture decisions, deferred scope, and proposed implementation order.
+- Recorded Design Batch 1 as accepted and Batch 2 as delivered for review.
+- Recorded the Tailwind CSS v4 token bridge, self-hosted IBM Plex font policy, 52px density, and browser-verified RTL/Mono behavior.
+- Reconfirmed the exact seven core statuses, separate Labels, no payment-status model, three inventory states, and Bosta mappings.
+- Added active questions for Batch 2 review, Batch 3 scope, runtime state stores, identifiers, and authentication foundation.
+- Recorded the founder's explicit approval to publish these memory documents while the repository is public.
+
+### Changed
+
+- Updated the project-memory date and active objective.
+- Replaced outdated pre-architecture wording now that the technology stack is accepted.
+- Clarified that the static design batches are prototypes and production Laravel implementation has not started.
+
 ## 2026-08-15 — Architecture planning started
 
 ### Added

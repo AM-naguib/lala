@@ -129,3 +129,17 @@ Delivered behavior includes Categories/Collections/Tags tabs, review-only simila
 
 Existing Products list now includes all/filtered export controls and a destructive bulk-action preview. Product editor links directly to organization management and Trash.
 
+## UX navigation and ease-of-use remediation
+
+**State: Implemented and published as Sites version 7.**
+
+- Catalog is a level-one Sidebar destination on every current merchant screen.
+- Products and Catalog have separate, correct active states with `aria-current="page"`.
+- Every current merchant screen exposes Dashboard, Orders, Products, Catalog, and Inventory on mobile.
+- Products list action hierarchy is simplified; infrequent export/Trash actions moved to More actions.
+- Future unavailable App shell destinations are visibly Disabled instead of behaving like dead links.
+- Automated tests enforce Catalog reachability and mobile primary navigation.
+- `docs/ux/` now governs information architecture, screen-level P0 acceptance, and UX backlog handling.
+
+Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
+

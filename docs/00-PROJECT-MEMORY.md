@@ -7,8 +7,19 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Architecture and delivery planning, active after completing Phase 1 product discovery.
-- **Status date:** 2026-08-15 (Africa/Cairo).
+- **Current phase:** Architecture and delivery planning; Design Batch 1 is accepted, Design Batch 2 is delivered for review, and production Laravel implementation has not started.
+- **Status date:** 2026-08-21 (Africa/Cairo).
+
+## Latest delivery checkpoint
+
+- Phase 1 product discovery and the core technology stack are complete.
+- Design Batch 1 is accepted: Tailwind CSS v4 token bridge, self-hosted IBM Plex fonts, bilingual RTL/LTR foundations, standardized 52px merchant tables, and wallet calm/watch/overdraft states.
+- The controlled order status set is exactly New, Confirmed, Processing, Shipped, Delivered, Cancelled, and Returned. Extra merchant classification belongs in Labels.
+- The MVP has no payment-status field or payment pills. COD is the only payment method, and cash collection is not modeled.
+- Inventory presentation uses In stock, Low stock, and Out of stock.
+- Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
+- Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
+- Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 
 ## Confirmed decisions
 
@@ -298,30 +309,35 @@
 
 ## Active objective
 
-Define a maintainable architecture and delivery plan for the completed Phase 1 MVP, then prepare implementation without expanding the agreed product scope.
+Review Design Batch 2, define the exact next design batch, complete the three remaining architecture inputs, and prepare production implementation without expanding the accepted MVP scope.
 
 ## Current blockers
 
-- No repository blocker. The private source repository is `https://github.com/AM-naguib/lala` and is the synchronization target for project memory and planning.
+- Repository visibility mismatch: D-002 requires a private repository, while GitHub currently reports `AM-naguib/lala` as public.
+- The exact Design Batch 3+ screen plan has not been approved and must not be invented.
+- Production implementation should not begin without resolving or deliberately deferring the active architecture questions.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Counter reset point:** after the completed GitHub synchronization containing architecture inputs Q-214 through Q-235, excluding comparison-only Q-218 and Q-223, through D-241.
-- **Answered questions since last push:** 0/50.
-- **Pending unpushed documentation:** none.
+- **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
+- **Working branch:** `docs/project-memory-2026-08-21`.
+- **Pending review:** delivery status, next-work queue, design decisions, and public/private visibility mismatch.
 
 ## Next decisions to obtain
 
+- Accept or revise Design Batch 2.
+- Define the exact scope and screens for Design Batch 3.
 - Select session, cache, distributed-lock, and rate-limit storage.
 - Select internal and public identifier formats.
 - Select Laravel's authentication foundation and customization boundary.
+- Reconcile the repository's current public visibility with the accepted private-repository decision.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions
 
 - Never treat an unanswered question as a decision.
-- Do not choose a technology stack before the MVP and non-functional requirements justify it.
+- Do not replace the accepted technology stack without an explicit superseding decision.
 - Preserve earlier decisions unless the founder explicitly changes them.
 - When a decision changes, mark the old one as superseded; do not erase its history.
 - Ask only a small batch of questions about the active phase.
@@ -334,3 +350,5 @@ Define a maintainable architecture and delivery plan for the completed Phase 1 M
 - Decisions: [`03-DECISIONS.md`](03-DECISIONS.md)
 - Open questions: [`04-OPEN-QUESTIONS.md`](04-OPEN-QUESTIONS.md)
 - History: [`05-CHANGELOG.md`](05-CHANGELOG.md)
+- Delivery status: [`08-DELIVERY-STATUS.md`](08-DELIVERY-STATUS.md)
+- Next work: [`09-NEXT-WORK.md`](09-NEXT-WORK.md)

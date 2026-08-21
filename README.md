@@ -25,6 +25,8 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 - [`docs/10-FRONTEND-DELIVERY-PLAN.md`](docs/10-FRONTEND-DELIVERY-PLAN.md) — accepted Batches 4–17 roadmap for completing the static frontend.
 - [`docs/ux/README.md`](docs/ux/README.md) — binding UX principles, information architecture, screen checklist, and prioritized UX backlog.
 
+Current Merchant navigation rule: Dashboard, Orders, and Products are the active level-one modules. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
+
 ## Current snapshot
 
 - Repository: public GitHub repository `AM-naguib/lala` by explicit founder approval.

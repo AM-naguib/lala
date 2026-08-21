@@ -2,11 +2,13 @@
 
 `lala` is a multi-tenant SaaS e-commerce platform for anyone who wants to launch and operate an online store.
 
-Repository: `AM-naguib/lala`. The accepted target visibility is private, but GitHub currently reports the repository as public; this mismatch is tracked as an open action.
+Public source repository: `AM-naguib/lala`. The founder explicitly approved publishing project memory and decisions here; secrets, credentials, personal data, and production customer data remain prohibited.
 
 **Phase 1: discovery and MVP definition is complete.** Architecture and delivery planning is now active; implementation has not started. The confirmed application stack is PHP 8.5 with Laravel 13, MySQL, Laravel's traditional structure, Livewire with Blade for the merchant dashboard, Blade with Alpine.js using plain JavaScript for the customer storefront, Tailwind CSS, Redis with Horizon, and Pest. Pilot files use local server storage through Laravel's storage abstraction before a later object-storage migration.
 
 Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate Admin, Merchant, and Customer authentication tables and guards, and a custom domain-resolution middleware backed by a domains table.
+
+Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limits, and Horizon queues. Internal records use BIGINT primary keys with separate public ULIDs. Merchant authentication starts from the Laravel 13 Livewire starter kit and Fortify; Admin and store-scoped Customer authentication use dedicated Laravel guards and custom flows.
 
 ## Project documents
 
@@ -23,7 +25,7 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 
 ## Current snapshot
 
-- Repository target: private GitHub repository named `lala`; current GitHub visibility is public and must be reconciled.
+- Repository: public GitHub repository `AM-naguib/lala` by explicit founder approval.
 - Market ambition: global over time; Phase 1 shipping coverage is Egypt only.
 - Broad target audience: anyone who wants to create an online store.
 - Merchant account creation requires an email address, phone number, and password.
@@ -171,6 +173,6 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: review Design Batch 2, define the exact Batch 3 scope, close the remaining architecture choices, and then start production Laravel implementation without expanding the accepted MVP.
+- Immediate focus: bootstrap the production Laravel foundation, review Design Batch 2, and define the exact Batch 3 scope without expanding the accepted MVP.
 
 Last updated: 2026-08-21 (Africa/Cairo)

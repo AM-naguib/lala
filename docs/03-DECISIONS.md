@@ -1902,3 +1902,15 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Rules preserved:** Product visibility is Published or Hidden; a product publishes on save when its primary-language name and selling price exist; soft-deleted products move to Trash and restore as Hidden; variants independently carry price, compare-at price, cost, SKU, stock, and image; unavailable variants remain visible but disabled; low-stock thresholds are optional; COD orders deduct tracked stock immediately; cancellation restores it; returns never auto-restock.
 - **Delivery:** Published as Sites version 4 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
 - **Boundary:** Delivery remains static HTML, Tailwind CSS v4, and Alpine.js only; this decision does not start Laravel implementation.
+
+
+## D-256 — Unified design constants contract
+
+- **Date:** 2026-08-21
+- **Status:** Accepted and implemented
+- **Decision:** Every merchant route and tab uses one invariant 1440px outer application container. The sidebar is 248px, the header is 64px, responsive page padding is 16/24/32px, and inner content grids—not the outer frame—adapt to forms, details, tables, and summaries.
+- **Component constants:** Standard inputs are 40px, medium actions 36px, small actions 32px, and merchant tables use 52px rows with 12px vertical and 16px horizontal cell padding.
+- **Token policy:** All project-specific values are CSS custom properties first and are bridged through Tailwind CSS v4 `@theme inline` variables. Reusable arbitrary Tailwind values are prohibited; named utilities and automated constants tests enforce the contract.
+- **Recorded scope:** Layout, breakpoints, spacing, typography, controls, table minimum widths, radii, shadows, layers, motion, RTL/Mono behavior, and print dimensions are documented in the design-system source and component gallery.
+- **Delivery:** Published as Sites version 5 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
+- **Boundary:** This standardization remains portable static HTML, Tailwind CSS v4, and Alpine.js; it does not start Laravel implementation.

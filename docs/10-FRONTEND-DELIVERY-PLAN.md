@@ -23,6 +23,7 @@
 | 2 | Orders list، Order detail، Manual order، Print | Delivered — awaiting review |
 | 3 | Products list، Product editor، Variants، Inventory | Delivered — awaiting review |
 | 3.1 | Unified constants contract | Implemented and published |
+| 4 | Catalog organization، Featured products، Trash، CSV import، Results | Delivered — awaiting review |
 
 الموقع المرجعي الحالي: https://lala-design-system.curbs-storm-80.chatgpt.site
 
@@ -81,6 +82,8 @@
 # Wave A — إكمال عمليات التاجر الأساسية
 
 ## Batch 4 — Catalog operations
+
+**الحالة:** Delivered and published as Sites version 6 — awaiting founder review.  
 
 **الهدف:** إكمال الأدوات المحيطة بالمنتج بعد list/editor/variants/inventory.
 

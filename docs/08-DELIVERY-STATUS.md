@@ -28,7 +28,7 @@
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
 - Batches 4–17 define 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
-- Batch 4 — Catalog operations is the next active delivery.
+- Batch 4 — Product organization and tools is delivered; its corrected Products-module navigation is the current review gate.
 - Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
@@ -131,15 +131,16 @@ Existing Products list now includes all/filtered export controls and a destructi
 
 ## UX navigation and ease-of-use remediation
 
-**State: Implemented and published as Sites version 7.**
+**State: Version 7 structure rejected; corrected structure implemented and awaiting the next published checkpoint.**
 
-- Catalog is a level-one Sidebar destination on every current merchant screen.
-- Products and Catalog have separate, correct active states with `aria-current="page"`.
-- Every current merchant screen exposes Dashboard, Orders, Products, Catalog, and Inventory on mobile.
-- Products list action hierarchy is simplified; infrequent export/Trash actions moved to More actions.
-- Future unavailable App shell destinations are visibly Disabled instead of behaving like dead links.
-- Automated tests enforce Catalog reachability and mobile primary navigation.
-- `docs/ux/` now governs information architecture, screen-level P0 acceptance, and UX backlog handling.
+- Products is one level-one module across all current product, inventory, organization, merchandising, import, and recovery screens.
+- Desktop expands Products into All products, Inventory, Organization, Featured products, then separately labeled Product tools for Import and Trash.
+- Mobile primary navigation is Dashboard, Orders, Products; a second product-level navigation exposes the sections and tools without pretending they are separate modules.
+- Organization, Featured, Import, and Trash are no longer rendered as one peer-tab set.
+- Import results remains a child of the Import flow, not a permanent navigation destination.
+- Component Gallery is removed from Merchant navigation and remains review-only.
+- Products list action hierarchy remains simplified; infrequent export/Trash actions stay in More actions.
+- Automated tests enforce the corrected hierarchy and block the rejected peer-tab pattern.
+- `docs/ux/` records the classification rules for Module, Section, Tool, Flow child, and Review tooling.
 
 Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
-

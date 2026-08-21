@@ -28,6 +28,7 @@
 | المنتجات / Products | `featured-products.html` | المنتجات المميزة / Featured | اختيار وترتيب الظهور في المتجر |
 | المنتجات / Products | `product-import.html` | أدوات المنتجات / Import | رفع CSV، المطابقة، المراجعة، و`product-import-results.html` كنتيجة للمسار |
 | المنتجات / Products | `product-trash.html` | أدوات المنتجات / Trash | المحذوف مؤقتًا والاسترجاع كـHidden |
+| العملاء / Customers | `customers-list.html` | — | القائمة، تفاصيل العميل، ومراجعة تعارض الهوية |
 
 ## لماذا Products هي الـModule الوحيدة هنا؟
 
@@ -41,14 +42,14 @@
 
 ### Desktop
 
-- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Products.
+- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Products، Customers.
 - عند دخول أي شاشة منتج، تتوسع Products وتعرض Sections أولًا ثم Product tools في مجموعة معنونة منفصلة.
 - Parent وChild الصحيحان فقط يأخذان Active state و`aria-current="page"`.
 - لا يتغير عرض الـSidebar أو الـContainer أو موضع المحتوى بين الشاشات.
 
 ### Mobile وTablet
 
-- Primary navigation يعرض Dashboard، Orders، Products فقط في المرحلة الحالية.
+- Primary navigation يعرض Dashboard، Orders، Products، Customers في المرحلة الحالية.
 - داخل Products يظهر شريط Sections: All، Inventory، Organization، Featured، ثم Tools.
 - Tools تفتح Import وTrash؛ لا تظهر Catalog أو Inventory كوجهات مستوى أول منفصلة.
 - نفس Parent المستخدم على Desktop يظل Active على Mobile.
@@ -64,7 +65,6 @@
 
 | المجموعة | المستوى الأول المخطط | Batch |
 |---|---|---|
-| العملاء | Customers | 5 |
 | الخصومات | Discounts | 6 |
 | الشحن | Shipping | 7 |
 | التقارير | Analytics | 8 |

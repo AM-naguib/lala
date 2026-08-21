@@ -1,5 +1,16 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 4 delivered and published
+
+### Added
+
+- Delivered Catalog organization, Featured products, Product Trash, CSV import, and Import results as five bilingual portable static screens.
+- Added required empty, duplicate-name, ID/SKU conflict, public-image URL, background-processing, valid-row, rejected-row, and result-file states.
+- Added all/filtered exports and destructive-action preview to Products list.
+- Linked Product editor to organization management and Trash.
+- Published Sites version 6 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Moved execution to the Batch 4 founder-review gate before Batch 5.
+
 ## 2026-08-22 — Complete frontend roadmap accepted
 
 ### Added

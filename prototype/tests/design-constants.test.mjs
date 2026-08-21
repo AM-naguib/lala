@@ -106,8 +106,28 @@ test("the required constants and Tailwind v4 bridges are declared", () => {
     "--z-index-header: var(--lala-z-header)",
     "--z-index-sidebar: var(--lala-z-sidebar)",
     "--z-index-overlay: var(--lala-z-overlay)",
+    "--lala-duration-modal: 260ms",
+    "--lala-duration-drawer: 300ms",
+    "--lala-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1)",
+    "@media (prefers-reduced-motion: reduce)",
   ];
   for (const declaration of required) assert.ok(tokens.includes(declaration), `Missing token declaration: ${declaration}`);
+});
+
+test("dialogs, drawers, and transient feedback use the motion contract", () => {
+  for (const file of htmlFiles) {
+    for (const match of file.source.matchAll(/<div\b(?=[^>]*role="dialog")[^>]*>/g)) {
+      const tag = match[0];
+      assert.match(tag, /motion-overlay/, `${file.name} dialog must animate its overlay`);
+      assert.match(tag, /x-transition:enter="motion-enter-active"/, `${file.name} dialog must define enter motion`);
+      assert.match(tag, /x-transition:leave="motion-leave-active"/, `${file.name} dialog must define exit motion`);
+    }
+    if (/role="dialog"[\s\S]*?<aside\b/.test(file.source)) assert.match(file.source, /motion-drawer-panel/, `${file.name} drawer must animate from logical end`);
+    if (/role="dialog"[\s\S]*?<section\b/.test(file.source)) assert.match(file.source, /motion-surface/, `${file.name} modal must animate its surface`);
+    for (const match of file.source.matchAll(/<(?:div|section)\b(?=[^>]*x-show=)(?=[^>]*class="[^"]*fixed[^"]*(?:bottom|top)-)[^>]*>/g)) {
+      assert.match(match[0], /motion-toast/, `${file.name} transient feedback must use toast motion`);
+    }
+  }
 });
 
 function componentSource(file, name) {

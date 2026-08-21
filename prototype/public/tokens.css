@@ -93,9 +93,14 @@
   --lala-z-overlay: 50;
 
   /* Motion tokens */
-  --lala-duration-fast: 120ms;
-  --lala-duration-base: 180ms;
+  --lala-duration-fast: 140ms;
+  --lala-duration-base: 220ms;
+  --lala-duration-modal: 260ms;
+  --lala-duration-drawer: 300ms;
+  --lala-duration-toast: 240ms;
   --lala-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --lala-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --lala-ease-exit: cubic-bezier(0.4, 0, 1, 1);
 }
 
 @theme inline {
@@ -172,6 +177,9 @@
   --z-index-header: var(--lala-z-header);
   --z-index-sidebar: var(--lala-z-sidebar);
   --z-index-overlay: var(--lala-z-overlay);
+  --ease-standard: var(--lala-ease-standard);
+  --ease-emphasized: var(--lala-ease-emphasized);
+  --ease-exit: var(--lala-ease-exit);
 }
 
 @layer base {
@@ -221,5 +229,151 @@
 
   [x-cloak] {
     display: none !important;
+  }
+
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  summary {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    transition-duration: var(--lala-duration-fast);
+    transition-timing-function: var(--lala-ease-standard);
+  }
+}
+
+@layer components {
+  .motion-enter-active,
+  .motion-leave-active,
+  .motion-surface,
+  .motion-drawer-panel,
+  .motion-toast,
+  .motion-popover,
+  .motion-disclosure {
+    will-change: opacity, transform;
+  }
+
+  .motion-enter-active {
+    transition-duration: var(--lala-duration-base);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-leave-active {
+    transition-duration: var(--lala-duration-fast);
+    transition-timing-function: var(--lala-ease-exit);
+  }
+
+  .motion-overlay {
+    transition-property: opacity;
+  }
+
+  .motion-enter-start,
+  .motion-leave-end {
+    opacity: 0;
+  }
+
+  .motion-enter-end,
+  .motion-leave-start {
+    opacity: 1;
+  }
+
+  .motion-surface {
+    transform-origin: center;
+    transition-property: opacity, transform;
+    transition-duration: var(--lala-duration-modal);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-modal.motion-enter-start > .motion-surface,
+  .motion-modal.motion-leave-end > .motion-surface {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.985);
+  }
+
+  .motion-modal.motion-enter-end > .motion-surface,
+  .motion-modal.motion-leave-start > .motion-surface {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .motion-backdrop {
+    transition: opacity var(--lala-duration-base) var(--lala-ease-standard);
+  }
+
+  .motion-drawer-panel {
+    transform: translateX(0);
+    transition: transform var(--lala-duration-drawer) var(--lala-ease-emphasized);
+  }
+
+  .motion-drawer.motion-enter-start > .motion-drawer-panel,
+  .motion-drawer.motion-leave-end > .motion-drawer-panel {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .motion-drawer.motion-enter-start > .motion-drawer-panel,
+  [dir="rtl"] .motion-drawer.motion-leave-end > .motion-drawer-panel {
+    transform: translateX(-100%);
+  }
+
+  .motion-toast,
+  .motion-popover,
+  .motion-disclosure {
+    transition-property: opacity, transform;
+    transition-duration: var(--lala-duration-toast);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-toast.motion-enter-start,
+  .motion-toast.motion-leave-end {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+
+  .motion-popover {
+    transform-origin: top right;
+  }
+
+  [dir="rtl"] .motion-popover {
+    transform-origin: top left;
+  }
+
+  .motion-popover.motion-enter-start,
+  .motion-popover.motion-leave-end {
+    opacity: 0;
+    transform: translateY(-0.25rem) scale(0.98);
+  }
+
+  .motion-disclosure.motion-enter-start,
+  .motion-disclosure.motion-leave-end {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+
+  details[open] > :not(summary) {
+    animation: lala-disclosure-in var(--lala-duration-base) var(--lala-ease-emphasized) both;
+  }
+}
+
+@keyframes lala-disclosure-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1989,3 +1989,14 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **States:** The list covers active, scheduled, expired, and exhausted. The editor demonstrates invalid dates, duplicate code, exhausted, expired, and valid previews.
 - **Source rule:** The complete static prototype, including HTML screens, token/font assets, Alpine markup, extraction markers, constants reference, and contract test, is now versioned in the public repository under `prototype/`.
 - **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, discount engine, checkout logic, analytics changes, or Laravel implementation.
+
+## D-264 — Unified motion system contract
+
+- **Date:** 2026-08-22
+- **Status:** Accepted and implemented
+- **Decision:** Use one portable motion contract across every current and future static screen. Motion tokens are CSS custom properties first, Alpine transitions use shared semantic classes, and the build upgrades all qualifying HTML surfaces automatically.
+- **Timing:** Hover and exit 140ms, state/menu 220ms, toast 240ms, modal 260ms, and drawer 300ms. Entrances use emphasized easing; exits use a shorter exit easing.
+- **Patterns:** Modals fade with an 8px lift and 0.985 scale; drawers enter from logical `end` in both RTL and LTR; popovers follow their trigger origin; toasts use a short lift; state surfaces use a restrained 4px transition.
+- **Accessibility:** `prefers-reduced-motion: reduce` collapses animation and transition duration to 0.01ms. Layout-critical width, height, and application geometry are never animated.
+- **Source:** The complete contract is recorded in `prototype/docs/MOTION-SYSTEM.md` and demonstrated in the Component Gallery.
+- **Boundary:** No animation framework or runtime dependency was added; implementation remains plain HTML, Tailwind CSS v4, and Alpine.js.

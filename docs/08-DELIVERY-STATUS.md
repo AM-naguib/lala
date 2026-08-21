@@ -32,6 +32,7 @@
 - Batch 5 — Customers is accepted.
 - Batch 6 — Discounts is delivered and is the current review gate.
 - The complete portable static source is versioned under `prototype/` in the public repository.
+- The unified Motion System is implemented across all current screens: modals, drawers, popovers, toasts, and state changes now share fixed timing/easing and reduced-motion behavior.
 - Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
@@ -47,6 +48,7 @@ Delivered foundations include:
 - Real Arabic and English examples shown in RTL and LTR rather than mirrored placeholders.
 - Standard merchant-table density: 52px row height, 12px × 16px cell padding, 14px/20px body text, and 12px semibold muted headers.
 - Wallet states: calm, watch, and overdraft with expanded recharge banner and customer-data masking cascade.
+- Motion system: 140–300ms semantic timing, logical-direction drawers, softened modal/toast transitions, and `prefers-reduced-motion` support.
 - Browser-verified Arabic shaping, connected letterforms, RTL layout, LTR operational-number spans, baseline correction, and no page-level horizontal overflow.
 
 ### Corrected controlled fields

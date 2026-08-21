@@ -29,6 +29,8 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 
 The actual portable HTML source is checked in under [`prototype/`](prototype/). It includes every current screen, the Tailwind CSS v4 token bridge, self-hosted font files, Alpine.js prototype markup, extraction markers, and the design-contract test. The published review site remains https://lala-design-system.curbs-storm-80.chatgpt.site.
 
+The shared motion contract is documented in [`prototype/docs/MOTION-SYSTEM.md`](prototype/docs/MOTION-SYSTEM.md). It defines reduced-motion-safe transitions for modals, drawers, popovers, toasts, and state changes without adding an animation framework.
+
 Current Merchant level-one modules are Dashboard, Orders, Products, Customers, and Discounts. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
 
 ## Current snapshot

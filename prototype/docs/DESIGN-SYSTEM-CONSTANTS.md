@@ -124,11 +124,16 @@ No component may invent a z-index between these layers without documenting a col
 
 | Token | Value | Use |
 |---|---:|---|
-| Fast duration | 120ms | Hover and pressed feedback |
-| Base duration | 180ms | Drawers, menus, and state transitions |
-| Standard easing | `cubic-bezier(0.2, 0, 0, 1)` | All UI motion |
+| Fast duration | 140ms | Hover, pressed, and exit feedback |
+| Base duration | 220ms | Menus, disclosure, and state transitions |
+| Modal duration | 260ms | Backdrop fade plus subtle lift and scale |
+| Drawer duration | 300ms | Logical-end drawer travel in RTL/LTR |
+| Toast duration | 240ms | Confirmation and transient feedback |
+| Standard easing | `cubic-bezier(0.2, 0, 0, 1)` | Small property changes |
+| Emphasized easing | `cubic-bezier(0.16, 1, 0.3, 1)` | Entrances and spatial motion |
+| Exit easing | `cubic-bezier(0.4, 0, 1, 1)` | Short, decisive exits |
 
-Motion must respect `prefers-reduced-motion` when animations are added. Current static screens do not introduce decorative animation.
+Motion communicates hierarchy and cause; it is not decoration. Modals fade with an 8px lift and 0.985 scale, drawers enter from logical `end`, popovers originate from their trigger side, and toasts use a short lift. Entry is longer and softer than exit. Layout-critical sizes are never animated. Every effect collapses to 0.01ms under `prefers-reduced-motion: reduce`.
 
 ## 10. Print exceptions
 

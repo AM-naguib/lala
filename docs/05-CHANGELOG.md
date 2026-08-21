@@ -1068,3 +1068,17 @@
 
 - Added Discounts as a level-one Merchant module on desktop and mobile navigation.
 - Advanced the frontend review gate to Batch 6 before Batch 7 Shipping zones and Bosta.
+
+## 2026-08-22 — Unified motion system
+
+### Added
+
+- Added motion tokens for fast, base, toast, modal, and drawer timing plus standard, emphasized, and exit easing.
+- Added portable Alpine transition patterns for modals, drawers, popovers, toasts, and conditional state surfaces.
+- Added a Motion section to the Component Gallery and a dedicated `prototype/docs/MOTION-SYSTEM.md` contract.
+- Added automated checks requiring every dialog, drawer, and toast to follow the motion contract.
+
+### Changed
+
+- Replaced abrupt modal and drawer appearance across current screens with directional, reduced-motion-safe transitions.
+- Added the motion upgrader to the static build so future HTML screens inherit the contract automatically.

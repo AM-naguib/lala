@@ -1,5 +1,15 @@
 # Documentation Changelog
 
+## 2026-08-22 — Complete frontend roadmap accepted
+
+### Added
+
+- Added `docs/10-FRONTEND-DELIVERY-PLAN.md` as the single operating roadmap for completing the static frontend.
+- Defined Batches 4–17 with 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
+- Added exact dependencies, required states, acceptance gates, execution protocol, and Definition of Done for every batch.
+- Set Batch 4 — Catalog operations as the next active delivery.
+- Added D-257 and linked the roadmap from project memory and next work.
+
 ## 2026-08-21 — Unified design constants implemented
 
 ### Changed

@@ -1926,3 +1926,17 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Delivery rule:** One plain HTML file per screen, Tailwind CSS v4 token bridge, Alpine.js demo behavior, extraction markers, real Arabic/English, RTL/LTR parity, full state coverage, fixed design constants, and no invented product fields.
 - **Boundary:** Laravel, Livewire/Blade application code, persistence, real integrations, and production implementation remain postponed until the founder explicitly starts that phase.
 - **Effect:** The next active scope is Batch 4 — Catalog operations. Later batches must not be reordered or expanded silently; record any change in Decisions, Next Work, and the roadmap.
+
+## D-258 — UX operating contract and Catalog navigation
+
+- **Date:** 2026-08-22
+- **Status:** Accepted and implemented
+- **Decision:** Treat `docs/ux/` as the binding UX reference for every current and future frontend Batch. Every screen must have a documented navigation parent, entry point, exit/recovery path, one clear primary action, complete critical states, and a passing P0 UX checklist before delivery.
+- **Discoverability rule:** No orphan screens. Daily tasks are reachable from level-one navigation; dependent tasks are reachable within two navigation levels at most.
+- **Catalog information architecture:** Products owns product creation/content/variants; Catalog owns Categories, Collections, Tags, Featured products, Import/results, and Trash; Inventory owns stock operations. Catalog is a distinct level-one navigation destination.
+- **Responsive rule:** Desktop Sidebar and Mobile primary navigation expose the same current destinations and identify exactly one active parent with `aria-current="page"`.
+- **Dead-link rule:** Unbuilt destinations must be hidden or explicitly Disabled with “Soon / قريبًا”; they must not look operational.
+- **Action hierarchy:** Each screen has one primary action. Infrequent actions move into secondary or More actions patterns instead of crowding the page header.
+- **Delivery:** Navigation and action-hierarchy fixes were implemented across current merchant screens and published as Sites version 7 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- **Boundary:** This is a UX and static-frontend contract; it does not start Laravel implementation or add new product fields.
+

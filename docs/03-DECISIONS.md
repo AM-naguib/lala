@@ -12,9 +12,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-002 — Repository visibility and name
 
 - **Date:** 2026-08-14
-- **Status:** Accepted; connected
+- **Status:** Superseded by D-250
 - **Decision:** Use the private GitHub repository `AM-naguib/lala`.
-- **Reason:** Founder requested persistent, private project planning and memory in GitHub.
+- **Reason:** Founder originally requested persistent, private project planning and memory in GitHub.
 
 ## D-003 — Launch market ambition
 
@@ -1850,3 +1850,36 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Status:** Accepted scope; delivered output awaiting review
 - **Decision:** Batch 2 contains Orders list, order detail, manual order creation, and print views using the accepted Batch 1 system and corrected order model.
 - **Reason:** Founder explicitly authorized this batch.
+
+
+## D-250 — Public project repository
+
+- **Date:** 2026-08-21
+- **Status:** Accepted; supersedes D-002 only for visibility
+- **Decision:** Keep `AM-naguib/lala` public and publish the project memory and decision documents there.
+- **Reason:** Founder explicitly approved publishing the files and project decisions while the repository is public.
+- **Constraint:** Secrets, provider credentials, personal data, and production customer data remain prohibited from the repository.
+
+## D-251 — Redis for sessions, cache, locks, and rate limits
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use Redis through PhpRedis for Laravel sessions, application cache, distributed locks, and rate-limit counters as well as the already accepted Horizon queues. Configure separate named connections or key prefixes for sessions, cache, queues, and rate limits.
+- **Reason:** Redis is already required for Horizon, supports shared state across Web and worker processes, and avoids adding another runtime service.
+- **Fallback:** Tests may use isolated in-memory or array drivers; production behavior must be exercised against Redis in integration tests.
+
+## D-252 — BIGINT internal keys with public ULIDs
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use unsigned auto-incrementing BIGINT primary keys internally. Add an immutable, unique, indexed ULID `public_id` to records exposed in URLs, exports, webhooks, or external integrations, and never expose the internal primary key. Keep human-facing order numbers as a separate store-scoped immutable sequence.
+- **Reason:** BIGINT keeps MySQL joins and tenant-scoped indexes compact, while ULIDs provide non-sequential public identifiers without making every relationship key a string.
+- **Constraint:** Every store-scoped uniqueness rule and lookup still includes or verifies `store_id`; public IDs do not replace tenant authorization.
+
+## D-253 — Authentication foundation and customization boundary
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use the Laravel 13 Livewire starter kit and its Fortify foundation for Merchant authentication, with custom actions, responses, views, rate limiters, and WhatsApp phone verification. Implement Admin authentication with Laravel's built-in guard, provider, password broker, and invitation/seeded-account flow with no public registration. Implement store-scoped Customer authentication with a dedicated guard/provider and custom Blade flows supporting email-link or WhatsApp-code verification and recovery.
+- **Reason:** This reuses Laravel's maintained Merchant authentication baseline while keeping the already accepted Admin, Merchant, and Customer identity boundaries explicit.
+- **Exclusion:** Do not add Sanctum, Passport, social login, WorkOS, or API tokens until a concrete API or external-client requirement exists.

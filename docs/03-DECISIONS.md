@@ -1914,3 +1914,15 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Recorded scope:** Layout, breakpoints, spacing, typography, controls, table minimum widths, radii, shadows, layers, motion, RTL/Mono behavior, and print dimensions are documented in the design-system source and component gallery.
 - **Delivery:** Published as Sites version 5 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
 - **Boundary:** This standardization remains portable static HTML, Tailwind CSS v4, and Alpine.js; it does not start Laravel implementation.
+
+
+## D-257 — Complete frontend delivery roadmap
+
+- **Date:** 2026-08-22
+- **Status:** Accepted as the working execution plan
+- **Decision:** Continue the static frontend through Batches 4–17 using the sequence and screen inventory in `10-FRONTEND-DELIVERY-PLAN.md`.
+- **Scope:** Complete the Merchant dashboard, Storefront, Customer account, and minimum confirmed lala Admin/Support surfaces. The roadmap plans 65 remaining static screen files plus updates to existing screens and a final hardening batch.
+- **Review rule:** Each feature Batch is Delivered for founder review and needs separate acceptance or requested revisions; approving this roadmap does not pre-accept individual screen designs.
+- **Delivery rule:** One plain HTML file per screen, Tailwind CSS v4 token bridge, Alpine.js demo behavior, extraction markers, real Arabic/English, RTL/LTR parity, full state coverage, fixed design constants, and no invented product fields.
+- **Boundary:** Laravel, Livewire/Blade application code, persistence, real integrations, and production implementation remain postponed until the founder explicitly starts that phase.
+- **Effect:** The next active scope is Batch 4 — Catalog operations. Later batches must not be reordered or expanded silently; record any change in Decisions, Next Work, and the roadmap.

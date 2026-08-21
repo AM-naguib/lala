@@ -1,5 +1,15 @@
 # Documentation Changelog
 
+## 2026-08-21 — Static-only delivery retained
+
+### Changed
+
+- Continued the current delivery phase as portable static HTML only.
+- Explicitly postponed Laravel, Livewire, Blade application code, migrations, queues, authentication, persistence, and production integrations.
+- Preserved the accepted Laravel architecture as a future implementation handoff rather than current work.
+- Changed the immediate objective to Design Batch 2 review, exact Batch 3 definition, and continued static Tailwind CSS v4 + Alpine.js screen delivery.
+- Added D-254.
+
 ## 2026-08-21 — Architecture baseline completed
 
 ### Added

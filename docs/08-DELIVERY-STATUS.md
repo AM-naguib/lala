@@ -19,7 +19,7 @@
 | Identifiers | Accepted | Unsigned BIGINT internal primary keys, separate immutable public ULIDs, and store-scoped human order numbers. |
 | Authentication foundation | Accepted | Livewire starter kit/Fortify for Merchants; separate custom Laravel guard/provider flows for Admins and store-scoped Customers. |
 | Repository | Accepted | Public `AM-naguib/lala`; sensitive data and secrets remain prohibited. |
-| Production application | Not started | The design prototypes are not production Laravel or Livewire code. |
+| Production application | Postponed | Current delivery is static HTML only by explicit founder decision; the prototypes are not production Laravel or Livewire code. |
 
 ## Design system — Batch 1
 
@@ -68,7 +68,7 @@ Inventory presentation has three states in both scripts:
 
 ## Design system — Batch 2
 
-**State: Delivered; awaiting founder review.**
+**State: Delivered; awaiting founder review. Static delivery continues after review.**
 
 Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 

@@ -131,7 +131,7 @@ Existing Products list now includes all/filtered export controls and a destructi
 
 ## UX navigation and ease-of-use remediation
 
-**State: Version 7 structure rejected; corrected structure implemented and awaiting the next published checkpoint.**
+**State: Version 7 structure rejected; corrected structure published as Sites version 8 and awaiting founder review.**
 
 - Products is one level-one module across all current product, inventory, organization, merchandising, import, and recovery screens.
 - Desktop expands Products into All products, Inventory, Organization, Featured products, then separately labeled Product tools for Import and Trash.

@@ -2,7 +2,7 @@
 
 `lala` is a multi-tenant SaaS e-commerce platform for anyone who wants to launch and operate an online store.
 
-Private source repository: `AM-naguib/lala`.
+Repository: `AM-naguib/lala`. The accepted target visibility is private, but GitHub currently reports the repository as public; this mismatch is tracked as an open action.
 
 **Phase 1: discovery and MVP definition is complete.** Architecture and delivery planning is now active; implementation has not started. The confirmed application stack is PHP 8.5 with Laravel 13, MySQL, Laravel's traditional structure, Livewire with Blade for the merchant dashboard, Blade with Alpine.js using plain JavaScript for the customer storefront, Tailwind CSS, Redis with Horizon, and Pest. Pilot files use local server storage through Laravel's storage abstraction before a later object-storage migration.
 
@@ -18,10 +18,12 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 - [`docs/05-CHANGELOG.md`](docs/05-CHANGELOG.md) — chronological documentation changes.
 - [`docs/06-WORKING-AGREEMENT.md`](docs/06-WORKING-AGREEMENT.md) — rules for maintaining memory and planning.
 - [`docs/07-ARCHITECTURE-PLAN.md`](docs/07-ARCHITECTURE-PLAN.md) — active architecture inputs, proposals, and unresolved technical decisions.
+- [`docs/08-DELIVERY-STATUS.md`](docs/08-DELIVERY-STATUS.md) — completed and delivered work, including Design Batches 1–2.
+- [`docs/09-NEXT-WORK.md`](docs/09-NEXT-WORK.md) — immediate review queue, remaining decisions, and proposed implementation sequence.
 
 ## Current snapshot
 
-- Repository target: private GitHub repository named `lala`.
+- Repository target: private GitHub repository named `lala`; current GitHub visibility is public and must be reconciled.
 - Market ambition: global over time; Phase 1 shipping coverage is Egypt only.
 - Broad target audience: anyone who wants to create an online store.
 - Merchant account creation requires an email address, phone number, and password.
@@ -169,6 +171,6 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: define the smallest useful Phase 1 MVP before choosing architecture or writing product code.
+- Immediate focus: review Design Batch 2, define the exact Batch 3 scope, close the remaining architecture choices, and then start production Laravel implementation without expanding the accepted MVP.
 
-Last updated: 2026-08-14 (Africa/Cairo)
+Last updated: 2026-08-21 (Africa/Cairo)

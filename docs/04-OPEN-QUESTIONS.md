@@ -1151,3 +1151,40 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 ### Q-235 — Store resolution from domains
 
 **Resolved:** A domains table and custom Laravel middleware for hosted subdomains and verified custom domains. See D-241.
+
+
+## Architecture planning — Active decisions after Q-235
+
+### Q-236 — Runtime state stores
+
+Which stores should Laravel use for sessions, cache, distributed locks, and rate limits during the pilot and production rollout?
+
+### Q-237 — Internal and public identifiers
+
+Which primary-key strategy and externally exposed identifier format should orders, products, customers, and other resources use?
+
+### Q-238 — Authentication foundation
+
+Which Laravel authentication foundation should be used, and which Merchant, Customer, and Admin flows require custom implementation?
+
+## Design delivery — Active review
+
+### Q-239 — Design Batch 2 acceptance
+
+Does the delivered Orders list, order detail, manual creation, and print-view batch require revisions before it becomes the accepted foundation for production extraction?
+
+### Q-240 — Design Batch 3 scope
+
+Which exact screen group should be designed next? The approved plan retrieved so far does not define Batch 3+, so later screen groups must not be invented.
+
+## Repository administration — Resolved
+
+### Q-241 — Public repository disclosure
+
+**Resolved:** The founder explicitly approved publishing the project memory and decision files while `AM-naguib/lala` remains public.
+
+## Pilot preparation — Deferred
+
+### Q-210 — Pilot-specific pricing
+
+Pilot-specific pricing remains intentionally deferred and does not block architecture or design work.

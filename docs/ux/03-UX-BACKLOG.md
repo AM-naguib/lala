@@ -15,25 +15,27 @@
 
 ### المشاكل التي ظهرت
 
-1. Catalog كان شاشة يتيمة وغير ظاهر في الـSidebar.
-2. معظم الشاشات بعد App shell لم توفر تنقلًا رئيسيًا usable على الموبايل.
-3. Products وCatalog استخدما نفس Active state رغم اختلاف المهمة.
-4. Header قائمة المنتجات كان مزدحمًا بخمسة إجراءات متساوية بصريًا.
-5. App shell عرض روابط مستقبلية تبدو قابلة للنقر رغم عدم وجود شاشاتها.
-6. بعض الروابط المفيدة استخدمت `#` رغم وجود وجهة فعلية، مثل View all orders.
-7. الأيقونات الحالية رموز نصية مؤقتة وغير موحدة دلاليًا.
+1. الإصلاح الأول جعل Catalog مستوى أول منفصلًا رغم أنه جزء من عمل Products.
+2. Organization وFeatured وImport وTrash ظهرت كـPeer tabs رغم اختلاف نوع المهمة وتكرارها.
+3. Component Gallery ظهرت داخل تنقل التاجر رغم أنها أداة مراجعة للمشروع.
+4. Mobile primary navigation كرر Products وCatalog وInventory كمستويات متساوية.
+5. Header قائمة المنتجات كان مزدحمًا بخمسة إجراءات متساوية بصريًا.
+6. App shell عرض روابط مستقبلية تبدو قابلة للنقر رغم عدم وجود شاشاتها.
+7. بعض الروابط المفيدة استخدمت `#` رغم وجود وجهة فعلية، مثل View all orders.
+8. الأيقونات الحالية رموز نصية مؤقتة وغير موحدة دلاليًا.
 
 ## P0 — تم إصلاحه الآن
 
 | المشكلة | الإصلاح | الحالة |
 |---|---|---|
-| Catalog غير قابل للاكتشاف | إضافة Catalog كوجهة رئيسية في كل Sidebars الحالية | Done — Sites v7 |
-| لا يوجد Mobile navigation | إضافة شريط Primary navigation متجاوب لكل الشاشات الحالية | Done — Sites v7 |
-| Active state غير صحيح | فصل Products عن Catalog وإضافة `aria-current` | Done — Sites v7 |
+| هيكل Products مفكك | تجميع All/Inventory/Organization/Featured تحت Products واحدة | Corrected after Sites v7 |
+| Operations مختلطة مع Sections | فصل Import وTrash تحت Product tools وإزالة Peer tabs المرفوضة | Corrected after Sites v7 |
+| Review tooling داخل المنتج | إزالة Component Gallery من Merchant navigation | Corrected after Sites v7 |
+| Mobile IA مكرر | Primary = Dashboard/Orders/Products ثم Product sections داخل الـModule | Corrected after Sites v7 |
 | Actions مزدحمة في Products | إبقاء Add product أساسيًا، Import ثانويًا، والباقي داخل More actions | Done — Sites v7 |
 | روابط مستقبلية مضللة | عرضها Disabled مع “قريبًا” بدل رابط يوحي أنه يعمل | Done — Sites v7 |
 | View all orders لا يعمل | ربطه بقائمة الطلبات | Done — Sites v7 |
-| منع رجوع المشكلة | إضافة اختبارات Catalog reachability وMobile navigation | Done — Sites v7 |
+| منع رجوع المشكلة | اختبارات تمنع Catalog كوجهة أولى وتمنع Peer tabs وتثبت Product sections/tools | Corrected after Sites v7 |
 
 ## P1 — يطبق مع كل Batch قادم
 
@@ -82,7 +84,7 @@
 
 - كل P0 في [Checklist](02-SCREEN-CHECKLIST.md) ناجح.
 - لا توجد Screen orphan أو Dead link.
-- Desktop وMobile لهما نفس خريطة الوجهات.
+- Desktop وMobile لهما نفس Parent hierarchy حتى لو اختلف نمط العرض.
 - Primary action واضح.
 - Recovery path موثق.
 - أي دين UX متبقٍ مسجل هنا بموعد تنفيذه.

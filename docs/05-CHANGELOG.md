@@ -1,5 +1,15 @@
 # Documentation Changelog
 
+## 2026-08-21 — Design Batch 3 delivered and published
+
+### Added
+
+- Delivered Products list, Product editor, Product variants, and Inventory management as portable bilingual static HTML screens.
+- Preserved Published/Hidden visibility, exact inventory states, optional low-stock thresholds, flexible variant-level commerce data, soft-delete restoration as Hidden, and visible disabled unavailable variants.
+- Documented immediate COD stock deduction, cancellation restoration, and manual return restocking.
+- Published Sites version 4 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Added D-255 and updated delivery status, next work, project memory, and the Draft PR summary.
+
 ## 2026-08-21 — Static-only delivery retained
 
 ### Changed

@@ -10,6 +10,7 @@
 - Removed the rejected Organization/Featured/Import/Trash peer-tab model and excluded Component Gallery from Merchant navigation.
 - Corrected Desktop/Mobile hierarchy and replaced Catalog-reachability tests with information-architecture regression tests.
 - Updated project memory, delivery status, next work, frontend roadmap, and UX operating documents to match the corrected structure.
+- Published the corrected hierarchy as Sites version 8 at https://lala-design-system.curbs-storm-80.chatgpt.site.
 
 ## 2026-08-22 — UX operating contract implemented
 

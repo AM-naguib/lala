@@ -23,7 +23,8 @@
 | 2 | Orders list، Order detail، Manual order، Print | Delivered — awaiting review |
 | 3 | Products list، Product editor، Variants، Inventory | Delivered — awaiting review |
 | 3.1 | Unified constants contract | Implemented and published |
-| 4 | Product organization، Featured products، Product tools: Trash/CSV import/results | Delivered — navigation correction awaiting review |
+| 4 | Product organization، Featured products، Product tools: Trash/CSV import/results | Accepted |
+| 5 | Customers list، Customer detail، Identity conflict review | Delivered — awaiting review |
 
 الموقع المرجعي الحالي: https://lala-design-system.curbs-storm-80.chatgpt.site
 

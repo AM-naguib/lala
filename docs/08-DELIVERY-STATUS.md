@@ -15,6 +15,10 @@
 | Phase 1 product discovery | Completed | MVP scope, journeys, exclusions, pilot shape, wallet model, and operational rules are documented. |
 | Technology stack | Accepted | PHP 8.5, Laravel 13, MySQL, Livewire + Blade, Blade + Alpine.js, Tailwind CSS v4, Redis + Horizon, Pest, and Laravel Storage with a local pilot disk. |
 | Multi-tenancy direction | Accepted | Shared MySQL schema with `store_id` isolation, separate Admin/Merchant/Customer authentication boundaries, and hostname resolution through a domains table and middleware. |
+| Runtime state | Accepted | Redis/PhpRedis for sessions, cache, distributed locks, rate limits, and Horizon queues with isolated connections or prefixes. |
+| Identifiers | Accepted | Unsigned BIGINT internal primary keys, separate immutable public ULIDs, and store-scoped human order numbers. |
+| Authentication foundation | Accepted | Livewire starter kit/Fortify for Merchants; separate custom Laravel guard/provider flows for Admins and store-scoped Customers. |
+| Repository | Accepted | Public `AM-naguib/lala`; sensitive data and secrets remain prohibited. |
 | Production application | Not started | The design prototypes are not production Laravel or Livewire code. |
 
 ## Design system — Batch 1

@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Static design-system delivery. Design Batch 1 is accepted; Design Batches 2 and 3 are delivered for review; Laravel implementation is intentionally postponed.
+- **Current phase:** Static frontend delivery. Design Batch 1 is accepted; Batches 2–3 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
 - **Status date:** 2026-08-21 (Africa/Cairo).
 
 ## Latest delivery checkpoint
@@ -21,6 +21,7 @@
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
+- The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 cover Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening; 65 remaining screen files are planned.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 - Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.
@@ -318,25 +319,25 @@
 
 ## Active objective
 
-Review Design Batches 2 and 3, record founder revisions or acceptance, and define the next static screen group before producing it. Do not start Laravel implementation yet.
+Use `10-FRONTEND-DELIVERY-PLAN.md` as the frontend source of truth. Keep Batches 2–3 open for founder review and execute Batch 4 Catalog operations next. Do not start Laravel implementation yet.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
 - Design Batches 2 and 3 await founder acceptance or revision.
-- The exact Batch 4+ screen plan has not been approved and must not be invented.
+- Batch 4 is defined as Catalog operations; any roadmap reordering or expansion requires an explicit recorded change.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** refreshed memory, completed architecture baseline, and founder review of Design Batches 2–3.
+- **Pending review:** refreshed memory, founder review of Batches 2–3, and execution of the accepted frontend roadmap beginning with Batch 4.
 
 ## Next decisions to obtain
 
 - Accept or revise Design Batches 2 and 3.
-- Define the exact scope and screens for the next static batch.
+- Execute Batch 4 Catalog operations according to `10-FRONTEND-DELIVERY-PLAN.md`.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

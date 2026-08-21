@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Architecture and delivery planning; Design Batch 1 is accepted, Design Batch 2 is delivered for review, and production Laravel implementation has not started.
+- **Current phase:** Static design-system delivery. Design Batch 1 is accepted, Design Batch 2 is delivered for review, and Laravel implementation is intentionally postponed.
 - **Status date:** 2026-08-21 (Africa/Cairo).
 
 ## Latest delivery checkpoint
@@ -20,6 +20,7 @@
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
+- Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.
 
 ## Confirmed decisions
 
@@ -241,6 +242,7 @@
 216. Redis through PhpRedis stores sessions, cache, distributed locks, rate-limit counters, and Horizon queues with isolated connections or prefixes.
 217. Internal records use unsigned BIGINT primary keys; externally exposed records also receive immutable unique ULID `public_id` values, while human order numbers remain a separate store-scoped sequence.
 218. Merchant authentication uses the Laravel 13 Livewire starter kit and Fortify foundation with custom WhatsApp behavior; Admin and store-scoped Customer identities use separate Laravel guards, providers, brokers, and custom flows.
+219. Continue the current phase as portable static HTML only. Do not write Laravel, Livewire, Blade application code, migrations, queues, authentication, or production integrations until the founder explicitly starts implementation.
 
 ## Current interpretation
 
@@ -313,11 +315,11 @@
 
 ## Active objective
 
-Start the production Laravel foundation using the completed architecture baseline while Design Batch 2 is reviewed and the exact Batch 3 scope is defined.
+Review Design Batch 2, define the exact Batch 3 screen group, and continue producing portable static HTML screens with Tailwind CSS v4 and Alpine.js. Do not start Laravel implementation yet.
 
 ## Current blockers
 
-- No architecture decision blocks bootstrapping the Laravel application.
+- Laravel implementation is deliberately postponed, not blocked.
 - Design Batch 2 still awaits founder acceptance or revision.
 - The exact Design Batch 3+ screen plan has not been approved and must not be invented.
 
@@ -333,7 +335,6 @@ Start the production Laravel foundation using the completed architecture baselin
 - Accept or revise Design Batch 2.
 - Define the exact scope and screens for Design Batch 3.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
-- Choose production hosting, backup, monitoring, and recovery targets during deployment planning.
 
 ## Guardrails for future sessions
 

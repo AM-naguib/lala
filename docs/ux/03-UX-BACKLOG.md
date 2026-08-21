@@ -28,14 +28,14 @@
 
 | المشكلة | الإصلاح | الحالة |
 |---|---|---|
-| هيكل Products مفكك | تجميع All/Inventory/Organization/Featured تحت Products واحدة | Corrected after Sites v7 |
-| Operations مختلطة مع Sections | فصل Import وTrash تحت Product tools وإزالة Peer tabs المرفوضة | Corrected after Sites v7 |
-| Review tooling داخل المنتج | إزالة Component Gallery من Merchant navigation | Corrected after Sites v7 |
-| Mobile IA مكرر | Primary = Dashboard/Orders/Products ثم Product sections داخل الـModule | Corrected after Sites v7 |
+| هيكل Products مفكك | تجميع All/Inventory/Organization/Featured تحت Products واحدة | Done — Sites v8 |
+| Operations مختلطة مع Sections | فصل Import وTrash تحت Product tools وإزالة Peer tabs المرفوضة | Done — Sites v8 |
+| Review tooling داخل المنتج | إزالة Component Gallery من Merchant navigation | Done — Sites v8 |
+| Mobile IA مكرر | Primary = Dashboard/Orders/Products ثم Product sections داخل الـModule | Done — Sites v8 |
 | Actions مزدحمة في Products | إبقاء Add product أساسيًا، Import ثانويًا، والباقي داخل More actions | Done — Sites v7 |
 | روابط مستقبلية مضللة | عرضها Disabled مع “قريبًا” بدل رابط يوحي أنه يعمل | Done — Sites v7 |
 | View all orders لا يعمل | ربطه بقائمة الطلبات | Done — Sites v7 |
-| منع رجوع المشكلة | اختبارات تمنع Catalog كوجهة أولى وتمنع Peer tabs وتثبت Product sections/tools | Corrected after Sites v7 |
+| منع رجوع المشكلة | اختبارات تمنع Catalog كوجهة أولى وتمنع Peer tabs وتثبت Product sections/tools | Done — Sites v8 |
 
 ## P1 — يطبق مع كل Batch قادم
 

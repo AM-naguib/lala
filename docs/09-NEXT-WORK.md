@@ -1,16 +1,22 @@
 # Next Work
 
-> Current execution queue for `lala`. Only items marked **Accepted** are binding decisions; proposed sequencing is planning guidance until the founder approves or implementation makes it concrete. Last updated 2026-08-21 (Africa/Cairo).
+> Current execution queue for `lala`. The complete static frontend roadmap is the accepted execution reference. Only explicitly accepted decisions are binding; any reordering or scope expansion must be recorded before work starts. Last updated 2026-08-22 (Africa/Cairo).
 
 ## Immediate static-design queue
 
-1. **Review Design Batches 2 and 3** — inspect Orders plus Products and Inventory screens and record acceptance or requested revisions.
-2. **Define the exact next static batch** — Batch 4+ is not approved yet; do not invent its screens.
-3. **Continue portable static delivery after approval** — one plain HTML file per screen, Tailwind CSS v4-compatible tokens and classes, Alpine.js CDN markup, extraction markers, real Arabic/English, and RTL/LTR parity.
-4. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, or integrations until the founder explicitly starts implementation.
-5. **Keep pilot-specific pricing deferred** until pilot preparation.
+1. **Review Design Batches 2 and 3** — record acceptance or requested revisions for Orders plus Products and Inventory, without blocking the approved roadmap unless the founder requests it.
+2. **Execute Design Batch 4 — Catalog operations** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md):
+   - `public/catalog-organization.html`
+   - `public/featured-products.html`
+   - `public/product-trash.html`
+   - `public/product-import.html`
+   - `public/product-import-results.html`
+3. **Stop at the Batch 4 review gate** — publish the batch, update memory and delivery records, then wait for founder review before starting Batch 5.
+4. **Preserve the static delivery contract** — one plain HTML file per screen, Tailwind CSS v4-compatible token bridges and classes, Alpine.js CDN markup, extraction markers, real Arabic/English copy, and RTL/LTR parity.
+5. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
+6. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The future Laravel architecture remains documented and accepted, but it is not part of the current work queue.
+The accepted roadmap covers Batches 4–17 and 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces. The future Laravel architecture remains documented and accepted, but it is not part of the current work queue.
 
 ## Future implementation sequence — postponed
 

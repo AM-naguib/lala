@@ -6,8 +6,14 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 
 - **Phase:** Architecture and delivery planning
 - **Started:** 2026-08-15 (Africa/Cairo)
-- **Implementation:** Production Laravel implementation not started; Design Batch 1 is accepted and Design Batch 2 is delivered for review as portable static prototypes.
+- **Implementation:** Intentionally postponed. Current work is portable static HTML only; Design Batch 1 is accepted and Design Batch 2 is delivered for review.
 - **Accepted technology stack:** PHP 8.5; Laravel 13; MySQL; traditional Laravel structure; Livewire with Blade for the merchant dashboard; Blade with Alpine.js and plain JavaScript for the storefront; Tailwind CSS; Redis queues with Horizon; Pest; local pilot file storage
+
+## Delivery sequencing
+
+- Continue static HTML design batches only.
+- Do not bootstrap Laravel, create migrations, or implement authentication, queues, persistence, or provider integrations until the founder explicitly starts implementation.
+- Preserve this architecture plan as the future production handoff; D-254 changes timing, not the accepted stack.
 
 ## Confirmed delivery inputs
 

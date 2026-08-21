@@ -1,5 +1,16 @@
 # Documentation Changelog
 
+## 2026-08-22 — Products information architecture correction
+
+### Changed
+
+- Recorded D-259, which supersedes only the Catalog-as-level-one and peer-tabs portions of D-258.
+- Reclassified current destinations as Module, Section, Tool, Flow child, or Review tooling.
+- Consolidated product work under one Products module: All products, Inventory, Organization, Featured products, then separately labeled Import and Trash tools.
+- Removed the rejected Organization/Featured/Import/Trash peer-tab model and excluded Component Gallery from Merchant navigation.
+- Corrected Desktop/Mobile hierarchy and replaced Catalog-reachability tests with information-architecture regression tests.
+- Updated project memory, delivery status, next work, frontend roadmap, and UX operating documents to match the corrected structure.
+
 ## 2026-08-22 — UX operating contract implemented
 
 ### Added

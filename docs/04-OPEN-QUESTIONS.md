@@ -1046,7 +1046,7 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 ## Explicitly deferred beyond Phase 1
 
-- Final technology stack.
+- Deployment provider and production topology; the application technology stack is resolved.
 - Full enterprise feature set.
 - App/integration marketplace.
 - Later-phase growth roadmap.
@@ -1153,19 +1153,19 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 **Resolved:** A domains table and custom Laravel middleware for hosted subdomains and verified custom domains. See D-241.
 
 
-## Architecture planning — Active decisions after Q-235
+## Architecture planning — Resolved after Q-235
 
 ### Q-236 — Runtime state stores
 
-Which stores should Laravel use for sessions, cache, distributed locks, and rate limits during the pilot and production rollout?
+**Resolved:** Use Redis through PhpRedis for sessions, cache, distributed locks, and rate-limit counters with separated connections or prefixes. See D-251.
 
 ### Q-237 — Internal and public identifiers
 
-Which primary-key strategy and externally exposed identifier format should orders, products, customers, and other resources use?
+**Resolved:** Use unsigned BIGINT internal primary keys and separate immutable public ULIDs for externally exposed records. Keep human order numbers as a store-scoped immutable sequence. See D-252.
 
 ### Q-238 — Authentication foundation
 
-Which Laravel authentication foundation should be used, and which Merchant, Customer, and Admin flows require custom implementation?
+**Resolved:** Use the Livewire starter kit and Fortify for Merchant authentication, custom Laravel guard/provider flows for store-scoped Customers, and a separate Admin guard with no public registration. See D-253.
 
 ## Design delivery — Active review
 
@@ -1179,9 +1179,9 @@ Which exact screen group should be designed next? The approved plan retrieved so
 
 ## Repository administration — Resolved
 
-### Q-241 — Public repository disclosure
+### Q-241 — Repository visibility
 
-**Resolved:** The founder explicitly approved publishing the project memory and decision files while `AM-naguib/lala` remains public.
+**Resolved:** Keep `AM-naguib/lala` public and publish the project memory and decisions there. See D-250.
 
 ## Pilot preparation — Deferred
 

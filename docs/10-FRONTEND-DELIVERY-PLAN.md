@@ -23,7 +23,7 @@
 | 2 | Orders list، Order detail، Manual order، Print | Delivered — awaiting review |
 | 3 | Products list، Product editor، Variants، Inventory | Delivered — awaiting review |
 | 3.1 | Unified constants contract | Implemented and published |
-| 4 | Catalog organization، Featured products، Trash، CSV import، Results | Delivered — awaiting review |
+| 4 | Product organization، Featured products، Product tools: Trash/CSV import/results | Delivered — navigation correction awaiting review |
 
 الموقع المرجعي الحالي: https://lala-design-system.curbs-storm-80.chatgpt.site
 
@@ -49,6 +49,7 @@
 - Wallet masking يطبق على أي بيانات عميل حساسة في لوحة التاجر.
 - لا يتم اختراع Field أو Lifecycle أو Analytics rule غير موثق.
 - أي قرار ناقص يضاف إلى Open Questions بدل إدخاله ضمن التصميم كأنه قرار.
+- هيكل Merchant الحالي يستخدم Dashboard، Orders، Products كمستوى أول. Inventory وOrganization وFeatured أقسام داخل Products؛ Import وTrash أدوات؛ وComponent Gallery ليست جزءًا من تنقل التاجر.
 
 ## 4. حالات الواجهة المطلوبة
 
@@ -81,7 +82,7 @@
 
 # Wave A — إكمال عمليات التاجر الأساسية
 
-## Batch 4 — Catalog operations
+## Batch 4 — Product organization and tools
 
 **الحالة:** Delivered and published as Sites version 6 — awaiting founder review.  
 

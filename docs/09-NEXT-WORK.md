@@ -2,19 +2,19 @@
 
 > Current execution queue for `lala`. Only items marked **Accepted** are binding decisions; proposed sequencing is planning guidance until the founder approves or implementation makes it concrete. Last updated 2026-08-21 (Africa/Cairo).
 
-## Immediate execution and review queue
+## Immediate static-design queue
 
-1. **Bootstrap the Laravel foundation** — Laravel 13 on PHP 8.5, MySQL, Redis/PhpRedis, Horizon, Pest, Tailwind CSS v4, Livewire, Blade, and Alpine.js.
-2. **Review Design Batch 2** — inspect Orders list, order detail, manual creation, and print views.
-3. **Define the exact Batch 3 scope** — the approved design plan retrieved so far ends after Batch 2 and does not name Batch 3+ screens. Do not invent later batches.
-4. **Keep pilot-specific pricing deferred** until pilot preparation unless the founder chooses to decide it earlier.
-5. **Choose production infrastructure during deployment planning** — hosting provider, topology, backups, monitoring, and recovery targets.
+1. **Review Design Batch 2** — inspect Orders list, order detail, manual creation, and print views.
+2. **Define the exact Batch 3 scope** — the approved plan retrieved so far does not name Batch 3+ screens. Do not invent later batches.
+3. **Continue portable static delivery** — one plain HTML file per screen, Tailwind CSS v4-compatible tokens and classes, Alpine.js CDN markup, extraction markers, real Arabic/English, and RTL/LTR parity.
+4. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, or integrations until the founder explicitly starts implementation.
+5. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The application architecture is no longer blocking: Redis runtime state, BIGINT plus public ULID identifiers, and the Merchant/Admin/Customer authentication boundaries are accepted in D-251 through D-253.
+The future Laravel architecture remains documented and accepted, but it is not part of the current work queue.
 
-## Proposed implementation sequence
+## Future implementation sequence — postponed
 
-This sequence is not yet an accepted product decision.
+This sequence is retained only as a future handoff. Do not execute it during the current static-design phase.
 
 1. Bootstrap Laravel 13 on PHP 8.5 with MySQL, Redis/Horizon, Pest, Tailwind CSS v4, Livewire, Blade, and Alpine.js.
 2. Establish tenant context, `store_id` isolation, domains resolution, authorization boundaries, and mandatory cross-tenant tests.

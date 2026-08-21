@@ -84,3 +84,19 @@ Batch 2 applies the exact seven core statuses, separate Labels, COD-only behavio
 ## Important boundary
 
 Batch 1 and Batch 2 are design-system prototypes. They establish approved UI behavior and portable markup for later extraction into Laravel Blade + Livewire, but they do not mean the Laravel application, database schema, queues, authentication, Bosta integration, or tests have been implemented.
+
+
+## Design system — Batch 3
+
+**State: Delivered and published; awaiting founder review.**
+
+Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
+
+| Screen | Review URL |
+|---|---|
+| Products list | https://lala-design-system.curbs-storm-80.chatgpt.site/products-list.html |
+| Product editor | https://lala-design-system.curbs-storm-80.chatgpt.site/product-editor.html |
+| Product variants | https://lala-design-system.curbs-storm-80.chatgpt.site/product-variants.html |
+| Inventory management | https://lala-design-system.curbs-storm-80.chatgpt.site/inventory.html |
+
+Implemented review states include catalog filters and empty/loading/no-results previews, bilingual media and pricing fields, flexible variants, exact inventory pills, optional thresholds, stock-adjustment history, manual adjustment drawer, return non-restock guidance, and static cross-navigation with Batches 1–2.

@@ -28,7 +28,8 @@
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
 - Batches 4–17 define 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
-- Batch 4 — Product organization and tools is delivered; its corrected Products-module navigation is the current review gate.
+- Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
+- Batch 5 — Customers is delivered as Sites version 9 and is the current review gate.
 - Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
@@ -98,9 +99,23 @@ Batch 1 and Batch 2 are design-system prototypes. They establish approved UI beh
 
 ## Design system — Batch 3
 
-**State: Delivered and published; awaiting founder review.**
+**State: Accepted after the Sites version 8 information-architecture correction.**
 
 Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
+
+## Design system — Batch 5
+
+**State: Delivered as Sites version 9; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| Customers list | https://lala-design-system.curbs-storm-80.chatgpt.site/customers-list.html |
+| Customer detail | https://lala-design-system.curbs-storm-80.chatgpt.site/customer-detail.html |
+| Identity conflict review | https://lala-design-system.curbs-storm-80.chatgpt.site/customer-identity-review.html |
+
+Delivered behavior includes name/phone/email search, type/status/tag filters, customer metrics, Guest and Account states, optional email, multiple addresses, order history and spend, internal notes and tags, blocking by phone or email, empty/no-results states, and identity-conflict review without silent merging.
+
+Wallet overdraft masks phone, email, and addresses while preserving customer IDs, order numbers, statuses, and totals. Sensitive export and conflict resolution are disabled until recharge restores the balance to at least EGP -10.00.
 
 | Screen | Review URL |
 |---|---|

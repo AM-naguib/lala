@@ -1,6 +1,6 @@
 # Delivery Status
 
-> Operational snapshot of what has been completed, what is only a prototype, and what is awaiting review. Last updated 2026-08-21 (Africa/Cairo).
+> Operational snapshot of what has been completed, what is only a prototype, and what is awaiting review. Last updated 2026-08-22 (Africa/Cairo).
 
 ## Status legend
 
@@ -20,6 +20,16 @@
 | Authentication foundation | Accepted | Livewire starter kit/Fortify for Merchants; separate custom Laravel guard/provider flows for Admins and store-scoped Customers. |
 | Repository | Accepted | Public `AM-naguib/lala`; sensitive data and secrets remain prohibited. |
 | Production application | Postponed | Current delivery is static HTML only by explicit founder decision; the prototypes are not production Laravel or Livewire code. |
+
+## Frontend delivery roadmap
+
+**State: Accepted by the founder.**
+
+- [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
+- Batches 4–17 define 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
+- Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
+- Batch 4 — Catalog operations is the next active delivery.
+- Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
 

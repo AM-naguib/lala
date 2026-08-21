@@ -1,4 +1,4 @@
-Warning: truncated output (original token count: 29115)
+Warning: truncated output (original token count: 29127)
 Total output lines: 1953
 
 # Decision Log
@@ -727,9 +727,7 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Date:** 2026-08-14
 - **Status:** Accepted
 - **Decision:** Calculate and display the shipping price immediately after the customer selects the governorate and city or area at checkout.
-- **Reason:** Founder selected early price visibility rather than delaying delivery cost until the final step or aft…9115 tokens truncated…nguage behavior for Phase 1 printed documents.
-
-## D-190 — Rename-only built-in order statuses
+- **Reason:** Founder selected early price visibility rather than delaying delivery cost until the final step or aft…9127 tokens truncated…## D-190 — Rename-only built-in order statuses
 
 - **Date:** 2026-08-15
 - **Status:** Accepted
@@ -1267,5 +1265,5 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Peer rule:** Categories/Collections/Tags may be peer tabs inside Organization, and Imported/Rejected may be peer tabs inside Import results. Organization, Featured, Import, and Trash must not be presented as one peer-tab set because they have different purposes and frequencies.
 - **Review-tool boundary:** Component Gallery remains accessible from the design review entry point but is excluded from Merchant navigation.
 - **Reason:** The previous version mixed organization entities, merchandising, operations, and recovery at one level, and split Catalog from the product work merchants understand as one module.
-- **Delivery:** Implemented across the current static screens with regression tests and prepared for the next Sites checkpoint.
+- **Delivery:** Implemented across the current static screens with regression tests and published as Sites version 8 at https://lala-design-system.curbs-storm-80.chatgpt.site.
 - **Unchanged:** The general UX contract, two-level discoverability target, action hierarchy, dead-link rule, and static-only boundary from D-258 remain accepted.

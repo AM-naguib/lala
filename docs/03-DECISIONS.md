@@ -1793,3 +1793,60 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** Resolve the current storefront by exact hostname lookup in a domains table through custom Laravel middleware. Use this model for both hosted `lala` subdomains and verified custom domains rather than a third-party tenancy package or subdomain-only parsing.
 - **Reason:** Founder selected the recommended lightweight custom resolution model.
 - **Architecture effect:** Store normalized hostname, store reference, domain type, verification and health state, canonical state, and timestamps. Resolve only active exact matches, establish the tenant context before model access, reject unknown hosts safely, and keep central platform and merchant-dashboard hosts outside storefront tenant resolution.
+
+
+## D-242 — Portable design delivery format
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Deliver design-system screens as plain static HTML files, one file per screen, using portable Tailwind class strings, Alpine.js CDN markup, and `<!-- component: ... -->` extraction markers for the Laravel Blade + Livewire pipeline. Do not use a workspace-specific component format.
+- **Reason:** Founder explicitly required portable production-oriented source.
+
+## D-243 — Tailwind CSS v4 token bridge
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Define every token as a CSS custom property first, then reference it from the Tailwind layer so it can move into a Tailwind CSS v4 `@theme` block without rewriting token values. Avoid renamed or removed v4 utilities.
+- **Reason:** Laravel 13 production styling will use Tailwind CSS v4.
+
+## D-244 — One bilingual UI family plus operational Mono
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Use self-hosted IBM Plex Sans Arabic for display, UI, and body text in both scripts. Use IBM Plex Mono only for numerals, SKUs, order numbers, and phone numbers.
+- **Reason:** This avoids a duplicate Latin-family request while preserving a dedicated operational-data face.
+
+## D-245 — Standard table density and RTL verification
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Standardize merchant tables at 52px row height, 12px × 16px cell padding, 14px/20px body text, and 12px semibold muted headers. Verify real Arabic shaping and LTR Mono spans inside RTL sentences in a browser.
+- **Reason:** Orders is the merchant's primary working surface.
+
+## D-246 — No payment-status model in the MVP
+
+- **Date:** 2026-08-21
+- **Status:** Accepted clarification of D-009
+- **Decision:** Do not add payment-status fields or pills. Every MVP order is COD; a future cash-collection model requires a separately approved field, lifecycle, and analytics definition.
+- **Reason:** Payment-status UI would introduce an unapproved lifecycle and alter revenue analytics.
+
+## D-247 — Three inventory presentation states
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Present inventory as In stock, Low stock, or Out of stock in Arabic and English. Out-of-stock products remain visible with a clear label.
+- **Reason:** These states reflect the accepted optional low-stock threshold and catalog behavior.
+
+## D-248 — Design Batch 1 accepted
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Accept the Batch 1 token stylesheet, app shell, component gallery, font policy, Tailwind CSS v4 bridge, 52px density, bilingual examples, and wallet masking cascade.
+- **Reason:** Founder explicitly approved Batch 1 after the controlled-field corrections.
+
+## D-249 — Design Batch 2 scope
+
+- **Date:** 2026-08-21
+- **Status:** Accepted scope; delivered output awaiting review
+- **Decision:** Batch 2 contains Orders list, order detail, manual order creation, and print views using the accepted Batch 1 system and corrected order model.
+- **Reason:** Founder explicitly authorized this batch.

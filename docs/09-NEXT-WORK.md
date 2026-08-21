@@ -4,9 +4,9 @@
 
 ## Immediate static-design queue
 
-1. **Review Design Batch 2** — inspect Orders list, order detail, manual creation, and print views.
-2. **Define the exact Batch 3 scope** — the approved plan retrieved so far does not name Batch 3+ screens. Do not invent later batches.
-3. **Continue portable static delivery** — one plain HTML file per screen, Tailwind CSS v4-compatible tokens and classes, Alpine.js CDN markup, extraction markers, real Arabic/English, and RTL/LTR parity.
+1. **Review Design Batches 2 and 3** — inspect Orders plus Products and Inventory screens and record acceptance or requested revisions.
+2. **Define the exact next static batch** — Batch 4+ is not approved yet; do not invent its screens.
+3. **Continue portable static delivery after approval** — one plain HTML file per screen, Tailwind CSS v4-compatible tokens and classes, Alpine.js CDN markup, extraction markers, real Arabic/English, and RTL/LTR parity.
 4. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, or integrations until the founder explicitly starts implementation.
 5. **Keep pilot-specific pricing deferred** until pilot preparation.
 

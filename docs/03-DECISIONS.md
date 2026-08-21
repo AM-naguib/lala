@@ -1883,3 +1883,12 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** Use the Laravel 13 Livewire starter kit and its Fortify foundation for Merchant authentication, with custom actions, responses, views, rate limiters, and WhatsApp phone verification. Implement Admin authentication with Laravel's built-in guard, provider, password broker, and invitation/seeded-account flow with no public registration. Implement store-scoped Customer authentication with a dedicated guard/provider and custom Blade flows supporting email-link or WhatsApp-code verification and recovery.
 - **Reason:** This reuses Laravel's maintained Merchant authentication baseline while keeping the already accepted Admin, Merchant, and Customer identity boundaries explicit.
 - **Exclusion:** Do not add Sanctum, Passport, social login, WorkOS, or API tokens until a concrete API or external-client requirement exists.
+
+
+## D-254 — Static design delivery before Laravel implementation
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Continue the current delivery phase using portable static HTML screens only. Do not bootstrap or write Laravel, Livewire, Blade application code, database migrations, queues, authentication, or production integrations until the founder explicitly starts the implementation phase.
+- **Reason:** Founder explicitly chose to remain static for now.
+- **Effect:** D-226 through D-253 remain the accepted future production architecture, but they are implementation inputs rather than current work.

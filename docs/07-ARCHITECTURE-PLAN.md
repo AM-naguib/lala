@@ -6,7 +6,7 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 
 - **Phase:** Architecture and delivery planning
 - **Started:** 2026-08-15 (Africa/Cairo)
-- **Implementation:** Not started
+- **Implementation:** Production Laravel implementation not started; Design Batch 1 is accepted and Design Batch 2 is delivered for review as portable static prototypes.
 - **Accepted technology stack:** PHP 8.5; Laravel 13; MySQL; traditional Laravel structure; Livewire with Blade for the merchant dashboard; Blade with Alpine.js and plain JavaScript for the storefront; Tailwind CSS; Redis queues with Horizon; Pest; local pilot file storage
 
 ## Confirmed delivery inputs
@@ -20,6 +20,15 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 - Multi-tenancy uses a shared MySQL schema with row-level `store_id` isolation.
 - Admin, Merchant, and Customer identities have separate authentication boundaries.
 - Storefront tenant resolution uses a custom hostname middleware and domains table.
+
+## Design-system delivery input
+
+- Portable design source uses one plain HTML file per screen, Tailwind CSS v4-compatible class strings and token variables, Alpine.js markup, and extraction markers for later Blade/Livewire conversion.
+- IBM Plex Sans Arabic is the single UI family for both scripts; IBM Plex Mono is restricted to operational numerals and identifiers.
+- The merchant-table standard is 52px rows with 12px × 16px cell padding and 14px/20px body text.
+- Design Batch 1 foundations are accepted.
+- Design Batch 2 Orders screens are delivered for review.
+- These prototypes do not implement Laravel rules, persistence, authentication, queues, provider integrations, or tests.
 
 ## Accepted backend direction
 

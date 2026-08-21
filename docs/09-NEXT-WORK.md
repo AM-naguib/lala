@@ -2,16 +2,15 @@
 
 > Current execution queue for `lala`. Only items marked **Accepted** are binding decisions; proposed sequencing is planning guidance until the founder approves or implementation makes it concrete. Last updated 2026-08-21 (Africa/Cairo).
 
-## Immediate review queue
+## Immediate execution and review queue
 
-1. **Review Design Batch 2** — inspect Orders list, order detail, manual creation, and print views.
-2. **Define the exact Batch 3 scope** — the approved design plan retrieved so far ends after Batch 2 and does not name Batch 3+ screens. Do not invent later batches.
-3. **Resolve repository visibility** — project decision D-002 requires a private repository, while GitHub currently reports `AM-naguib/lala` as public.
-4. **Decide the remaining architecture inputs:**
-   - session, cache, distributed-lock, and rate-limit storage;
-   - internal primary-key and public identifier formats;
-   - Laravel authentication foundation and custom-flow boundaries.
-5. **Keep pilot-specific pricing deferred** until pilot preparation unless the founder chooses to decide it earlier.
+1. **Bootstrap the Laravel foundation** — Laravel 13 on PHP 8.5, MySQL, Redis/PhpRedis, Horizon, Pest, Tailwind CSS v4, Livewire, Blade, and Alpine.js.
+2. **Review Design Batch 2** — inspect Orders list, order detail, manual creation, and print views.
+3. **Define the exact Batch 3 scope** — the approved design plan retrieved so far ends after Batch 2 and does not name Batch 3+ screens. Do not invent later batches.
+4. **Keep pilot-specific pricing deferred** until pilot preparation unless the founder chooses to decide it earlier.
+5. **Choose production infrastructure during deployment planning** — hosting provider, topology, backups, monitoring, and recovery targets.
+
+The application architecture is no longer blocking: Redis runtime state, BIGINT plus public ULID identifiers, and the Merchant/Admin/Customer authentication boundaries are accepted in D-251 through D-253.
 
 ## Proposed implementation sequence
 

@@ -1,5 +1,22 @@
 # Documentation Changelog
 
+## 2026-08-21 — Architecture baseline completed
+
+### Added
+
+- Superseded the original private-repository decision after the founder explicitly approved keeping `AM-naguib/lala` public.
+- Selected Redis/PhpRedis for sessions, cache, distributed locks, rate limiting, and Horizon queues with isolated connections or prefixes.
+- Selected unsigned BIGINT internal keys plus immutable public ULIDs and separate store-scoped human order numbers.
+- Selected the Laravel 13 Livewire starter kit and Fortify as the Merchant-authentication foundation, with separate custom Admin and store-scoped Customer guard flows.
+- Linked the architecture plan to the relevant official Laravel 13 documentation.
+
+### Changed
+
+- Closed Q-236 through Q-238 and the repository-visibility question.
+- Removed stale statements that treated the accepted stack, verification rules, empty storefront, Contact delivery, manual orders, and Bosta controls as undecided.
+- Marked the application shape as accepted and advanced the active objective to production Laravel bootstrapping.
+- Left only Design Batch 2 review, exact Batch 3 scope, pilot-specific pricing, and deployment infrastructure as future decisions.
+
 ## 2026-08-21 — Design delivery memory refreshed
 
 ### Added

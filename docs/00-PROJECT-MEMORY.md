@@ -20,6 +20,8 @@
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
 - Design Batch 4 is delivered and published as Sites version 6 for review: catalog organization, featured-product ordering, product Trash with restore-as-Hidden, CSV mapping/validation/background processing, and import results.
+- UX navigation remediation is implemented and published as Sites version 7: Catalog is a level-one destination on every current merchant Sidebar, current screens have mobile primary navigation, active parents use `aria-current`, Products actions are simplified, and future unavailable destinations are explicitly Disabled.
+- `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
 - The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 cover Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening; 65 remaining screen files are planned.
@@ -320,13 +322,14 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` as the frontend source of truth. Keep Batches 2–4 open for founder review and stop before Batch 5 Customers. Do not start Laravel implementation yet.
+Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–4 open for founder review and stop before Batch 5 Customers. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
 - Design Batches 2, 3, and 4 await founder acceptance or revision.
 - Batch 4 is delivered; Batch 5 must not start until the founder passes the Batch 4 review gate.
+- No current UX blocker remains for Catalog discoverability; P1/P2 improvements are tracked in `docs/ux/03-UX-BACKLOG.md`.
 
 ## GitHub sync status
 
@@ -338,7 +341,7 @@ Use `10-FRONTEND-DELIVERY-PLAN.md` as the frontend source of truth. Keep Batches
 ## Next decisions to obtain
 
 - Accept or revise Design Batches 2, 3, and 4.
-- After Batch 4 acceptance, execute Batch 5 Customers according to `10-FRONTEND-DELIVERY-PLAN.md`.
+- After Batch 4 acceptance, execute Batch 5 Customers according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

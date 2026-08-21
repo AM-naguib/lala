@@ -487,21 +487,23 @@
 
 ## 7. طريقة تنفيذ كل Batch
 
-1. قراءة هذا الملف والقرارات المرتبطة فقط.
-2. تثبيت قائمة الملفات والحالات قبل الكتابة.
+1. قراءة هذا الملف والقرارات المرتبطة و`docs/ux/README.md`.
+2. تثبيت قائمة الملفات والحالات وParent/Entry/Exit وPrimary action قبل الكتابة.
 3. تحديث Component Gallery بروابط الـBatch.
 4. تنفيذ Static HTML وAlpine behavior.
-5. تشغيل constants، status، marker، build، test، وlint checks.
-6. نشر Checkpoint على موقع المراجعة.
-7. تحديث:
+5. تطبيق `docs/ux/02-SCREEN-CHECKLIST.md` وإغلاق كل بنود P0.
+6. تشغيل constants، navigation، status، marker، build، test، وlint checks.
+7. نشر Checkpoint على موقع المراجعة.
+8. تحديث:
    - Project Memory.
    - Decisions عند وجود قرار جديد أو تغيير.
    - Delivery Status.
    - Next Work.
    - Changelog.
-8. التوقف لمراجعة المؤسس.
-9. تسجيل Accepted أو Changes requested.
-10. بدء الـBatch التالي بعد قفل السابق أو بموافقة صريحة على الاستمرار.
+9. تحديث `docs/ux/03-UX-BACKLOG.md` بأي دين UX متبقٍ.
+10. التوقف لمراجعة المؤسس.
+11. تسجيل Accepted أو Changes requested.
+12. بدء الـBatch التالي بعد قفل السابق أو بموافقة صريحة على الاستمرار.
 
 ## 8. Definition of Done لكل Screen
 
@@ -515,6 +517,10 @@
 - لا تضيف Product field أو status غير مقرر.
 - تحافظ على wallet masking عند وجود بيانات حساسة.
 - تحتوي extraction markers متوازنة.
+- لها Parent وEntry point وExit/Recovery path واضحان.
+- Primary action واحد واضح، ولا توجد Dead links أو Screens orphan.
+- Desktop وMobile يعرضان نفس بنية التنقل مع Active state صحيح.
+- كل بنود P0 في `docs/ux/02-SCREEN-CHECKLIST.md` ناجحة.
 - روابطها الداخلية صحيحة.
 - تمر في الاختبارات الآلية والبناء.
 - مضافة إلى Component Gallery أو route inventory.

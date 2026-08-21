@@ -335,7 +335,7 @@ Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of tru
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
+- **Current explicit request:** keep the work static, publish the portable HTML source to the public review branch, and deliver Batch 6 Discounts for review.
 - **Working branch:** `docs/project-memory-2026-08-21`.
 - **Pending review:** founder review of delivered Batches 2–3 and 6 before Batch 7.
 

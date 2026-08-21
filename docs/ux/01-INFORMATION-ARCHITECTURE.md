@@ -8,7 +8,7 @@
 
 | النوع | معناه | أمثلة |
 |---|---|---|
-| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Products |
+| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Products، Customers، Discounts |
 | Section | جزء دائم داخل Module | Inventory، Organization، Featured products |
 | Tool | عملية تشغيلية تُستخدم عند الحاجة | Import products، Trash |
 | Flow child | خطوة أو نتيجة داخل مسار | Import results، Product editor، Variants |
@@ -29,6 +29,7 @@
 | المنتجات / Products | `product-import.html` | أدوات المنتجات / Import | رفع CSV، المطابقة، المراجعة، و`product-import-results.html` كنتيجة للمسار |
 | المنتجات / Products | `product-trash.html` | أدوات المنتجات / Trash | المحذوف مؤقتًا والاسترجاع كـHidden |
 | العملاء / Customers | `customers-list.html` | — | القائمة، تفاصيل العميل، ومراجعة تعارض الهوية |
+| الخصومات / Discounts | `discounts-list.html` | — | قائمة الكوبونات ومحرر الكوبون |
 
 ## لماذا Products هي الـModule الوحيدة هنا؟
 
@@ -42,14 +43,14 @@
 
 ### Desktop
 
-- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Products، Customers.
+- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Products، Customers، Discounts.
 - عند دخول أي شاشة منتج، تتوسع Products وتعرض Sections أولًا ثم Product tools في مجموعة معنونة منفصلة.
 - Parent وChild الصحيحان فقط يأخذان Active state و`aria-current="page"`.
 - لا يتغير عرض الـSidebar أو الـContainer أو موضع المحتوى بين الشاشات.
 
 ### Mobile وTablet
 
-- Primary navigation يعرض Dashboard، Orders، Products، Customers في المرحلة الحالية.
+- Primary navigation يعرض Dashboard، Orders، Products، Customers، Discounts في المرحلة الحالية، ويستخدم تمريرًا أفقيًا عند ضيق العرض بدل ضغط العناصر.
 - داخل Products يظهر شريط Sections: All، Inventory، Organization، Featured، ثم Tools.
 - Tools تفتح Import وTrash؛ لا تظهر Catalog أو Inventory كوجهات مستوى أول منفصلة.
 - نفس Parent المستخدم على Desktop يظل Active على Mobile.
@@ -65,7 +66,6 @@
 
 | المجموعة | المستوى الأول المخطط | Batch |
 |---|---|---|
-| الخصومات | Discounts | 6 |
 | الشحن | Shipping | 7 |
 | التقارير | Analytics | 8 |
 | تصميم المتجر | Storefront | 11–13 |

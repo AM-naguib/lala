@@ -25,8 +25,6 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 - [`docs/10-FRONTEND-DELIVERY-PLAN.md`](docs/10-FRONTEND-DELIVERY-PLAN.md) — accepted Batches 4–17 roadmap for completing the static frontend.
 - [`docs/ux/README.md`](docs/ux/README.md) — binding UX principles, information architecture, screen checklist, and prioritized UX backlog.
 
-Current Merchant navigation rule: Dashboard, Orders, and Products are the active level-one modules. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
-
 ## Static frontend prototype
 
 The actual portable HTML source is checked in under [`prototype/`](prototype/). It includes every current screen, the Tailwind CSS v4 token bridge, self-hosted font files, Alpine.js prototype markup, extraction markers, and the design-contract test. The published review site remains https://lala-design-system.curbs-storm-80.chatgpt.site.

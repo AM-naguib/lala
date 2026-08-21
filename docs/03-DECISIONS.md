@@ -1,5 +1,5 @@
-Warning: truncated output (original token count: 29127)
-Total output lines: 1953
+Warning: truncated output (original token count: 29587)
+Total output lines: 1972
 
 # Decision Log
 
@@ -727,7 +727,126 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Date:** 2026-08-14
 - **Status:** Accepted
 - **Decision:** Calculate and display the shipping price immediately after the customer selects the governorate and city or area at checkout.
-- **Reason:** Founder selected early price visibility rather than delaying delivery cost until the final step or aft…9127 tokens truncated…## D-190 — Rename-only built-in order statuses
+- **Reason:** Founder selected early price visibility rather than delaying delivery cost until the final step or after order creation.
+
+## D-094 — Merchant can add missing custom geography
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow a merchant to add a custom city or area under an Egyptian governorate when that location is missing from the preloaded list.
+- **Reason:** Founder selected merchant self-service rather than free-text customer geography or waiting for platform administration.
+- **Resolution:** D-095 makes merchant-added locations store-specific.
+
+## D-095 — Custom geography is store-specific
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Make a merchant-added custom city or area visible only within that merchant's store. Do not add it automatically to the platform-wide geography list.
+- **Reason:** Founder selected the recommended isolated customization model.
+
+## D-096 — Zero-price zones provide free shipping
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow a merchant to set a shipping-zone price to zero and display it to customers as free shipping.
+- **Reason:** Founder selected zone-level free shipping without requiring a coupon.
+
+## D-097 — Zone-price changes affect only later orders
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Preserve the shipping price captured by every existing order. After a merchant changes a zone's price, orders created afterward use the new price immediately.
+- **Reason:** Founder selected immutable historical order totals with immediate application to new purchases.
+
+## D-098 — Multiple independent stores per merchant account
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow one merchant account to own multiple stores, with independent settings and data for each store.
+- **Reason:** Founder selected multi-store ownership rather than one store per account or a parent-and-branch model.
+- **Resolution:** D-101 makes the store count unlimited in the MVP.
+
+## D-099 — Owner-only store access in the MVP
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Allow only the merchant account owner to access and manage the account's stores in the MVP. Do not include team-member invitations or roles.
+- **Reason:** Founder explicitly selected owner-only access for now.
+
+## D-100 — Store removal disables without deleting data
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When the owner removes a store from active use, disable the store without deleting its stored data.
+- **Reason:** Founder selected data-preserving deactivation rather than permanent deletion or time-limited soft deletion.
+- **Resolution:** D-102 makes reactivation support-only and D-103 defines the disabled-store visitor page.
+
+## D-101 — Unlimited stores per merchant account
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Do not impose a maximum number of stores that one merchant account can own in the MVP.
+- **Reason:** Founder explicitly selected an unlimited store count.
+
+## D-102 — Disabled-store reactivation through support only
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Require the owner to contact `lala` support to reactivate a disabled store; do not provide owner self-service reactivation in the MVP.
+- **Reason:** Founder selected support-controlled restoration.
+
+## D-103 — Disabled stores show an unavailable page
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** When a visitor opens a disabled store's hosted subdomain or custom domain, show a clear page stating that the store is currently unavailable.
+- **Reason:** Founder selected an explicit visitor-facing status rather than a 404 page or redirect to the `lala` website.
+
+## D-104 — Multiple ready-made storefront themes
+
+- **Date:** 2026-08-14
+- **Status:** Accepted
+- **Decision:** Offer multiple ready-made storefront themes in the MVP.
+- **Reason:** Founder selected theme choice rather than one default theme or a completely free design editor.
+
+## D-105 — Logo, colors, fonts, and favicon brand …7587 tokens truncated…lected the proposed set that prioritizes recent fulfillment work while supporting chronological and value-based review.
+
+## D-185 — Storefront and dashboard-manual order sources
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Identify each Phase 1 order as either Storefront when submitted by a customer or Dashboard Manual when created by the merchant. No additional source types are included initially.
+- **Reason:** Founder selected explicit source visibility for the two order-entry paths in scope.
+
+## D-186 — Individual and bulk invoice and packing-slip printing
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** In addition to shipping-provider labels, allow merchants to print an invoice and a packing slip for one order or a selected group of orders.
+- **Reason:** Founder selected both customer-facing and fulfillment-facing documents with individual and bulk operation support.
+
+## D-187 — Complete printable invoice content
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The printable invoice contains store details, order number and date, customer and delivery details, products and variants, quantities and prices, shipping charge, discount, final total, and order notes.
+- **Reason:** Founder selected the complete proposed invoice rather than a reduced summary.
+
+## D-188 — Price-free packing slip
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** The packing slip contains order number, customer name, delivery address, phone number, products and variants, quantities, and order notes. It does not display product prices or order totals.
+- **Reason:** Founder selected a fulfillment-focused document that can be used for picking and packing without exposing financial values.
+
+## D-189 — Primary-language-only printed documents
+
+- **Date:** 2026-08-15
+- **Status:** Accepted
+- **Decision:** Render invoices and packing slips in the store's current primary language only. Do not provide a print-time Arabic or English selector and do not render both languages together.
+- **Reason:** Founder selected the simplest consistent language behavior for Phase 1 printed documents.
+
+## D-190 — Rename-only built-in order statuses
 
 - **Date:** 2026-08-15
 - **Status:** Accepted
@@ -1267,3 +1386,22 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Reason:** The previous version mixed organization entities, merchandising, operations, and recovery at one level, and split Catalog from the product work merchants understand as one module.
 - **Delivery:** Implemented across the current static screens with regression tests and published as Sites version 8 at https://lala-design-system.curbs-storm-80.chatgpt.site.
 - **Unchanged:** The general UX contract, two-level discoverability target, action hierarchy, dead-link rule, and static-only boundary from D-258 remain accepted.
+
+## D-260 — Design Batch 4 accepted after information-architecture correction
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept Product organization, Featured products, Product Trash, CSV import, Import results, and the corrected D-259 Products-module hierarchy delivered in Sites version 8.
+- **Reason:** The founder reviewed the corrected hierarchy and explicitly instructed the work to continue to the next Batch.
+- **Boundary:** Acceptance remains for the portable static design; it does not start Laravel implementation.
+
+## D-261 — Design Batch 5 Customers scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 5 contains Customers list, Customer detail, and Customer identity-conflict review as three portable static screens. Customers becomes a level-one Merchant module because customer search and record review are independent daily tasks.
+- **Data rules:** Preserve Guest and Account customers, optional email, multiple addresses, tags, notes, order metrics/history, blocking by phone or email, and conflict review without silent merging.
+- **Masking rule:** Wallet overdraft hides phone, email, and address data, keeps non-sensitive record/order context visible, disables sensitive export and identity resolution, and explains the recharge threshold.
+- **Product boundary:** Manual record merging and additional CRM fields remain excluded because they are not approved product decisions. The safe conflict action can confirm separate records or leave the case for later review.
+- **Delivery:** Published as Sites version 9 at https://lala-design-system.curbs-storm-80.chatgpt.site with ten passing static-contract tests.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, authentication, or Laravel implementation.

@@ -1,5 +1,16 @@
 # Documentation Changelog
 
+## 2026-08-21 — Unified design constants implemented
+
+### Changed
+
+- Standardized every application route and product tab on one 1440px outer content frame.
+- Added named Tailwind CSS v4 bridges for page padding, inner grids, table widths, typography details, controls, layers, and print dimensions.
+- Standardized every table cell on the accepted 52px row and 12×16px padding contract.
+- Added a full constants reference, component-gallery layout contract, and automated regression tests that reject legacy outer widths and reusable arbitrary utilities.
+- Published Sites version 5 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Added D-256.
+
 ## 2026-08-21 — Design Batch 3 delivered and published
 
 ### Added

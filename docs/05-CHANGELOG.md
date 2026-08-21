@@ -1,5 +1,21 @@
 # Documentation Changelog
 
+## 2026-08-22 — UX operating contract implemented
+
+### Added
+
+- Added `docs/ux/` with binding UX principles, information architecture, screen acceptance checklist, and prioritized backlog.
+- Added D-258 and integrated the UX P0 gate into the frontend delivery roadmap.
+- Added automated coverage that requires Catalog reachability and mobile primary navigation on every current merchant screen.
+
+### Changed
+
+- Promoted Catalog to a level-one Sidebar destination across all current merchant screens.
+- Added consistent mobile primary navigation and correct active-parent semantics.
+- Simplified Products list actions to one primary action, one frequent secondary action, and a More actions menu.
+- Marked unbuilt App shell destinations as Disabled with “Soon / قريبًا” and fixed View all orders.
+- Published Sites version 7 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+
 ## 2026-08-22 — Design Batch 4 delivered and published
 
 ### Added

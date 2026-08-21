@@ -19,6 +19,7 @@
 - Inventory presentation uses In stock, Low stock, and Out of stock.
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
 - Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
+- Design Batch 4 is delivered and published as Sites version 6 for review: catalog organization, featured-product ordering, product Trash with restore-as-Hidden, CSV mapping/validation/background processing, and import results.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
 - The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 cover Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening; 65 remaining screen files are planned.
@@ -319,25 +320,25 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` as the frontend source of truth. Keep Batches 2–3 open for founder review and execute Batch 4 Catalog operations next. Do not start Laravel implementation yet.
+Use `10-FRONTEND-DELIVERY-PLAN.md` as the frontend source of truth. Keep Batches 2–4 open for founder review and stop before Batch 5 Customers. Do not start Laravel implementation yet.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
-- Design Batches 2 and 3 await founder acceptance or revision.
-- Batch 4 is defined as Catalog operations; any roadmap reordering or expansion requires an explicit recorded change.
+- Design Batches 2, 3, and 4 await founder acceptance or revision.
+- Batch 4 is delivered; Batch 5 must not start until the founder passes the Batch 4 review gate.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
 - **Current explicit request:** synchronize the refreshed project memory immediately through a review branch and Draft PR.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** refreshed memory, founder review of Batches 2–3, and execution of the accepted frontend roadmap beginning with Batch 4.
+- **Pending review:** refreshed memory and founder review of delivered Batches 2–4 before Batch 5.
 
 ## Next decisions to obtain
 
-- Accept or revise Design Batches 2 and 3.
-- Execute Batch 4 Catalog operations according to `10-FRONTEND-DELIVERY-PLAN.md`.
+- Accept or revise Design Batches 2, 3, and 4.
+- After Batch 4 acceptance, execute Batch 5 Customers according to `10-FRONTEND-DELIVERY-PLAN.md`.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

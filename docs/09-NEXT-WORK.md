@@ -5,7 +5,7 @@
 ## Immediate static-design queue
 
 1. **Review Design Batches 2 and 3** — record acceptance or requested revisions for Orders plus Products and Inventory.
-2. **Review Design Batch 4 — Catalog operations** at https://lala-design-system.curbs-storm-80.chatgpt.site:
+2. **Review Design Batch 4 — Product organization and tools** at https://lala-design-system.curbs-storm-80.chatgpt.site after the corrected navigation checkpoint:
    - `catalog-organization.html`
    - `featured-products.html`
    - `product-trash.html`
@@ -18,7 +18,7 @@
 7. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
 8. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The accepted roadmap covers Batches 4–17. Batch 4 is delivered and published as Sites version 6; the current execution state is its review gate.
+The accepted roadmap covers Batches 4–17. Batch 4 screens are delivered; the current execution state is review of the corrected Products-module hierarchy before Batch 5.
 
 ## Future implementation sequence — postponed
 

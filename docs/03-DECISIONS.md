@@ -1892,3 +1892,13 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** Continue the current delivery phase using portable static HTML screens only. Do not bootstrap or write Laravel, Livewire, Blade application code, database migrations, queues, authentication, or production integrations until the founder explicitly starts the implementation phase.
 - **Reason:** Founder explicitly chose to remain static for now.
 - **Effect:** D-226 through D-253 remain the accepted future production architecture, but they are implementation inputs rather than current work.
+
+
+## D-255 — Design Batch 3 products and inventory scope
+
+- **Date:** 2026-08-21
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Design Batch 3 covers four portable static screens: Products list, Product editor, Product variants, and Inventory management.
+- **Rules preserved:** Product visibility is Published or Hidden; a product publishes on save when its primary-language name and selling price exist; soft-deleted products move to Trash and restore as Hidden; variants independently carry price, compare-at price, cost, SKU, stock, and image; unavailable variants remain visible but disabled; low-stock thresholds are optional; COD orders deduct tracked stock immediately; cancellation restores it; returns never auto-restock.
+- **Delivery:** Published as Sites version 4 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
+- **Boundary:** Delivery remains static HTML, Tailwind CSS v4, and Alpine.js only; this decision does not start Laravel implementation.

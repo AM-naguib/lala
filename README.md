@@ -173,6 +173,6 @@ Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limit
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: bootstrap the production Laravel foundation, review Design Batch 2, and define the exact Batch 3 scope without expanding the accepted MVP.
+- Immediate focus: remain static, review Design Batch 2, define the exact Batch 3 scope, and continue portable Tailwind CSS v4 + Alpine.js HTML screens. Laravel implementation is postponed until explicit founder approval.
 
 Last updated: 2026-08-21 (Africa/Cairo)

@@ -1,5 +1,14 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 5 Customers delivered
+
+- Recorded founder acceptance of corrected Design Batch 4 in D-260.
+- Added D-261 for Customers list, unified Customer detail, and identity-conflict review.
+- Added Customers as a level-one Merchant module on Desktop and Mobile.
+- Preserved Guest/Account records, optional email, multiple addresses, blocking by phone/email, notes, tags, order metrics/history, and safe conflict review without silent merging.
+- Applied wallet-overdraft masking to phone, email, and addresses; disabled sensitive export and conflict resolution until recharge.
+- Published Sites version 9 and advanced the review gate to Batch 5 before Batch 6 Discounts.
+
 ## 2026-08-22 — Products information architecture correction
 
 ### Changed

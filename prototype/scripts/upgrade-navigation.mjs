@@ -209,8 +209,9 @@ for (const name of merchantScreens) {
   if (!asidePattern.test(source)) throw new Error(`${name}: sidebar was not found`);
   source = source.replace(asidePattern, desktopSidebar(name));
 
-  const existingMobile = /\s*<!-- component: mobile-primary-navigation -->[\s\S]*?<!-- \/component: mobile-primary-navigation -->/;
-  source = source.replace(existingMobile, "");
+  const existingMobilePrimary = /\s*<!-- component: mobile-primary-navigation -->[\s\S]*?<!-- \/component: mobile-primary-navigation -->/g;
+  const existingMobileProduct = /\s*<!-- component: mobile-product-navigation -->[\s\S]*?<!-- \/component: mobile-product-navigation -->/g;
+  source = source.replace(existingMobilePrimary, "").replace(existingMobileProduct, "");
   const headerEnd = source.indexOf("</header>");
   if (headerEnd === -1) throw new Error(`${name}: header was not found`);
   const insertionPoint = headerEnd + "</header>".length;

@@ -12,9 +12,9 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 ## D-002 — Repository visibility and name
 
 - **Date:** 2026-08-14
-- **Status:** Accepted; connected
+- **Status:** Superseded by D-250
 - **Decision:** Use the private GitHub repository `AM-naguib/lala`.
-- **Reason:** Founder requested persistent, private project planning and memory in GitHub.
+- **Reason:** Founder originally requested persistent, private project planning and memory in GitHub.
 
 ## D-003 — Launch market ambition
 
@@ -1793,3 +1793,328 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Decision:** Resolve the current storefront by exact hostname lookup in a domains table through custom Laravel middleware. Use this model for both hosted `lala` subdomains and verified custom domains rather than a third-party tenancy package or subdomain-only parsing.
 - **Reason:** Founder selected the recommended lightweight custom resolution model.
 - **Architecture effect:** Store normalized hostname, store reference, domain type, verification and health state, canonical state, and timestamps. Resolve only active exact matches, establish the tenant context before model access, reject unknown hosts safely, and keep central platform and merchant-dashboard hosts outside storefront tenant resolution.
+
+
+## D-242 — Portable design delivery format
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Deliver design-system screens as plain static HTML files, one file per screen, using portable Tailwind class strings, Alpine.js CDN markup, and `<!-- component: ... -->` extraction markers for the Laravel Blade + Livewire pipeline. Do not use a workspace-specific component format.
+- **Reason:** Founder explicitly required portable production-oriented source.
+
+## D-243 — Tailwind CSS v4 token bridge
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Define every token as a CSS custom property first, then reference it from the Tailwind layer so it can move into a Tailwind CSS v4 `@theme` block without rewriting token values. Avoid renamed or removed v4 utilities.
+- **Reason:** Laravel 13 production styling will use Tailwind CSS v4.
+
+## D-244 — One bilingual UI family plus operational Mono
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Use self-hosted IBM Plex Sans Arabic for display, UI, and body text in both scripts. Use IBM Plex Mono only for numerals, SKUs, order numbers, and phone numbers.
+- **Reason:** This avoids a duplicate Latin-family request while preserving a dedicated operational-data face.
+
+## D-245 — Standard table density and RTL verification
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Standardize merchant tables at 52px row height, 12px × 16px cell padding, 14px/20px body text, and 12px semibold muted headers. Verify real Arabic shaping and LTR Mono spans inside RTL sentences in a browser.
+- **Reason:** Orders is the merchant's primary working surface.
+
+## D-246 — No payment-status model in the MVP
+
+- **Date:** 2026-08-21
+- **Status:** Accepted clarification of D-009
+- **Decision:** Do not add payment-status fields or pills. Every MVP order is COD; a future cash-collection model requires a separately approved field, lifecycle, and analytics definition.
+- **Reason:** Payment-status UI would introduce an unapproved lifecycle and alter revenue analytics.
+
+## D-247 — Three inventory presentation states
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Present inventory as In stock, Low stock, or Out of stock in Arabic and English. Out-of-stock products remain visible with a clear label.
+- **Reason:** These states reflect the accepted optional low-stock threshold and catalog behavior.
+
+## D-248 — Design Batch 1 accepted
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Accept the Batch 1 token stylesheet, app shell, component gallery, font policy, Tailwind CSS v4 bridge, 52px density, bilingual examples, and wallet masking cascade.
+- **Reason:** Founder explicitly approved Batch 1 after the controlled-field corrections.
+
+## D-249 — Design Batch 2 scope
+
+- **Date:** 2026-08-21
+- **Status:** Accepted scope; delivered output awaiting review
+- **Decision:** Batch 2 contains Orders list, order detail, manual order creation, and print views using the accepted Batch 1 system and corrected order model.
+- **Reason:** Founder explicitly authorized this batch.
+
+
+## D-250 — Public project repository
+
+- **Date:** 2026-08-21
+- **Status:** Accepted; supersedes D-002 only for visibility
+- **Decision:** Keep `AM-naguib/lala` public and publish the project memory and decision documents there.
+- **Reason:** Founder explicitly approved publishing the files and project decisions while the repository is public.
+- **Constraint:** Secrets, provider credentials, personal data, and production customer data remain prohibited from the repository.
+
+## D-251 — Redis for sessions, cache, locks, and rate limits
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use Redis through PhpRedis for Laravel sessions, application cache, distributed locks, and rate-limit counters as well as the already accepted Horizon queues. Configure separate named connections or key prefixes for sessions, cache, queues, and rate limits.
+- **Reason:** Redis is already required for Horizon, supports shared state across Web and worker processes, and avoids adding another runtime service.
+- **Fallback:** Tests may use isolated in-memory or array drivers; production behavior must be exercised against Redis in integration tests.
+
+## D-252 — BIGINT internal keys with public ULIDs
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use unsigned auto-incrementing BIGINT primary keys internally. Add an immutable, unique, indexed ULID `public_id` to records exposed in URLs, exports, webhooks, or external integrations, and never expose the internal primary key. Keep human-facing order numbers as a separate store-scoped immutable sequence.
+- **Reason:** BIGINT keeps MySQL joins and tenant-scoped indexes compact, while ULIDs provide non-sequential public identifiers without making every relationship key a string.
+- **Constraint:** Every store-scoped uniqueness rule and lookup still includes or verifies `store_id`; public IDs do not replace tenant authorization.
+
+## D-253 — Authentication foundation and customization boundary
+
+- **Date:** 2026-08-21
+- **Status:** Accepted under the founder's instruction to complete remaining technical decisions
+- **Decision:** Use the Laravel 13 Livewire starter kit and its Fortify foundation for Merchant authentication, with custom actions, responses, views, rate limiters, and WhatsApp phone verification. Implement Admin authentication with Laravel's built-in guard, provider, password broker, and invitation/seeded-account flow with no public registration. Implement store-scoped Customer authentication with a dedicated guard/provider and custom Blade flows supporting email-link or WhatsApp-code verification and recovery.
+- **Reason:** This reuses Laravel's maintained Merchant authentication baseline while keeping the already accepted Admin, Merchant, and Customer identity boundaries explicit.
+- **Exclusion:** Do not add Sanctum, Passport, social login, WorkOS, or API tokens until a concrete API or external-client requirement exists.
+
+
+## D-254 — Static design delivery before Laravel implementation
+
+- **Date:** 2026-08-21
+- **Status:** Accepted
+- **Decision:** Continue the current delivery phase using portable static HTML screens only. Do not bootstrap or write Laravel, Livewire, Blade application code, database migrations, queues, authentication, or production integrations until the founder explicitly starts the implementation phase.
+- **Reason:** Founder explicitly chose to remain static for now.
+- **Effect:** D-226 through D-253 remain the accepted future production architecture, but they are implementation inputs rather than current work.
+
+
+## D-255 — Design Batch 3 products and inventory scope
+
+- **Date:** 2026-08-21
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Design Batch 3 covers four portable static screens: Products list, Product editor, Product variants, and Inventory management.
+- **Rules preserved:** Product visibility is Published or Hidden; a product publishes on save when its primary-language name and selling price exist; soft-deleted products move to Trash and restore as Hidden; variants independently carry price, compare-at price, cost, SKU, stock, and image; unavailable variants remain visible but disabled; low-stock thresholds are optional; COD orders deduct tracked stock immediately; cancellation restores it; returns never auto-restock.
+- **Delivery:** Published as Sites version 4 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
+- **Boundary:** Delivery remains static HTML, Tailwind CSS v4, and Alpine.js only; this decision does not start Laravel implementation.
+
+
+## D-256 — Unified design constants contract
+
+- **Date:** 2026-08-21
+- **Status:** Accepted and implemented
+- **Decision:** Every merchant route and tab uses one invariant 1440px outer application container. The sidebar is 248px, the header is 64px, responsive page padding is 16/24/32px, and inner content grids—not the outer frame—adapt to forms, details, tables, and summaries.
+- **Component constants:** Standard inputs are 40px, medium actions 36px, small actions 32px, and merchant tables use 52px rows with 12px vertical and 16px horizontal cell padding.
+- **Token policy:** All project-specific values are CSS custom properties first and are bridged through Tailwind CSS v4 `@theme inline` variables. Reusable arbitrary Tailwind values are prohibited; named utilities and automated constants tests enforce the contract.
+- **Recorded scope:** Layout, breakpoints, spacing, typography, controls, table minimum widths, radii, shadows, layers, motion, RTL/Mono behavior, and print dimensions are documented in the design-system source and component gallery.
+- **Delivery:** Published as Sites version 5 at https://lala-design-system.curbs-storm-80.chatgpt.site on 2026-08-21.
+- **Boundary:** This standardization remains portable static HTML, Tailwind CSS v4, and Alpine.js; it does not start Laravel implementation.
+
+
+## D-257 — Complete frontend delivery roadmap
+
+- **Date:** 2026-08-22
+- **Status:** Accepted as the working execution plan
+- **Decision:** Continue the static frontend through Batches 4–17 using the sequence and screen inventory in `10-FRONTEND-DELIVERY-PLAN.md`.
+- **Scope:** Complete the Merchant dashboard, Storefront, Customer account, and minimum confirmed lala Admin/Support surfaces. The roadmap plans 65 remaining static screen files plus updates to existing screens and a final hardening batch.
+- **Review rule:** Each feature Batch is Delivered for founder review and needs separate acceptance or requested revisions; approving this roadmap does not pre-accept individual screen designs.
+- **Delivery rule:** One plain HTML file per screen, Tailwind CSS v4 token bridge, Alpine.js demo behavior, extraction markers, real Arabic/English, RTL/LTR parity, full state coverage, fixed design constants, and no invented product fields.
+- **Boundary:** Laravel, Livewire/Blade application code, persistence, real integrations, and production implementation remain postponed until the founder explicitly starts that phase.
+- **Effect:** The next active scope is Batch 4 — Catalog operations. Later batches must not be reordered or expanded silently; record any change in Decisions, Next Work, and the roadmap.
+
+## D-258 — UX operating contract and Catalog navigation
+
+- **Date:** 2026-08-22
+- **Status:** Accepted and implemented
+- **Decision:** Treat `docs/ux/` as the binding UX reference for every current and future frontend Batch. Every screen must have a documented navigation parent, entry point, exit/recovery path, one clear primary action, complete critical states, and a passing P0 UX checklist before delivery.
+- **Discoverability rule:** No orphan screens. Daily tasks are reachable from level-one navigation; dependent tasks are reachable within two navigation levels at most.
+- **Catalog information architecture:** Products owns product creation/content/variants; Catalog owns Categories, Collections, Tags, Featured products, Import/results, and Trash; Inventory owns stock operations. Catalog is a distinct level-one navigation destination.
+- **Responsive rule:** Desktop Sidebar and Mobile primary navigation expose the same current destinations and identify exactly one active parent with `aria-current="page"`.
+- **Dead-link rule:** Unbuilt destinations must be hidden or explicitly Disabled with “Soon / قريبًا”; they must not look operational.
+- **Action hierarchy:** Each screen has one primary action. Infrequent actions move into secondary or More actions patterns instead of crowding the page header.
+- **Delivery:** Navigation and action-hierarchy fixes were implemented across current merchant screens and published as Sites version 7 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- **Boundary:** This is a UX and static-frontend contract; it does not start Laravel implementation or add new product fields.
+
+## D-259 — Products-module information architecture correction
+
+- **Date:** 2026-08-22
+- **Status:** Accepted correction; supersedes only the Catalog-as-level-one and peer-tabs parts of D-258
+- **Decision:** Products is one level-one Merchant module. All products, Inventory, Organization, and Featured products are its permanent sections. Import products and Trash are separately labeled Product tools. Product editor, Variants, and Import results are child screens reached from their parent flow.
+- **Navigation rule:** Desktop expands the Products module into sections and tools. Mobile keeps Dashboard, Orders, and Products as the current primary destinations, then exposes a Product section navigation inside the module.
+- **Peer rule:** Categories/Collections/Tags may be peer tabs inside Organization, and Imported/Rejected may be peer tabs inside Import results. Organization, Featured, Import, and Trash must not be presented as one peer-tab set because they have different purposes and frequencies.
+- **Review-tool boundary:** Component Gallery remains accessible from the design review entry point but is excluded from Merchant navigation.
+- **Reason:** The previous version mixed organization entities, merchandising, operations, and recovery at one level, and split Catalog from the product work merchants understand as one module.
+- **Delivery:** Implemented across the current static screens with regression tests and published as Sites version 8 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- **Unchanged:** The general UX contract, two-level discoverability target, action hierarchy, dead-link rule, and static-only boundary from D-258 remain accepted.
+
+## D-260 — Design Batch 4 accepted after information-architecture correction
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept Product organization, Featured products, Product Trash, CSV import, Import results, and the corrected D-259 Products-module hierarchy delivered in Sites version 8.
+- **Reason:** The founder reviewed the corrected hierarchy and explicitly instructed the work to continue to the next Batch.
+- **Boundary:** Acceptance remains for the portable static design; it does not start Laravel implementation.
+
+## D-261 — Design Batch 5 Customers scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 5 contains Customers list, Customer detail, and Customer identity-conflict review as three portable static screens. Customers becomes a level-one Merchant module because customer search and record review are independent daily tasks.
+- **Data rules:** Preserve Guest and Account customers, optional email, multiple addresses, tags, notes, order metrics/history, blocking by phone or email, and conflict review without silent merging.
+- **Masking rule:** Wallet overdraft hides phone, email, and address data, keeps non-sensitive record/order context visible, disables sensitive export and identity resolution, and explains the recharge threshold.
+- **Product boundary:** Manual record merging and additional CRM fields remain excluded because they are not approved product decisions. The safe conflict action can confirm separate records or leave the case for later review.
+- **Delivery:** Published as Sites version 9 at https://lala-design-system.curbs-storm-80.chatgpt.site with ten passing static-contract tests.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, authentication, or Laravel implementation.
+
+## D-262 — Design Batch 5 accepted and Batch 6 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Customers list, Customer detail, identity-conflict review, navigation placement, and wallet-masking behavior delivered in Sites version 9. Start Batch 6 — Discounts.
+- **Reason:** The founder explicitly instructed the work to continue after reviewing the corrected project organization.
+- **Boundary:** Acceptance remains for the portable static design and does not start Laravel implementation.
+
+## D-263 — Design Batch 6 Discounts scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 6 contains a Discounts list and Coupon editor as portable static screens. Discounts is a level-one Merchant module because merchants manage coupon campaigns independently from Orders and Products.
+- **Coupon rules:** Rewards are limited to percentage, fixed amount, and free shipping. A coupon applies to the whole order, one coupon is allowed per order, and minimum eligibility uses the products subtotal before discount and excludes shipping.
+- **Limit rules:** The editor supports a total usage limit only. Per-customer limits and automatic discounts remain outside the MVP.
+- **States:** The list covers active, scheduled, expired, and exhausted. The editor demonstrates invalid dates, duplicate code, exhausted, expired, and valid previews.
+- **Source rule:** The complete static prototype, including HTML screens, token/font assets, Alpine markup, extraction markers, constants reference, and contract test, is now versioned in the public repository under `prototype/`.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, discount engine, checkout logic, analytics changes, or Laravel implementation.
+
+## D-264 — Unified motion system contract
+
+- **Date:** 2026-08-22
+- **Status:** Accepted and implemented
+- **Decision:** Use one portable motion contract across every current and future static screen. Motion tokens are CSS custom properties first, Alpine transitions use shared semantic classes, and the build upgrades all qualifying HTML surfaces automatically.
+- **Timing:** Hover and exit 140ms, state/menu 220ms, toast 240ms, modal 260ms, and drawer 300ms. Entrances use emphasized easing; exits use a shorter exit easing.
+- **Patterns:** Modals fade with an 8px lift and 0.985 scale; drawers enter from logical `end` in both RTL and LTR; popovers follow their trigger origin; toasts use a short lift; state surfaces use a restrained 4px transition.
+- **Accessibility:** `prefers-reduced-motion: reduce` collapses animation and transition duration to 0.01ms. Layout-critical width, height, and application geometry are never animated.
+- **Source:** The complete contract is recorded in `prototype/docs/MOTION-SYSTEM.md` and demonstrated in the Component Gallery.
+- **Boundary:** No animation framework or runtime dependency was added; implementation remains plain HTML, Tailwind CSS v4, and Alpine.js.
+
+## D-265 — Design Batch 6 accepted and Batch 7 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Discounts list and Coupon editor delivered in Batch 6 and authorize Batch 7 — Shipping zones and Bosta.
+- **Scope preserved:** Coupons remain limited to percentage, fixed amount, and free shipping; no payment status, automatic discount, or per-customer limit was added.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-266 — Design Batch 7 Shipping and Bosta scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 7 contains Shipping zones, Shipping zone editor, Custom locations, Shipping integrations, and Bosta connection as five portable static screens under one Shipping parent module.
+- **Zone rules:** Coverage follows Egypt governorate → city → area hierarchy, active-zone overlap is blocked, zero price is presented as Free shipping, custom locations remain store-specific, and old orders preserve their original shipping price.
+- **Provider rules:** Bosta is the only approved provider shown. Credentials receive connected, disconnected, and validation-error states. No manual carrier or tracking fields are introduced without a provider.
+- **Order rules:** Orders expose Not sent, Sending, Sent, Failed with reason and retry, and duplicate-active-shipment blocking. Bulk submission reports sent, blocked, and failed counts. Shipment creation alone does not change the core order status.
+- **Mapping:** `accepted` → Processing; `picked up` or `in transit` → Shipped; `delivered` → Delivered; `cancelled` → Cancelled; `returned` → Returned.
+- **UX rule:** Shipping is one level-one Merchant module with Zones, Custom locations, and Integrations as related internal sections; Bosta connection is a child of Integrations.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no real credentials, provider requests, persistence, queues, or Laravel code.
+
+## D-267 — Design Batch 7 accepted and Batch 8 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Shipping zones, Custom locations, Bosta connection, and order-submission states delivered in Batch 7 and authorize Batch 8 — Dashboard and Analytics.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-268 — Design Batch 8 Dashboard and Analytics scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 8 contains the merchant Dashboard, Analytics overview, Orders analytics, and Products analytics as four portable static screens. Dashboard is the daily action surface; Analytics is a separate level-one module with Overview, Orders, and Products sections.
+- **Time rules:** Every view exposes Today, Yesterday, 7 days, 30 days, and Custom range; comparison uses the previous equivalent period; periods and timestamps use Cairo time; the refresh note is approximately once a minute.
+- **Metric rules:** Headline Sales is the total value of all orders created in the selected range, including Cancelled and Returned. Orders analytics preserves the exact seven core statuses and separates count from value. Products ranking toggles Units and Value. Estimated profit remains excluded.
+- **Export rule:** CSV export uses the visible date range and active filters/ranking.
+- **UX rule:** Dashboard links directly to operational queues. Analytics uses one internal section navigation and preserves the shared 1440px container on every screen.
+- **Verification:** The static build and 15 contract tests pass.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, charting dependency, server analytics, or Laravel code.
+
+## D-269 — Design Batch 8 accepted and Batch 9 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Dashboard, Analytics overview, Orders analytics, and Products analytics delivered in Batch 8 and authorize Batch 9 — Merchant access and onboarding.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-270 — Design Batch 9 Merchant access and onboarding scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 9 contains Merchant sign-in, sign-up, phone verification, password recovery, password reset, first-store onboarding, and store switching as seven portable static screens.
+- **Access rules:** Sign-in uses email or phone plus password. Sign-up requires email, phone, password, and WhatsApp phone verification; merchant email verification remains excluded.
+- **Verification rules:** Codes remain valid for 10 minutes, resend waits 60 seconds, each phone may receive five sends per rolling hour, and five wrong attempts invalidate the current code. WhatsApp delivery failure keeps the account unverified with later retry/support and no email fallback or bypass.
+- **Onboarding rules:** First-store setup asks only for store name, `lala` subdomain, currency, and primary language. It checks subdomain availability, never asks for a store country, and makes the storefront public immediately even when empty.
+- **Store rules:** An empty merchant account is handled explicitly. One owner may switch among or create unlimited independent stores. Team invitations and member roles remain excluded.
+- **UX rule:** Merchant access screens use a focused shell without store navigation. The account-level store list is the explicit switcher, and every current merchant screen links its store card to that list.
+- **Verification:** The static build and 16 contract tests pass.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no authentication, WhatsApp delivery, persistence, domain reservation, or Laravel code.
+
+## D-271 — Design Batch 9 accepted and Batch 10 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept Merchant access, WhatsApp verification, first-store onboarding, and store switching delivered in Batch 9 and authorize Batch 10 — Store settings and Wallet.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-272 — Design Batch 10 Store settings and Wallet scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 10 contains General settings, Checkout fields, Domains, Notifications, Wallet, and Store status as six portable static screens under one Settings parent module. The wallet also remains directly reachable from the balance chip in every Merchant header.
+- **Hosted-domain rules:** A store may change its hosted `lala` subdomain at most three times. The previous name does not redirect and remains reserved for 10 days. After change 3 of 3 it is permanently locked, including for support.
+- **Custom-domain rules:** Custom domains are independent and have no numeric change cap. A verified domain becomes primary and the hosted address redirects to it. On failure, the hosted address becomes primary again and the merchant is alerted. HTTPS issuance and renewal are automatic.
+- **Currency and checkout rules:** Currency changes do not convert numeric product prices, and historical orders preserve captured currency. Checkout exposes only Name, Primary phone, Address, City/area, Email, Alternate phone, and Order notes as Required/Optional fields; Egypt is stored automatically, Country is hidden, COD is the only payment method, and taxes remain excluded.
+- **Notification rules:** Merchants receive Dashboard and email for new orders and low stock only. Customers receive confirmation and core-status email only when an email exists. Labels never notify.
+- **Wallet rules:** The prepaid wallet starts with an EGP 1 fee per created order and no recurring subscription. Orders continue below EGP -10 while customer data is masked. Recharge captures an amount without inventing a payment method.
+- **Store-status rules:** Disabling retains all store data, shows visitors an unavailable page, and allows reactivation only through `lala` support.
+- **UX rule:** Settings is one level-one Merchant module with six coherent internal sections; Wallet has a second intentional entry point from the header balance chip.
+- **Verification:** The static build and 17 contract tests pass.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, DNS requests, wallet charging, notifications, payment processing, authentication, or Laravel code.
+
+## D-273 — Storefront theme architecture
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Use one shared storefront component and section renderer with theme presets, not a separate codebase per theme.
+- **Content rule:** Applying a theme changes presentation only. Section IDs, content, order, visibility, product references, and collection references remain unchanged.
+- **Theme count:** Start with exactly three presets: Essential, Editorial, and Bold.
+- **Reason:** The founder approved the recommended architecture and starting count after discussion.
+
+## D-274 — Predefined homepage builder
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Build the homepage editor as an ordered list of approved sections with live preview, rather than a free-form canvas.
+- **Controls:** Batch 11 supports selection, explicit up/down movement, hide/show, approved-section insertion, desktop/mobile preview, undo/redo, and save feedback.
+- **Boundary:** Raw HTML, custom CSS, arbitrary positioning, nested free-form blocks, and permanent section deletion are excluded until separately specified.
+
+## D-275 — Separate Storefront design-token domain
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Keep the Merchant Admin on its fixed 90rem lala container and introduce a separate 80rem Storefront content contract plus a 390px logical mobile preview.
+- **Implementation:** Storefront primitives remain CSS custom properties first and Tailwind v4 mappings reference those variables. Reusable arbitrary utility values are prohibited.
+- **Reason:** Admin operations and customer merchandising have different layout responsibilities; separating token domains prevents screen-to-screen width drift and theme styles leaking into admin UI.
+
+## D-276 — Design Batch 11 Storefront tools scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 11 contains Themes, Theme preview, Branding, and Homepage builder as four portable static screens under one Storefront parent module.
+- **Themes:** The gallery exposes Essential, Editorial, and Bold, one applied state, preview-before-apply, and a content-preservation confirmation.
+- **Branding:** Logo and favicon missing/selected states, color values, contrast warning, and the curated-font control are included without adding font requests beyond the existing self-hosted IBM Plex files.
+- **Builder:** The initial page uses Hero, Benefits, Featured products, and Image with text; the approved picker demonstrates Slider, Featured collections, and Promotional banner. Header and footer remain fixed system regions.
+- **UX rule:** Storefront is a level-one Merchant module after Shipping and before Settings, with Themes, Branding, and Homepage sections. Theme preview is a flow child of Themes.
+- **Verification:** Real-browser Arabic shaping, both self-hosted font families, RTL/LTR direction, 390px mobile preview, zero horizontal overflow, hide/undo/add interactions, and the 18-test static suite were verified.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistent drafts, public storefront routes, Laravel code, or free-form builder.

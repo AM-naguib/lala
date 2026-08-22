@@ -2,11 +2,13 @@
 
 `lala` is a multi-tenant SaaS e-commerce platform for anyone who wants to launch and operate an online store.
 
-Private source repository: `AM-naguib/lala`.
+Public source repository: `AM-naguib/lala`. The founder explicitly approved publishing project memory and decisions here; secrets, credentials, personal data, and production customer data remain prohibited.
 
 **Phase 1: discovery and MVP definition is complete.** Architecture and delivery planning is now active; implementation has not started. The confirmed application stack is PHP 8.5 with Laravel 13, MySQL, Laravel's traditional structure, Livewire with Blade for the merchant dashboard, Blade with Alpine.js using plain JavaScript for the customer storefront, Tailwind CSS, Redis with Horizon, and Pest. Pilot files use local server storage through Laravel's storage abstraction before a later object-storage migration.
 
 Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate Admin, Merchant, and Customer authentication tables and guards, and a custom domain-resolution middleware backed by a domains table.
+
+Runtime state uses Redis through PhpRedis for sessions, cache, locks, rate limits, and Horizon queues. Internal records use BIGINT primary keys with separate public ULIDs. Merchant authentication starts from the Laravel 13 Livewire starter kit and Fortify; Admin and store-scoped Customer authentication use dedicated Laravel guards and custom flows.
 
 ## Project documents
 
@@ -18,10 +20,31 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 - [`docs/05-CHANGELOG.md`](docs/05-CHANGELOG.md) — chronological documentation changes.
 - [`docs/06-WORKING-AGREEMENT.md`](docs/06-WORKING-AGREEMENT.md) — rules for maintaining memory and planning.
 - [`docs/07-ARCHITECTURE-PLAN.md`](docs/07-ARCHITECTURE-PLAN.md) — active architecture inputs, proposals, and unresolved technical decisions.
+- [`docs/08-DELIVERY-STATUS.md`](docs/08-DELIVERY-STATUS.md) — completed and delivered work, including Design Batches 1–2.
+- [`docs/09-NEXT-WORK.md`](docs/09-NEXT-WORK.md) — immediate review queue, remaining decisions, and proposed implementation sequence.
+- [`docs/10-FRONTEND-DELIVERY-PLAN.md`](docs/10-FRONTEND-DELIVERY-PLAN.md) — accepted Batches 4–17 roadmap for completing the static frontend.
+- [`docs/ux/README.md`](docs/ux/README.md) — binding UX principles, information architecture, screen checklist, and prioritized UX backlog.
+- [`docs/storefront/README.md`](docs/storefront/README.md) — research-backed Storefront theme and homepage-builder contract.
+
+## Static frontend prototype
+
+The actual portable HTML source is checked in under [`prototype/`](prototype/). It includes every current screen, the Tailwind CSS v4 token bridge, self-hosted font files, Alpine.js prototype markup, extraction markers, and the design-contract test. The published review site remains https://lala-design-system.curbs-storm-80.chatgpt.site.
+
+The shared motion contract is documented in [`prototype/docs/MOTION-SYSTEM.md`](prototype/docs/MOTION-SYSTEM.md). It defines reduced-motion-safe transitions for modals, drawers, popovers, toasts, and state changes without adding an animation framework.
+
+Batch 7 Shipping and Bosta boundaries are documented in [`prototype/docs/BATCH-7-SHIPPING.md`](prototype/docs/BATCH-7-SHIPPING.md).
+
+Batch 8 Dashboard and Analytics definitions are documented in [`prototype/docs/BATCH-8-ANALYTICS.md`](prototype/docs/BATCH-8-ANALYTICS.md).
+
+Batch 9 Merchant access and onboarding rules are documented in [`prototype/docs/BATCH-9-MERCHANT-ACCESS.md`](prototype/docs/BATCH-9-MERCHANT-ACCESS.md).
+
+Batch 10 Store settings and Wallet rules are documented in [`prototype/docs/BATCH-10-SETTINGS-WALLET.md`](prototype/docs/BATCH-10-SETTINGS-WALLET.md).
+
+Current Merchant level-one modules are Dashboard, Orders, Analytics, Products, Customers, Discounts, Shipping, Storefront, and Settings. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Zones, Custom locations, and Integrations belong inside Shipping; Themes, Branding, and Homepage belong inside Storefront; General, Checkout, Domains, Notifications, Wallet, and Store status belong inside Settings. Wallet is also directly reachable from the header balance chip; Component Gallery is review-only.
 
 ## Current snapshot
 
-- Repository target: private GitHub repository named `lala`.
+- Repository: public GitHub repository `AM-naguib/lala` by explicit founder approval.
 - Market ambition: global over time; Phase 1 shipping coverage is Egypt only.
 - Broad target audience: anyone who wants to create an online store.
 - Merchant account creation requires an email address, phone number, and password.
@@ -169,6 +192,6 @@ Multi-tenancy uses one shared MySQL database with `store_id` isolation, separate
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: define the smallest useful Phase 1 MVP before choosing architecture or writing product code.
+- Immediate focus: remain static, review delivered Batch 11 Storefront tools, then continue with Batch 12 Pages and Contact inbox after acceptance. Laravel implementation is postponed until explicit founder approval.
 
-Last updated: 2026-08-14 (Africa/Cairo)
+Last updated: 2026-08-22 (Africa/Cairo)

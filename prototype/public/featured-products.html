@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="lala featured products selection and ordering" />
+    <title>lala — Featured products</title>
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/batch1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="/alpine-fallback.js"></script>
+  </head>
+  <body x-data="{ locale: 'ar', view: 'data', pickerOpen: false, saved: false }" :dir="locale === 'ar' ? 'rtl' : 'ltr'" class="min-h-screen bg-canvas font-sans text-ink">
+    <!-- component: featured-products-app-shell -->
+    <aside class="fixed inset-y-0 start-0 z-sidebar hidden w-sidebar flex-col border-e border-border bg-card lg:flex">
+      <div class="flex h-app-header items-center gap-2.5 border-b border-border px-5"><a href="/dashboard.html" class="flex items-center gap-2.5" aria-label="lala dashboard"><span class="grid size-8 place-items-center rounded-lg bg-accent font-bold text-white">l</span><span class="text-xl font-bold">lala</span></a></div>
+      <div class="px-3 pt-4"><a href="/stores-list.html" class="flex items-center gap-3 rounded-lg border border-border bg-subtle p-3 hover:border-accent" :aria-label="locale === 'ar' ? 'تبديل المتجر' : 'Switch store'"><span class="grid size-8 place-items-center rounded-md bg-ink text-xs font-semibold text-white">LN</span><div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold"><span x-show="locale === 'ar'">متجر لونا</span><span x-show="locale === 'en'">Luna Store</span></p><p class="truncate text-xs text-muted">luna.lala.store</p></div><span class="text-xs text-muted" aria-hidden="true">⌄</span></a></div>
+      <nav class="flex-1 overflow-y-auto px-3 py-5" :aria-label="locale === 'ar' ? 'القائمة الرئيسية' : 'Main navigation'">
+        <div class="space-y-1">
+          <a href="/dashboard.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◫</span><span x-show="locale === 'ar'">لوحة التحكم</span><span x-show="locale === 'en'">Dashboard</span></a>
+          <a href="/orders-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">▤</span><span x-show="locale === 'ar'">الطلبات</span><span x-show="locale === 'en'">Orders</span><span class="ms-auto rounded-full bg-accent-soft px-2 py-0.5 font-mono text-2xs text-accent">12</span></a>
+          <a href="/analytics-overview.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◒</span><span x-show="locale === 'ar'">التحليلات</span><span x-show="locale === 'en'">Analytics</span></a>
+          <a href="/products-list.html" class="flex h-input items-center gap-3 rounded-lg bg-accent-soft px-3 font-semibold text-accent" aria-current="page"><span aria-hidden="true">◇</span><span x-show="locale === 'ar'">المنتجات</span><span x-show="locale === 'en'">Products</span></a>
+          <div class="ms-5 mt-1 space-y-1 border-s border-border ps-2">
+          <a href="/products-list.html" class="flex min-h-9 items-center rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-card hover:text-ink"><span x-show="locale === 'ar'">كل المنتجات</span><span x-show="locale === 'en'">All products</span></a>
+          <a href="/inventory.html" class="flex min-h-9 items-center rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-card hover:text-ink"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span><span class="ms-auto rounded-full bg-warning-soft px-2 py-0.5 font-mono text-2xs text-warning">7</span></a>
+          <a href="/catalog-organization.html" class="flex min-h-9 items-center rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-card hover:text-ink"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="flex min-h-9 items-center rounded-md bg-card px-3 py-2 text-xs font-semibold text-accent shadow-xs" aria-current="page"><span x-show="locale === 'ar'">المنتجات المميزة</span><span x-show="locale === 'en'">Featured products</span></a>
+          <p class="px-3 pb-1 pt-3 text-micro font-semibold uppercase tracking-overline text-faint"><span x-show="locale === 'ar'">أدوات المنتجات</span><span x-show="locale === 'en'">Product tools</span></p>
+          <a href="/product-import.html" class="flex min-h-9 items-center rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-card hover:text-ink"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+          <a href="/product-trash.html" class="flex min-h-9 items-center rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-card hover:text-ink"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto rounded-full bg-danger-soft px-2 py-0.5 font-mono text-2xs text-danger">3</span></a>
+        </div>
+          <a href="/customers-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◎</span><span x-show="locale === 'ar'">العملاء</span><span x-show="locale === 'en'">Customers</span></a>
+          <a href="/discounts-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">%</span><span x-show="locale === 'ar'">الخصومات</span><span x-show="locale === 'en'">Discounts</span></a>
+          <a href="/shipping-zones.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">⌁</span><span x-show="locale === 'ar'">الشحن</span><span x-show="locale === 'en'">Shipping</span></a>
+          <a href="/themes.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">▱</span><span x-show="locale === 'ar'">واجهة المتجر</span><span x-show="locale === 'en'">Storefront</span></a><a href="/store-settings-general.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">⚙</span><span x-show="locale === 'ar'">الإعدادات</span><span x-show="locale === 'en'">Settings</span></a>
+        </div>
+      </nav>
+      <div class="border-t border-border px-5 py-4"><p class="text-xs font-semibold text-muted"><span x-show="locale === 'ar'">مساحة عمل التاجر</span><span x-show="locale === 'en'">Merchant workspace</span></p></div>
+    </aside>
+    <div class="min-h-screen lg:ps-sidebar">
+      <header class="sticky top-0 z-header flex h-app-header items-center gap-3 border-b border-border bg-card/95 px-4 backdrop-blur sm:px-6"><a href="/app-shell.html" class="font-semibold lg:hidden">lala</a><p class="min-w-0 flex-1 text-xs text-muted"><span x-show="locale === 'ar'">متجر لونا / المنتجات المميزة</span><span x-show="locale === 'en'">Luna Store / Featured products</span></p><a href="/wallet.html" class="hidden h-9 items-center gap-2 rounded-lg border border-border bg-card px-3 shadow-xs hover:border-accent sm:flex"><span class="size-2 rounded-full bg-success"></span><span class="text-xs text-muted"><span x-show="locale === 'ar'">المحفظة</span><span x-show="locale === 'en'">Wallet</span></span><span dir="ltr" class="font-mono text-xs font-semibold">EGP 1,240.00</span></a><button @click="locale = locale === 'ar' ? 'en' : 'ar'; document.documentElement.lang = locale; document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr'" class="h-9 rounded-lg border border-border px-3 text-xs font-semibold"><span x-show="locale === 'ar'">EN</span><span x-show="locale === 'en'">عربي</span></button><span class="grid size-9 place-items-center rounded-full bg-ink text-xs font-semibold text-white">AM</span></header>
+      <!-- component: mobile-primary-navigation -->
+      <nav class="flex gap-1 overflow-x-auto border-b border-border bg-card px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'التنقل الرئيسي' : 'Primary navigation'">
+        <a href="/dashboard.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◫</span><span x-show="locale === 'ar'">الرئيسية</span><span x-show="locale === 'en'">Dashboard</span></a>
+        <a href="/orders-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">▤</span><span x-show="locale === 'ar'">الطلبات</span><span x-show="locale === 'en'">Orders</span></a>
+        <a href="/analytics-overview.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◒</span><span x-show="locale === 'ar'">التحليلات</span><span x-show="locale === 'en'">Analytics</span></a>
+        <a href="/products-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md bg-accent-soft px-3 text-xs font-semibold text-accent" aria-current="page"><span aria-hidden="true">◇</span><span x-show="locale === 'ar'">المنتجات</span><span x-show="locale === 'en'">Products</span></a>
+        <a href="/customers-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◎</span><span x-show="locale === 'ar'">العملاء</span><span x-show="locale === 'en'">Customers</span></a>
+        <a href="/discounts-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">%</span><span x-show="locale === 'ar'">الخصومات</span><span x-show="locale === 'en'">Discounts</span></a>
+        <a href="/shipping-zones.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">⌁</span><span x-show="locale === 'ar'">الشحن</span><span x-show="locale === 'en'">Shipping</span></a>
+        <a href="/themes.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">▱</span><span x-show="locale === 'ar'">واجهة المتجر</span><span x-show="locale === 'en'">Storefront</span></a><a href="/store-settings-general.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">⚙</span><span x-show="locale === 'ar'">الإعدادات</span><span x-show="locale === 'en'">Settings</span></a>
+      </nav>
+      <!-- /component: mobile-primary-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+      <!-- component: mobile-product-navigation -->
+      <nav class="border-b border-border bg-subtle/70 px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'أقسام المنتجات' : 'Product sections'">
+        <div class="flex gap-1 overflow-x-auto">
+          <a href="/products-list.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">الكل</span><span x-show="locale === 'en'">All</span></a>
+          <a href="/inventory.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">المخزون</span><span x-show="locale === 'en'">Inventory</span></a>
+          <a href="/catalog-organization.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">التنظيم</span><span x-show="locale === 'en'">Organization</span></a>
+          <a href="/featured-products.html" class="inline-flex h-control-sm shrink-0 items-center rounded-md bg-ink px-3 text-xs font-semibold text-white" aria-current="page"><span x-show="locale === 'ar'">المميزة</span><span x-show="locale === 'en'">Featured</span></a>
+          <details class="relative shrink-0">
+            <summary class="flex h-control-sm cursor-pointer list-none items-center gap-1 rounded-md px-3 text-xs font-semibold text-muted hover:bg-subtle"><span x-show="locale === 'ar'">أدوات</span><span x-show="locale === 'en'">Tools</span><span aria-hidden="true">⌄</span></summary>
+            <div class="fixed inset-x-4 z-overlay mt-1 rounded-lg border border-border bg-card p-1 shadow-sm sm:absolute sm:inset-x-auto sm:end-0 sm:w-52">
+              <a href="/product-import.html" class="block rounded-md px-3 py-2 text-xs font-semibold hover:bg-subtle"><span x-show="locale === 'ar'">استيراد المنتجات</span><span x-show="locale === 'en'">Import products</span></a>
+              <a href="/product-trash.html" class="flex items-center rounded-md px-3 py-2 text-xs font-semibold text-danger hover:bg-danger-soft"><span x-show="locale === 'ar'">سلة المحذوفات</span><span x-show="locale === 'en'">Trash</span><span class="ms-auto font-mono">3</span></a>
+            </div>
+          </details>
+        </div>
+      </nav>
+      <!-- /component: mobile-product-navigation -->
+
+      <!-- component: featured-products -->
+      <main class="p-page-mobile sm:p-page-tablet lg:p-page-desktop"><div class="mx-auto max-w-app">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p class="text-xs font-semibold uppercase tracking-section text-accent">Batch 4 · Products</p><h1 class="mt-1 text-2xl font-bold"><span x-show="locale === 'ar'">المنتجات المميزة</span><span x-show="locale === 'en'">Featured products</span></h1><p class="mt-1 text-sm text-muted"><span x-show="locale === 'ar'">اختار المنتجات ورتب ظهورها في الصفحة الرئيسية للمتجر.</span><span x-show="locale === 'en'">Choose products and order how they appear on the storefront home page.</span></p></div><div class="flex gap-2"><button @click="pickerOpen=true" class="h-control-md rounded-md border border-border-strong bg-card px-4 text-sm font-semibold"><span x-show="locale === 'ar'">إضافة منتجات</span><span x-show="locale === 'en'">Add products</span></button><button @click="saved=true; setTimeout(() => saved=false, 2400)" class="h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white"><span x-show="locale === 'ar'">حفظ الترتيب</span><span x-show="locale === 'en'">Save order</span></button></div></div>
+
+        <div class="mt-5 grid gap-5 xl:grid-cols-editor">
+          <section class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+            <!-- component: featured-toolbar --><div class="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-center"><div><h2 class="font-bold"><span x-show="locale === 'ar'">ترتيب الظهور</span><span x-show="locale === 'en'">Display order</span></h2><p class="mt-1 text-xs text-muted"><span x-show="locale === 'ar'">استخدم الأسهم لتغيير الترتيب، ثم احفظ.</span><span x-show="locale === 'en'">Use the arrows to change order, then save.</span></p></div><div class="flex items-center gap-2 sm:ms-auto"><span class="text-xs text-muted"><span x-show="locale === 'ar'">معاينة:</span><span x-show="locale === 'en'">Preview:</span></span><button @click="view='data'" :class="view==='data' ? 'bg-ink text-white' : 'bg-card text-muted'" class="rounded-md border border-border px-2.5 py-1 text-xs">Data</button><button @click="view='empty'" :class="view==='empty' ? 'bg-ink text-white' : 'bg-card text-muted'" class="rounded-md border border-border px-2.5 py-1 text-xs">Empty</button></div></div><!-- /component: featured-toolbar -->
+            <!-- component: featured-product-list -->
+            <div x-show="view==='data'" class="divide-y divide-border motion-disclosure" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end">
+              <article class="flex min-h-table-row items-center gap-3 px-table-cell-x py-table-cell-y"><span class="grid size-8 place-items-center rounded-md bg-ink font-mono text-xs font-semibold text-white">1</span><span class="grid size-10 place-items-center rounded-lg bg-gradient-to-br from-amber-500 to-stone-950 text-nano font-semibold text-white">LME</span><div class="min-w-0 flex-1"><p class="truncate font-semibold"><span x-show="locale === 'ar'">لومال إكسير</span><span x-show="locale === 'en'">Le Male Elixir</span></p><p dir="ltr" class="font-mono text-xs text-muted">LME-75 · EGP 520.00</p></div><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning"><span x-show="locale === 'ar'">مخزون منخفض</span><span x-show="locale === 'en'">Low stock</span></span><div class="flex gap-1"><button disabled class="grid size-8 place-items-center rounded-md border border-border text-faint opacity-50" aria-label="Move up">↑</button><button class="grid size-8 place-items-center rounded-md border border-border text-muted" aria-label="Move down">↓</button><button class="grid size-8 place-items-center rounded-md text-danger" aria-label="Remove">×</button></div></article>
+              <article class="flex min-h-table-row items-center gap-3 px-table-cell-x py-table-cell-y"><span class="grid size-8 place-items-center rounded-md bg-subtle font-mono text-xs font-semibold text-muted">2</span><span class="grid size-10 place-items-center rounded-lg bg-gradient-to-br from-slate-900 to-slate-600 text-nano font-semibold text-white">OTR</span><div class="min-w-0 flex-1"><p class="truncate font-semibold"><span x-show="locale === 'ar'">أون ذا روكس</span><span x-show="locale === 'en'">On the Rocks</span></p><p dir="ltr" class="font-mono text-xs text-muted">OTR-100 · EGP 610.00</p></div><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success"><span x-show="locale === 'ar'">متوفر</span><span x-show="locale === 'en'">In stock</span></span><div class="flex gap-1"><button class="grid size-8 place-items-center rounded-md border border-border text-muted" aria-label="Move up">↑</button><button class="grid size-8 place-items-center rounded-md border border-border text-muted" aria-label="Move down">↓</button><button class="grid size-8 place-items-center rounded-md text-danger" aria-label="Remove">×</button></div></article>
+              <article class="flex min-h-table-row items-center gap-3 px-table-cell-x py-table-cell-y"><span class="grid size-8 place-items-center rounded-md bg-subtle font-mono text-xs font-semibold text-muted">3</span><span class="grid size-10 place-items-center rounded-lg bg-gradient-to-br from-rose-300 to-violet-500 text-nano font-semibold text-white">AC</span><div class="min-w-0 flex-1"><p class="truncate font-semibold"><span x-show="locale === 'ar'">آمبر كلاود</span><span x-show="locale === 'en'">Amber Cloud</span></p><p dir="ltr" class="font-mono text-xs text-muted">AMC-50 · EGP 480.00</p></div><span class="rounded-full bg-danger-soft px-2.5 py-1 text-xs font-semibold text-danger"><span x-show="locale === 'ar'">نفد من المخزون</span><span x-show="locale === 'en'">Out of stock</span></span><div class="flex gap-1"><button class="grid size-8 place-items-center rounded-md border border-border text-muted" aria-label="Move up">↑</button><button disabled class="grid size-8 place-items-center rounded-md border border-border text-faint opacity-50" aria-label="Move down">↓</button><button class="grid size-8 place-items-center rounded-md text-danger" aria-label="Remove">×</button></div></article>
+            </div>
+            <!-- /component: featured-product-list -->
+            <!-- component: featured-empty-state --><div x-show="view==='empty'" x-cloak class="px-6 py-16 text-center motion-disclosure" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><span class="mx-auto grid size-12 place-items-center rounded-xl bg-accent-soft text-xl text-accent">★</span><h2 class="mt-4 font-bold"><span x-show="locale === 'ar'">مفيش منتجات مميزة</span><span x-show="locale === 'en'">No featured products</span></h2><p class="mt-1 text-sm text-muted"><span x-show="locale === 'ar'">اختار منتجات منشورة عشان تظهر في الصفحة الرئيسية.</span><span x-show="locale === 'en'">Choose published products to show on the home page.</span></p><button @click="pickerOpen=true" class="mt-4 h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white"><span x-show="locale === 'ar'">اختيار منتجات</span><span x-show="locale === 'en'">Choose products</span></button></div><!-- /component: featured-empty-state -->
+          </section>
+          <aside class="space-y-4"><section class="rounded-xl border border-border bg-card p-5 shadow-xs"><p class="text-xs text-muted"><span x-show="locale === 'ar'">المنتجات المميزة الآن</span><span x-show="locale === 'en'">Featured now</span></p><p class="mt-2 font-mono text-2xl font-semibold">3</p><p class="mt-3 text-xs text-muted"><span x-show="locale === 'ar'">العناصر غير المتوفرة تظل ظاهرة بوسم واضح، ولا يتم إخفاؤها تلقائيًا.</span><span x-show="locale === 'en'">Unavailable items stay visible with a clear label and are not hidden automatically.</span></p></section><section class="rounded-xl border border-info/20 bg-info-soft p-5 text-xs text-info"><strong><span x-show="locale === 'ar'">معاينة المتجر</span><span x-show="locale === 'en'">Storefront preview</span></strong><p class="mt-2"><span x-show="locale === 'ar'">الترتيب هنا يحدد ترتيب قسم المنتجات المميزة فقط.</span><span x-show="locale === 'en'">This order affects only the featured-products home section.</span></p></section></aside>
+        </div>
+      </div></main>
+      <!-- /component: featured-products -->
+    </div>
+
+    <!-- component: featured-product-picker -->
+    <div x-show="pickerOpen" x-cloak class="fixed inset-0 z-overlay motion-overlay motion-drawer" role="dialog" aria-modal="true" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><button @click="pickerOpen=false" class="absolute inset-0 bg-backdrop motion-backdrop" aria-label="Close"></button><aside class="absolute inset-y-0 end-0 w-full max-w-drawer-md overflow-y-auto border-s border-border bg-card p-5 shadow-sm motion-drawer-panel"><div class="flex items-start justify-between"><div><p class="text-xs font-semibold uppercase tracking-section text-accent">Featured</p><h2 class="mt-1 text-xl font-bold"><span x-show="locale === 'ar'">اختيار المنتجات</span><span x-show="locale === 'en'">Choose products</span></h2></div><button @click="pickerOpen=false" class="grid size-9 place-items-center rounded-md border border-border">×</button></div><label class="mt-5 block"><span class="sr-only">Search products</span><input class="h-input w-full rounded-md border border-border-strong px-3 text-sm" :placeholder="locale === 'ar' ? 'ابحث باسم المنتج أو SKU' : 'Search name or SKU'" /></label><div class="mt-4 divide-y divide-border rounded-lg border border-border"><label class="flex items-center gap-3 p-3"><input type="checkbox" checked class="size-4 accent-accent" /><span class="grid size-9 place-items-center rounded-md bg-gradient-to-br from-cyan-500 to-blue-800 text-nano font-semibold text-white">DS</span><span class="min-w-0 flex-1"><strong class="block text-sm"><span x-show="locale === 'ar'">مجموعة التجربة</span><span x-show="locale === 'en'">Discovery Set</span></strong><span dir="ltr" class="font-mono text-xs text-muted">DISC-05 · EGP 350.00</span></span><span class="rounded-full bg-success-soft px-2 py-1 text-2xs font-semibold text-success"><span x-show="locale === 'ar'">منشور</span><span x-show="locale === 'en'">Published</span></span></label><label class="flex items-center gap-3 p-3 opacity-60"><input type="checkbox" disabled class="size-4" /><span class="grid size-9 place-items-center rounded-md bg-subtle text-nano font-semibold text-muted">NV</span><span class="min-w-0 flex-1"><strong class="block text-sm"><span x-show="locale === 'ar'">نايت فيل</span><span x-show="locale === 'en'">Night Veil</span></strong><span class="text-xs text-muted"><span x-show="locale === 'ar'">المنتج مخفي</span><span x-show="locale === 'en'">Product is Hidden</span></span></span></label></div><div class="mt-6 flex gap-2"><button @click="pickerOpen=false; saved=true; setTimeout(() => saved=false, 2400)" class="h-control-md flex-1 rounded-md bg-accent px-4 text-sm font-semibold text-white"><span x-show="locale === 'ar'">إضافة المحدد</span><span x-show="locale === 'en'">Add selected</span></button><button @click="pickerOpen=false" class="h-control-md rounded-md border border-border-strong px-4 text-sm font-semibold"><span x-show="locale === 'ar'">إلغاء</span><span x-show="locale === 'en'">Cancel</span></button></div></aside></div>
+    <!-- /component: featured-product-picker -->
+    <div x-show="saved" x-cloak class="fixed bottom-5 end-5 z-overlay rounded-lg border border-success/20 bg-card px-4 py-3 text-sm font-semibold text-success shadow-sm motion-toast" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><span x-show="locale === 'ar'">تم حفظ ترتيب المنتجات</span><span x-show="locale === 'en'">Featured order saved</span></div>
+    <!-- /component: featured-products-app-shell -->
+  </body>
+</html>

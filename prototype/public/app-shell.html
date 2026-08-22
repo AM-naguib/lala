@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="lala merchant dashboard app shell — Batch 1" />
+    <title>lala — App Shell</title>
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/batch1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="/alpine-fallback.js"></script>
+  </head>
+  <body
+    x-data="{ locale: 'ar', mobileNav: false, profileOpen: false, walletOpen: false }"
+    :dir="locale === 'ar' ? 'rtl' : 'ltr'"
+    class="min-h-screen bg-canvas font-sans text-ink"
+  >
+    <!-- component: app-shell -->
+    <div class="min-h-screen">
+      <!-- component: sidebar -->
+      <aside class="fixed inset-y-0 start-0 z-sidebar hidden w-sidebar flex-col border-e border-border bg-card lg:flex">
+      <div class="flex h-app-header items-center gap-2.5 border-b border-border px-5"><a href="/dashboard.html" class="flex items-center gap-2.5" aria-label="lala dashboard"><span class="grid size-8 place-items-center rounded-lg bg-accent font-bold text-white">l</span><span class="text-xl font-bold">lala</span></a></div>
+      <div class="px-3 pt-4"><a href="/stores-list.html" class="flex items-center gap-3 rounded-lg border border-border bg-subtle p-3 hover:border-accent" :aria-label="locale === 'ar' ? 'تبديل المتجر' : 'Switch store'"><span class="grid size-8 place-items-center rounded-md bg-ink text-xs font-semibold text-white">LN</span><div class="min-w-0 flex-1"><p class="truncate text-sm font-semibold"><span x-show="locale === 'ar'">متجر لونا</span><span x-show="locale === 'en'">Luna Store</span></p><p class="truncate text-xs text-muted">luna.lala.store</p></div><span class="text-xs text-muted" aria-hidden="true">⌄</span></a></div>
+      <nav class="flex-1 overflow-y-auto px-3 py-5" :aria-label="locale === 'ar' ? 'القائمة الرئيسية' : 'Main navigation'">
+        <div class="space-y-1">
+          <a href="/dashboard.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◫</span><span x-show="locale === 'ar'">لوحة التحكم</span><span x-show="locale === 'en'">Dashboard</span></a>
+          <a href="/orders-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">▤</span><span x-show="locale === 'ar'">الطلبات</span><span x-show="locale === 'en'">Orders</span><span class="ms-auto rounded-full bg-accent-soft px-2 py-0.5 font-mono text-2xs text-accent">12</span></a>
+          <a href="/analytics-overview.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◒</span><span x-show="locale === 'ar'">التحليلات</span><span x-show="locale === 'en'">Analytics</span></a>
+          <a href="/products-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◇</span><span x-show="locale === 'ar'">المنتجات</span><span x-show="locale === 'en'">Products</span></a>
+          
+          <a href="/customers-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">◎</span><span x-show="locale === 'ar'">العملاء</span><span x-show="locale === 'en'">Customers</span></a>
+          <a href="/discounts-list.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">%</span><span x-show="locale === 'ar'">الخصومات</span><span x-show="locale === 'en'">Discounts</span></a>
+          <a href="/shipping-zones.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">⌁</span><span x-show="locale === 'ar'">الشحن</span><span x-show="locale === 'en'">Shipping</span></a>
+          <a href="/themes.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">▱</span><span x-show="locale === 'ar'">واجهة المتجر</span><span x-show="locale === 'en'">Storefront</span></a><a href="/store-settings-general.html" class="flex h-input items-center gap-3 rounded-lg px-3 text-muted hover:bg-subtle hover:text-ink"><span aria-hidden="true">⚙</span><span x-show="locale === 'ar'">الإعدادات</span><span x-show="locale === 'en'">Settings</span></a>
+        </div>
+      </nav>
+      <div class="border-t border-border px-5 py-4"><p class="text-xs font-semibold text-muted"><span x-show="locale === 'ar'">مساحة عمل التاجر</span><span x-show="locale === 'en'">Merchant workspace</span></p></div>
+    </aside>
+      <!-- /component: sidebar -->
+
+      <div class="min-h-screen lg:ps-sidebar">
+        <!-- component: topbar -->
+        <header class="sticky top-0 z-header flex h-app-header items-center gap-3 border-b border-border bg-card/95 px-4 backdrop-blur sm:px-6">
+          <a href="/app-shell.html" class="font-semibold lg:hidden" aria-label="lala dashboard">lala</a>
+
+          <div class="min-w-0 flex-1">
+            <p class="truncate text-xs text-muted">
+              <span x-show="locale === 'ar'">متجر لونا</span>
+              <span x-show="locale === 'en'">Luna Store</span>
+              <span class="px-1 text-faint">/</span>
+              <span x-show="locale === 'ar'">لوحة التحكم</span>
+              <span x-show="locale === 'en'">Dashboard</span>
+            </p>
+          </div>
+
+          <div class="relative">
+            <!-- component: wallet-chip-calm -->
+            <a href="/wallet.html" class="hidden h-9 items-center gap-2 rounded-lg border border-border bg-card px-3 shadow-xs hover:border-accent sm:flex">
+              <span class="size-2 rounded-full bg-success"></span>
+              <span class="text-xs text-muted">
+                <span x-show="locale === 'ar'">المحفظة</span>
+                <span x-show="locale === 'en'">Wallet</span>
+              </span>
+              <span dir="ltr" class="font-mono text-xs font-semibold text-ink">EGP 1,240.00</span>
+            </a>
+            <!-- /component: wallet-chip-calm -->
+            <div
+              x-cloak
+              x-show="walletOpen"
+             
+              @click.outside="walletOpen = false"
+              class="absolute end-0 top-11 w-72 rounded-xl border border-border bg-card p-4 shadow-sm motion-popover"
+             x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold">
+                  <span x-show="locale === 'ar'">رصيد المحفظة</span>
+                  <span x-show="locale === 'en'">Wallet balance</span>
+                </span>
+                <span class="rounded-full bg-success-soft px-2 py-0.5 text-xs font-semibold text-success">
+                  <span x-show="locale === 'ar'">مستقر</span>
+                  <span x-show="locale === 'en'">Calm</span>
+                </span>
+              </div>
+              <p dir="ltr" class="mt-3 font-mono text-xl font-semibold">EGP 1,240.00</p>
+              <button class="mt-4 h-control-sm w-full rounded-md bg-accent px-3 text-xs font-semibold text-white hover:bg-accent-hover">
+                <span x-show="locale === 'ar'">اشحن المحفظة</span>
+                <span x-show="locale === 'en'">Recharge wallet</span>
+              </button>
+            </div>
+          </div>
+
+          <button
+            @click="locale = locale === 'ar' ? 'en' : 'ar'; document.documentElement.lang = locale; document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr'"
+            class="h-9 rounded-lg border border-border bg-card px-3 text-xs font-semibold text-muted shadow-xs hover:text-ink"
+          >
+            <span x-show="locale === 'ar'">EN</span>
+            <span x-show="locale === 'en'">عربي</span>
+          </button>
+
+          <button class="relative grid size-9 place-items-center rounded-lg border border-border bg-card text-muted shadow-xs hover:text-ink" :aria-label="locale === 'ar' ? 'الإشعارات' : 'Notifications'">
+            <span aria-hidden="true">●</span>
+            <span class="absolute end-2 top-2 size-1.5 rounded-full bg-danger ring-2 ring-white"></span>
+          </button>
+
+          <div class="relative">
+            <button @click="profileOpen = !profileOpen" class="grid size-9 place-items-center rounded-full bg-ink text-xs font-semibold text-white" :aria-expanded="profileOpen">AM</button>
+            <div
+              x-cloak
+              x-show="profileOpen"
+             
+              @click.outside="profileOpen = false"
+              class="absolute end-0 top-11 w-52 rounded-xl border border-border bg-card p-2 shadow-sm motion-popover"
+             x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end">
+              <p class="px-3 py-2 text-xs text-muted">ahmed@lala.store</p>
+              <a href="#" class="block rounded-md px-3 py-2 hover:bg-subtle">
+                <span x-show="locale === 'ar'">الملف الشخصي</span>
+                <span x-show="locale === 'en'">Profile</span>
+              </a>
+              <a href="#" class="block rounded-md px-3 py-2 text-danger hover:bg-danger-soft">
+                <span x-show="locale === 'ar'">تسجيل الخروج</span>
+                <span x-show="locale === 'en'">Sign out</span>
+              </a>
+            </div>
+          </div>
+        </header>
+      <!-- component: mobile-primary-navigation -->
+      <nav class="flex gap-1 overflow-x-auto border-b border-border bg-card px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'التنقل الرئيسي' : 'Primary navigation'">
+        <a href="/dashboard.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◫</span><span x-show="locale === 'ar'">الرئيسية</span><span x-show="locale === 'en'">Dashboard</span></a>
+        <a href="/orders-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">▤</span><span x-show="locale === 'ar'">الطلبات</span><span x-show="locale === 'en'">Orders</span></a>
+        <a href="/analytics-overview.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◒</span><span x-show="locale === 'ar'">التحليلات</span><span x-show="locale === 'en'">Analytics</span></a>
+        <a href="/products-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◇</span><span x-show="locale === 'ar'">المنتجات</span><span x-show="locale === 'en'">Products</span></a>
+        <a href="/customers-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">◎</span><span x-show="locale === 'ar'">العملاء</span><span x-show="locale === 'en'">Customers</span></a>
+        <a href="/discounts-list.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">%</span><span x-show="locale === 'ar'">الخصومات</span><span x-show="locale === 'en'">Discounts</span></a>
+        <a href="/shipping-zones.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">⌁</span><span x-show="locale === 'ar'">الشحن</span><span x-show="locale === 'en'">Shipping</span></a>
+        <a href="/themes.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">▱</span><span x-show="locale === 'ar'">واجهة المتجر</span><span x-show="locale === 'en'">Storefront</span></a><a href="/store-settings-general.html" class="inline-flex h-control-md shrink-0 items-center justify-center gap-2 rounded-md px-3 text-xs font-semibold text-muted"><span aria-hidden="true">⚙</span><span x-show="locale === 'ar'">الإعدادات</span><span x-show="locale === 'en'">Settings</span></a>
+      </nav>
+      <!-- /component: mobile-primary-navigation -->
+        <!-- /component: topbar -->
+
+        <main class="p-page-mobile sm:p-page-tablet lg:p-page-desktop">
+          <div class="mx-auto max-w-app">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h1 class="text-2xl font-bold tracking-tight">
+                  <span x-show="locale === 'ar'">مساء الخير، أحمد</span>
+                  <span x-show="locale === 'en'">Good evening, Ahmed</span>
+                </h1>
+                <p class="mt-1 text-sm text-muted">
+                  <span x-show="locale === 'ar'">دي أهم أرقام متجرك النهارده.</span>
+                  <span x-show="locale === 'en'">Here is what is happening in your store today.</span>
+                </p>
+              </div>
+              <button class="h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white shadow-xs hover:bg-accent-hover">
+                <span x-show="locale === 'ar'">إضافة منتج</span>
+                <span x-show="locale === 'en'">Add product</span>
+              </button>
+            </div>
+
+            <section class="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" :aria-label="locale === 'ar' ? 'ملخص المتجر' : 'Store summary'">
+              <article class="rounded-xl border border-border bg-card p-5 shadow-xs">
+                <p class="text-sm text-muted"><span x-show="locale === 'ar'">إجمالي المبيعات</span><span x-show="locale === 'en'">Gross sales</span></p>
+                <p dir="ltr" class="mt-3 font-mono text-2xl font-semibold">EGP 18,460</p>
+                <p class="mt-2 text-xs font-semibold text-success">+12.4% <span class="font-normal text-muted"><span x-show="locale === 'ar'">عن أمس</span><span x-show="locale === 'en'">vs yesterday</span></span></p>
+              </article>
+              <article class="rounded-xl border border-border bg-card p-5 shadow-xs">
+                <p class="text-sm text-muted"><span x-show="locale === 'ar'">الطلبات الجديدة</span><span x-show="locale === 'en'">New orders</span></p>
+                <p class="mt-3 font-mono text-2xl font-semibold">12</p>
+                <p class="mt-2 text-xs text-muted"><span x-show="locale === 'ar'">5 محتاجين تأكيد</span><span x-show="locale === 'en'">5 need confirmation</span></p>
+              </article>
+              <article class="rounded-xl border border-border bg-card p-5 shadow-xs">
+                <p class="text-sm text-muted"><span x-show="locale === 'ar'">متوسط قيمة الطلب</span><span x-show="locale === 'en'">Average order value</span></p>
+                <p dir="ltr" class="mt-3 font-mono text-2xl font-semibold">EGP 615</p>
+                <p class="mt-2 text-xs font-semibold text-success">+4.1%</p>
+              </article>
+              <article class="rounded-xl border border-border bg-card p-5 shadow-xs">
+                <p class="text-sm text-muted"><span x-show="locale === 'ar'">مخزون منخفض</span><span x-show="locale === 'en'">Low stock</span></p>
+                <p class="mt-3 font-mono text-2xl font-semibold">7</p>
+                <p class="mt-2 text-xs font-semibold text-warning"><span x-show="locale === 'ar'">راجع المنتجات</span><span x-show="locale === 'en'">Review products</span></p>
+              </article>
+            </section>
+
+            <!-- component: orders-table-standard-density -->
+            <section class="mt-6 overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+              <div class="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h2 class="text-base font-semibold"><span x-show="locale === 'ar'">أحدث الطلبات</span><span x-show="locale === 'en'">Latest orders</span></h2>
+                  <p class="mt-0.5 text-xs text-muted"><span x-show="locale === 'ar'">آخر طلبات وصلت لمتجرك</span><span x-show="locale === 'en'">The newest orders in your store</span></p>
+                </div>
+                <a href="/orders-list.html" class="text-sm font-semibold text-accent hover:text-accent-hover"><span x-show="locale === 'ar'">عرض كل الطلبات</span><span x-show="locale === 'en'">View all orders</span></a>
+              </div>
+              <div class="divide-y divide-border sm:hidden">
+                <article class="p-4">
+                  <div class="flex items-start justify-between gap-3">
+                    <div><p class="font-mono text-xs font-semibold">#10428</p><p class="mt-1 text-sm font-semibold"><span x-show="locale === 'ar'">سارة محمود</span><span x-show="locale === 'en'">Sara Mahmoud</span></p></div>
+                    <span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info"><span x-show="locale === 'ar'">جديد</span><span x-show="locale === 'en'">New</span></span>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-xs"><span class="text-muted"><span x-show="locale === 'ar'">منذ 4 دقائق</span><span x-show="locale === 'en'">4 min ago</span></span><span dir="ltr" class="font-mono font-semibold">EGP 780.00</span></div>
+                </article>
+                <article class="p-4">
+                  <div class="flex items-start justify-between gap-3">
+                    <div><p class="font-mono text-xs font-semibold">#10427</p><p class="mt-1 text-sm font-semibold"><span x-show="locale === 'ar'">عمر خالد</span><span x-show="locale === 'en'">Omar Khaled</span></p></div>
+                    <span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning"><span x-show="locale === 'ar'">قيد المعالجة</span><span x-show="locale === 'en'">Processing</span></span>
+                  </div>
+                  <div class="mt-3 flex items-center justify-between text-xs"><span class="text-muted"><span x-show="locale === 'ar'">منذ 19 دقيقة</span><span x-show="locale === 'en'">19 min ago</span></span><span dir="ltr" class="font-mono font-semibold">EGP 1,120.00</span></div>
+                </article>
+              </div>
+              <div class="hidden overflow-x-auto sm:block">
+                <table class="w-full min-w-3xl border-collapse text-sm leading-5">
+                  <thead class="bg-subtle text-xs font-semibold text-muted">
+                    <tr class="h-table-row border-b border-border">
+                      <th class="px-table-cell-x py-table-cell-y text-start"><span x-show="locale === 'ar'">الطلب</span><span x-show="locale === 'en'">Order</span></th>
+                      <th class="px-table-cell-x py-table-cell-y text-start"><span x-show="locale === 'ar'">العميل</span><span x-show="locale === 'en'">Customer</span></th>
+                      <th class="px-table-cell-x py-table-cell-y text-start"><span x-show="locale === 'ar'">الحالة</span><span x-show="locale === 'en'">Status</span></th>
+                      <th class="px-table-cell-x py-table-cell-y text-start"><span x-show="locale === 'ar'">الإجمالي</span><span x-show="locale === 'en'">Total</span></th>
+                      <th class="px-table-cell-x py-table-cell-y text-start"><span x-show="locale === 'ar'">التاريخ</span><span x-show="locale === 'en'">Date</span></th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-border">
+                    <tr class="h-table-row hover:bg-subtle/70">
+                      <td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10428</td>
+                      <td class="px-table-cell-x py-table-cell-y font-medium"><span x-show="locale === 'ar'">سارة محمود</span><span x-show="locale === 'en'">Sara Mahmoud</span></td>
+                      <td class="px-table-cell-x py-table-cell-y"><span class="inline-flex items-center rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info"><span x-show="locale === 'ar'">جديد</span><span x-show="locale === 'en'">New</span></span></td>
+                      <td dir="ltr" class="px-table-cell-x py-table-cell-y font-mono text-xs font-medium">EGP 780.00</td>
+                      <td class="px-table-cell-x py-table-cell-y text-muted"><span x-show="locale === 'ar'">منذ 4 دقائق</span><span x-show="locale === 'en'">4 min ago</span></td>
+                    </tr>
+                    <tr class="h-table-row hover:bg-subtle/70">
+                      <td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10427</td>
+                      <td class="px-table-cell-x py-table-cell-y font-medium"><span x-show="locale === 'ar'">عمر خالد</span><span x-show="locale === 'en'">Omar Khaled</span></td>
+                      <td class="px-table-cell-x py-table-cell-y"><span class="inline-flex items-center rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning"><span x-show="locale === 'ar'">قيد المعالجة</span><span x-show="locale === 'en'">Processing</span></span></td>
+                      <td dir="ltr" class="px-table-cell-x py-table-cell-y font-mono text-xs font-medium">EGP 1,120.00</td>
+                      <td class="px-table-cell-x py-table-cell-y text-muted"><span x-show="locale === 'ar'">منذ 19 دقيقة</span><span x-show="locale === 'en'">19 min ago</span></td>
+                    </tr>
+                    <tr class="h-table-row hover:bg-subtle/70">
+                      <td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10426</td>
+                      <td class="px-table-cell-x py-table-cell-y font-medium"><span x-show="locale === 'ar'">مريم أحمد</span><span x-show="locale === 'en'">Mariam Ahmed</span></td>
+                      <td class="px-table-cell-x py-table-cell-y"><span class="inline-flex items-center rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success"><span x-show="locale === 'ar'">تم الشحن</span><span x-show="locale === 'en'">Shipped</span></span></td>
+                      <td dir="ltr" class="px-table-cell-x py-table-cell-y font-mono text-xs font-medium">EGP 450.00</td>
+                      <td class="px-table-cell-x py-table-cell-y text-muted"><span x-show="locale === 'ar'">منذ ساعة</span><span x-show="locale === 'en'">1 hour ago</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <!-- /component: orders-table-standard-density -->
+
+            <p class="mt-5 text-center text-xs text-faint">
+              <a class="font-semibold text-accent hover:text-accent-hover" href="/products-list.html">
+                <span x-show="locale === 'ar'">عرض كل المنتجات</span>
+                <span x-show="locale === 'en'">View all products</span>
+              </a>
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- /component: app-shell -->
+  </body>
+</html>

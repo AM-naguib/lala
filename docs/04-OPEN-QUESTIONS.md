@@ -1046,7 +1046,7 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 
 ## Explicitly deferred beyond Phase 1
 
-- Final technology stack.
+- Deployment provider and production topology; the application technology stack is resolved.
 - Full enterprise feature set.
 - App/integration marketplace.
 - Later-phase growth roadmap.
@@ -1151,3 +1151,40 @@ Only confirmed answers become decisions. Questions are ordered by the point at w
 ### Q-235 — Store resolution from domains
 
 **Resolved:** A domains table and custom Laravel middleware for hosted subdomains and verified custom domains. See D-241.
+
+
+## Architecture planning — Resolved after Q-235
+
+### Q-236 — Runtime state stores
+
+**Resolved:** Use Redis through PhpRedis for sessions, cache, distributed locks, and rate-limit counters with separated connections or prefixes. See D-251.
+
+### Q-237 — Internal and public identifiers
+
+**Resolved:** Use unsigned BIGINT internal primary keys and separate immutable public ULIDs for externally exposed records. Keep human order numbers as a store-scoped immutable sequence. See D-252.
+
+### Q-238 — Authentication foundation
+
+**Resolved:** Use the Livewire starter kit and Fortify for Merchant authentication, custom Laravel guard/provider flows for store-scoped Customers, and a separate Admin guard with no public registration. See D-253.
+
+## Design delivery — Active review
+
+### Q-239 — Design Batch 2 acceptance
+
+Does the delivered Orders list, order detail, manual creation, and print-view batch require revisions before it becomes the accepted foundation for production extraction?
+
+### Q-240 — Design Batch 3 scope
+
+Which exact screen group should be designed next? The approved plan retrieved so far does not define Batch 3+, so later screen groups must not be invented.
+
+## Repository administration — Resolved
+
+### Q-241 — Repository visibility
+
+**Resolved:** Keep `AM-naguib/lala` public and publish the project memory and decisions there. See D-250.
+
+## Pilot preparation — Deferred
+
+### Q-210 — Pilot-specific pricing
+
+Pilot-specific pricing remains intentionally deferred and does not block architecture or design work.

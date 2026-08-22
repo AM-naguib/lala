@@ -20,7 +20,7 @@ This can eventually include individuals, social sellers, existing online merchan
 
 - **Confirmed long-term ambition:** global coverage over time.
 - **Defined MVP baseline:** Egypt-only shipping coverage, Arabic and English interfaces, one currency per store, no store-level country, COD only, shipping zones, and no tax feature.
-- **Not yet defined:** detailed Egypt address and fulfillment behavior and legal/compliance boundaries.
+- **Not yet defined:** final legal/compliance boundaries and the production hosting topology.
 
 The platform model permits future supported countries without assigning a country to the store, but Phase 1 operational shipping support is limited to Egypt.
 
@@ -201,16 +201,18 @@ The reason a merchant should choose `lala` over existing platforms has not yet b
 
 ## Explicit non-decisions
 
-The following have not been selected:
+The following remain intentionally unselected or deferred:
 
-- Technology stack and cloud provider.
-- Pricing or subscription tiers.
-- Exact merchant segment for first acquisition.
-- Phone-verification code rules, storefront empty-state presentation, and behavior after exhausting three subdomain changes.
-- Contact-form delivery, manual merchant order creation, order CSV export, and order bulk updates.
-- Cross-country zone composition when a second supported country is introduced.
-- Provider-specific credential validation, shipment-field validation, and duplicate-submission protection.
-- Product-video file limits, processing, and delivery behavior.
-- Coupon abuse mitigation beyond the total usage limit.
-- Permanent product deletion behavior.
-- Non-shipping integrations, applications, or marketplace scope.
+- Final approved marketing value proposition and competitive differentiator.
+- Exact first-acquisition merchant segment beyond the mixed 10-merchant pilot cohort.
+- Pilot-specific pricing; the prepaid per-order wallet model and initial EGP 1 fee are already accepted.
+- Production cloud provider, deployment topology, backup service, and disaster-recovery targets.
+- Exact Design Batch 3+ screen groups.
+- Cross-country shipping-zone composition when a second country is supported.
+- Product-video upload limits, transcoding policy, and delivery limits.
+- Coupon-abuse controls beyond the accepted total usage limit.
+- Permanent product deletion behavior beyond the accepted soft-delete and Trash flow.
+- Non-shipping integrations, public APIs, applications, and marketplace scope.
+- Later-phase legal, tax, payment-gateway, team-role, mobile-app, and enterprise expansion details.
+
+The application stack, tenant model, runtime state stores, identifier strategy, authentication foundation, verification rules, manual orders, order export/bulk operations, and Bosta connection/submission behavior are decided and must not be presented as open product questions.

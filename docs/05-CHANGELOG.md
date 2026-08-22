@@ -1,5 +1,189 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 11.4 current-commerce rebuild
+
+- Rebuilt the three Storefront presets after an expanded visual-reference pass across current official Shopify Theme Store examples.
+- Directed Essential from Horizon × Sleek, Editorial from Prestige × Stretch, and Bold from Impact × Zest without cloning theme content or code.
+- Replaced the remaining shared-template silhouette with distinct hero geometry, 12-column editorial and campaign grids, bento merchandising, controlled overlaps, and preset-specific fixed-390px recomposition.
+- Preserved one shared document, section order and visibility, Builder behavior, RTL, isolated prices, fixed Header/Footer, and all existing safety exclusions.
+- Corrected Editorial mobile headline clipping found during real-browser review.
+- Deterministic build, real-browser desktop/mobile review, and **21/21** automated tests pass.
+- Added the implementation and review record in `storefront/08-THEME-REDESIGN-BATCH-11.4.md`.
+
+## 2026-08-22 — Design Batch 11.3 premium visual rebuild
+
+- Re-ran visual direction research against official Shopify Dawn, Prestige, and Impact patterns plus premium fragrance storefront references.
+- Rebuilt Essential as a calm product-first system, Editorial as a cinematic image-led composition, and Bold as an expressive coral/plum campaign system without harsh yellow or comic-style outlines.
+- Added three optimized original WebP storefront assets and removed the legacy flat storefront SVGs from all Batch 11 screens.
+- Preserved one shared section document, RTL content, isolated prices, fixed 390px preview, and content/order/visibility invariants across theme changes.
+- Visually verified all three presets on desktop and mobile in a real browser; the deterministic build and 20/20 automated tests pass.
+
+## 2026-08-22 — Design Batch 11.2 real theme differentiation
+
+- Kept one shared Storefront document and renderer while adding preset-specific layout composition instead of palette-only skins.
+- Essential stays compact and product-first with a balanced split Hero and quiet cards.
+- Editorial now uses a centered masthead, full-bleed image-led Hero, wider rhythm, feature compositions, and restrained promotional treatment.
+- Bold now uses asymmetric grids, heavy outlines, high-contrast promotion blocks, emphasized price/stock cards, and a dark system frame.
+- Added fixed-width mobile adaptations for the new compositions without changing section data, order, visibility, RTL, or price isolation.
+- Added a Batch 11.2 regression contract and passed the deterministic build plus 19/19 automated tests.
+## 2026-08-22 — Design Batch 11.1 Storefront builder correction
+
+- Added live preview renderers for Slider, Featured Collections, and Promotional Banner so every section offered by the approved picker appears in the same shared renderer.
+- Expanded Homepage Builder snapshots so Arabic and English Hero content participates in Undo/Redo together with section order and visibility.
+- Replaced nested `role="button"` section actions with keyboard-operable native buttons, explicit disabled states, and 44px minimum targets.
+- Added a behavioral Batch 11.1 regression test that executes the Builder state and verifies content restoration, add/undo preview behavior, renderer coverage, and accessible controls.
+- Regenerated all Batch 11 renderer consumers and passed the deterministic build plus 18/18 automated tests.
+
+## 2026-08-22 — Design Batch 10 Store settings and Wallet delivered
+
+- Recorded founder acceptance of Batch 9 and authorization of Batch 10 in D-271.
+- Added D-272 for General settings, Checkout fields, Domains, Notifications, Wallet, and Store status.
+- Added Settings as one level-one Merchant module with six internal sections and kept Wallet directly reachable from every header balance chip.
+- Preserved the three-change hosted-subdomain lock, 10-day reservation/no redirect, independent custom domains with fallback, no currency conversion, exact Checkout field set, COD-only/no-tax boundary, confirmed notification matrix, EGP 1 prepaid wallet fee, EGP -10 masking threshold, and support-only store reactivation.
+- Added Batch 10 contract tests, advanced the review gate to Batch 10 before Batch 11, and kept Laravel implementation postponed.
+
+## 2026-08-22 — Design Batch 9 Merchant access and onboarding delivered
+
+- Recorded founder acceptance of Batch 8 and authorization of Batch 9 in D-269.
+- Added D-270 for Merchant sign-in/sign-up, WhatsApp verification, recovery/reset, first-store onboarding, and store switching.
+- Preserved the 10-minute code, 60-second cooldown, five-send rolling-hour limit, five-attempt invalidation, and no-bypass WhatsApp failure behavior.
+- Limited onboarding to store name, subdomain, currency, and primary language; explicitly excluded a store-country field.
+- Added empty-account, multi-store, unlimited-store, owner-only, validation, subdomain availability, delivery failure, and recovery feedback states.
+- Linked the store switcher from every current Merchant screen and advanced the review gate to Batch 9 before Batch 10.
+
+## 2026-08-22 — Design Batch 8 Dashboard and Analytics delivered
+
+- Recorded founder acceptance of Batch 7 and authorization of Batch 8 in D-267.
+- Added D-268 for Dashboard, Analytics overview, Orders analytics, and Products analytics.
+- Added Analytics as a level-one Merchant module with Overview, Orders, and Products sections.
+- Preserved Cairo time, the five approved date ranges, previous-equivalent comparison, all-status Sales definition, exact seven-status breakdown, Units/Value product ranking, and filtered CSV scope.
+- Kept Estimated profit outside the product and added contract tests for every metric boundary.
+- Advanced the review gate to Batch 8 before Batch 9 Merchant access and onboarding.
+
+## 2026-08-22 — Design Batch 5 Customers delivered
+
+- Recorded founder acceptance of corrected Design Batch 4 in D-260.
+- Added D-261 for Customers list, unified Customer detail, and identity-conflict review.
+- Added Customers as a level-one Merchant module on Desktop and Mobile.
+- Preserved Guest/Account records, optional email, multiple addresses, blocking by phone/email, notes, tags, order metrics/history, and safe conflict review without silent merging.
+- Applied wallet-overdraft masking to phone, email, and addresses; disabled sensitive export and conflict resolution until recharge.
+- Published Sites version 9 and advanced the review gate to Batch 5 before Batch 6 Discounts.
+
+## 2026-08-22 — Products information architecture correction
+
+### Changed
+
+- Recorded D-259, which supersedes only the Catalog-as-level-one and peer-tabs portions of D-258.
+- Reclassified current destinations as Module, Section, Tool, Flow child, or Review tooling.
+- Consolidated product work under one Products module: All products, Inventory, Organization, Featured products, then separately labeled Import and Trash tools.
+- Removed the rejected Organization/Featured/Import/Trash peer-tab model and excluded Component Gallery from Merchant navigation.
+- Corrected Desktop/Mobile hierarchy and replaced Catalog-reachability tests with information-architecture regression tests.
+- Updated project memory, delivery status, next work, frontend roadmap, and UX operating documents to match the corrected structure.
+- Published the corrected hierarchy as Sites version 8 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+
+## 2026-08-22 — UX operating contract implemented
+
+### Added
+
+- Added `docs/ux/` with binding UX principles, information architecture, screen acceptance checklist, and prioritized backlog.
+- Added D-258 and integrated the UX P0 gate into the frontend delivery roadmap.
+- Added automated coverage that requires Catalog reachability and mobile primary navigation on every current merchant screen.
+
+### Changed
+
+- Promoted Catalog to a level-one Sidebar destination across all current merchant screens.
+- Added consistent mobile primary navigation and correct active-parent semantics.
+- Simplified Products list actions to one primary action, one frequent secondary action, and a More actions menu.
+- Marked unbuilt App shell destinations as Disabled with “Soon / قريبًا” and fixed View all orders.
+- Published Sites version 7 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+
+## 2026-08-22 — Design Batch 4 delivered and published
+
+### Added
+
+- Delivered Catalog organization, Featured products, Product Trash, CSV import, and Import results as five bilingual portable static screens.
+- Added required empty, duplicate-name, ID/SKU conflict, public-image URL, background-processing, valid-row, rejected-row, and result-file states.
+- Added all/filtered exports and destructive-action preview to Products list.
+- Linked Product editor to organization management and Trash.
+- Published Sites version 6 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Moved execution to the Batch 4 founder-review gate before Batch 5.
+
+## 2026-08-22 — Complete frontend roadmap accepted
+
+### Added
+
+- Added `docs/10-FRONTEND-DELIVERY-PLAN.md` as the single operating roadmap for completing the static frontend.
+- Defined Batches 4–17 with 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
+- Added exact dependencies, required states, acceptance gates, execution protocol, and Definition of Done for every batch.
+- Set Batch 4 — Catalog operations as the next active delivery.
+- Added D-257 and linked the roadmap from project memory and next work.
+
+## 2026-08-21 — Unified design constants implemented
+
+### Changed
+
+- Standardized every application route and product tab on one 1440px outer content frame.
+- Added named Tailwind CSS v4 bridges for page padding, inner grids, table widths, typography details, controls, layers, and print dimensions.
+- Standardized every table cell on the accepted 52px row and 12×16px padding contract.
+- Added a full constants reference, component-gallery layout contract, and automated regression tests that reject legacy outer widths and reusable arbitrary utilities.
+- Published Sites version 5 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Added D-256.
+
+## 2026-08-21 — Design Batch 3 delivered and published
+
+### Added
+
+- Delivered Products list, Product editor, Product variants, and Inventory management as portable bilingual static HTML screens.
+- Preserved Published/Hidden visibility, exact inventory states, optional low-stock thresholds, flexible variant-level commerce data, soft-delete restoration as Hidden, and visible disabled unavailable variants.
+- Documented immediate COD stock deduction, cancellation restoration, and manual return restocking.
+- Published Sites version 4 at https://lala-design-system.curbs-storm-80.chatgpt.site.
+- Added D-255 and updated delivery status, next work, project memory, and the Draft PR summary.
+
+## 2026-08-21 — Static-only delivery retained
+
+### Changed
+
+- Continued the current delivery phase as portable static HTML only.
+- Explicitly postponed Laravel, Livewire, Blade application code, migrations, queues, authentication, persistence, and production integrations.
+- Preserved the accepted Laravel architecture as a future implementation handoff rather than current work.
+- Changed the immediate objective to Design Batch 2 review, exact Batch 3 definition, and continued static Tailwind CSS v4 + Alpine.js screen delivery.
+- Added D-254.
+
+## 2026-08-21 — Architecture baseline completed
+
+### Added
+
+- Superseded the original private-repository decision after the founder explicitly approved keeping `AM-naguib/lala` public.
+- Selected Redis/PhpRedis for sessions, cache, distributed locks, rate limiting, and Horizon queues with isolated connections or prefixes.
+- Selected unsigned BIGINT internal keys plus immutable public ULIDs and separate store-scoped human order numbers.
+- Selected the Laravel 13 Livewire starter kit and Fortify as the Merchant-authentication foundation, with separate custom Admin and store-scoped Customer guard flows.
+- Linked the architecture plan to the relevant official Laravel 13 documentation.
+
+### Changed
+
+- Closed Q-236 through Q-238 and the repository-visibility question.
+- Removed stale statements that treated the accepted stack, verification rules, empty storefront, Contact delivery, manual orders, and Bosta controls as undecided.
+- Marked the application shape as accepted and advanced the active objective to production Laravel bootstrapping.
+- Left only Design Batch 2 review, exact Batch 3 scope, pilot-specific pricing, and deployment infrastructure as future decisions.
+
+## 2026-08-21 — Design delivery memory refreshed
+
+### Added
+
+- Added `08-DELIVERY-STATUS.md` for accepted, delivered, and not-started work.
+- Added `09-NEXT-WORK.md` for the review queue, open architecture decisions, deferred scope, and proposed implementation order.
+- Recorded Design Batch 1 as accepted and Batch 2 as delivered for review.
+- Recorded the Tailwind CSS v4 token bridge, self-hosted IBM Plex font policy, 52px density, and browser-verified RTL/Mono behavior.
+- Reconfirmed the exact seven core statuses, separate Labels, no payment-status model, three inventory states, and Bosta mappings.
+- Added active questions for Batch 2 review, Batch 3 scope, runtime state stores, identifiers, and authentication foundation.
+- Recorded the founder's explicit approval to publish these memory documents while the repository is public.
+
+### Changed
+
+- Updated the project-memory date and active objective.
+- Replaced outdated pre-architecture wording now that the technology stack is accepted.
+- Clarified that the static design batches are prototypes and production Laravel implementation has not started.
+
 ## 2026-08-15 — Architecture planning started
 
 ### Added
@@ -931,3 +1115,69 @@
 - Uploaded the completed Phase 1 planning documentation through D-222 and Q-213 to private `AM-naguib/lala` on `main`.
 - Reset the GitHub synchronization counter to 0/50.
 - Left Q-210 pilot-specific pricing explicitly deferred and recorded no active Phase 1 product questions.
+
+## 2026-08-22 — Batch 6 Discounts and portable source publication
+
+### Added
+
+- Accepted Batch 5 Customers after founder review.
+- Delivered Discounts list and Coupon editor with only the three approved reward types and the controlled coupon lifecycle states.
+- Added the complete portable static frontend source under `prototype/`, including all current HTML screens, token and font assets, Alpine markup, extraction markers, constants reference, and the static contract test.
+
+### Changed
+
+- Added Discounts as a level-one Merchant module on desktop and mobile navigation.
+- Advanced the frontend review gate to Batch 6 before Batch 7 Shipping zones and Bosta.
+
+## 2026-08-22 — Unified motion system
+
+### Added
+
+- Added motion tokens for fast, base, toast, modal, and drawer timing plus standard, emphasized, and exit easing.
+- Added portable Alpine transition patterns for modals, drawers, popovers, toasts, and conditional state surfaces.
+- Added a Motion section to the Component Gallery and a dedicated `prototype/docs/MOTION-SYSTEM.md` contract.
+- Added automated checks requiring every dialog, drawer, and toast to follow the motion contract.
+
+### Changed
+
+- Replaced abrupt modal and drawer appearance across current screens with directional, reduced-motion-safe transitions.
+- Added the motion upgrader to the static build so future HTML screens inherit the contract automatically.
+
+## 2026-08-22 — Batch 7 Shipping zones and Bosta
+
+### Added
+
+- Accepted Batch 6 Discounts and advanced the static roadmap to Batch 7.
+- Added Shipping zones, Zone editor, Custom locations, Shipping integrations, and Bosta connection screens.
+- Added overlap, unsupported-location, free-shipping, credential-error, disconnected, and connected states.
+- Added exact Bosta event mapping and clear separation between shipment creation and core order status.
+- Added single-order Not sent, Sending, Sent, Failed/retry, and duplicate-active-shipment states.
+- Added a bulk Bosta submission summary with sent, blocked, and failed outcomes.
+
+### Changed
+
+- Added Shipping as one coherent level-one Merchant module on desktop and mobile.
+- Updated the Component Gallery through Batch 7.
+- Advanced the frontend review gate to Batch 7 before Batch 8 Dashboard and Analytics.
+
+## 2026-08-22 — Batch 11 Storefront themes and homepage builder
+
+### Added
+
+- Added a research-backed `docs/storefront/` folder covering theme architecture, builder UX, section catalog, token boundaries, execution plan, and deferred decisions.
+- Added Themes, Theme preview, Branding, and Homepage builder static screens.
+- Added Essential, Editorial, and Bold presets over one shared storefront renderer.
+- Added missing logo/favicon, contrast warning, desktop/mobile preview, content-preserving apply confirmation, section reorder, hide/show, add, undo/redo, and save states.
+- Added purpose-built Luna fragrance imagery as static local SVG assets.
+- Added Batch 11 contract tests and extended the shared build to regenerate the screens and Storefront navigation.
+
+### Changed
+
+- Added Storefront as a level-one Merchant module after Shipping and before Settings across current desktop and mobile navigation.
+- Added separate 80rem Storefront and 390px mobile-preview constants without changing the 90rem Merchant Admin container.
+- Advanced the frontend review gate to Batch 11 before Batch 12 Pages and Contact inbox.
+
+### Verified
+
+- Passed the full production build and 18 automated tests.
+- Verified IBM Plex Sans Arabic shaping, IBM Plex Mono loading, RTL direction, LTR price/domain isolation, modal and builder interactions, true 390px preview layout, and zero horizontal overflow in a real browser.

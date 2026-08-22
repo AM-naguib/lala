@@ -27,6 +27,8 @@ After every material project answer or decision:
 5. Add a dated entry to `05-CHANGELOG.md`.
 6. Save the updated working copy after every material answer.
 7. Commit locally as needed, then synchronize accumulated planning changes to GitHub after every 50 answered planning questions or immediately when the founder explicitly requests a push.
+8. Update `08-DELIVERY-STATUS.md` whenever a design or implementation batch is accepted, delivered, revised, or completed.
+9. Update `09-NEXT-WORK.md` whenever the execution order, immediate review queue, or deferred scope changes.
 
 ## Decision states
 
@@ -55,9 +57,9 @@ After every material project answer or decision:
 
 ## Git workflow
 
-- Repository: private `AM-naguib/lala` repository at `https://github.com/AM-naguib/lala`.
+- Repository: public `AM-naguib/lala` at `https://github.com/AM-naguib/lala`, by explicit founder approval.
 - GitHub synchronization cadence: every 50 answered planning questions, with an explicit immediate-push override.
 - Track the current post-push question count and pending unpushed state in `00-PROJECT-MEMORY.md`.
 - Local documentation commits may remain smaller than the GitHub synchronization batch.
 - Code and documentation changes should not be mixed once implementation begins unless one requires the other.
-- Secrets, credentials, personal data, and production customer data must never be committed.
+- Secrets, credentials, personal data, production customer data, private API payloads, and unredacted operational exports must never be committed to the public repository.

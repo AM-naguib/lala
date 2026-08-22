@@ -1,0 +1,383 @@
+/*
+  lala Design Tokens — Batch 1
+  Tailwind Browser CDN: @tailwindcss/browser@4 (v4 major channel)
+
+  Porting to Laravel 13 / Tailwind v4:
+  1. Keep the :root primitives unchanged.
+  2. Move or import the @theme inline mapping into the application's Tailwind CSS entry.
+  3. Keep the self-hosted @font-face declarations in fonts.css and move the WOFF2 files to the Laravel asset pipeline unchanged.
+*/
+
+:root {
+  /* Primitive color tokens */
+  --lala-color-canvas: #f6f7f9;
+  --lala-color-card: #ffffff;
+  --lala-color-subtle: #f9fafb;
+  --lala-color-border: #e4e7ec;
+  --lala-color-border-strong: #d0d5dd;
+  --lala-color-ink: #1a1d23;
+  --lala-color-muted: #667085;
+  --lala-color-faint: #98a2b3;
+  --lala-color-accent: #2557e9;
+  --lala-color-accent-hover: #1f49c7;
+  --lala-color-accent-soft: #eef2ff;
+  --lala-color-success: #067647;
+  --lala-color-success-soft: #ecfdf3;
+  --lala-color-warning: #b54708;
+  --lala-color-warning-soft: #fffaeb;
+  --lala-color-danger: #b42318;
+  --lala-color-danger-hover: #912018;
+  --lala-color-danger-soft: #fef3f2;
+  --lala-color-info: #175cd3;
+  --lala-color-info-soft: #eff8ff;
+  --lala-color-backdrop: rgb(16 24 40 / 0.48);
+
+  /* Typography tokens */
+  --lala-font-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --lala-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --lala-text-xs: 0.75rem;
+  --lala-text-2xs: 0.6875rem;
+  --lala-text-micro: 0.625rem;
+  --lala-text-nano: 0.5625rem;
+  --lala-text-mono-inline: 0.92em;
+  --lala-text-sm: 0.875rem;
+  --lala-text-base: 1rem;
+  --lala-text-lg: 1.125rem;
+  --lala-text-xl: 1.25rem;
+  --lala-leading-latin: 1.4286;
+  --lala-leading-arabic: 1.65;
+  --lala-tracking-section: 0.14em;
+  --lala-tracking-overline: 0.16em;
+  --lala-tracking-display: 0.18em;
+  --lala-tracking-barcode: 0.22em;
+
+  /* Shell and content geometry */
+  --lala-content-max: 90rem;
+  --lala-reading-max: 48rem;
+  --lala-storefront-content-max: 80rem;
+  --lala-storefront-mobile-preview: 24.375rem;
+  --lala-shell-sidebar: 15.5rem;
+  --lala-shell-header: 4rem;
+  --lala-page-padding-mobile: 1rem;
+  --lala-page-padding-tablet: 1.5rem;
+  --lala-page-padding-desktop: 2rem;
+  --lala-drawer-md: 28rem;
+  --lala-grid-aside-editor: 21.25rem;
+  --lala-grid-aside-detail: 22rem;
+  --lala-grid-aside-summary: 25rem;
+
+  /* Component geometry and spacing */
+  --lala-radius-sm: 0.375rem;
+  --lala-radius-md: 0.5rem;
+  --lala-radius-lg: 0.75rem;
+  --lala-radius-xl: 1rem;
+  --lala-shadow-xs: 0 1px 2px rgb(16 24 40 / 0.05);
+  --lala-shadow-sm: 0 1px 3px rgb(16 24 40 / 0.08), 0 1px 2px rgb(16 24 40 / 0.04);
+  --lala-table-row: 3.25rem;
+  --lala-table-cell-x: 1rem;
+  --lala-table-cell-y: 0.75rem;
+  --lala-table-min-standard: 62.5rem;
+  --lala-table-min-wide: 67.5rem;
+  --lala-table-min-xwide: 70rem;
+  --lala-control-md: 2.25rem;
+  --lala-control-sm: 2rem;
+  --lala-input-height: 2.5rem;
+  --lala-timeline-marker-offset: 1.36rem;
+
+  /* Print-only physical dimensions */
+  --lala-print-a4-height: 297mm;
+  --lala-print-label-width: 100mm;
+  --lala-print-label-height: 150mm;
+
+  /* Layer order */
+  --lala-z-header: 30;
+  --lala-z-sidebar: 40;
+  --lala-z-overlay: 50;
+
+  /* Motion tokens */
+  --lala-duration-fast: 140ms;
+  --lala-duration-base: 220ms;
+  --lala-duration-modal: 260ms;
+  --lala-duration-drawer: 300ms;
+  --lala-duration-toast: 240ms;
+  --lala-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --lala-ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
+  --lala-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+}
+
+@theme inline {
+  --color-canvas: var(--lala-color-canvas);
+  --color-card: var(--lala-color-card);
+  --color-subtle: var(--lala-color-subtle);
+  --color-border: var(--lala-color-border);
+  --color-border-strong: var(--lala-color-border-strong);
+  --color-ink: var(--lala-color-ink);
+  --color-muted: var(--lala-color-muted);
+  --color-faint: var(--lala-color-faint);
+  --color-accent: var(--lala-color-accent);
+  --color-accent-hover: var(--lala-color-accent-hover);
+  --color-accent-soft: var(--lala-color-accent-soft);
+  --color-success: var(--lala-color-success);
+  --color-success-soft: var(--lala-color-success-soft);
+  --color-warning: var(--lala-color-warning);
+  --color-warning-soft: var(--lala-color-warning-soft);
+  --color-danger: var(--lala-color-danger);
+  --color-danger-hover: var(--lala-color-danger-hover);
+  --color-danger-soft: var(--lala-color-danger-soft);
+  --color-info: var(--lala-color-info);
+  --color-info-soft: var(--lala-color-info-soft);
+  --color-backdrop: var(--lala-color-backdrop);
+  --font-sans: var(--lala-font-sans);
+  --font-mono: var(--lala-font-mono);
+  --text-xs: var(--lala-text-xs);
+  --text-2xs: var(--lala-text-2xs);
+  --text-micro: var(--lala-text-micro);
+  --text-nano: var(--lala-text-nano);
+  --text-mono-inline: var(--lala-text-mono-inline);
+  --text-sm: var(--lala-text-sm);
+  --text-base: var(--lala-text-base);
+  --text-lg: var(--lala-text-lg);
+  --text-xl: var(--lala-text-xl);
+  --leading-arabic: var(--lala-leading-arabic);
+  --tracking-section: var(--lala-tracking-section);
+  --tracking-overline: var(--lala-tracking-overline);
+  --tracking-display: var(--lala-tracking-display);
+  --tracking-barcode: var(--lala-tracking-barcode);
+  --radius-sm: var(--lala-radius-sm);
+  --radius-md: var(--lala-radius-md);
+  --radius-lg: var(--lala-radius-lg);
+  --radius-xl: var(--lala-radius-xl);
+  --shadow-xs: var(--lala-shadow-xs);
+  --shadow-sm: var(--lala-shadow-sm);
+  --container-app: var(--lala-content-max);
+  --container-reading: var(--lala-reading-max);
+  --container-storefront: var(--lala-storefront-content-max);
+  --container-storefront-mobile: var(--lala-storefront-mobile-preview);
+  --container-drawer-md: var(--lala-drawer-md);
+  --container-table-standard: var(--lala-table-min-standard);
+  --container-table-wide: var(--lala-table-min-wide);
+  --container-table-xwide: var(--lala-table-min-xwide);
+  --spacing-sidebar: var(--lala-shell-sidebar);
+  --spacing-app-header: var(--lala-shell-header);
+  --spacing-page-mobile: var(--lala-page-padding-mobile);
+  --spacing-page-tablet: var(--lala-page-padding-tablet);
+  --spacing-page-desktop: var(--lala-page-padding-desktop);
+  --spacing-table-row: var(--lala-table-row);
+  --spacing-table-cell-x: var(--lala-table-cell-x);
+  --spacing-table-cell-y: var(--lala-table-cell-y);
+  --spacing-control-md: var(--lala-control-md);
+  --spacing-control-sm: var(--lala-control-sm);
+  --spacing-input: var(--lala-input-height);
+  --spacing-timeline-marker: var(--lala-timeline-marker-offset);
+  --spacing-print-a4: var(--lala-print-a4-height);
+  --spacing-print-label-width: var(--lala-print-label-width);
+  --spacing-print-label-height: var(--lala-print-label-height);
+  --grid-template-columns-editor: minmax(0, 1fr) var(--lala-grid-aside-editor);
+  --grid-template-columns-detail: minmax(0, 1fr) var(--lala-grid-aside-detail);
+  --grid-template-columns-summary: minmax(0, 1fr) var(--lala-grid-aside-summary);
+  --grid-template-columns-summary-balanced: 1fr var(--lala-grid-aside-summary);
+  --grid-template-columns-label: 8rem 1fr;
+  --grid-template-columns-history: 10rem 1fr 8.125rem 10rem;
+  --z-index-header: var(--lala-z-header);
+  --z-index-sidebar: var(--lala-z-sidebar);
+  --z-index-overlay: var(--lala-z-overlay);
+  --ease-standard: var(--lala-ease-standard);
+  --ease-emphasized: var(--lala-ease-emphasized);
+  --ease-exit: var(--lala-ease-exit);
+}
+
+@layer base {
+  html {
+    font-family: var(--lala-font-sans);
+    background: var(--lala-color-canvas);
+    color: var(--lala-color-ink);
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--lala-color-canvas);
+    color: var(--lala-color-ink);
+    font-family: var(--lala-font-sans);
+    font-size: var(--lala-text-sm);
+    line-height: var(--lala-leading-latin);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body.font-sans {
+    font-family: var(--lala-font-sans) !important;
+  }
+
+  .font-mono {
+    font-family: var(--lala-font-mono) !important;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "zero" 1;
+  }
+
+  [dir="rtl"] .font-mono.inline-block {
+    vertical-align: -0.075em;
+    line-height: 1;
+  }
+
+  [dir="rtl"] {
+    line-height: var(--lala-leading-arabic);
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+
+  button,
+  a,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  summary {
+    transition-property: color, background-color, border-color, box-shadow, opacity, transform;
+    transition-duration: var(--lala-duration-fast);
+    transition-timing-function: var(--lala-ease-standard);
+  }
+}
+
+@layer components {
+  .motion-enter-active,
+  .motion-leave-active,
+  .motion-surface,
+  .motion-drawer-panel,
+  .motion-toast,
+  .motion-popover,
+  .motion-disclosure {
+    will-change: opacity, transform;
+  }
+
+  .motion-enter-active {
+    transition-duration: var(--lala-duration-base);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-leave-active {
+    transition-duration: var(--lala-duration-fast);
+    transition-timing-function: var(--lala-ease-exit);
+  }
+
+  .motion-overlay {
+    transition-property: opacity;
+  }
+
+  .motion-enter-start,
+  .motion-leave-end {
+    opacity: 0;
+  }
+
+  .motion-enter-end,
+  .motion-leave-start {
+    opacity: 1;
+  }
+
+  .motion-surface {
+    transform-origin: center;
+    transition-property: opacity, transform;
+    transition-duration: var(--lala-duration-modal);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-modal.motion-enter-start > .motion-surface,
+  .motion-modal.motion-leave-end > .motion-surface {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.985);
+  }
+
+  .motion-modal.motion-enter-end > .motion-surface,
+  .motion-modal.motion-leave-start > .motion-surface {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .motion-backdrop {
+    transition: opacity var(--lala-duration-base) var(--lala-ease-standard);
+  }
+
+  .motion-drawer-panel {
+    transform: translateX(0);
+    transition: transform var(--lala-duration-drawer) var(--lala-ease-emphasized);
+  }
+
+  .motion-drawer.motion-enter-start > .motion-drawer-panel,
+  .motion-drawer.motion-leave-end > .motion-drawer-panel {
+    transform: translateX(100%);
+  }
+
+  [dir="rtl"] .motion-drawer.motion-enter-start > .motion-drawer-panel,
+  [dir="rtl"] .motion-drawer.motion-leave-end > .motion-drawer-panel {
+    transform: translateX(-100%);
+  }
+
+  .motion-toast,
+  .motion-popover,
+  .motion-disclosure {
+    transition-property: opacity, transform;
+    transition-duration: var(--lala-duration-toast);
+    transition-timing-function: var(--lala-ease-emphasized);
+  }
+
+  .motion-toast.motion-enter-start,
+  .motion-toast.motion-leave-end {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+
+  .motion-popover {
+    transform-origin: top right;
+  }
+
+  [dir="rtl"] .motion-popover {
+    transform-origin: top left;
+  }
+
+  .motion-popover.motion-enter-start,
+  .motion-popover.motion-leave-end {
+    opacity: 0;
+    transform: translateY(-0.25rem) scale(0.98);
+  }
+
+  .motion-disclosure.motion-enter-start,
+  .motion-disclosure.motion-leave-end {
+    opacity: 0;
+    transform: translateY(0.25rem);
+  }
+
+  details[open] > :not(summary) {
+    animation: lala-disclosure-in var(--lala-duration-base) var(--lala-ease-emphasized) both;
+  }
+}
+
+@keyframes lala-disclosure-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

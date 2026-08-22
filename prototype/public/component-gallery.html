@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="lala bilingual component gallery — Batch 1" />
+    <title>lala — Component Gallery</title>
+    <link rel="stylesheet" href="/fonts.css" />
+    <link rel="stylesheet" href="/batch1.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="/alpine-fallback.js"></script>
+  </head>
+  <body x-data="{ menuOpen: false, motionModal: false, motionDrawer: false, motionToast: false }" class="min-h-screen bg-canvas font-sans text-ink">
+    <header class="sticky top-0 z-header border-b border-border bg-card/95 backdrop-blur">
+      <div class="mx-auto flex h-app-header max-w-app items-center gap-4 px-page-mobile sm:px-page-tablet lg:px-page-desktop">
+        <a href="/component-gallery.html" class="flex items-center gap-2.5">
+          <span class="grid size-8 place-items-center rounded-lg bg-accent font-bold text-white">l</span>
+          <span class="text-lg font-bold">lala</span>
+          <span class="hidden rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent sm:inline-flex">Design System · B1–B10</span>
+        </a>
+        <nav class="ms-auto hidden items-center gap-1 lg:flex" aria-label="Gallery sections">
+          <a href="#layout" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Layout</a>
+          <a href="#foundations" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Foundations</a>
+          <a href="#buttons" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Buttons</a>
+          <a href="#forms" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Forms</a>
+          <a href="#statuses" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Statuses</a>
+          <a href="#tables" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Tables</a>
+          <a href="#motion" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Motion</a>
+          <a href="#wallet" class="rounded-md px-3 py-2 text-xs font-semibold text-muted hover:bg-subtle hover:text-ink">Wallet</a>
+        </nav>
+        <a href="/dashboard.html" class="ms-auto h-control-md rounded-md bg-accent px-4 text-sm font-semibold leading-9 text-white shadow-xs hover:bg-accent-hover lg:ms-3">Open dashboard</a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-app px-page-mobile py-8 sm:px-page-tablet lg:px-page-desktop lg:py-12">
+      <section class="grid gap-8 border-b border-border pb-10 lg:grid-cols-summary-balanced lg:items-end">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-display text-accent">Batch 1 · Foundations & primitives</p>
+          <h1 class="mt-3 max-w-reading text-3xl font-bold tracking-tight sm:text-4xl">Portable UI foundations for lala merchants.</h1>
+          <p class="mt-4 max-w-reading text-base leading-7 text-muted">
+            Every example is plain HTML with portable Tailwind v4 class strings, Alpine markup, extraction markers, and real English and Arabic copy.
+          </p>
+        </div>
+        <dl class="grid grid-cols-2 gap-x-5 gap-y-4 rounded-xl border border-border bg-card p-5 shadow-xs">
+          <div>
+            <dt class="text-xs text-muted">Tailwind CDN</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">browser@4</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-muted">Alpine CDN</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">3.x</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-muted">Table row</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">52px</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-muted">Cells / body</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">12×16 · 14/20</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-muted">App content</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">max 1440px</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-muted">Base grid</dt>
+            <dd class="mt-1 font-mono text-xs font-semibold">4px</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- component: batch-2-navigation -->
+      <section class="border-b border-border py-8">
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 2 · Orders module</p><h2 class="mt-2 text-xl font-bold">Review the four order screens</h2><p dir="rtl" class="mt-1 text-sm text-muted">قائمة الطلبات، تفاصيل الطلب، إنشاء طلب يدوي، ومعاينات الطباعة.</p></div><div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4"><a href="/orders-list.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Orders list</a><a href="/order-detail.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Order detail</a><a href="/order-create.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Manual creation</a><a href="/order-print.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Print views</a></div></div>
+        <div class="mt-5 flex flex-col gap-4 rounded-xl border border-border bg-subtle p-5 lg:flex-row lg:items-end lg:justify-between"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 3 · Products & inventory</p><h2 class="mt-2 text-xl font-bold">Product foundations</h2><p dir="rtl" class="mt-1 text-sm text-muted">قائمة المنتجات، محرر المنتج، المتغيرات، وإدارة المخزون.</p></div><div class="grid gap-2 sm:grid-cols-2 lg:grid-cols-4"><a href="/products-list.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Products list</a><a href="/product-editor.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Product editor</a><a href="/product-variants.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Variants</a><a href="/inventory.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold shadow-xs hover:border-accent">Inventory</a></div></div>
+        <!-- component: batch-4-navigation --><div class="mt-5 rounded-xl border border-accent/20 bg-accent-soft p-5"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 4 · Products</p><h2 class="mt-2 text-xl font-bold">One product module, organized by purpose</h2><p dir="rtl" class="mt-1 text-sm text-muted">التنظيم والمنتجات المميزة أقسام داخل المنتجات، بينما الاستيراد وسلة المحذوفات أدوات تشغيل منفصلة.</p></div><div class="mt-4 grid gap-3 lg:grid-cols-2"><section class="rounded-lg border border-border bg-card p-4 shadow-xs"><p class="text-xs font-semibold uppercase tracking-overline text-faint">Product sections</p><div class="mt-3 grid gap-2 sm:grid-cols-2"><a href="/catalog-organization.html" class="rounded-md border border-border px-3 py-2 text-sm font-semibold hover:border-accent">Organization</a><a href="/featured-products.html" class="rounded-md border border-border px-3 py-2 text-sm font-semibold hover:border-accent">Featured products</a></div></section><section class="rounded-lg border border-border bg-card p-4 shadow-xs"><p class="text-xs font-semibold uppercase tracking-overline text-faint">Product tools</p><div class="mt-3 grid gap-2 sm:grid-cols-2"><a href="/product-import.html" class="rounded-md border border-border px-3 py-2 text-sm font-semibold hover:border-accent">Import products <span class="block text-xs font-normal text-muted">Results live inside this flow</span></a><a href="/product-trash.html" class="rounded-md border border-border px-3 py-2 text-sm font-semibold hover:border-accent">Product Trash</a></div></section></div></div><!-- /component: batch-4-navigation -->
+        <!-- component: batch-5-navigation --><div class="mt-5 rounded-xl border border-border bg-card p-5 shadow-xs"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 5 · Customers</p><h2 class="mt-2 text-xl font-bold">Unified customer records with protected identity data</h2><p dir="rtl" class="mt-1 text-sm text-muted">قائمة العملاء، سجل العميل الكامل، ومراجعة تعارض الهاتف أو البريد بدون دمج صامت.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-3"><a href="/customers-list.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Customers list</a><a href="/customer-detail.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Customer detail</a><a href="/customer-identity-review.html" class="rounded-lg border border-warning/30 bg-warning-soft px-4 py-3 text-sm font-semibold text-warning">Identity review</a></div></div><!-- /component: batch-5-navigation -->
+        <!-- component: batch-6-navigation --><div class="mt-5 rounded-xl border border-border bg-card p-5 shadow-xs"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 6 · Discounts</p><h2 class="mt-2 text-xl font-bold">Approved coupon lifecycle</h2><p dir="rtl" class="mt-1 text-sm text-muted">قائمة الخصومات ومحرر الكوبون للأنواع الثلاثة المعتمدة فقط.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-2"><a href="/discounts-list.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Discounts list</a><a href="/discount-editor.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Coupon editor</a></div></div><!-- /component: batch-6-navigation -->
+        <!-- component: batch-7-navigation --><div class="mt-5 rounded-xl border border-border bg-card p-5 shadow-xs"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 7 · Shipping + Bosta</p><h2 class="mt-2 text-xl font-bold">Coverage, provider connection, and submission states</h2><p dir="rtl" class="mt-1 text-sm text-muted">مناطق الشحن، المواقع المخصصة، تكامل Bosta، وحالات الإرسال داخل الطلبات.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-5"><a href="/shipping-zones.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Shipping zones</a><a href="/shipping-zone-editor.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Zone editor</a><a href="/custom-locations.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Custom locations</a><a href="/shipping-integrations.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Integrations</a><a href="/bosta-connection.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Bosta connection</a></div></div><!-- /component: batch-7-navigation -->
+        <!-- component: batch-8-navigation --><div class="mt-5 rounded-xl border border-border bg-card p-5 shadow-xs"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 8 · Dashboard + Analytics</p><h2 class="mt-2 text-xl font-bold">Daily actions and defined operational metrics</h2><p dir="rtl" class="mt-1 text-sm text-muted">لوحة متابعة يومية وتحليلات واضحة للطلبات والمنتجات بدون إضافة مقياس أرباح.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4"><a href="/dashboard.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Dashboard</a><a href="/analytics-overview.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Analytics overview</a><a href="/analytics-orders.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Orders analytics</a><a href="/analytics-products.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Products analytics</a></div></div><!-- /component: batch-8-navigation -->
+        <!-- component: batch-9-navigation --><div class="mt-5 rounded-xl border border-border bg-card p-5 shadow-xs"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 9 · Merchant access + onboarding</p><h2 class="mt-2 text-xl font-bold">Account creation, phone verification, and first store</h2><p dir="rtl" class="mt-1 text-sm text-muted">رحلة كاملة من إنشاء الحساب وتأكيد واتساب إلى متجر عام وقائمة تبديل المتاجر.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4"><a href="/merchant-sign-in.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Sign in</a><a href="/merchant-sign-up.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Sign up</a><a href="/merchant-verify-phone.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Verify phone</a><a href="/merchant-password-recovery.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Recovery</a><a href="/merchant-reset-password.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Reset password</a><a href="/store-onboarding.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Store onboarding</a><a href="/stores-list.html" class="rounded-lg border border-border px-4 py-3 text-sm font-semibold hover:border-accent">Store switcher</a></div></div><!-- /component: batch-9-navigation -->
+        <!-- component: batch-10-navigation --><div class="mt-5 rounded-xl border border-accent/25 bg-accent-soft p-5"><div><p class="text-xs font-semibold uppercase tracking-overline text-accent">Batch 10 · Settings + Wallet</p><h2 class="mt-2 text-xl font-bold">Store rules, domains, notifications, balance, and availability</h2><p dir="rtl" class="mt-1 text-sm text-muted">إعدادات المتجر وحقول Checkout والدومينات والإشعارات والمحفظة وحالة إتاحة المتجر.</p></div><div class="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3"><a href="/store-settings-general.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">General settings</a><a href="/store-settings-checkout.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">Checkout fields</a><a href="/store-settings-domains.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">Domains</a><a href="/store-settings-notifications.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">Notifications</a><a href="/wallet.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">Wallet</a><a href="/store-status.html" class="rounded-lg border border-border bg-card px-4 py-3 text-sm font-semibold hover:border-accent">Store status</a></div></div><!-- /component: batch-10-navigation -->
+      </section>
+      <!-- /component: batch-2-navigation -->
+
+      <!-- component: layout-constants -->
+      <section id="layout" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">00 · Layout contract</p>
+          <h2 class="mt-2 text-xl font-bold">One fixed application frame</h2>
+          <p class="mt-1 max-w-reading text-sm text-muted">Outer geometry never changes between screens or product tabs. Content type changes only the inner grid.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-xl border border-border bg-card p-5 shadow-xs"><p class="text-xs font-semibold text-muted">APP CONTAINER</p><p class="mt-2 font-mono text-xl font-semibold">1440px</p><p class="mt-2 text-xs text-muted">Same for Dashboard, Orders, Products, Inventory, and the gallery.</p></article>
+          <article class="rounded-xl border border-border bg-card p-5 shadow-xs"><p class="text-xs font-semibold text-muted">SHELL</p><p class="mt-2 font-mono text-xl font-semibold">248 / 64px</p><p class="mt-2 text-xs text-muted">Sidebar width / top header height.</p></article>
+          <article class="rounded-xl border border-border bg-card p-5 shadow-xs"><p class="text-xs font-semibold text-muted">PAGE PADDING</p><p class="mt-2 font-mono text-xl font-semibold">16 / 24 / 32px</p><p class="mt-2 text-xs text-muted">Mobile / tablet / desktop.</p></article>
+          <article class="rounded-xl border border-border bg-card p-5 shadow-xs"><p class="text-xs font-semibold text-muted">LAYERS</p><p class="mt-2 font-mono text-xl font-semibold">30 / 40 / 50</p><p class="mt-2 text-xs text-muted">Header / sidebar / overlays.</p></article>
+        </div>
+        <div dir="rtl" class="mt-4 rounded-xl border border-border bg-subtle p-5 leading-arabic">
+          <p class="font-semibold">العقد الثابت للواجهة</p>
+          <p class="mt-1 text-sm text-muted">العنوان والتابات وحدود المحتوى يفضلوا على نفس الخط في كل شاشة. الفورم يضيق من الداخل، لكن إطار الصفحة الأساسي لا يتغير.</p>
+        </div>
+      </section>
+      <!-- /component: layout-constants -->
+
+      <!-- component: foundations -->
+      <section id="foundations" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">01 · Foundations</p>
+          <h2 class="mt-2 text-xl font-bold">Color, type, and direction</h2>
+          <p class="mt-1 text-sm text-muted">One UI family for both scripts; Mono is reserved for operational data.</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div class="overflow-hidden rounded-lg border border-border bg-card"><div class="h-20 bg-canvas"></div><div class="p-3"><p class="text-xs font-semibold">Canvas</p><p class="mt-1 font-mono text-xs text-muted">#F6F7F9</p></div></div>
+          <div class="overflow-hidden rounded-lg border border-border bg-card"><div class="h-20 bg-accent"></div><div class="p-3"><p class="text-xs font-semibold">Accent</p><p class="mt-1 font-mono text-xs text-muted">#2557E9</p></div></div>
+          <div class="overflow-hidden rounded-lg border border-border bg-card"><div class="h-20 bg-success"></div><div class="p-3"><p class="text-xs font-semibold">Success</p><p class="mt-1 font-mono text-xs text-muted">#067647</p></div></div>
+          <div class="overflow-hidden rounded-lg border border-border bg-card"><div class="h-20 bg-warning"></div><div class="p-3"><p class="text-xs font-semibold">Warning</p><p class="mt-1 font-mono text-xs text-muted">#B54708</p></div></div>
+          <div class="overflow-hidden rounded-lg border border-border bg-card"><div class="h-20 bg-danger"></div><div class="p-3"><p class="text-xs font-semibold">Danger</p><p class="mt-1 font-mono text-xs text-muted">#B42318</p></div></div>
+        </div>
+
+        <div class="mt-6 grid gap-4 lg:grid-cols-2">
+          <article dir="ltr" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="flex items-center justify-between border-b border-border pb-4"><span class="text-xs font-semibold text-muted">LTR · ENGLISH</span><span class="font-mono text-xs text-faint">line-height 1.43</span></div>
+            <h3 class="mt-5 text-2xl font-bold tracking-tight">Orders that need your attention</h3>
+            <p class="mt-2 max-w-xl text-sm leading-5 text-muted">Review new orders, confirm customer details, and send ready shipments to Bosta.</p>
+            <div class="mt-5 flex flex-wrap items-center gap-5 text-sm">
+              <span class="font-semibold">IBM Plex Sans Arabic · 600</span>
+              <span class="font-mono text-xs">#10428 · SKU-LM-50 · +20 100 000 0000</span>
+            </div>
+          </article>
+          <article dir="rtl" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="flex items-center justify-between border-b border-border pb-4"><span class="text-xs font-semibold text-muted">RTL · العربية</span><span dir="ltr" class="font-mono text-xs text-faint">line-height 1.65</span></div>
+            <h3 class="mt-5 text-2xl font-bold tracking-tight">طلبات محتاجة تدخلك</h3>
+            <p class="mt-2 max-w-xl text-sm leading-arabic text-muted">راجع الطلبات الجديدة، أكّد بيانات العميل، وابعت الشحنات الجاهزة لبوسطة.</p>
+            <div class="mt-5 flex flex-wrap items-center gap-5 text-sm">
+              <span class="font-semibold">IBM Plex Sans Arabic · 600</span>
+              <span dir="ltr" class="font-mono text-xs">#10428 · SKU-LM-50 · +20 100 000 0000</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- /component: foundations -->
+
+      <!-- component: button-set -->
+      <section id="buttons" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">02 · Actions</p>
+          <h2 class="mt-2 text-xl font-bold">Buttons</h2>
+          <p class="mt-1 text-sm text-muted">Medium 36px, small 32px. Focus, loading, icon, and disabled states are in the markup.</p>
+        </div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <article dir="ltr" x-data="{ saving: false }" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">English actions</h3><span class="text-xs text-muted">LTR</span></div>
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <button class="h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white shadow-xs hover:bg-accent-hover focus:outline-2 focus:outline-offset-2 focus:outline-accent">Add product</button>
+              <button class="h-control-md rounded-md border border-border-strong bg-card px-4 text-sm font-semibold text-ink shadow-xs hover:bg-subtle">Export orders</button>
+              <button class="h-control-md rounded-md px-4 text-sm font-semibold text-muted hover:bg-subtle hover:text-ink">View details</button>
+              <button class="h-control-md rounded-md border border-danger bg-card px-4 text-sm font-semibold text-danger hover:bg-danger-soft">Cancel order</button>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+              <button class="h-control-sm rounded-md bg-accent px-3 text-xs font-semibold text-white hover:bg-accent-hover">Save</button>
+              <button class="grid size-9 place-items-center rounded-md border border-border-strong bg-card text-lg text-muted shadow-xs hover:text-ink" aria-label="More actions">•••</button>
+              <button @click="saving = !saving" class="inline-flex h-control-md items-center gap-2 rounded-md bg-accent px-4 text-sm font-semibold text-white hover:bg-accent-hover">
+                <span x-show="saving" class="size-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>
+                <span x-text="saving ? 'Saving…' : 'Test loading'"></span>
+              </button>
+              <button disabled class="h-control-md cursor-not-allowed rounded-md bg-accent px-4 text-sm font-semibold text-white opacity-40">Disabled</button>
+            </div>
+          </article>
+          <article dir="rtl" x-data="{ saving: false }" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">الإجراءات بالعربي</h3><span class="text-xs text-muted">RTL</span></div>
+            <div class="mt-5 flex flex-wrap items-center gap-3">
+              <button class="h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white shadow-xs hover:bg-accent-hover focus:outline-2 focus:outline-offset-2 focus:outline-accent">إضافة منتج</button>
+              <button class="h-control-md rounded-md border border-border-strong bg-card px-4 text-sm font-semibold text-ink shadow-xs hover:bg-subtle">تصدير الطلبات</button>
+              <button class="h-control-md rounded-md px-4 text-sm font-semibold text-muted hover:bg-subtle hover:text-ink">عرض التفاصيل</button>
+              <button class="h-control-md rounded-md border border-danger bg-card px-4 text-sm font-semibold text-danger hover:bg-danger-soft">إلغاء الطلب</button>
+            </div>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+              <button class="h-control-sm rounded-md bg-accent px-3 text-xs font-semibold text-white hover:bg-accent-hover">حفظ</button>
+              <button class="grid size-9 place-items-center rounded-md border border-border-strong bg-card text-lg text-muted shadow-xs hover:text-ink" aria-label="إجراءات أخرى">•••</button>
+              <button @click="saving = !saving" class="inline-flex h-control-md items-center gap-2 rounded-md bg-accent px-4 text-sm font-semibold text-white hover:bg-accent-hover">
+                <span x-show="saving" class="size-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white"></span>
+                <span x-text="saving ? 'جاري الحفظ…' : 'جرّب التحميل'"></span>
+              </button>
+              <button disabled class="h-control-md cursor-not-allowed rounded-md bg-accent px-4 text-sm font-semibold text-white opacity-40">غير متاح</button>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- /component: button-set -->
+
+      <!-- component: form-controls -->
+      <section id="forms" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">03 · Input</p>
+          <h2 class="mt-2 text-xl font-bold">Form controls</h2>
+          <p class="mt-1 text-sm text-muted">Visible labels, helper text, inline validation, native semantics, and comfortable Arabic rhythm.</p>
+        </div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <form dir="ltr" class="rounded-xl border border-border bg-card p-6 shadow-xs" @submit.prevent>
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">Product details</h3><span class="text-xs text-muted">LTR</span></div>
+            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+              <label class="block sm:col-span-2"><span class="mb-1.5 block text-sm font-semibold">Product name <span class="text-danger">*</span></span><input value="Le Male Elixir — Inspired" class="h-input w-full rounded-md border border-border-strong bg-card px-3 text-sm outline-none placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/15" /><span class="mt-1.5 block text-xs text-muted">Shown on the product page and order details.</span></label>
+              <label class="block"><span class="mb-1.5 block text-sm font-semibold">SKU</span><input value="LM-ELX-50" class="h-input w-full rounded-md border border-border-strong bg-card px-3 font-mono text-xs outline-none focus:border-accent focus:ring-2 focus:ring-accent/15" /></label>
+              <label class="block"><span class="mb-1.5 block text-sm font-semibold">Category</span><select class="h-input w-full rounded-md border border-border-strong bg-card px-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/15"><option>Men's perfumes</option><option>Unisex perfumes</option></select></label>
+              <label class="block sm:col-span-2"><span class="mb-1.5 block text-sm font-semibold">Compare-at price</span><div class="flex h-input overflow-hidden rounded-md border border-danger bg-card ring-2 ring-danger/10"><span class="grid place-items-center border-e border-border bg-subtle px-3 font-mono text-xs text-muted">EGP</span><input value="0" aria-invalid="true" class="min-w-0 flex-1 px-3 font-mono text-xs outline-none" /></div><span class="mt-1.5 block text-xs font-medium text-danger">Compare-at price must be higher than the sale price.</span></label>
+              <label class="flex items-start gap-3 sm:col-span-2"><input type="checkbox" checked class="mt-0.5 size-4 rounded border-border-strong accent-accent" /><span><span class="block text-sm font-semibold">Track inventory</span><span class="mt-0.5 block text-xs text-muted">Mark unavailable variants as out of stock.</span></span></label>
+            </div>
+          </form>
+          <form dir="rtl" class="rounded-xl border border-border bg-card p-6 shadow-xs" @submit.prevent>
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">بيانات المنتج</h3><span class="text-xs text-muted">RTL</span></div>
+            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+              <label class="block sm:col-span-2"><span class="mb-1.5 block text-sm font-semibold">اسم المنتج <span class="text-danger">*</span></span><input value="لومال الكسير — محاكاة" class="h-input w-full rounded-md border border-border-strong bg-card px-3 text-sm outline-none placeholder:text-faint focus:border-accent focus:ring-2 focus:ring-accent/15" /><span class="mt-1.5 block text-xs leading-arabic text-muted">هيظهر في صفحة المنتج وتفاصيل الطلب.</span></label>
+              <label class="block"><span class="mb-1.5 block text-sm font-semibold">كود المنتج</span><input dir="ltr" value="LM-ELX-50" class="h-input w-full rounded-md border border-border-strong bg-card px-3 text-start font-mono text-xs outline-none focus:border-accent focus:ring-2 focus:ring-accent/15" /></label>
+              <label class="block"><span class="mb-1.5 block text-sm font-semibold">التصنيف</span><select class="h-input w-full rounded-md border border-border-strong bg-card px-3 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent/15"><option>عطور رجالي</option><option>عطور للجنسين</option></select></label>
+              <label class="block sm:col-span-2"><span class="mb-1.5 block text-sm font-semibold">السعر قبل الخصم</span><div class="flex h-input overflow-hidden rounded-md border border-danger bg-card ring-2 ring-danger/10"><span class="grid place-items-center border-e border-border bg-subtle px-3 font-mono text-xs text-muted">EGP</span><input dir="ltr" value="0" aria-invalid="true" class="min-w-0 flex-1 px-3 text-start font-mono text-xs outline-none" /></div><span class="mt-1.5 block text-xs font-medium leading-arabic text-danger">السعر قبل الخصم لازم يكون أكبر من سعر البيع.</span></label>
+              <label class="flex items-start gap-3 sm:col-span-2"><input type="checkbox" checked class="mt-1 size-4 rounded border-border-strong accent-accent" /><span><span class="block text-sm font-semibold">تتبّع المخزون</span><span class="mt-0.5 block text-xs leading-arabic text-muted">علّم الاختيارات المنتهية إنها غير متاحة.</span></span></label>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- /component: form-controls -->
+
+      <!-- component: status-pills -->
+      <section id="statuses" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">04 · State language</p>
+          <h2 class="mt-2 text-xl font-bold">Status pills</h2>
+          <p class="mt-1 text-sm text-muted">Controlled order statuses, Bosta mapping, inventory, merchant labels, and source — with genuine Arabic strings.</p>
+        </div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <article dir="ltr" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="grid gap-5 sm:grid-cols-label sm:items-start">
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">Order</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">New</span><span class="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">Confirmed</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">Processing</span><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">Shipped</span><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">Delivered</span><span class="rounded-full bg-danger-soft px-2.5 py-1 text-xs font-semibold text-danger">Cancelled</span><span class="rounded-full border border-border-strong bg-subtle px-2.5 py-1 text-xs font-semibold text-muted">Returned</span></div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">Bosta map</p><div class="text-xs leading-5 text-muted"><span class="font-semibold text-ink">Accepted</span> → Processing · <span class="font-semibold text-ink">Picked up / In transit</span> → Shipped · <span class="font-semibold text-ink">Delivered</span> → Delivered · <span class="font-semibold text-ink">Cancelled</span> → Cancelled · <span class="font-semibold text-ink">Returned</span> → Returned</div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">Inventory</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">In stock</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">Low stock</span><span class="rounded-full bg-danger-soft px-2.5 py-1 text-xs font-semibold text-danger">Out of stock</span></div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-muted">Context</p><div class="flex flex-wrap gap-2"><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-ink">VIP</span><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-muted">Instagram</span><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-muted">Storefront</span></div>
+            </div>
+          </article>
+          <article dir="rtl" class="rounded-xl border border-border bg-card p-6 shadow-xs">
+            <div class="grid gap-5 sm:grid-cols-label sm:items-start">
+              <p class="text-xs font-semibold text-muted">الطلب</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">جديد</span><span class="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">مؤكد</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">قيد المعالجة</span><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">تم الشحن</span><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">تم التسليم</span><span class="rounded-full bg-danger-soft px-2.5 py-1 text-xs font-semibold text-danger">ملغي</span><span class="rounded-full border border-border-strong bg-subtle px-2.5 py-1 text-xs font-semibold text-muted">مرتجع</span></div>
+              <p class="text-xs font-semibold text-muted">ربط بوسطة</p><div class="text-xs leading-arabic text-muted"><span class="font-semibold text-ink">تم القبول</span> ← قيد المعالجة · <span class="font-semibold text-ink">تم الاستلام / في الطريق</span> ← تم الشحن · <span class="font-semibold text-ink">تم التسليم</span> ← تم التسليم · <span class="font-semibold text-ink">ملغي</span> ← ملغي · <span class="font-semibold text-ink">مرتجع</span> ← مرتجع</div>
+              <p class="text-xs font-semibold text-muted">المخزون</p><div class="flex flex-wrap gap-2"><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">متوفر</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">مخزون منخفض</span><span class="rounded-full bg-danger-soft px-2.5 py-1 text-xs font-semibold text-danger">نفد من المخزون</span></div>
+              <p class="text-xs font-semibold text-muted">السياق</p><div class="flex flex-wrap gap-2"><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-ink">عميل مهم</span><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-muted">إنستجرام</span><span class="rounded-full border border-border bg-card px-2.5 py-1 text-xs font-semibold text-muted">المتجر</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+      <!-- /component: status-pills -->
+
+      <!-- component: discount-lifecycle-pills -->
+      <section class="border-b border-border py-10">
+        <div class="mb-6"><p class="text-xs font-semibold uppercase tracking-overline text-accent">05 · Discount lifecycle</p><h2 class="mt-2 text-xl font-bold">Coupon states</h2><p class="mt-1 text-sm text-muted">The same four controlled lifecycle states in both scripts.</p></div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <article dir="ltr" class="rounded-xl border border-border bg-card p-6 shadow-xs"><div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">Discounts</h3><span class="text-xs text-muted">LTR</span></div><div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">Active</span><span class="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">Scheduled</span><span class="rounded-full bg-subtle px-2.5 py-1 text-xs font-semibold text-muted">Expired</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">Exhausted</span></div><p class="mt-4 text-xs text-muted">Percentage · Fixed amount · Free shipping</p></article>
+          <article dir="rtl" class="rounded-xl border border-border bg-card p-6 shadow-xs"><div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">الخصومات</h3><span class="text-xs text-muted">RTL</span></div><div class="mt-5 flex flex-wrap gap-2"><span class="rounded-full bg-success-soft px-2.5 py-1 text-xs font-semibold text-success">نشط</span><span class="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-semibold text-accent">مجدول</span><span class="rounded-full bg-subtle px-2.5 py-1 text-xs font-semibold text-muted">منتهي</span><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">اكتمل الاستخدام</span></div><p class="mt-4 text-xs leading-arabic text-muted">نسبة مئوية · مبلغ ثابت · شحن مجاني</p></article>
+        </div>
+      </section>
+      <!-- /component: discount-lifecycle-pills -->
+
+      <!-- component: orders-table-density -->
+      <section id="tables" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+          <div><p class="text-xs font-semibold uppercase tracking-overline text-accent">05 · Dense data</p><h2 class="mt-2 text-xl font-bold">Orders table density</h2><p class="mt-1 text-sm text-muted">Standardized everywhere: 52px rows, 12px vertical × 16px horizontal cell padding, 14/20 body, 12px/600 headers.</p></div>
+          <div class="flex gap-2"><span class="rounded-md border border-border bg-card px-3 py-2 font-mono text-xs">row 52</span><span class="rounded-md border border-border bg-card px-3 py-2 font-mono text-xs">cell 12×16</span><span class="rounded-md border border-border bg-card px-3 py-2 font-mono text-xs">body 14/20</span></div>
+        </div>
+        <div class="grid gap-4 xl:grid-cols-2">
+          <article dir="ltr" class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+            <div class="flex items-center gap-3 border-b border-border p-4"><input aria-label="Search orders" placeholder="Search orders…" class="h-9 min-w-0 flex-1 rounded-md border border-border-strong px-3 text-sm outline-none focus:border-accent" /><button class="h-9 rounded-md border border-border-strong px-3 text-xs font-semibold">Filter</button></div>
+            <div class="overflow-x-auto"><table class="w-full min-w-2xl border-collapse text-sm leading-5"><thead class="bg-subtle text-xs font-semibold text-muted"><tr class="h-table-row border-b border-border"><th class="w-12 px-table-cell-x py-table-cell-y text-start"><input type="checkbox" aria-label="Select all" class="size-4 accent-accent" /></th><th class="px-table-cell-x py-table-cell-y text-start">Order</th><th class="px-table-cell-x py-table-cell-y text-start">Customer</th><th class="px-table-cell-x py-table-cell-y text-start">Status</th><th class="px-table-cell-x py-table-cell-y text-end">Total</th></tr></thead><tbody class="divide-y divide-border"><tr class="h-table-row hover:bg-subtle"><td class="px-table-cell-x py-table-cell-y"><input type="checkbox" aria-label="Select order 10428" class="size-4 accent-accent" /></td><td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10428</td><td class="px-table-cell-x py-table-cell-y font-medium">Demo Customer</td><td class="px-table-cell-x py-table-cell-y"><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">New</span></td><td dir="ltr" class="px-table-cell-x py-table-cell-y text-end font-mono text-xs">EGP 780.00</td></tr><tr class="h-table-row hover:bg-subtle"><td class="px-table-cell-x py-table-cell-y"><input type="checkbox" aria-label="Select order 10427" class="size-4 accent-accent" /></td><td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10427</td><td class="px-table-cell-x py-table-cell-y font-medium">Demo Customer</td><td class="px-table-cell-x py-table-cell-y"><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">Processing</span></td><td dir="ltr" class="px-table-cell-x py-table-cell-y text-end font-mono text-xs">EGP 1,120.00</td></tr></tbody></table></div>
+          </article>
+          <article dir="rtl" class="overflow-hidden rounded-xl border border-border bg-card shadow-xs">
+            <div class="flex items-center gap-3 border-b border-border p-4"><input aria-label="البحث في الطلبات" placeholder="ابحث في الطلبات…" class="h-9 min-w-0 flex-1 rounded-md border border-border-strong px-3 text-sm outline-none focus:border-accent" /><button class="h-9 rounded-md border border-border-strong px-3 text-xs font-semibold">تصفية</button></div>
+            <div class="overflow-x-auto"><table class="w-full min-w-2xl border-collapse text-sm leading-5"><thead class="bg-subtle text-xs font-semibold text-muted"><tr class="h-table-row border-b border-border"><th class="w-12 px-table-cell-x py-table-cell-y text-start"><input type="checkbox" aria-label="تحديد الكل" class="size-4 accent-accent" /></th><th class="px-table-cell-x py-table-cell-y text-start">الطلب</th><th class="px-table-cell-x py-table-cell-y text-start">العميل</th><th class="px-table-cell-x py-table-cell-y text-start">الحالة</th><th class="px-table-cell-x py-table-cell-y text-end">الإجمالي</th></tr></thead><tbody class="divide-y divide-border"><tr class="h-table-row hover:bg-subtle"><td class="px-table-cell-x py-table-cell-y"><input type="checkbox" aria-label="تحديد الطلب 10428" class="size-4 accent-accent" /></td><td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10428</td><td class="px-table-cell-x py-table-cell-y font-medium">عميل تجريبي</td><td class="px-table-cell-x py-table-cell-y"><span class="rounded-full bg-info-soft px-2.5 py-1 text-xs font-semibold text-info">جديد</span></td><td dir="ltr" class="px-table-cell-x py-table-cell-y text-end font-mono text-xs">EGP 780.00</td></tr><tr class="h-table-row hover:bg-subtle"><td class="px-table-cell-x py-table-cell-y"><input type="checkbox" aria-label="تحديد الطلب 10427" class="size-4 accent-accent" /></td><td class="px-table-cell-x py-table-cell-y font-mono text-xs font-semibold">#10427</td><td class="px-table-cell-x py-table-cell-y font-medium">عميل تجريبي</td><td class="px-table-cell-x py-table-cell-y"><span class="rounded-full bg-warning-soft px-2.5 py-1 text-xs font-semibold text-warning">قيد المعالجة</span></td><td dir="ltr" class="px-table-cell-x py-table-cell-y text-end font-mono text-xs">EGP 1,120.00</td></tr></tbody></table></div>
+          </article>
+        </div>
+        <div class="mt-4 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-xl border border-border bg-card p-5 text-center"><div class="mx-auto size-10 rounded-full bg-subtle"></div><p class="mt-3 text-sm font-semibold">No orders yet</p><p class="mt-1 text-xs text-muted">Orders will appear here.</p></div>
+          <div dir="rtl" class="rounded-xl border border-border bg-card p-5 text-center"><div class="mx-auto size-10 rounded-full bg-subtle"></div><p class="mt-3 text-sm font-semibold">مفيش نتائج</p><p class="mt-1 text-xs text-muted">جرّب تغيّر كلمة البحث أو الفلاتر.</p></div>
+          <div class="rounded-xl border border-border bg-card p-5"><div class="animate-pulse space-y-3"><div class="h-4 w-1/3 rounded bg-border"></div><div class="h-input rounded bg-subtle"></div><div class="h-input rounded bg-subtle"></div></div><p class="mt-3 text-center text-xs text-muted">Loading skeleton / جاري التحميل</p></div>
+        </div>
+      </section>
+      <!-- /component: orders-table-density -->
+
+      <!-- component: motion-system -->
+      <section id="motion" class="scroll-mt-24 border-b border-border py-10">
+        <div class="mb-6"><p class="text-xs font-semibold uppercase tracking-overline text-accent">06 · Motion language</p><h2 class="mt-2 text-xl font-bold">Soft, purposeful interaction motion</h2><p class="mt-1 max-w-reading text-sm text-muted">Entrances are calm and spatial; exits are shorter. Motion follows logical direction in RTL/LTR and collapses when Reduced Motion is enabled.</p></div>
+        <div class="grid gap-4 lg:grid-cols-summary-balanced">
+          <div class="grid gap-3 sm:grid-cols-3"><button @click="motionModal=true" class="rounded-xl border border-border bg-card p-5 text-start shadow-xs hover:border-accent/40 hover:shadow-sm"><span class="grid size-9 place-items-center rounded-lg bg-accent-soft text-accent">□</span><strong class="mt-4 block">Modal</strong><span class="mt-1 block text-xs text-muted">Fade + 8px lift + subtle scale</span></button><button @click="motionDrawer=true" class="rounded-xl border border-border bg-card p-5 text-start shadow-xs hover:border-accent/40 hover:shadow-sm"><span class="grid size-9 place-items-center rounded-lg bg-info-soft text-info">⇥</span><strong class="mt-4 block">Drawer</strong><span class="mt-1 block text-xs text-muted">300ms from logical end</span></button><button @click="motionToast=true; setTimeout(() => motionToast=false, 2600)" class="rounded-xl border border-border bg-card p-5 text-start shadow-xs hover:border-accent/40 hover:shadow-sm"><span class="grid size-9 place-items-center rounded-lg bg-success-soft text-success">✓</span><strong class="mt-4 block">Toast</strong><span class="mt-1 block text-xs text-muted">Short lift for transient feedback</span></button></div>
+          <dl class="rounded-xl border border-border bg-card p-5 text-xs shadow-xs"><div class="flex justify-between border-b border-border py-2"><dt class="text-muted">Hover / exit</dt><dd class="font-mono font-semibold">140ms</dd></div><div class="flex justify-between border-b border-border py-2"><dt class="text-muted">State / menu</dt><dd class="font-mono font-semibold">220ms</dd></div><div class="flex justify-between border-b border-border py-2"><dt class="text-muted">Modal</dt><dd class="font-mono font-semibold">260ms</dd></div><div class="flex justify-between py-2"><dt class="text-muted">Drawer</dt><dd class="font-mono font-semibold">300ms</dd></div></dl>
+        </div>
+      </section>
+      <!-- /component: motion-system -->
+
+      <!-- component: wallet-states -->
+      <section id="wallet" class="scroll-mt-24 py-10">
+        <div class="mb-6">
+          <p class="text-xs font-semibold uppercase tracking-overline text-accent">06 · Signature state</p>
+          <h2 class="mt-2 text-xl font-bold">Wallet chip — calm, watch, overdraft</h2>
+          <p class="mt-1 text-sm text-muted">Overdraft is a system state: the recharge banner expands and customer phone/address data becomes masked elsewhere.</p>
+        </div>
+
+        <div class="grid gap-6 2xl:grid-cols-2">
+          <div dir="ltr" class="space-y-4 rounded-xl border border-border bg-card p-5 shadow-xs sm:p-6">
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">English wallet states</h3><span class="text-xs text-muted">LTR</span></div>
+            <!-- component: wallet-chip-calm -->
+            <div class="flex flex-col gap-3 rounded-lg border border-border p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold uppercase tracking-wide text-success">Calm</span><p class="mt-1 text-sm text-muted">Normal access to customer data</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-border bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-success"></span><span class="text-xs text-muted">Wallet</span><span dir="ltr" class="font-mono text-xs font-semibold">EGP 1,240.00</span></button></div>
+            <!-- /component: wallet-chip-calm -->
+            <!-- component: wallet-chip-watch -->
+            <div class="flex flex-col gap-3 rounded-lg border border-warning/30 bg-warning-soft/40 p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold uppercase tracking-wide text-warning">Watch</span><p class="mt-1 text-sm text-muted">Low balance; recharge is recommended</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-warning/30 bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-warning"></span><span class="text-xs text-muted">Wallet</span><span dir="ltr" class="font-mono text-xs font-semibold text-warning">EGP 12.00</span></button></div>
+            <!-- /component: wallet-chip-watch -->
+            <!-- component: wallet-overdraft-expanded -->
+            <div class="overflow-hidden rounded-xl border border-danger/30 bg-card">
+              <div class="flex flex-col gap-3 bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold uppercase tracking-wide text-danger">Overdraft</span><p class="mt-1 text-sm text-muted">Sensitive customer data is now masked</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-danger/30 bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-danger"></span><span class="text-xs text-muted">Wallet</span><span dir="ltr" class="font-mono text-xs font-semibold text-danger">EGP −14.00</span></button></div>
+              <div class="border-t border-danger/20 p-4"><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-sm font-semibold text-danger">Recharge to reveal customer details</p><p class="mt-1 text-xs leading-5 text-muted">Add funds to continue calling customers and preparing shipments without interruption.</p></div><button class="h-control-md shrink-0 rounded-md bg-danger px-4 text-sm font-semibold text-white hover:bg-danger-hover">Recharge wallet</button></div></div>
+              <div class="border-t border-border bg-subtle p-4"><div class="grid gap-3 text-sm sm:grid-cols-2"><div><span class="block text-xs text-muted">Customer phone</span><span dir="ltr" class="mt-1 block font-mono text-xs font-semibold">+20 10•• ••• ••00</span></div><div><span class="block text-xs text-muted">Delivery address</span><span class="mt-1 block font-medium">•••••• Street, Nasr City</span></div></div></div>
+            </div>
+            <!-- /component: wallet-overdraft-expanded -->
+          </div>
+
+          <div dir="rtl" class="space-y-4 rounded-xl border border-border bg-card p-5 shadow-xs sm:p-6">
+            <div class="flex items-center justify-between border-b border-border pb-4"><h3 class="font-semibold">حالات المحفظة بالعربي</h3><span class="text-xs text-muted">RTL</span></div>
+            <!-- component: wallet-chip-calm-rtl -->
+            <div class="flex flex-col gap-3 rounded-lg border border-border p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold text-success">مستقر</span><p class="mt-1 text-sm leading-arabic text-muted">بيانات العميل متاحة بشكل طبيعي</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-border bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-success"></span><span class="text-xs text-muted">المحفظة</span><span dir="ltr" class="font-mono text-xs font-semibold">EGP 1,240.00</span></button></div>
+            <!-- /component: wallet-chip-calm-rtl -->
+            <!-- component: wallet-chip-watch-rtl -->
+            <div class="flex flex-col gap-3 rounded-lg border border-warning/30 bg-warning-soft/40 p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold text-warning">راقب الرصيد</span><p class="mt-1 text-sm leading-arabic text-muted">الرصيد قرب يخلص؛ اشحن دلوقتي أفضل</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-warning/30 bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-warning"></span><span class="text-xs text-muted">المحفظة</span><span dir="ltr" class="font-mono text-xs font-semibold text-warning">EGP 12.00</span></button></div>
+            <!-- /component: wallet-chip-watch-rtl -->
+            <!-- component: wallet-overdraft-expanded-rtl -->
+            <div class="overflow-hidden rounded-xl border border-danger/30 bg-card">
+              <div class="flex flex-col gap-3 bg-danger-soft p-4 sm:flex-row sm:items-center sm:justify-between"><div><span class="text-xs font-semibold text-danger">رصيد بالسالب</span><p class="mt-1 text-sm leading-arabic text-muted">بيانات العميل الحساسة بقت مخفية</p></div><button class="inline-flex h-9 items-center gap-2 self-start rounded-lg border border-danger/30 bg-card px-3 shadow-xs"><span class="size-2 rounded-full bg-danger"></span><span class="text-xs text-muted">المحفظة</span><span dir="ltr" class="font-mono text-xs font-semibold text-danger">EGP −14.00</span></button></div>
+              <div class="border-t border-danger/20 p-4"><div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"><div><p class="text-sm font-semibold text-danger">اشحن عشان تظهر بيانات العملاء</p><p class="mt-1 text-xs leading-arabic text-muted">زوّد الرصيد عشان تقدر تكلم العملاء وتجهز الشحنات من غير ما شغلك يقف.</p></div><button class="h-control-md shrink-0 rounded-md bg-danger px-4 text-sm font-semibold text-white hover:bg-danger-hover">اشحن المحفظة</button></div></div>
+              <div class="border-t border-border bg-subtle p-4"><div class="grid gap-3 text-sm sm:grid-cols-2"><div><span class="block text-xs text-muted">رقم العميل</span><span dir="ltr" class="mt-1 block text-end font-mono text-xs font-semibold">+20 10•• ••• ••00</span></div><div><span class="block text-xs text-muted">عنوان التوصيل</span><span class="mt-1 block font-medium">شارع ••••••، مدينة نصر</span></div></div></div>
+            </div>
+            <!-- /component: wallet-overdraft-expanded-rtl -->
+          </div>
+        </div>
+      </section>
+      <!-- /component: wallet-states -->
+    </main>
+
+    <footer class="border-t border-border bg-card">
+      <div class="mx-auto flex max-w-app flex-col gap-2 px-page-mobile py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-page-tablet lg:px-page-desktop">
+        <p>lala Design System · Batch 1 review checkpoint</p>
+        <p dir="rtl">نظام تصميم lala · الدفعة الأولى للمراجعة</p>
+      </div>
+    </footer>
+
+    <!-- component: motion-demo-modal -->
+    <div x-show="motionModal" x-cloak @click.self="motionModal=false" class="fixed inset-0 z-overlay grid place-items-center bg-backdrop p-4 motion-overlay motion-modal" role="dialog" aria-modal="true" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><section class="w-full max-w-md rounded-xl border border-border bg-card p-5 shadow-sm motion-surface"><div class="flex items-center justify-between"><div><p class="text-xs font-semibold uppercase tracking-section text-accent">Motion demo</p><h2 class="mt-1 text-lg font-bold">Modal without the snap</h2></div><button @click="motionModal=false" class="grid size-9 place-items-center rounded-md border border-border" aria-label="Close">×</button></div><p class="mt-4 text-sm leading-6 text-muted">The backdrop fades while the surface settles into place. Closing is quicker, so the interface never feels delayed.</p><div class="mt-5 flex gap-2"><button @click="motionModal=false" class="h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white">Got it</button><button @click="motionModal=false" class="h-control-md rounded-md border border-border-strong px-4 text-sm font-semibold">Cancel</button></div></section></div>
+    <!-- /component: motion-demo-modal -->
+
+    <!-- component: motion-demo-drawer -->
+    <div x-show="motionDrawer" x-cloak class="fixed inset-0 z-overlay motion-overlay motion-drawer" role="dialog" aria-modal="true" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><button @click="motionDrawer=false" class="absolute inset-0 bg-backdrop motion-backdrop" aria-label="Close drawer"></button><aside class="absolute inset-y-0 end-0 w-full max-w-drawer-md overflow-y-auto border-s border-border bg-card p-5 shadow-sm motion-drawer-panel"><div class="flex items-center justify-between"><div><p class="text-xs font-semibold uppercase tracking-section text-accent">Logical direction</p><h2 class="mt-1 text-xl font-bold">Drawer motion</h2></div><button @click="motionDrawer=false" class="grid size-9 place-items-center rounded-md border border-border" aria-label="Close">×</button></div><p class="mt-5 text-sm leading-6 text-muted">This panel enters from logical end: right in LTR and left in RTL. The same markup stays portable across both languages.</p><button @click="motionDrawer=false" class="mt-6 h-control-md rounded-md bg-accent px-4 text-sm font-semibold text-white">Close drawer</button></aside></div>
+    <!-- /component: motion-demo-drawer -->
+
+    <!-- component: motion-demo-toast -->
+    <div x-show="motionToast" x-cloak class="fixed bottom-5 end-5 z-overlay flex items-center gap-3 rounded-lg border border-success/20 bg-card px-4 py-3 shadow-sm motion-toast" x-transition:enter="motion-enter-active" x-transition:enter-start="motion-enter-start" x-transition:enter-end="motion-enter-end" x-transition:leave="motion-leave-active" x-transition:leave-start="motion-leave-start" x-transition:leave-end="motion-leave-end"><span class="grid size-7 place-items-center rounded-full bg-success-soft text-success">✓</span><div><p class="text-sm font-semibold">Changes saved</p><p class="text-xs text-muted">Short, calm, and easy to notice.</p></div></div>
+    <!-- /component: motion-demo-toast -->
+  </body>
+</html>

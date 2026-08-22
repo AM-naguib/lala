@@ -6,8 +6,14 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 
 - **Phase:** Architecture and delivery planning
 - **Started:** 2026-08-15 (Africa/Cairo)
-- **Implementation:** Not started
+- **Implementation:** Intentionally postponed. Current work is portable static HTML only; Design Batch 1 is accepted and Design Batch 2 is delivered for review.
 - **Accepted technology stack:** PHP 8.5; Laravel 13; MySQL; traditional Laravel structure; Livewire with Blade for the merchant dashboard; Blade with Alpine.js and plain JavaScript for the storefront; Tailwind CSS; Redis queues with Horizon; Pest; local pilot file storage
+
+## Delivery sequencing
+
+- Continue static HTML design batches only.
+- Do not bootstrap Laravel, create migrations, or implement authentication, queues, persistence, or provider integrations until the founder explicitly starts implementation.
+- Preserve this architecture plan as the future production handoff; D-254 changes timing, not the accepted stack.
 
 ## Confirmed delivery inputs
 
@@ -20,6 +26,15 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 - Multi-tenancy uses a shared MySQL schema with row-level `store_id` isolation.
 - Admin, Merchant, and Customer identities have separate authentication boundaries.
 - Storefront tenant resolution uses a custom hostname middleware and domains table.
+
+## Design-system delivery input
+
+- Portable design source uses one plain HTML file per screen, Tailwind CSS v4-compatible class strings and token variables, Alpine.js markup, and extraction markers for later Blade/Livewire conversion.
+- IBM Plex Sans Arabic is the single UI family for both scripts; IBM Plex Mono is restricted to operational numerals and identifiers.
+- The merchant-table standard is 52px rows with 12px × 16px cell padding and 14px/20px body text.
+- Design Batch 1 foundations are accepted.
+- Design Batch 2 Orders screens are delivered for review.
+- These prototypes do not implement Laravel rules, persistence, authentication, queues, provider integrations, or tests.
 
 ## Accepted backend direction
 
@@ -43,6 +58,29 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 | Pilot file storage | Local Laravel disk | Reduces initial infrastructure while retaining a disk-agnostic path to S3-compatible storage. |
 | Repository | One Laravel repository | Minimizes operational and code-navigation overhead for a founder working with AI. |
 
+## Accepted runtime, identifiers, and authentication
+
+| Concern | Decision |
+|---|---|
+| Sessions | Redis via PhpRedis, using a dedicated connection or prefix. |
+| Cache | Redis via PhpRedis, isolated from sessions and queues by connection or prefix. |
+| Distributed locks | Laravel cache locks backed by Redis. |
+| Rate limiting | Laravel RateLimiter backed by the Redis cache store with named limiters per identity and endpoint class. |
+| Internal keys | Unsigned auto-incrementing BIGINT primary keys. |
+| Public identifiers | Separate immutable indexed ULID `public_id` values; internal IDs are never exposed. |
+| Merchant authentication | Laravel 13 Livewire starter kit and Fortify foundation, customized for the Merchant model and WhatsApp verification. |
+| Admin authentication | Separate Admin guard/provider and password broker; no public registration. |
+| Customer authentication | Store-scoped Customer guard/provider with custom Blade email/WhatsApp verification and recovery flows. |
+| API authentication | None in the MVP; do not add Sanctum or Passport without an API requirement. |
+
+Official Laravel references:
+
+- Sessions: https://laravel.com/docs/13.x/session
+- Cache and locks: https://laravel.com/docs/13.x/cache
+- Rate limiting: https://laravel.com/docs/13.x/rate-limiting
+- Eloquent UUID/ULID support: https://laravel.com/docs/13.x/eloquent#uuid-and-ulid-keys
+- Livewire starter kit and Fortify: https://laravel.com/docs/13.x/starter-kits and https://laravel.com/docs/13.x/fortify
+
 ## Current language policy
 
 - Use PHP for all backend application code, domain rules, HTTP endpoints, queues, scheduled jobs, integrations, and server-side tests.
@@ -53,7 +91,7 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 - Use YAML, shell scripts, or infrastructure configuration only as supporting configuration, not as core product languages.
 - Do not introduce a second backend language or framework into the MVP unless a later requirement gives a concrete reason.
 
-## Proposed application shape — not yet accepted
+## Accepted application shape
 
 - One Laravel application and repository unless the frontend decision later requires a separate application.
 - Standard Laravel directories and conventions without a module framework.
@@ -78,8 +116,13 @@ This file tracks architecture inputs, proposed technology choices, accepted tech
 - Keep provider credentials encrypted and out of source control and logs.
 - Masking customer data for wallet debt is an authorization/presentation rule; do not destroy or overwrite the stored order snapshot.
 
-## Active decisions
+## Remaining implementation-level choices
 
-1. Select Redis versus database storage for sessions, cache, locks, and rate limits.
-2. Select internal primary keys and externally exposed identifiers.
-3. Select the Laravel authentication foundation and custom flow boundaries.
+No architecture choice blocks bootstrapping the Laravel application.
+
+The following are implementation details to record through focused ADRs when encountered rather than reopening the accepted stack:
+
+1. Exact Redis connection names, database numbers, prefixes, and eviction policy.
+2. Exact `public_id` storage representation and indexes after MySQL benchmark verification.
+3. Production hosting provider, deployment topology, backups, monitoring, and recovery targets.
+4. Exact human-facing order-number format and starting sequence.

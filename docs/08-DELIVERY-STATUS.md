@@ -197,7 +197,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 
 ## Design system — Batch 11
 
-**State: Delivered; awaiting founder review.**
+**State: Corrected in Batch 11.1; awaiting founder review.**
 
 | Screen | Review URL |
 |---|---|
@@ -206,7 +206,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 | Branding | https://lala-design-system.curbs-storm-80.chatgpt.site/brand-settings.html |
 | Homepage builder | https://lala-design-system.curbs-storm-80.chatgpt.site/homepage-builder.html |
 
-The approved architecture uses shared renderers plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. The builder supports approved sections, explicit reorder, hide/show, undo/redo, save feedback, and desktop/mobile preview without a free-form canvas. Branding includes missing logo/favicon, colors, font policy, and contrast warning. Storefront is now a level-one Merchant module after Shipping and before Settings.
+The approved architecture uses shared renderers plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. Batch 11.1 completes live renderers for all seven approved sections, extends Undo/Redo to Hero content, and replaces nested 36px pseudo-buttons with keyboard-operable 44px native controls. The builder retains explicit reorder, hide/show, save feedback, and desktop/mobile preview without a free-form canvas. Branding includes missing logo/favicon, colors, font policy, and contrast warning. Storefront is now a level-one Merchant module after Shipping and before Settings. The deterministic build and 18/18 automated tests pass.
 
 The dedicated [`storefront/`](storefront/README.md) folder contains the research, architecture contract, editor UX, section catalog, theme definitions, execution plan, and deferred decisions used to implement this batch.
 

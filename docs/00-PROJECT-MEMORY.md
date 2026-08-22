@@ -26,7 +26,7 @@
 - Design Batch 8 is accepted: merchant Dashboard, Analytics overview, Orders analytics, and Products analytics with fixed Cairo periods and explicit metric definitions.
 - Design Batch 9 is accepted: Merchant sign-in, sign-up, WhatsApp phone verification, password recovery/reset, first-store onboarding, and multi-store switching.
 - Design Batch 10 is delivered for review: General settings, Checkout fields, Domains, Notifications, Wallet, and Store status under one Settings module with a direct Wallet-chip entry point.
-- Design Batch 11 is delivered for review: shared storefront renderer, Essential/Editorial/Bold presets, theme preview and apply confirmation, Branding, and a predefined-section Homepage builder.
+- Design Batch 11.1 is delivered for review: the shared Storefront renderer now covers all seven approved sections, Homepage content edits participate in Undo/Redo, and reorder/visibility actions use keyboard-operable 44px native controls. The static suite passes 18/18.
 - The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is published as Sites version 8.
 - `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.

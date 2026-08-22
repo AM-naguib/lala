@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import { resolve } from "node:path";
+import vm from "node:vm";
 
 const projectRoot = resolve(import.meta.dirname, "..");
 const publicDirectory = resolve(projectRoot, "public");
@@ -475,4 +476,36 @@ test("Batch 11 preserves the shared-theme and predefined-builder contract", () =
   }
   assert.match(builder, /No free-form blocks or custom HTML/, "Builder must remain predefined-only");
   assert.doesNotMatch(builder, /contenteditable|raw HTML|custom CSS/i, "Builder must not expose arbitrary content editing");
+});
+
+test("Batch 11.1 builder renders every addable section and restores content accessibly", () => {
+  const builderSource = htmlFiles.find((entry) => entry.name === "homepage-builder.html")?.source;
+  assert.ok(builderSource, "Homepage builder is missing");
+
+  for (const section of ["slider", "collections", "promo"]) {
+    assert.match(builderSource, new RegExp(`isVisible\\('${section}'\\)`), `${section} needs a live preview renderer`);
+  }
+
+  const functionSource = builderSource.match(/function builder\(\)\{return\{[\s\S]*?\n\}\}/)?.[0];
+  assert.ok(functionSource, "Builder state function is missing");
+  const createBuilder = vm.runInNewContext(`(${functionSource})`, { setTimeout: () => 0 });
+  const state = createBuilder();
+
+  const originalArabicHeading = state.heroTitleAr;
+  state.updateField("heroTitleAr", "عنوان قابل للتراجع");
+  assert.equal(state.heroTitleAr, "عنوان قابل للتراجع", "Hero content must update in the live draft");
+  state.undo();
+  assert.equal(state.heroTitleAr, originalArabicHeading, "Undo must restore Hero content");
+  state.redo();
+  assert.equal(state.heroTitleAr, "عنوان قابل للتراجع", "Redo must restore the edited Hero content");
+
+  state.add("slider", "سلايدر", "Slider");
+  assert.equal(state.isVisible("slider"), true, "An added section must become visible in the preview");
+  state.undo();
+  assert.equal(state.isVisible("slider"), false, "Undo must remove the newly added section from the preview");
+
+  assert.doesNotMatch(builderSource, /role="button"/, "Section actions must use native buttons");
+  assert.match(builderSource, /<button type="button" @click="move\(section\.id,-1\)" :disabled="index===0" class="[^"]*size-11/, "Move up must be a 44px native button");
+  assert.match(builderSource, /<button type="button" @click="move\(section\.id,1\)" :disabled="index===sections\.length-1" class="[^"]*size-11/, "Move down must be a 44px native button");
+  assert.match(builderSource, /<button type="button" @click="toggle\(section\.id\)" class="[^"]*min-h-11/, "Hide/show must be a 44px native button");
 });

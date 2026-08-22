@@ -1,5 +1,13 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 11.1 Storefront builder correction
+
+- Added live preview renderers for Slider, Featured Collections, and Promotional Banner so every section offered by the approved picker appears in the same shared renderer.
+- Expanded Homepage Builder snapshots so Arabic and English Hero content participates in Undo/Redo together with section order and visibility.
+- Replaced nested `role="button"` section actions with keyboard-operable native buttons, explicit disabled states, and 44px minimum targets.
+- Added a behavioral Batch 11.1 regression test that executes the Builder state and verifies content restoration, add/undo preview behavior, renderer coverage, and accessible controls.
+- Regenerated all Batch 11 renderer consumers and passed the deterministic build plus 18/18 automated tests.
+
 ## 2026-08-22 — Design Batch 10 Store settings and Wallet delivered
 
 - Recorded founder acceptance of Batch 9 and authorization of Batch 10 in D-271.

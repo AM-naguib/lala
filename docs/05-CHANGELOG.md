@@ -1,5 +1,13 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 11.2 real theme differentiation
+
+- Kept one shared Storefront document and renderer while adding preset-specific layout composition instead of palette-only skins.
+- Essential stays compact and product-first with a balanced split Hero and quiet cards.
+- Editorial now uses a centered masthead, full-bleed image-led Hero, wider rhythm, feature compositions, and restrained promotional treatment.
+- Bold now uses asymmetric grids, heavy outlines, high-contrast promotion blocks, emphasized price/stock cards, and a dark system frame.
+- Added fixed-width mobile adaptations for the new compositions without changing section data, order, visibility, RTL, or price isolation.
+- Added a Batch 11.2 regression contract and passed the deterministic build plus 19/19 automated tests.
 ## 2026-08-22 — Design Batch 11.1 Storefront builder correction
 
 - Added live preview renderers for Slider, Featured Collections, and Promotional Banner so every section offered by the approved picker appears in the same shared renderer.

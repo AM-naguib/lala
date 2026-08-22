@@ -510,7 +510,7 @@ test("Batch 11.1 builder renders every addable section and restores content acce
   assert.match(builderSource, /<button type="button" @click="toggle\(section\.id\)" class="[^"]*min-h-11/, "Hide/show must be a 44px native button");
 });
 
-test("Batch 11.3 gives every preset a distinct premium layout while sharing one document", () => {
+test("Batch 11.4 gives every preset a current composition while sharing one document", () => {
   const previewSource = htmlFiles.find((entry) => entry.name === "theme-preview.html")?.source;
   const gallerySource = htmlFiles.find((entry) => entry.name === "themes.html")?.source;
   assert.ok(previewSource, "Theme preview is missing");
@@ -520,11 +520,12 @@ test("Batch 11.3 gives every preset a distinct premium layout while sharing one 
     assert.match(previewSource, new RegExp("\\." + theme), theme + " layout rules are missing");
   }
 
-  assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:46fr 54fr;min-height:31rem\}/, "Essential needs a calm product-first split Hero");
-  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:minmax\(0,1fr\);min-height:36rem\}/, "Editorial needs a cinematic full-image Hero");
-  assert.match(previewSource, /\.sf-editorial \.sf-preview-products-grid>article:first-child\{grid-column:1;grid-row:1\/span 2/, "Editorial needs a magazine-style featured-product composition");
-  assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{grid-template-columns:52fr 48fr;min-height:33rem;background:linear-gradient/, "Bold needs an expressive gradient Hero");
-  assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid>article\{[^}]*border:1px solid rgb\(33 27 45\/.08\);[^}]*box-shadow:0 16px 34px/, "Bold needs elevated promotion-forward product cards");
+  assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:42fr 58fr;min-height:37rem;margin:1rem;border-radius:2\.25rem/, "Essential needs a modern media-led commerce Hero");
+  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:1fr;min-height:45rem\}/, "Editorial needs a cinematic full-image Hero");
+  assert.match(previewSource, /\.sf-editorial \.sf-preview-products-grid>article:first-child\{grid-column:1\/span 7;grid-row:1\/span 2/, "Editorial needs an asymmetric magazine product composition");
+  assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{position:relative;grid-template-columns:repeat\(12,1fr\);min-height:41rem;[^}]*background:linear-gradient/, "Bold needs an expressive twelve-column campaign Hero");
+  assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid\{grid-template-columns:repeat\(12,1fr\);grid-template-rows:repeat\(2,auto\)/, "Bold needs a product Bento grid");
+  assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid>article:first-child\{grid-column:1\/span 7;grid-row:1\/span 2;background:#d8ceff\}/, "Bold needs a dominant campaign product card");
   assert.match(gallerySource, /\.sf-thumb-editorial>div>div:last-child\{position:relative;display:block\}/, "Theme cards must ship their structural preview rules");
 
   assert.doesNotMatch(previewSource, /x-show="theme\s*===/, "Theme selection must not branch section content or visibility");
@@ -532,7 +533,7 @@ test("Batch 11.3 gives every preset a distinct premium layout while sharing one 
   assert.equal((previewSource.match(/storefront-preview-renderer/g) ?? []).length, 2, "The page must contain one shared renderer component");
 });
 
-test("Batch 11.3 uses optimized premium imagery without legacy storefront SVGs", async () => {
+test("Batch 11.4 uses optimized premium imagery without legacy storefront SVGs", async () => {
   const names = ["themes.html", "theme-preview.html", "brand-settings.html", "homepage-builder.html"];
   const files = Object.fromEntries(names.map((name) => [name, htmlFiles.find((entry) => entry.name === name)]));
 
@@ -549,4 +550,16 @@ test("Batch 11.3 uses optimized premium imagery without legacy storefront SVGs",
   const preview = files["theme-preview.html"].source;
   assert.match(preview, /\/storefront-night-veil-v3\.webp/, "Preview needs the Night Veil product image");
   assert.match(preview, /\/storefront-spice-balm-v3\.webp/, "Preview needs the Spice Balm product image");
+});
+
+test("Batch 11.4 previews every approved section while preserving Builder visibility state", () => {
+  const previewSource = htmlFiles.find((entry) => entry.name === "theme-preview.html")?.source;
+  const builderSource = htmlFiles.find((entry) => entry.name === "homepage-builder.html")?.source;
+  assert.ok(previewSource, "Theme preview is missing");
+  assert.ok(builderSource, "Homepage builder is missing");
+
+  for (const section of ["slider", "collections", "promo"]) {
+    assert.match(previewSource, new RegExp(`isVisible\\('${section}'\\) : true`), `${section} must be visible in the complete theme preview`);
+    assert.match(builderSource, new RegExp(`isVisible\\('${section}'\\) : true`), `${section} must still delegate visibility to Builder state`);
+  }
 });

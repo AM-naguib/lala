@@ -197,7 +197,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 
 ## Design system — Batch 11
 
-**State: Corrected in Batch 11.3; awaiting founder review.**
+**State: Rebuilt in Batch 11.4; awaiting founder review.**
 
 | Screen | Review URL |
 |---|---|
@@ -206,7 +206,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 | Branding | https://lala-design-system.curbs-storm-80.chatgpt.site/brand-settings.html |
 | Homepage builder | https://lala-design-system.curbs-storm-80.chatgpt.site/homepage-builder.html |
 
-The approved architecture uses one shared section document and renderer plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. Batch 11.1 completed renderer and Builder correctness; Batch 11.3 rebuilds the visual system with optimized original product photography and genuinely different premium compositions across Header, Hero, Slider, Benefits, products, collections, story, promotion, and Footer. Essential is calm and product-first, Editorial is cinematic and image-led, and Bold is expressive with coral/plum gradients and elevated cards. Desktop and fixed 390px mobile compositions remain RTL-safe, prices stay isolated, and real-browser review plus 20/20 automated tests pass.
+The approved architecture uses one shared section document and renderer plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. Batch 11.4 replaces the remaining old shared-template silhouette with current commerce compositions: Essential follows Horizon × Sleek calm modern commerce, Editorial follows Prestige × Stretch cinematic editorial, and Bold follows Impact × Zest expressive campaign bento. Each preset now has distinct hierarchy, scale, grids, media treatment, products, collections, story, promotion, Footer, and fixed-390px recomposition. RTL and isolated prices remain safe; real-browser review plus 21/21 automated tests pass. The implementation record is in [`storefront/08-THEME-REDESIGN-BATCH-11.4.md`](storefront/08-THEME-REDESIGN-BATCH-11.4.md).
 
 The dedicated [`storefront/`](storefront/README.md) folder contains the research, architecture contract, editor UX, section catalog, theme definitions, execution plan, and deferred decisions used to implement this batch.
 

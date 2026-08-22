@@ -1,5 +1,15 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 11.4 current-commerce rebuild
+
+- Rebuilt the three Storefront presets after an expanded visual-reference pass across current official Shopify Theme Store examples.
+- Directed Essential from Horizon × Sleek, Editorial from Prestige × Stretch, and Bold from Impact × Zest without cloning theme content or code.
+- Replaced the remaining shared-template silhouette with distinct hero geometry, 12-column editorial and campaign grids, bento merchandising, controlled overlaps, and preset-specific fixed-390px recomposition.
+- Preserved one shared document, section order and visibility, Builder behavior, RTL, isolated prices, fixed Header/Footer, and all existing safety exclusions.
+- Corrected Editorial mobile headline clipping found during real-browser review.
+- Deterministic build, real-browser desktop/mobile review, and **21/21** automated tests pass.
+- Added the implementation and review record in `storefront/08-THEME-REDESIGN-BATCH-11.4.md`.
+
 ## 2026-08-22 — Design Batch 11.3 premium visual rebuild
 
 - Re-ran visual direction research against official Shopify Dawn, Prestige, and Impact patterns plus premium fragrance storefront references.

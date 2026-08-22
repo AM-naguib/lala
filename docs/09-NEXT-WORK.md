@@ -4,7 +4,7 @@
 
 ## Immediate static-design queue
 
-1. **Review corrected Design Batch 11.3 — Storefront tools** at https://lala-design-system.curbs-storm-80.chatgpt.site:
+1. **Review corrected Design Batch 11.4 — Storefront tools** at https://lala-design-system.curbs-storm-80.chatgpt.site:
    - `themes.html`
    - `theme-preview.html`
    - `brand-settings.html`
@@ -17,7 +17,7 @@
 7. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
 8. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The accepted roadmap covers Batches 4–17. Batches 3–9 are accepted; corrected Batch 11.3 passes 20/20 and is the current founder review gate before Batch 12.
+The accepted roadmap covers Batches 4–17. Batches 3–9 are accepted; corrected Batch 11.4 passes 21/21 and is the current founder review gate before Batch 12.
 
 ## Future implementation sequence — postponed
 

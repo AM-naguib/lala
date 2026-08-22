@@ -238,6 +238,7 @@ for (const [name, sourceRaw] of Object.entries({
   "homepage-builder.html": builder,
 })) {
   let source = sourceRaw.replace(/<option([^>]*)><span x-show="locale === 'ar'">([\s\S]*?)<\/span><span x-show="locale === 'en'">([\s\S]*?)<\/span><\/option>/g, '<option$1>$2 / $3</option>');
+  if (name === "themes.html") source = source.replace("<!-- component: storefront-theme-gallery -->", storefrontStyles + "<!-- component: storefront-theme-gallery -->");
   const classReplacements = [
     ["xl:grid-cols-[24rem_minmax(0,1fr)]", "sf-brand-layout"],
     ["lg:grid-cols-[18rem_minmax(0,1fr)]", "sf-builder-layout"],

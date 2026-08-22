@@ -512,7 +512,9 @@ test("Batch 11.1 builder renders every addable section and restores content acce
 
 test("Batch 11.2 gives every preset a distinct layout while sharing one document", () => {
   const previewSource = htmlFiles.find((entry) => entry.name === "theme-preview.html")?.source;
+  const gallerySource = htmlFiles.find((entry) => entry.name === "themes.html")?.source;
   assert.ok(previewSource, "Theme preview is missing");
+  assert.ok(gallerySource, "Theme gallery is missing");
 
   for (const theme of ["sf-essential", "sf-editorial", "sf-bold"]) {
     assert.match(previewSource, new RegExp("\\." + theme), theme + " layout rules are missing");
@@ -523,6 +525,7 @@ test("Batch 11.2 gives every preset a distinct layout while sharing one document
   assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{grid-template-columns:5fr 7fr;border-bottom:3px solid #171717\}/, "Bold needs an asymmetric outlined Hero");
   assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid>article\{border:3px solid #171717/, "Bold needs outlined promotion-forward product cards");
   assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}/, "Essential needs the compact split Hero");
+  assert.match(gallerySource, /\.sf-thumb-editorial>div>div:last-child\{position:relative;display:block\}/, "Theme cards must ship their structural preview rules");
 
   assert.doesNotMatch(previewSource, /x-show="theme\s*===/, "Theme selection must not branch section content or visibility");
   assert.equal((previewSource.match(/id="products"/g) ?? []).length, 1, "All presets must reuse one Featured products section");

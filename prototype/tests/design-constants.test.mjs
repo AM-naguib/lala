@@ -48,6 +48,12 @@ const appScreens = [
   "custom-locations.html",
   "shipping-integrations.html",
   "bosta-connection.html",
+  "store-settings-general.html",
+  "store-settings-checkout.html",
+  "store-settings-domains.html",
+  "store-settings-notifications.html",
+  "wallet.html",
+  "store-status.html",
 ];
 
 const merchantNavigationScreens = [
@@ -78,6 +84,12 @@ const merchantNavigationScreens = [
   "custom-locations.html",
   "shipping-integrations.html",
   "bosta-connection.html",
+  "store-settings-general.html",
+  "store-settings-checkout.html",
+  "store-settings-domains.html",
+  "store-settings-notifications.html",
+  "wallet.html",
+  "store-status.html",
 ];
 
 test("all application screens share the app container token", () => {
@@ -172,6 +184,7 @@ test("merchant primary navigation exposes current modules and no separate Catalo
     assert.match(mobilePrimary, /href="\/customers-list\.html"/, `${name} must expose Customers navigation`);
     assert.match(mobilePrimary, /href="\/discounts-list\.html"/, `${name} must expose Discounts navigation`);
     assert.match(mobilePrimary, /href="\/shipping-zones\.html"/, `${name} must expose Shipping navigation`);
+    assert.match(mobilePrimary, /href="\/store-settings-general\.html"/, `${name} must expose Settings navigation`);
     assert.doesNotMatch(mobilePrimary, /catalog-organization|Catalog|الكتالوج/, `${name} must not expose Catalog as a primary destination`);
     const aside = file.source.match(/<aside\b[\s\S]*?<\/aside>/)?.[0] ?? "";
     assert.match(aside, /href="\/stores-list\.html"/, `${name} must expose the store switcher`);
@@ -351,4 +364,71 @@ test("Batch 9 preserves merchant verification and first-store boundaries", () =>
   assert.match(recovery, /Email link/, "Recovery needs email-channel feedback");
   assert.match(recovery, /WhatsApp code/, "Recovery needs WhatsApp-channel feedback");
   assert.match(recovery, /same feedback is shown whether or not an account matches/, "Recovery must not disclose account existence");
+});
+
+test("Batch 10 preserves the approved settings, wallet, and store-status boundaries", () => {
+  const names = [
+    "store-settings-general.html",
+    "store-settings-checkout.html",
+    "store-settings-domains.html",
+    "store-settings-notifications.html",
+    "wallet.html",
+    "store-status.html",
+  ];
+  const files = Object.fromEntries(names.map((name) => [name, htmlFiles.find((entry) => entry.name === name)]));
+  for (const [name, file] of Object.entries(files)) {
+    assert.ok(file, `${name} is missing`);
+    assert.match(file.source, /locale === 'ar'/, `${name} needs real Arabic and English state`);
+    assert.match(file.source, /component: settings-section-navigation/, `${name} must stay inside the Settings module`);
+  }
+
+  const general = files["store-settings-general.html"].source;
+  for (const contract of ["3 / 3", "10 days", "does not redirect", "permanently locked", "does not convert"]) {
+    assert.match(general, new RegExp(contract, "i"), `General settings are missing: ${contract}`);
+  }
+  assert.match(general, /support cannot change it/i, "The third hosted-subdomain change must be final even for support");
+
+  const checkout = files["store-settings-checkout.html"].source;
+  for (const field of ["Name", "Primary phone", "Address", "City \/ area", "Email", "Alternate phone", "Order notes"]) {
+    assert.match(checkout, new RegExp(field), `Checkout is missing ${field}`);
+  }
+  assert.match(checkout, /Country is hidden in Phase 1 and Egypt is stored automatically/, "Checkout must store Egypt without exposing Country");
+  assert.match(checkout, /Cash on delivery is the only payment method/, "Checkout must stay COD-only");
+  assert.match(checkout, /there are no tax settings/, "Checkout must not invent tax settings");
+  assert.doesNotMatch(checkout, /Credit card|Payment status|Collected|Tax rate/i, "Checkout must not introduce unsupported payment or tax fields");
+
+  const domains = files["store-settings-domains.html"].source;
+  assert.match(domains, /verified and is now the storefront's primary address/, "A verified custom domain must become primary");
+  assert.match(domains, /lala subdomain redirects visitors/, "The hosted subdomain must redirect after custom-domain activation");
+  assert.match(domains, /no numeric cap/, "Custom-domain changes must stay unlimited");
+  assert.match(domains, /became primary again and the merchant was alerted/, "Domain failure must restore the hosted fallback and alert the merchant");
+  assert.match(domains, /HTTPS issuance and renewal are automatic/, "Custom domains need automatic HTTPS");
+
+  const notifications = files["store-settings-notifications.html"].source;
+  assert.match(notifications, /New order[\s\S]*Dashboard and email/, "New orders must notify merchants on dashboard and email");
+  assert.match(notifications, /Low-stock warning[\s\S]*Dashboard and email/, "Low stock must notify merchants on dashboard and email");
+  assert.match(notifications, /does not send the merchant separate emails for later order-status changes or shipping-submission failures/, "Unsupported merchant emails must remain excluded");
+  assert.match(notifications, /Customer emails are sent only when the order has an email address/, "Customer emails require an order email");
+  assert.match(notifications, /Core-status change/, "Customer emails must cover core-status changes");
+  assert.match(notifications, /Label changes never send an email/, "Labels must not notify customers");
+
+  const wallet = files["wallet.html"].source;
+  for (const state of ["Calm", "Watch", "Overdraft"]) assert.match(wallet, new RegExp(state), `Wallet is missing ${state}`);
+  assert.match(wallet, /EGP 1\.00/, "The initial per-order fee must be EGP 1");
+  assert.match(wallet, /no recurring subscription/, "Wallet must not introduce a subscription");
+  assert.match(wallet, /below EGP -10/, "Masking must start below EGP -10");
+  assert.match(wallet, /New orders continue to be recorded and charged/, "Orders must continue during overdraft");
+  assert.match(wallet, /customer data shows \*\*\*\*/, "Customer data must be visibly masked");
+  assert.match(wallet, /No payment method is selected or assumed/, "Recharge must not invent a payment method");
+
+  const status = files["store-status.html"].source;
+  assert.match(status, /Products, orders, customers, and settings remain stored/, "Disabling a store must retain all data");
+  assert.match(status, /This store is currently unavailable/, "Visitors need a clear unavailable state");
+  assert.match(status, /Only lala support can reactivate it; the owner cannot/, "Reactivation must stay support-only");
+  assert.match(status, /there is no owner reactivation button/, "The disabled state must not expose owner reactivation");
+
+  for (const name of merchantNavigationScreens) {
+    const file = htmlFiles.find((entry) => entry.name === name);
+    assert.match(file.source, /href="\/wallet\.html"/, `${name} wallet chip must open Wallet`);
+  }
 });

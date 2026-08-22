@@ -32,6 +32,12 @@ const merchantScreens = [
   "custom-locations.html",
   "shipping-integrations.html",
   "bosta-connection.html",
+  "store-settings-general.html",
+  "store-settings-checkout.html",
+  "store-settings-domains.html",
+  "store-settings-notifications.html",
+  "wallet.html",
+  "store-status.html",
 ];
 
 const orderScreens = new Set(["orders-list.html", "order-detail.html", "order-create.html"]);
@@ -45,6 +51,14 @@ const shippingScreens = new Set([
   "custom-locations.html",
   "shipping-integrations.html",
   "bosta-connection.html",
+]);
+const settingsScreens = new Set([
+  "store-settings-general.html",
+  "store-settings-checkout.html",
+  "store-settings-domains.html",
+  "store-settings-notifications.html",
+  "wallet.html",
+  "store-status.html",
 ]);
 const productScreens = new Set([
   "products-list.html",
@@ -96,6 +110,7 @@ function desktopSidebar(name) {
   const customersActive = customerScreens.has(name);
   const discountsActive = discountScreens.has(name);
   const shippingActive = shippingScreens.has(name);
+  const settingsActive = settingsScreens.has(name);
   const section = productSectionByScreen[name];
   const orderBadge = '<span class="ms-auto rounded-full bg-accent-soft px-2 py-0.5 font-mono text-2xs text-accent">12</span>';
   const lowStockBadge = '<span class="ms-auto rounded-full bg-warning-soft px-2 py-0.5 font-mono text-2xs text-warning">7</span>';
@@ -126,6 +141,7 @@ function desktopSidebar(name) {
           ${topLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customersActive })}
           ${topLink({ href: "/discounts-list.html", icon: "%", arabic: "الخصومات", english: "Discounts", active: discountsActive })}
           ${topLink({ href: "/shipping-zones.html", icon: "⌁", arabic: "الشحن", english: "Shipping", active: shippingActive })}
+          ${topLink({ href: "/store-settings-general.html", icon: "⚙", arabic: "الإعدادات", english: "Settings", active: settingsActive })}
         </div>
       </nav>
       <div class="border-t border-border px-5 py-4"><p class="text-xs font-semibold text-muted">${bilingual("مساحة عمل التاجر", "Merchant workspace")}</p></div>
@@ -149,6 +165,7 @@ function mobilePrimaryNavigation(name) {
         ${mobileTopLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customerScreens.has(name) })}
         ${mobileTopLink({ href: "/discounts-list.html", icon: "%", arabic: "الخصومات", english: "Discounts", active: discountScreens.has(name) })}
         ${mobileTopLink({ href: "/shipping-zones.html", icon: "⌁", arabic: "الشحن", english: "Shipping", active: shippingScreens.has(name) })}
+        ${mobileTopLink({ href: "/store-settings-general.html", icon: "⚙", arabic: "الإعدادات", english: "Settings", active: settingsScreens.has(name) })}
       </nav>
       <!-- /component: mobile-primary-navigation -->`;
 }
@@ -201,6 +218,22 @@ for (const name of merchantScreens) {
   source = `${source.slice(0, insertionPoint)}${responsiveNavigation}${source.slice(insertionPoint)}`;
 
   source = source.replaceAll('href="/component-gallery.html" class="font-semibold lg:hidden"', 'href="/dashboard.html" class="font-semibold lg:hidden"');
+  source = source.replace(
+    /<!-- component: (wallet-chip-(?:calm|watch|overdraft)) -->([\s\S]*?)<!-- \/component: \1 -->/g,
+    (component, name, fragment) => {
+      const wrapper = fragment.match(/^(\s*)<(button|span)\b[^>]*class="([^"]*)"[^>]*>([\s\S]*)<\/\2>(\s*)$/);
+      if (!wrapper) return component;
+      const [, before, , classes, content, after] = wrapper;
+      return `<!-- component: ${name} -->${before}<a href="/wallet.html" class="${classes} hover:border-accent">${content}</a>${after}<!-- /component: ${name} -->`;
+    },
+  );
+  source = source.replace(
+    /<button\b([^>]*)>([\s\S]*?EGP (?:1,240\.00|−14\.00)[\s\S]*?)<\/button>/g,
+    (button, attributes, content) => {
+      const classes = attributes.match(/class="([^"]*)"/)?.[1] ?? "";
+      return `<a href="/wallet.html" class="${classes} hover:border-accent">${content}</a>`;
+    },
+  );
 
   if (["catalog-organization.html", "featured-products.html", "product-trash.html", "product-import.html"].includes(name)) {
     source = source.replace(/\s*<nav class="mt-6 flex min-w-max gap-1 overflow-x-auto border-b border-border">[\s\S]*?<\/nav>/, "");

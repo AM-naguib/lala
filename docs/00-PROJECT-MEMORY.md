@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Static frontend delivery. Design Batches 1 and 3–8 are accepted; Batches 2 and 9 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
+- **Current phase:** Static frontend delivery. Design Batches 1 and 3–9 are accepted; Batches 2 and 10 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
 - **Status date:** 2026-08-22 (Africa/Cairo).
 
 ## Latest delivery checkpoint
@@ -23,13 +23,14 @@
 - Design Batch 5 is accepted: Customers list, unified Customer detail, and identity-conflict review with Guest/Account states, blocking, multiple addresses, order metrics/history, and wallet masking.
 - Design Batch 6 is accepted: Discounts list and Coupon editor with percentage, fixed amount, and free-shipping rewards only.
 - Design Batch 7 is accepted: Shipping zones, Zone editor, Custom locations, Shipping integrations, Bosta connection, and complete single/bulk order-submission states.
-- Design Batch 8 is delivered for review: merchant Dashboard, Analytics overview, Orders analytics, and Products analytics with fixed Cairo periods and explicit metric definitions.
-- Design Batch 9 is delivered for review: Merchant sign-in, sign-up, WhatsApp phone verification, password recovery/reset, first-store onboarding, and multi-store switching.
+- Design Batch 8 is accepted: merchant Dashboard, Analytics overview, Orders analytics, and Products analytics with fixed Cairo periods and explicit metric definitions.
+- Design Batch 9 is accepted: Merchant sign-in, sign-up, WhatsApp phone verification, password recovery/reset, first-store onboarding, and multi-store switching.
+- Design Batch 10 is delivered for review: General settings, Checkout fields, Domains, Notifications, Wallet, and Store status under one Settings module with a direct Wallet-chip entry point.
 - The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is published as Sites version 8.
 - `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
-- The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 originally planned 65 screen files across Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening. Batches 4–9 delivered 26 of them; 39 new screen files remain in Batches 10–16.
+- The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 originally planned 65 screen files across Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening. Batches 4–10 delivered 32 of them; 33 new screen files remain in Batches 11–16.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 - Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.
@@ -327,26 +328,26 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2 and 9 open for founder review and stop before Batch 10 Store settings and Wallet. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet. The complete static prototype is versioned under `prototype/`.
+Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2 and 10 open for founder review and stop before Batch 11 Storefront design. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet. The complete static prototype is versioned under `prototype/`.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
 - Design Batches 2 and 9 await founder acceptance or revision.
-- Batches 3–8 are accepted; Batch 10 must not start until the founder passes the Batch 9 review gate.
+- Batches 3–9 are accepted; Batch 11 must not start until the founder passes the Batch 10 review gate.
 - The incorrect version 7 information architecture has been corrected and published as Sites version 8; founder review of that hierarchy is the active UX gate.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Current explicit request:** keep the work static, complete Batch 9 Merchant access and onboarding, sync the portable source to GitHub, and publish it for review.
+- **Current explicit request:** keep the work static, complete Batch 10 Store settings and Wallet, sync the portable source to GitHub, and publish it for review.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** founder review of delivered Batches 2 and 9 before Batch 10.
+- **Pending review:** founder review of delivered Batches 2 and 10 before Batch 11.
 
 ## Next decisions to obtain
 
 - Accept or revise Design Batches 2 and 9.
-- After Batch 9 acceptance, execute Batch 10 Store settings and Wallet according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
+- After Batch 10 acceptance, execute Batch 11 Storefront design according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

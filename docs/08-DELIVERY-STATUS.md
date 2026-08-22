@@ -26,14 +26,15 @@
 **State: Accepted by the founder.**
 
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
-- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–9 have delivered 26, leaving 39 new screen files in Batches 10–16.
+- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–10 have delivered 32, leaving 33 new screen files in Batches 11–16.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
 - Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
 - Batch 5 — Customers is accepted.
 - Batch 6 — Discounts is accepted.
 - Batch 7 — Shipping zones and Bosta is accepted.
 - Batch 8 — Dashboard and Analytics is accepted.
-- Batch 9 — Merchant access and onboarding is delivered and is the current review gate.
+- Batch 9 — Merchant access and onboarding is accepted.
+- Batch 10 — Store settings and Wallet is delivered and is the current review gate.
 - The complete portable static source is versioned under `prototype/` in the public repository.
 - The unified Motion System is implemented across all current screens: modals, drawers, popovers, toasts, and state changes now share fixed timing/easing and reduced-motion behavior.
 - Design Batch 2 remains delivered and available for review; Batch 3 is accepted. Revisions can be recorded without silently changing the approved roadmap.
@@ -164,7 +165,7 @@ Delivered behavior includes direct operational alerts, fixed Cairo periods, prev
 
 ## Design system — Batch 9
 
-**State: Delivered; awaiting founder review.**
+**State: Accepted by the founder.**
 
 | Screen | Review URL |
 |---|---|
@@ -177,6 +178,21 @@ Delivered behavior includes direct operational alerts, fixed Cairo periods, prev
 | Store switcher | https://lala-design-system.curbs-storm-80.chatgpt.site/stores-list.html |
 
 Delivered behavior includes email-or-phone sign-in, WhatsApp-only phone verification, exact expiry/resend/send/attempt limits, safe recovery feedback, onboarding validation, subdomain availability, immediate public-store communication, an empty merchant account, unlimited independent stores, and an owner-only store switcher. No store-country field, team roles, verification bypass, or Laravel authentication was introduced.
+
+## Design system — Batch 10
+
+**State: Delivered; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| General settings | https://lala-design-system.curbs-storm-80.chatgpt.site/store-settings-general.html |
+| Checkout fields | https://lala-design-system.curbs-storm-80.chatgpt.site/store-settings-checkout.html |
+| Domains | https://lala-design-system.curbs-storm-80.chatgpt.site/store-settings-domains.html |
+| Notifications | https://lala-design-system.curbs-storm-80.chatgpt.site/store-settings-notifications.html |
+| Wallet | https://lala-design-system.curbs-storm-80.chatgpt.site/wallet.html |
+| Store status | https://lala-design-system.curbs-storm-80.chatgpt.site/store-status.html |
+
+Settings is one level-one Merchant module with six coherent sections. The Wallet also opens directly from every Merchant-header balance chip. Delivered states cover current/changed/permanently locked hosted domains, custom-domain verification/fallback, exact Required/Optional Checkout fields, confirmed merchant/customer notifications, wallet calm/watch/overdraft and masking, amount-only recharge, and enabled/disabled store status with support-only reactivation. COD-only, no-tax, no-subscription, no-payment-method-invention, and static-only boundaries remain explicit.
 
 | Screen | Review URL |
 |---|---|

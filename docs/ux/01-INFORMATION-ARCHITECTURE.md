@@ -8,7 +8,7 @@
 
 | النوع | معناه | أمثلة |
 |---|---|---|
-| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping |
+| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping، Settings |
 | Section | جزء دائم داخل Module | Inventory، Organization، Featured products |
 | Tool | عملية تشغيلية تُستخدم عند الحاجة | Import products، Trash |
 | Flow child | خطوة أو نتيجة داخل مسار | Import results، Product editor، Variants |
@@ -37,6 +37,12 @@
 | الشحن / Shipping | `shipping-zones.html` | مناطق الشحن / Zones | القائمة ومحرر المنطقة |
 | الشحن / Shipping | `custom-locations.html` | المواقع المخصصة / Custom locations | مدن ومناطق خاصة بالمتجر |
 | الشحن / Shipping | `shipping-integrations.html` | التكاملات / Integrations | نظرة المزودين و`bosta-connection.html` كمسار ربط تابع |
+| الإعدادات / Settings | `store-settings-general.html` | عام / General | اسم المتجر، العملة، اللغة الأساسية، ورابط `lala` المستضاف |
+| الإعدادات / Settings | `store-settings-checkout.html` | Checkout | الحقول المدعومة وحالة Required/Optional |
+| الإعدادات / Settings | `store-settings-domains.html` | الدومينات / Domains | ربط الدومين المخصص والتحقق والتحويل والـfallback |
+| الإعدادات / Settings | `store-settings-notifications.html` | الإشعارات / Notifications | أحداث التاجر والعميل المؤكدة فقط |
+| الإعدادات / Settings | `wallet.html` | المحفظة / Wallet | الرصيد والحركات والشحن وحالات masking |
+| الإعدادات / Settings | `store-status.html` | حالة المتجر / Store status | التعطيل ومعاينة الزائر وإعادة التفعيل عبر الدعم |
 
 ## مسار الحساب واختيار المتجر
 
@@ -58,18 +64,20 @@
 
 ### Desktop
 
-- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping.
+- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping، Settings.
 - عند دخول أي شاشة منتج، تتوسع Products وتعرض Sections أولًا ثم Product tools في مجموعة معنونة منفصلة.
 - Parent وChild الصحيحان فقط يأخذان Active state و`aria-current="page"`.
 - لا يتغير عرض الـSidebar أو الـContainer أو موضع المحتوى بين الشاشات.
 
 ### Mobile وTablet
 
-- Primary navigation يعرض Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping في المرحلة الحالية، ويستخدم تمريرًا أفقيًا عند ضيق العرض بدل ضغط العناصر.
+- Primary navigation يعرض Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping، Settings في المرحلة الحالية، ويستخدم تمريرًا أفقيًا عند ضيق العرض بدل ضغط العناصر.
 - داخل Analytics يظهر شريط Sections: Overview، Orders، Products.
 - داخل Shipping يظهر شريط Sections: Zones، Custom locations، Integrations. صفحة Bosta connection تظل Flow child داخل Integrations.
 - داخل Products يظهر شريط Sections: All، Inventory، Organization، Featured، ثم Tools.
+- داخل Settings يظهر شريط Sections: General، Checkout، Domains، Notifications، Wallet، Store status.
 - Tools تفتح Import وTrash؛ لا تظهر Catalog أو Inventory كوجهات مستوى أول منفصلة.
+- شريحة رصيد Wallet في الـHeader هي Entry point مباشر إضافي للمحفظة، وليست Module ثانية أو Shortcut غير مرتبط بالهيكل.
 - نفس Parent المستخدم على Desktop يظل Active على Mobile.
 
 ### داخل الشاشة
@@ -84,7 +92,6 @@
 | المجموعة | المستوى الأول المخطط | Batch |
 |---|---|---|
 | تصميم المتجر | Storefront | 11–13 |
-| الإعدادات | Settings | 10–12 |
 
 لا تظهر ميزة جديدة كـModule قبل وجود شاشة مفيدة لها ومراجعة علاقتها بما حولها. ظهورها Disabled مع “قريبًا” استثنائي ومخصص لتوضيح خريطة قريبة، وليس قائمة أمنيات طويلة.
 

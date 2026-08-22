@@ -1,5 +1,14 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 9 Merchant access and onboarding delivered
+
+- Recorded founder acceptance of Batch 8 and authorization of Batch 9 in D-269.
+- Added D-270 for Merchant sign-in/sign-up, WhatsApp verification, recovery/reset, first-store onboarding, and store switching.
+- Preserved the 10-minute code, 60-second cooldown, five-send rolling-hour limit, five-attempt invalidation, and no-bypass WhatsApp failure behavior.
+- Limited onboarding to store name, subdomain, currency, and primary language; explicitly excluded a store-country field.
+- Added empty-account, multi-store, unlimited-store, owner-only, validation, subdomain availability, delivery failure, and recovery feedback states.
+- Linked the store switcher from every current Merchant screen and advanced the review gate to Batch 9 before Batch 10.
+
 ## 2026-08-22 — Design Batch 8 Dashboard and Analytics delivered
 
 - Recorded founder acceptance of Batch 7 and authorization of Batch 8 in D-267.

@@ -2039,3 +2039,23 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **UX rule:** Dashboard links directly to operational queues. Analytics uses one internal section navigation and preserves the shared 1440px container on every screen.
 - **Verification:** The static build and 15 contract tests pass.
 - **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, charting dependency, server analytics, or Laravel code.
+
+## D-269 — Design Batch 8 accepted and Batch 9 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Dashboard, Analytics overview, Orders analytics, and Products analytics delivered in Batch 8 and authorize Batch 9 — Merchant access and onboarding.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-270 — Design Batch 9 Merchant access and onboarding scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 9 contains Merchant sign-in, sign-up, phone verification, password recovery, password reset, first-store onboarding, and store switching as seven portable static screens.
+- **Access rules:** Sign-in uses email or phone plus password. Sign-up requires email, phone, password, and WhatsApp phone verification; merchant email verification remains excluded.
+- **Verification rules:** Codes remain valid for 10 minutes, resend waits 60 seconds, each phone may receive five sends per rolling hour, and five wrong attempts invalidate the current code. WhatsApp delivery failure keeps the account unverified with later retry/support and no email fallback or bypass.
+- **Onboarding rules:** First-store setup asks only for store name, `lala` subdomain, currency, and primary language. It checks subdomain availability, never asks for a store country, and makes the storefront public immediately even when empty.
+- **Store rules:** An empty merchant account is handled explicitly. One owner may switch among or create unlimited independent stores. Team invitations and member roles remain excluded.
+- **UX rule:** Merchant access screens use a focused shell without store navigation. The account-level store list is the explicit switcher, and every current merchant screen links its store card to that list.
+- **Verification:** The static build and 16 contract tests pass.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no authentication, WhatsApp delivery, persistence, domain reservation, or Laravel code.

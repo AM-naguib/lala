@@ -26,13 +26,14 @@
 **State: Accepted by the founder.**
 
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
-- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–8 have delivered 19, leaving 46 new screen files in Batches 9–16.
+- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–9 have delivered 26, leaving 39 new screen files in Batches 10–16.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
 - Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
 - Batch 5 — Customers is accepted.
 - Batch 6 — Discounts is accepted.
 - Batch 7 — Shipping zones and Bosta is accepted.
-- Batch 8 — Dashboard and Analytics is delivered and is the current review gate.
+- Batch 8 — Dashboard and Analytics is accepted.
+- Batch 9 — Merchant access and onboarding is delivered and is the current review gate.
 - The complete portable static source is versioned under `prototype/` in the public repository.
 - The unified Motion System is implemented across all current screens: modals, drawers, popovers, toasts, and state changes now share fixed timing/easing and reduced-motion behavior.
 - Design Batch 2 remains delivered and available for review; Batch 3 is accepted. Revisions can be recorded without silently changing the approved roadmap.
@@ -150,7 +151,7 @@ Orders list and Order detail are also updated with bulk submission results and t
 
 ## Design system — Batch 8
 
-**State: Delivered; awaiting founder review.**
+**State: Accepted by the founder.**
 
 | Screen | Review URL |
 |---|---|
@@ -160,6 +161,22 @@ Orders list and Order detail are also updated with bulk submission results and t
 | Products analytics | https://lala-design-system.curbs-storm-80.chatgpt.site/analytics-products.html |
 
 Delivered behavior includes direct operational alerts, fixed Cairo periods, previous-equivalent comparison, a visible once-a-minute refresh contract, all-status Sales definition, exact seven-status count/value breakdown, Units/Value product ranking, and CSV export tied to the visible range and filters. No Estimated profit metric was introduced.
+
+## Design system — Batch 9
+
+**State: Delivered; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| Merchant sign in | https://lala-design-system.curbs-storm-80.chatgpt.site/merchant-sign-in.html |
+| Merchant sign up | https://lala-design-system.curbs-storm-80.chatgpt.site/merchant-sign-up.html |
+| Verify phone | https://lala-design-system.curbs-storm-80.chatgpt.site/merchant-verify-phone.html |
+| Password recovery | https://lala-design-system.curbs-storm-80.chatgpt.site/merchant-password-recovery.html |
+| Reset password | https://lala-design-system.curbs-storm-80.chatgpt.site/merchant-reset-password.html |
+| Store onboarding | https://lala-design-system.curbs-storm-80.chatgpt.site/store-onboarding.html |
+| Store switcher | https://lala-design-system.curbs-storm-80.chatgpt.site/stores-list.html |
+
+Delivered behavior includes email-or-phone sign-in, WhatsApp-only phone verification, exact expiry/resend/send/attempt limits, safe recovery feedback, onboarding validation, subdomain availability, immediate public-store communication, an empty merchant account, unlimited independent stores, and an owner-only store switcher. No store-country field, team roles, verification bypass, or Laravel authentication was introduced.
 
 | Screen | Review URL |
 |---|---|

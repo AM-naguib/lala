@@ -12,6 +12,13 @@ const htmlFiles = await Promise.all(
 const tokens = await readFile(resolve(publicDirectory, "tokens.css"), "utf8");
 
 const appScreens = [
+  "merchant-sign-in.html",
+  "merchant-sign-up.html",
+  "merchant-verify-phone.html",
+  "merchant-password-recovery.html",
+  "merchant-reset-password.html",
+  "store-onboarding.html",
+  "stores-list.html",
   "dashboard.html",
   "analytics-overview.html",
   "analytics-orders.html",
@@ -167,6 +174,7 @@ test("merchant primary navigation exposes current modules and no separate Catalo
     assert.match(mobilePrimary, /href="\/shipping-zones\.html"/, `${name} must expose Shipping navigation`);
     assert.doesNotMatch(mobilePrimary, /catalog-organization|Catalog|الكتالوج/, `${name} must not expose Catalog as a primary destination`);
     const aside = file.source.match(/<aside\b[\s\S]*?<\/aside>/)?.[0] ?? "";
+    assert.match(aside, /href="\/stores-list\.html"/, `${name} must expose the store switcher`);
     assert.doesNotMatch(aside, /component-gallery\.html/, `${name} must not expose review tooling to merchants`);
   }
 });
@@ -292,4 +300,55 @@ test("Batch 8 analytics preserve the approved metric and date-range contract", (
   assert.match(products.source, />Units</, "Products analytics needs the Units ranking");
   assert.match(products.source, />Value</, "Products analytics needs the Value ranking");
   assert.match(products.source, /Switching Units and Value reorders the ranking/, "The Units/Value behavior must be explicit");
+});
+
+test("Batch 9 preserves merchant verification and first-store boundaries", () => {
+  const names = [
+    "merchant-sign-in.html",
+    "merchant-sign-up.html",
+    "merchant-verify-phone.html",
+    "merchant-password-recovery.html",
+    "merchant-reset-password.html",
+    "store-onboarding.html",
+    "stores-list.html",
+  ];
+  const files = Object.fromEntries(names.map((name) => [name, htmlFiles.find((entry) => entry.name === name)]));
+  for (const [name, file] of Object.entries(files)) {
+    assert.ok(file, `${name} is missing`);
+    assert.match(file.source, /locale === 'ar'/, `${name} needs real Arabic and English state`);
+    assert.match(file.source, /component:/, `${name} needs extraction markers`);
+  }
+
+  assert.match(files["merchant-sign-in.html"].source, /Email or phone number/, "Merchant sign-in needs email-or-phone access");
+  assert.match(files["merchant-sign-in.html"].source, /Password/, "Merchant sign-in needs a password");
+  assert.match(files["merchant-sign-up.html"].source, /Email address/, "Merchant sign-up needs email");
+  assert.match(files["merchant-sign-up.html"].source, /Phone number/, "Merchant sign-up needs phone");
+  assert.match(files["merchant-sign-up.html"].source, /Email verification is not required/, "Merchant email must not gain a verification step");
+
+  const verify = files["merchant-verify-phone.html"].source;
+  assert.match(verify, /10 minutes/, "Merchant code lifetime must be 10 minutes");
+  assert.match(verify, /60/, "Merchant resend cooldown must expose 60 seconds");
+  assert.match(verify, /5 times per phone number in a rolling hour/, "Merchant send limit must stay five per rolling hour");
+  assert.match(verify, /5 attempts|2 \/ 5/, "Merchant code must be invalidated after five wrong attempts");
+  assert.match(verify, /no email fallback or bypass/i, "WhatsApp delivery failure must not bypass verification");
+
+  const onboarding = files["store-onboarding.html"].source;
+  for (const field of ["Store name", "lala subdomain", "Store currency", "Primary language"]) {
+    assert.match(onboarding, new RegExp(field), `Store onboarding is missing ${field}`);
+  }
+  assert.match(onboarding, /public even when the catalog is empty/, "The storefront must become public immediately");
+  assert.match(onboarding, /No store country is requested/, "Onboarding must not ask for a store country");
+  assert.doesNotMatch(onboarding, /name=["']country["']|id=["']country["']/, "Onboarding must not add a country field");
+  assert.match(onboarding, /That subdomain is taken/, "Subdomain availability needs an unavailable state");
+
+  const stores = files["stores-list.html"].source;
+  assert.match(stores, /no store-count limit/, "One merchant can own unlimited stores");
+  assert.match(stores, /first store|Empty account/, "The empty merchant account must be reviewable");
+  assert.match(stores, /owner-only/, "The MVP must remain owner-only");
+  assert.doesNotMatch(stores, /Invite member|Invite team|Add teammate/i, "Team invitations are not part of Batch 9");
+
+  const recovery = files["merchant-password-recovery.html"].source;
+  assert.match(recovery, /Email link/, "Recovery needs email-channel feedback");
+  assert.match(recovery, /WhatsApp code/, "Recovery needs WhatsApp-channel feedback");
+  assert.match(recovery, /same feedback is shown whether or not an account matches/, "Recovery must not disclose account existence");
 });

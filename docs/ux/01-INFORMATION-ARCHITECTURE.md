@@ -13,6 +13,7 @@
 | Tool | عملية تشغيلية تُستخدم عند الحاجة | Import products، Trash |
 | Flow child | خطوة أو نتيجة داخل مسار | Import results، Product editor، Variants |
 | Review tooling | أدوات بناء ومراجعة ليست للتاجر | Component gallery |
+| Account flow | دخول أو إعداد يسبق اختيار متجر | Sign in، Sign up، Verify phone، Recovery، Store onboarding، Store switcher |
 
 لا يجوز عرض Section أو Tool أو Flow child كأنه Module مستقل. ولا يجوز وضع أنواع مختلفة في صف Tabs واحد كأنها بدائل متساوية.
 
@@ -36,6 +37,14 @@
 | الشحن / Shipping | `shipping-zones.html` | مناطق الشحن / Zones | القائمة ومحرر المنطقة |
 | الشحن / Shipping | `custom-locations.html` | المواقع المخصصة / Custom locations | مدن ومناطق خاصة بالمتجر |
 | الشحن / Shipping | `shipping-integrations.html` | التكاملات / Integrations | نظرة المزودين و`bosta-connection.html` كمسار ربط تابع |
+
+## مسار الحساب واختيار المتجر
+
+- Sign in وSign up وPhone verification وPassword recovery/reset شاشات مركزة بلا Sidebar لأن المستخدم لم يدخل سياق متجر بعد.
+- Store onboarding يطلب الاسم و`lala` subdomain والعملة واللغة الأساسية فقط، ثم ينقل المستخدم إلى Dashboard المتجر.
+- Store switcher هو وجهة على مستوى حساب التاجر وليس Module داخل متجر. بطاقة المتجر في Sidebar تفتح `stores-list.html` من أي شاشة تاجر.
+- الحساب الفارغ ينتقل مباشرة لإنشاء أول متجر؛ الحساب متعدد المتاجر يسمح بالتبديل أو إنشاء متجر إضافي.
+- لا تظهر دعوات فريق أو صلاحيات أعضاء في هذا المسار لأن الـMVP للمالك فقط.
 
 ## لماذا Products هي الـModule الوحيدة هنا؟
 
@@ -75,7 +84,7 @@
 | المجموعة | المستوى الأول المخطط | Batch |
 |---|---|---|
 | تصميم المتجر | Storefront | 11–13 |
-| الإعدادات | Settings | 9–12 |
+| الإعدادات | Settings | 10–12 |
 
 لا تظهر ميزة جديدة كـModule قبل وجود شاشة مفيدة لها ومراجعة علاقتها بما حولها. ظهورها Disabled مع “قريبًا” استثنائي ومخصص لتوضيح خريطة قريبة، وليس قائمة أمنيات طويلة.
 

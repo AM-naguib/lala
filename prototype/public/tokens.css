@@ -54,6 +54,8 @@
   /* Shell and content geometry */
   --lala-content-max: 90rem;
   --lala-reading-max: 48rem;
+  --lala-storefront-content-max: 80rem;
+  --lala-storefront-mobile-preview: 24.375rem;
   --lala-shell-sidebar: 15.5rem;
   --lala-shell-header: 4rem;
   --lala-page-padding-mobile: 1rem;
@@ -149,6 +151,8 @@
   --shadow-sm: var(--lala-shadow-sm);
   --container-app: var(--lala-content-max);
   --container-reading: var(--lala-reading-max);
+  --container-storefront: var(--lala-storefront-content-max);
+  --container-storefront-mobile: var(--lala-storefront-mobile-preview);
   --container-drawer-md: var(--lala-drawer-md);
   --container-table-standard: var(--lala-table-min-standard);
   --container-table-wide: var(--lala-table-min-wide);

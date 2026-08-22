@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">مجموعة عطور لونا</title>
+  <desc id="desc">ثلاث زجاجات عطر على منصة حجرية بخلفية دافئة</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f4ded0"/><stop offset="1" stop-color="#c8794a"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#e7c4ad" stop-opacity=".7"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="20" stdDeviation="22" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <circle cx="1020" cy="120" r="240" fill="#fff" opacity=".12"/>
+  <path d="M0 720C250 630 420 760 650 690s380-105 550-35v245H0Z" fill="#f8eee7" opacity=".8"/>
+  <ellipse cx="600" cy="718" rx="355" ry="82" fill="#8f4d2c" opacity=".18"/>
+  <g filter="url(#shadow)">
+    <rect x="440" y="280" width="320" height="390" rx="70" fill="url(#glass)" stroke="#fff" stroke-width="8"/>
+    <rect x="500" y="210" width="200" height="95" rx="26" fill="#251b18"/>
+    <rect x="500" y="404" width="200" height="92" rx="8" fill="#fff" opacity=".9"/>
+    <text x="600" y="442" text-anchor="middle" font-family="Arial,sans-serif" font-size="25" font-weight="700" fill="#251b18">LUNA</text>
+    <text x="600" y="472" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" letter-spacing="4" fill="#7a5541">NO. 01</text>
+  </g>
+  <g opacity=".82" filter="url(#shadow)">
+    <rect x="225" y="390" width="220" height="285" rx="48" fill="#3c2b29"/>
+    <rect x="270" y="335" width="130" height="70" rx="20" fill="#191312"/>
+    <rect x="260" y="495" width="150" height="65" rx="6" fill="#efe3da"/>
+  </g>
+  <g opacity=".88" filter="url(#shadow)">
+    <rect x="755" y="370" width="225" height="305" rx="48" fill="#f1c6a9" stroke="#fff" stroke-width="6"/>
+    <rect x="805" y="310" width="125" height="75" rx="20" fill="#a8502d"/>
+    <rect x="790" y="485" width="155" height="68" rx="6" fill="#fff" opacity=".86"/>
+  </g>
+</svg>

@@ -54,6 +54,10 @@ const appScreens = [
   "store-settings-notifications.html",
   "wallet.html",
   "store-status.html",
+  "themes.html",
+  "theme-preview.html",
+  "brand-settings.html",
+  "homepage-builder.html",
 ];
 
 const merchantNavigationScreens = [
@@ -90,6 +94,10 @@ const merchantNavigationScreens = [
   "store-settings-notifications.html",
   "wallet.html",
   "store-status.html",
+  "themes.html",
+  "theme-preview.html",
+  "brand-settings.html",
+  "homepage-builder.html",
 ];
 
 test("all application screens share the app container token", () => {
@@ -431,4 +439,40 @@ test("Batch 10 preserves the approved settings, wallet, and store-status boundar
     const file = htmlFiles.find((entry) => entry.name === name);
     assert.match(file.source, /href="\/wallet\.html"/, `${name} wallet chip must open Wallet`);
   }
+});
+
+test("Batch 11 preserves the shared-theme and predefined-builder contract", () => {
+  const names = ["themes.html", "theme-preview.html", "brand-settings.html", "homepage-builder.html"];
+  const files = Object.fromEntries(names.map((name) => [name, htmlFiles.find((entry) => entry.name === name)]));
+  for (const [name, file] of Object.entries(files)) {
+    assert.ok(file, `${name} is missing`);
+    assert.match(file.source, /component: storefront-section-navigation/, `${name} must stay inside Storefront`);
+    assert.match(file.source, /href="\/themes\.html"/, `${name} must expose Themes`);
+    assert.match(file.source, /href="\/brand-settings\.html"/, `${name} must expose Branding`);
+    assert.match(file.source, /href="\/homepage-builder\.html"/, `${name} must expose Homepage`);
+    assert.match(file.source, /locale === 'ar'/, `${name} needs real Arabic and English state`);
+  }
+
+  const gallery = files["themes.html"].source;
+  for (const theme of ["Essential", "Editorial", "Bold"]) assert.match(gallery, new RegExp(theme), `Theme gallery is missing ${theme}`);
+  assert.match(gallery, /never adds, deletes, reorders, or hides a section/, "Theme application must preserve the homepage document");
+
+  const preview = files["theme-preview.html"].source;
+  assert.match(preview, /storefront-preview-renderer/, "Theme preview must use the shared renderer");
+  assert.match(preview, /max-w-storefront-mobile/, "Theme preview must expose the 390px mobile contract");
+  assert.match(preview, /dir="ltr" class="mt-1 block font-mono/, "Prices must be isolated in RTL content");
+  for (const inventory of ["In stock", "Low stock", "Out of stock"]) assert.match(preview, new RegExp(inventory), `Preview is missing ${inventory}`);
+
+  const branding = files["brand-settings.html"].source;
+  assert.match(branding, /No logo uploaded/, "Branding needs a missing-logo state");
+  assert.match(branding, /Favicon missing/, "Branding needs a missing-favicon state");
+  assert.match(branding, /do not meet normal-text contrast/, "Branding needs a contrast warning");
+  assert.doesNotMatch(branding, /fonts\.googleapis|@fontsource/, "Batch 11 must not add font requests");
+
+  const builder = files["homepage-builder.html"].source;
+  for (const action of ["move(section.id,-1)", "move(section.id,1)", "toggle(section.id)", "undo()", "redo()", "save()"]) {
+    assert.match(builder, new RegExp(action.replace(/[().,-]/g, "\\$&")), `Builder is missing ${action}`);
+  }
+  assert.match(builder, /No free-form blocks or custom HTML/, "Builder must remain predefined-only");
+  assert.doesNotMatch(builder, /contenteditable|raw HTML|custom CSS/i, "Builder must not expose arbitrary content editing");
 });

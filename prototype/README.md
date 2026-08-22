@@ -17,5 +17,7 @@ Serve `prototype/public` as the web root with any static HTTP server, then open 
 - Merchant tables use 52px rows, 12px vertical padding, 16px horizontal padding, and 14px/20px body text.
 - Shared semantic motion covers modals, drawers, popovers, toasts, and conditional surfaces with reduced-motion support.
 - Batch 7 adds the five Shipping and Bosta screens plus single/bulk shipment states inside Orders.
+- Batch 11 adds Themes, Theme preview, Branding, and a predefined-section Homepage builder under one Storefront module.
+- Merchant Admin keeps the 90rem container; Storefront preview uses a separate 80rem content contract and 390px mobile viewport.
 
-`docs/DESIGN-SYSTEM-CONSTANTS.md` records the invariant layout and component rules. `docs/MOTION-SYSTEM.md` records motion, and `docs/BATCH-7-SHIPPING.md` records the shipping/Bosta boundary. `tests/design-constants.test.mjs` guards the portable HTML contract.
+`docs/DESIGN-SYSTEM-CONSTANTS.md` records the invariant layout and component rules. `docs/MOTION-SYSTEM.md` records motion, `docs/BATCH-7-SHIPPING.md` records the shipping/Bosta boundary, and repository-level `docs/storefront/` records the theme/builder contract. `tests/design-constants.test.mjs` guards the portable HTML contract.

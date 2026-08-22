@@ -255,6 +255,15 @@ test("current merchant screens expose primary navigation on mobile", () => {
   for (const name of merchantNavigationScreens) {
     const file = htmlFiles.find((entry) => entry.name === name);
     assert.match(file.source, /component: mobile-primary-navigation/, `${name} must expose mobile primary navigation`);
+    assert.equal((file.source.match(/component: mobile-primary-navigation/g) ?? []).length, 2, `${name} must contain one bounded mobile primary navigation component`);
+  }
+});
+
+test("product screens expose one mobile product navigation without build duplication", () => {
+  for (const name of ["products-list.html", "product-editor.html", "product-variants.html", "inventory.html", "catalog-organization.html", "featured-products.html", "product-trash.html", "product-import.html", "product-import-results.html"]) {
+    const file = htmlFiles.find((entry) => entry.name === name);
+    assert.ok(file, `${name} is missing`);
+    assert.equal((file.source.match(/component: mobile-product-navigation/g) ?? []).length, 2, `${name} must contain one bounded mobile product navigation component`);
   }
 });
 
@@ -482,7 +491,7 @@ test("Batch 11.1 builder renders every addable section and restores content acce
   const builderSource = htmlFiles.find((entry) => entry.name === "homepage-builder.html")?.source;
   assert.ok(builderSource, "Homepage builder is missing");
 
-  for (const section of ["slider", "collections", "promo"]) {
+  for (const section of ["slider", "collections", "promo", "lookbook", "testimonial", "feed", "logos"]) {
     assert.match(builderSource, new RegExp(`isVisible\\('${section}'\\)`), `${section} needs a live preview renderer`);
   }
 
@@ -499,10 +508,11 @@ test("Batch 11.1 builder renders every addable section and restores content acce
   state.redo();
   assert.equal(state.heroTitleAr, "عنوان قابل للتراجع", "Redo must restore the edited Hero content");
 
-  state.add("slider", "سلايدر", "Slider");
-  assert.equal(state.isVisible("slider"), true, "An added section must become visible in the preview");
+  state.sections = state.sections.filter((section) => section.id !== "logos");
+  state.add("logos", "قائمة الشعارات", "Logo list");
+  assert.equal(state.isVisible("logos"), true, "An added section must become visible in the preview");
   state.undo();
-  assert.equal(state.isVisible("slider"), false, "Undo must remove the newly added section from the preview");
+  assert.equal(state.isVisible("logos"), false, "Undo must remove the newly added section from the preview");
 
   assert.doesNotMatch(builderSource, /role="button"/, "Section actions must use native buttons");
   assert.match(builderSource, /<button type="button" @click="move\(section\.id,-1\)" :disabled="index===0" class="[^"]*size-11/, "Move up must be a 44px native button");
@@ -521,7 +531,7 @@ test("Batch 11.4 gives every preset a current composition while sharing one docu
   }
 
   assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:42fr 58fr;min-height:37rem;margin:1rem;border-radius:2\.25rem/, "Essential needs a modern media-led commerce Hero");
-  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:1fr;min-height:45rem\}/, "Editorial needs a cinematic full-image Hero");
+  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:1fr;min-height:48rem\}/, "Editorial needs a cinematic full-image Hero");
   assert.match(previewSource, /\.sf-editorial \.sf-preview-products-grid>article:first-child\{grid-column:1\/span 7;grid-row:1\/span 2/, "Editorial needs an asymmetric magazine product composition");
   assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{position:relative;grid-template-columns:repeat\(12,1fr\);min-height:41rem;[^}]*background:linear-gradient/, "Bold needs an expressive twelve-column campaign Hero");
   assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid\{grid-template-columns:repeat\(12,1fr\);grid-template-rows:repeat\(2,auto\)/, "Bold needs a product Bento grid");
@@ -558,8 +568,25 @@ test("Batch 11.4 previews every approved section while preserving Builder visibi
   assert.ok(previewSource, "Theme preview is missing");
   assert.ok(builderSource, "Homepage builder is missing");
 
-  for (const section of ["slider", "collections", "promo"]) {
+  for (const section of ["slider", "collections", "promo", "lookbook", "testimonial", "feed", "logos"]) {
     assert.match(previewSource, new RegExp(`isVisible\\('${section}'\\) : true`), `${section} must be visible in the complete theme preview`);
     assert.match(builderSource, new RegExp(`isVisible\\('${section}'\\) : true`), `${section} must still delegate visibility to Builder state`);
   }
+});
+
+test("Batch 11.5 ships the reference-led Editorial system without theme-only content", () => {
+  const previewSource = htmlFiles.find((entry) => entry.name === "theme-preview.html")?.source;
+  const builderSource = htmlFiles.find((entry) => entry.name === "homepage-builder.html")?.source;
+  const gallerySource = htmlFiles.find((entry) => entry.name === "themes.html")?.source;
+  assert.ok(previewSource && builderSource && gallerySource, "Batch 11.5 storefront screens are missing");
+
+  assert.match(previewSource, /class="sf-announcement"/, "The fixed Header region needs an announcement bar");
+  assert.match(previewSource, /\.sf-editorial>header\{position:absolute/, "Editorial needs an overlaid system Header");
+  assert.match(previewSource, /class="[^"]*sf-preview-lookbook/, "Editorial needs the shared Shoppable lookbook renderer");
+  assert.match(previewSource, /class="[^"]*sf-preview-quote/, "Editorial needs the shared Customer quote renderer");
+  assert.match(previewSource, /class="[^"]*sf-preview-feed/, "Editorial needs the shared Shop feed renderer");
+  assert.match(previewSource, /class="[^"]*sf-preview-logos/, "Editorial needs the shared Logo list renderer");
+  assert.match(gallerySource, /currentTheme: 'editorial'/, "Editorial should be the active review preset");
+  assert.match(builderSource, /theme:'editorial'/, "Builder should open on the active Editorial preset");
+  assert.doesNotMatch(previewSource, /x-show="theme\s*===/, "New content must remain shared across every preset");
 });

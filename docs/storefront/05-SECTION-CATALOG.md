@@ -6,7 +6,7 @@ This is the closed Batch 11 catalog. Adding another section type requires a docu
 
 ### Header
 
-Required and non-reorderable relative to homepage content. Batch 11 preview includes store identity, primary navigation, search, and cart affordance. Detailed header configuration is deferred.
+Required and non-reorderable relative to homepage content. Batch 11.5 preview includes an announcement bar, store identity, primary navigation, search, and cart affordance. The announcement bar is part of the Header system region, not a reorderable homepage section. Detailed header configuration is deferred.
 
 ### Footer
 
@@ -70,12 +70,44 @@ Fields per benefit: icon from curated set, bilingual title, bilingual descriptio
 
 Constraints: presentational only; do not promise product capabilities that are not configured.
 
+### 8. Shoppable lookbook
+
+Purpose: connect an editorial campaign image to a small set of existing products.
+
+Fields: bilingual heading/body, campaign image and alt text, two or more product references, hotspot coordinates.
+
+Constraints: every hotspot references an existing visible product; keyboard and non-visual access must expose the same product links; no arbitrary overlay content.
+
+### 9. Customer quote
+
+Purpose: present one merchant-curated customer note without introducing a reviews system.
+
+Fields: bilingual quote, customer display name, optional city/context label.
+
+Constraints: no rating, moderation workflow, automatic publishing, verified-purchase claim, or customer submission flow. The merchant is responsible for permission and accuracy.
+
+### 10. Shop feed
+
+Purpose: show a curated visual grid that links to products, collections, or configured social destinations.
+
+Fields per item: image, alt text, destination type, destination reference.
+
+Constraints: static merchant-curated items only; no live third-party feed, tracking pixel, or embedded social script in Batch 11.5.
+
+### 11. Logo list
+
+Purpose: display a restrained list of merchant-owned lines, stockists, press marks, or partners.
+
+Fields per item: logo/text mark, accessible label, optional destination.
+
+Constraints: manual merchant content only; no implied endorsement or unverified partner claim.
+
 ## Explicitly not in Batch 11
 
 - Free-form canvas blocks.
 - Raw HTML or custom CSS blocks.
 - Newsletter/customer data capture.
-- Reviews/testimonials lifecycle.
+- Reviews, ratings, or customer-submission lifecycle. The curated Customer quote section above is presentational only.
 - Countdown timers.
 - Video autoplay.
 - Nested arbitrary block trees.

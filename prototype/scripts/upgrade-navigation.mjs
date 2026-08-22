@@ -6,6 +6,10 @@ const publicRoot = resolve(projectRoot, "public");
 
 const merchantScreens = [
   "app-shell.html",
+  "dashboard.html",
+  "analytics-overview.html",
+  "analytics-orders.html",
+  "analytics-products.html",
   "orders-list.html",
   "order-detail.html",
   "order-create.html",
@@ -31,6 +35,8 @@ const merchantScreens = [
 ];
 
 const orderScreens = new Set(["orders-list.html", "order-detail.html", "order-create.html"]);
+const dashboardScreens = new Set(["dashboard.html"]);
+const analyticsScreens = new Set(["analytics-overview.html", "analytics-orders.html", "analytics-products.html"]);
 const customerScreens = new Set(["customers-list.html", "customer-detail.html", "customer-identity-review.html"]);
 const discountScreens = new Set(["discounts-list.html", "discount-editor.html"]);
 const shippingScreens = new Set([
@@ -83,7 +89,8 @@ function productChild({ href, arabic, english, active, badge = "" }) {
 }
 
 function desktopSidebar(name) {
-  const dashboardActive = name === "app-shell.html";
+  const dashboardActive = dashboardScreens.has(name);
+  const analyticsActive = analyticsScreens.has(name);
   const ordersActive = orderScreens.has(name);
   const productsActive = productScreens.has(name);
   const customersActive = customerScreens.has(name);
@@ -107,12 +114,13 @@ function desktopSidebar(name) {
     : "";
 
   return `<aside class="fixed inset-y-0 start-0 z-sidebar hidden w-sidebar flex-col border-e border-border bg-card lg:flex">
-      <div class="flex h-app-header items-center gap-2.5 border-b border-border px-5"><a href="/app-shell.html" class="flex items-center gap-2.5" aria-label="lala dashboard"><span class="grid size-8 place-items-center rounded-lg bg-accent font-bold text-white">l</span><span class="text-xl font-bold">lala</span></a></div>
+      <div class="flex h-app-header items-center gap-2.5 border-b border-border px-5"><a href="/dashboard.html" class="flex items-center gap-2.5" aria-label="lala dashboard"><span class="grid size-8 place-items-center rounded-lg bg-accent font-bold text-white">l</span><span class="text-xl font-bold">lala</span></a></div>
       <div class="px-3 pt-4"><div class="flex items-center gap-3 rounded-lg border border-border bg-subtle p-3"><span class="grid size-8 place-items-center rounded-md bg-ink text-xs font-semibold text-white">LN</span><div class="min-w-0"><p class="truncate text-sm font-semibold">${bilingual("متجر لونا", "Luna Store")}</p><p class="truncate text-xs text-muted">luna.lala.store</p></div></div></div>
       <nav class="flex-1 overflow-y-auto px-3 py-5" :aria-label="locale === 'ar' ? 'القائمة الرئيسية' : 'Main navigation'">
         <div class="space-y-1">
-          ${topLink({ href: "/app-shell.html", icon: "◫", arabic: "لوحة التحكم", english: "Dashboard", active: dashboardActive })}
+          ${topLink({ href: "/dashboard.html", icon: "◫", arabic: "لوحة التحكم", english: "Dashboard", active: dashboardActive })}
           ${topLink({ href: "/orders-list.html", icon: "▤", arabic: "الطلبات", english: "Orders", active: ordersActive, badge: orderBadge })}
+          ${topLink({ href: "/analytics-overview.html", icon: "◒", arabic: "التحليلات", english: "Analytics", active: analyticsActive })}
           ${topLink({ href: "/products-list.html", icon: "◇", arabic: "المنتجات", english: "Products", active: productsActive })}
           ${productChildren}
           ${topLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customersActive })}
@@ -134,8 +142,9 @@ function mobileTopLink({ href, icon, arabic, english, active }) {
 function mobilePrimaryNavigation(name) {
   return `<!-- component: mobile-primary-navigation -->
       <nav class="flex gap-1 overflow-x-auto border-b border-border bg-card px-page-mobile py-2 sm:px-page-tablet lg:hidden" :aria-label="locale === 'ar' ? 'التنقل الرئيسي' : 'Primary navigation'">
-        ${mobileTopLink({ href: "/app-shell.html", icon: "◫", arabic: "الرئيسية", english: "Dashboard", active: name === "app-shell.html" })}
+        ${mobileTopLink({ href: "/dashboard.html", icon: "◫", arabic: "الرئيسية", english: "Dashboard", active: dashboardScreens.has(name) })}
         ${mobileTopLink({ href: "/orders-list.html", icon: "▤", arabic: "الطلبات", english: "Orders", active: orderScreens.has(name) })}
+        ${mobileTopLink({ href: "/analytics-overview.html", icon: "◒", arabic: "التحليلات", english: "Analytics", active: analyticsScreens.has(name) })}
         ${mobileTopLink({ href: "/products-list.html", icon: "◇", arabic: "المنتجات", english: "Products", active: productScreens.has(name) })}
         ${mobileTopLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customerScreens.has(name) })}
         ${mobileTopLink({ href: "/discounts-list.html", icon: "%", arabic: "الخصومات", english: "Discounts", active: discountScreens.has(name) })}
@@ -191,7 +200,7 @@ for (const name of merchantScreens) {
   const responsiveNavigation = `\n      ${mobilePrimaryNavigation(name)}${mobileProductNavigation(name)}`;
   source = `${source.slice(0, insertionPoint)}${responsiveNavigation}${source.slice(insertionPoint)}`;
 
-  source = source.replaceAll('href="/component-gallery.html" class="font-semibold lg:hidden"', 'href="/app-shell.html" class="font-semibold lg:hidden"');
+  source = source.replaceAll('href="/component-gallery.html" class="font-semibold lg:hidden"', 'href="/dashboard.html" class="font-semibold lg:hidden"');
 
   if (["catalog-organization.html", "featured-products.html", "product-trash.html", "product-import.html"].includes(name)) {
     source = source.replace(/\s*<nav class="mt-6 flex min-w-max gap-1 overflow-x-auto border-b border-border">[\s\S]*?<\/nav>/, "");

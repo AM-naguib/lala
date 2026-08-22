@@ -8,7 +8,7 @@
 
 | النوع | معناه | أمثلة |
 |---|---|---|
-| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Products، Customers، Discounts، Shipping |
+| Module | مساحة عمل يومية مستقلة | Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping |
 | Section | جزء دائم داخل Module | Inventory، Organization، Featured products |
 | Tool | عملية تشغيلية تُستخدم عند الحاجة | Import products، Trash |
 | Flow child | خطوة أو نتيجة داخل مسار | Import results، Product editor، Variants |
@@ -20,8 +20,11 @@
 
 | المستوى الأول | الوجهة | المستوى الثاني | الشاشات التابعة |
 |---|---|---|---|
-| لوحة التحكم / Dashboard | `app-shell.html` | — | الملخص والتنبيهات والاختصارات |
+| لوحة التحكم / Dashboard | `dashboard.html` | — | الملخص اليومي والتنبيهات والاختصارات التشغيلية |
 | الطلبات / Orders | `orders-list.html` | — | القائمة، التفاصيل، الإنشاء اليدوي، الطباعة |
+| التحليلات / Analytics | `analytics-overview.html` | نظرة عامة / Overview | الفترات، المقارنة، التعريفات، والتصدير |
+| التحليلات / Analytics | `analytics-orders.html` | الطلبات / Orders | عدد وقيمة الطلبات لكل حالة أساسية |
+| التحليلات / Analytics | `analytics-products.html` | المنتجات / Products | ترتيب المنتجات بالقطع أو القيمة |
 | المنتجات / Products | `products-list.html` | كل المنتجات | القائمة، المحرر، الخيارات والمتغيرات |
 | المنتجات / Products | `inventory.html` | المخزون / Inventory | الكميات، الحدود، التعديل، السجل |
 | المنتجات / Products | `catalog-organization.html` | التنظيم / Organization | Categories، Collections، Tags |
@@ -46,14 +49,15 @@
 
 ### Desktop
 
-- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Products، Customers، Discounts، Shipping.
+- Sidebar بعرض 248px هو المستوى الأول الثابت: Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping.
 - عند دخول أي شاشة منتج، تتوسع Products وتعرض Sections أولًا ثم Product tools في مجموعة معنونة منفصلة.
 - Parent وChild الصحيحان فقط يأخذان Active state و`aria-current="page"`.
 - لا يتغير عرض الـSidebar أو الـContainer أو موضع المحتوى بين الشاشات.
 
 ### Mobile وTablet
 
-- Primary navigation يعرض Dashboard، Orders، Products، Customers، Discounts، Shipping في المرحلة الحالية، ويستخدم تمريرًا أفقيًا عند ضيق العرض بدل ضغط العناصر.
+- Primary navigation يعرض Dashboard، Orders، Analytics، Products، Customers، Discounts، Shipping في المرحلة الحالية، ويستخدم تمريرًا أفقيًا عند ضيق العرض بدل ضغط العناصر.
+- داخل Analytics يظهر شريط Sections: Overview، Orders، Products.
 - داخل Shipping يظهر شريط Sections: Zones، Custom locations، Integrations. صفحة Bosta connection تظل Flow child داخل Integrations.
 - داخل Products يظهر شريط Sections: All، Inventory، Organization، Featured، ثم Tools.
 - Tools تفتح Import وTrash؛ لا تظهر Catalog أو Inventory كوجهات مستوى أول منفصلة.
@@ -70,7 +74,6 @@
 
 | المجموعة | المستوى الأول المخطط | Batch |
 |---|---|---|
-| التقارير | Analytics | 8 |
 | تصميم المتجر | Storefront | 11–13 |
 | الإعدادات | Settings | 9–12 |
 

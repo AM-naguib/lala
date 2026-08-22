@@ -1,5 +1,14 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 8 Dashboard and Analytics delivered
+
+- Recorded founder acceptance of Batch 7 and authorization of Batch 8 in D-267.
+- Added D-268 for Dashboard, Analytics overview, Orders analytics, and Products analytics.
+- Added Analytics as a level-one Merchant module with Overview, Orders, and Products sections.
+- Preserved Cairo time, the five approved date ranges, previous-equivalent comparison, all-status Sales definition, exact seven-status breakdown, Units/Value product ranking, and filtered CSV scope.
+- Kept Estimated profit outside the product and added contract tests for every metric boundary.
+- Advanced the review gate to Batch 8 before Batch 9 Merchant access and onboarding.
+
 ## 2026-08-22 — Design Batch 5 Customers delivered
 
 - Recorded founder acceptance of corrected Design Batch 4 in D-260.

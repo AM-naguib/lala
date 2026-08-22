@@ -2020,3 +2020,22 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Mapping:** `accepted` → Processing; `picked up` or `in transit` → Shipped; `delivered` → Delivered; `cancelled` → Cancelled; `returned` → Returned.
 - **UX rule:** Shipping is one level-one Merchant module with Zones, Custom locations, and Integrations as related internal sections; Bosta connection is a child of Integrations.
 - **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no real credentials, provider requests, persistence, queues, or Laravel code.
+
+## D-267 — Design Batch 7 accepted and Batch 8 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Shipping zones, Custom locations, Bosta connection, and order-submission states delivered in Batch 7 and authorize Batch 8 — Dashboard and Analytics.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-268 — Design Batch 8 Dashboard and Analytics scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 8 contains the merchant Dashboard, Analytics overview, Orders analytics, and Products analytics as four portable static screens. Dashboard is the daily action surface; Analytics is a separate level-one module with Overview, Orders, and Products sections.
+- **Time rules:** Every view exposes Today, Yesterday, 7 days, 30 days, and Custom range; comparison uses the previous equivalent period; periods and timestamps use Cairo time; the refresh note is approximately once a minute.
+- **Metric rules:** Headline Sales is the total value of all orders created in the selected range, including Cancelled and Returned. Orders analytics preserves the exact seven core statuses and separates count from value. Products ranking toggles Units and Value. Estimated profit remains excluded.
+- **Export rule:** CSV export uses the visible date range and active filters/ranking.
+- **UX rule:** Dashboard links directly to operational queues. Analytics uses one internal section navigation and preserves the shared 1440px container on every screen.
+- **Verification:** The static build and 15 contract tests pass.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no persistence, charting dependency, server analytics, or Laravel code.

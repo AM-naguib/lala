@@ -33,7 +33,9 @@ The shared motion contract is documented in [`prototype/docs/MOTION-SYSTEM.md`](
 
 Batch 7 Shipping and Bosta boundaries are documented in [`prototype/docs/BATCH-7-SHIPPING.md`](prototype/docs/BATCH-7-SHIPPING.md).
 
-Current Merchant level-one modules are Dashboard, Orders, Products, Customers, Discounts, and Shipping. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Zones, Custom locations, and Integrations belong inside Shipping; Component Gallery is review-only.
+Batch 8 Dashboard and Analytics definitions are documented in [`prototype/docs/BATCH-8-ANALYTICS.md`](prototype/docs/BATCH-8-ANALYTICS.md).
+
+Current Merchant level-one modules are Dashboard, Orders, Analytics, Products, Customers, Discounts, and Shipping. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Zones, Custom locations, and Integrations belong inside Shipping; Component Gallery is review-only.
 
 ## Current snapshot
 
@@ -185,6 +187,6 @@ Current Merchant level-one modules are Dashboard, Orders, Products, Customers, D
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: remain static, review delivered Batches 2 and 7, then continue with Batch 8 Dashboard and Analytics after acceptance. Laravel implementation is postponed until explicit founder approval.
+- Immediate focus: remain static, review delivered Batches 2 and 8, then continue with Batch 9 Merchant access and onboarding after acceptance. Laravel implementation is postponed until explicit founder approval.
 
-Last updated: 2026-08-21 (Africa/Cairo)
+Last updated: 2026-08-22 (Africa/Cairo)

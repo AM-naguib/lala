@@ -26,12 +26,13 @@
 **State: Accepted by the founder.**
 
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
-- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–7 have delivered 15, leaving 50 new screen files in Batches 8–16.
+- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–8 have delivered 19, leaving 46 new screen files in Batches 9–16.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
 - Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
 - Batch 5 — Customers is accepted.
 - Batch 6 — Discounts is accepted.
-- Batch 7 — Shipping zones and Bosta is delivered and is the current review gate.
+- Batch 7 — Shipping zones and Bosta is accepted.
+- Batch 8 — Dashboard and Analytics is delivered and is the current review gate.
 - The complete portable static source is versioned under `prototype/` in the public repository.
 - The unified Motion System is implemented across all current screens: modals, drawers, popovers, toasts, and state changes now share fixed timing/easing and reduced-motion behavior.
 - Design Batch 2 remains delivered and available for review; Batch 3 is accepted. Revisions can be recorded without silently changing the approved roadmap.
@@ -135,7 +136,7 @@ Delivered behavior includes active/scheduled/expired/exhausted lifecycle states,
 
 ## Design system — Batch 7
 
-**State: Delivered; awaiting founder review.**
+**State: Accepted by the founder.**
 
 | Screen | Review URL |
 |---|---|
@@ -146,6 +147,19 @@ Delivered behavior includes active/scheduled/expired/exhausted lifecycle states,
 | Bosta connection | https://lala-design-system.curbs-storm-80.chatgpt.site/bosta-connection.html |
 
 Orders list and Order detail are also updated with bulk submission results and the complete Not sent, Sending, Sent, Failed/retry, and duplicate-active-shipment states. Creating a shipment remains separate from changing the controlled core order status.
+
+## Design system — Batch 8
+
+**State: Delivered; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| Dashboard | https://lala-design-system.curbs-storm-80.chatgpt.site/dashboard.html |
+| Analytics overview | https://lala-design-system.curbs-storm-80.chatgpt.site/analytics-overview.html |
+| Orders analytics | https://lala-design-system.curbs-storm-80.chatgpt.site/analytics-orders.html |
+| Products analytics | https://lala-design-system.curbs-storm-80.chatgpt.site/analytics-products.html |
+
+Delivered behavior includes direct operational alerts, fixed Cairo periods, previous-equivalent comparison, a visible once-a-minute refresh contract, all-status Sales definition, exact seven-status count/value breakdown, Units/Value product ranking, and CSV export tied to the visible range and filters. No Estimated profit metric was introduced.
 
 | Screen | Review URL |
 |---|---|

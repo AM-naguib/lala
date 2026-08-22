@@ -12,6 +12,10 @@ const htmlFiles = await Promise.all(
 const tokens = await readFile(resolve(publicDirectory, "tokens.css"), "utf8");
 
 const appScreens = [
+  "dashboard.html",
+  "analytics-overview.html",
+  "analytics-orders.html",
+  "analytics-products.html",
   "app-shell.html",
   "component-gallery.html",
   "orders-list.html",
@@ -40,6 +44,10 @@ const appScreens = [
 ];
 
 const merchantNavigationScreens = [
+  "dashboard.html",
+  "analytics-overview.html",
+  "analytics-orders.html",
+  "analytics-products.html",
   "app-shell.html",
   "orders-list.html",
   "order-detail.html",
@@ -151,6 +159,8 @@ test("merchant primary navigation exposes current modules and no separate Catalo
     const file = htmlFiles.find((entry) => entry.name === name);
     assert.ok(file, `${name} is missing`);
     const mobilePrimary = componentSource(file, "mobile-primary-navigation");
+    assert.match(mobilePrimary, /href="\/dashboard\.html"/, `${name} must expose Dashboard navigation`);
+    assert.match(mobilePrimary, /href="\/analytics-overview\.html"/, `${name} must expose Analytics navigation`);
     assert.match(mobilePrimary, /href="\/products-list\.html"/, `${name} must expose Products navigation`);
     assert.match(mobilePrimary, /href="\/customers-list\.html"/, `${name} must expose Customers navigation`);
     assert.match(mobilePrimary, /href="\/discounts-list\.html"/, `${name} must expose Discounts navigation`);
@@ -248,4 +258,38 @@ test("Batch 4 screens do not mix unrelated destinations as peer tabs", () => {
     const file = htmlFiles.find((entry) => entry.name === name);
     assert.doesNotMatch(file.source, /mt-6 flex min-w-max gap-1 overflow-x-auto border-b/, `${name} still contains the rejected peer-tab pattern`);
   }
+});
+
+test("Batch 8 analytics preserve the approved metric and date-range contract", () => {
+  const names = ["dashboard.html", "analytics-overview.html", "analytics-orders.html", "analytics-products.html"];
+  const files = names.map((name) => htmlFiles.find((entry) => entry.name === name));
+  for (const file of files) {
+    assert.ok(file, "Batch 8 analytics screen is missing");
+    for (const range of ["Today", "Yesterday", "7 days", "30 days", "Custom range"]) {
+      assert.match(file.source, new RegExp(range, "i"), `${file.name} is missing ${range}`);
+    }
+    assert.match(file.source, /Cairo|القاهرة/, `${file.name} must define Cairo time`);
+    assert.match(file.source, /Compare previous period|قارن بالفترة السابقة/, `${file.name} must expose prior-period comparison`);
+    assert.match(file.source, /Export CSV|تصدير CSV/, `${file.name} must expose CSV export`);
+  }
+
+  const overview = files[1];
+  for (const status of ["New", "Confirmed", "Processing", "Shipped", "Delivered", "Cancelled", "Returned"]) {
+    assert.match(overview.source, new RegExp(status), `Sales definition is missing ${status}`);
+  }
+  assert.match(overview.source, /CSV export uses the visible date range and filters/, "CSV scope must match visible filters");
+  assert.doesNotMatch(overview.source, /Estimated profit[^<]*EGP|Gross profit|Net profit/i, "Analytics must not introduce a profit metric");
+
+  const orders = files[2];
+  for (const status of ["New", "Confirmed", "Processing", "Shipped", "Delivered", "Cancelled", "Returned"]) {
+    assert.match(orders.source, new RegExp(status), `Orders analytics is missing ${status}`);
+  }
+  assert.match(orders.source, /Order count/, "Orders analytics needs a count view");
+  assert.match(orders.source, /Order value/, "Orders analytics needs a value view");
+
+  const products = files[3];
+  assert.match(products.source, /Rank by:/, "Products analytics must expose ranking controls");
+  assert.match(products.source, />Units</, "Products analytics needs the Units ranking");
+  assert.match(products.source, />Value</, "Products analytics needs the Value ranking");
+  assert.match(products.source, /Switching Units and Value reorders the ranking/, "The Units/Value behavior must be explicit");
 });

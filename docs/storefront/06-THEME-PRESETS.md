@@ -51,18 +51,18 @@ Position: energetic, promotion-forward, high contrast.
 - Content disappearing because a preset has no renderer.
 - A theme-only section type.
 
-## Implemented layout contract — Batch 11.2
+## Implemented layout contract — Batch 11.3
 
 | Component | Essential | Editorial | Bold |
 |---|---|---|---|
-| Header | Compact conventional navigation | Centered masthead | Dark high-contrast system bar |
-| Hero | Balanced 50/50 split | Full-bleed image with editorial overlay | Asymmetric 5/7 grid with hard outline |
-| Products | Quiet three-card grid | Feature-first wide composition | Outlined cards with emphasized price and stock |
-| Collections | Even compact cards | Wide lead collection plus supporting cards | Framed lead collection with dense supporting cards |
-| Promotion | Direct accent strip | Restrained bordered announcement | Dark campaign block with yellow CTA |
-| Mobile | Familiar single-column collapse | Preserved image-led overlay and spacing | Single-column outlined stack |
+| Header | Compact conventional navigation | Centered editorial masthead | Deep-plum campaign frame |
+| Hero | Calm 46/54 product split | Cinematic full-image overlay | Expressive 52/48 coral-gradient composition |
+| Products | Quiet elevated three-card grid | Magazine-style feature composition | Rounded elevated cards with a tinted lead product |
+| Collections | Even compact cards | Wide lead collection plus supporting stories | High-energy campaign tiles without heavy outlines |
+| Promotion | Direct dark accent strip | Restrained typographic announcement | Deep-plum campaign block with a light CTA |
+| Mobile | Product message then image | Preserved image-led overlay and editorial rhythm | Coral story followed by rounded campaign imagery |
 
-These are renderer variants only. They do not branch content, section order, visibility, catalog references, language fallback, price values, or inventory behavior.
+These are renderer variants only. Batch 11.3 also replaces the legacy flat SVG placeholders with optimized original WebP storefront photography. It does not branch content, section order, visibility, catalog references, language fallback, price values, or inventory behavior.
 ## Font policy for Batch 11
 
 The current prototype loads only self-hosted IBM Plex Sans Arabic for all interface/body/display text and IBM Plex Mono for operational values. Brand Settings exposes the font choice as a curated-control pattern but does not introduce additional network requests. Exact extra bilingual-safe production families remain deferred until licensing, Arabic shaping, weight coverage, and performance are verified.

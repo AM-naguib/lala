@@ -1,5 +1,13 @@
 # Documentation Changelog
 
+## 2026-08-22 — Design Batch 11.3 premium visual rebuild
+
+- Re-ran visual direction research against official Shopify Dawn, Prestige, and Impact patterns plus premium fragrance storefront references.
+- Rebuilt Essential as a calm product-first system, Editorial as a cinematic image-led composition, and Bold as an expressive coral/plum campaign system without harsh yellow or comic-style outlines.
+- Added three optimized original WebP storefront assets and removed the legacy flat storefront SVGs from all Batch 11 screens.
+- Preserved one shared section document, RTL content, isolated prices, fixed 390px preview, and content/order/visibility invariants across theme changes.
+- Visually verified all three presets on desktop and mobile in a real browser; the deterministic build and 20/20 automated tests pass.
+
 ## 2026-08-22 — Design Batch 11.2 real theme differentiation
 
 - Kept one shared Storefront document and renderer while adding preset-specific layout composition instead of palette-only skins.

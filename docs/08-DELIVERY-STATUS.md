@@ -197,7 +197,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 
 ## Design system — Batch 11
 
-**State: Corrected in Batch 11.2; awaiting founder review.**
+**State: Corrected in Batch 11.3; awaiting founder review.**
 
 | Screen | Review URL |
 |---|---|
@@ -206,7 +206,7 @@ Settings is one level-one Merchant module with six coherent sections. The Wallet
 | Branding | https://lala-design-system.curbs-storm-80.chatgpt.site/brand-settings.html |
 | Homepage builder | https://lala-design-system.curbs-storm-80.chatgpt.site/homepage-builder.html |
 
-The approved architecture uses one shared section document and renderer plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. Batch 11.1 completed renderer and Builder correctness; Batch 11.2 adds real layout differentiation across Header, Hero, Slider, Benefits, products, collections, story, promotion, and Footer. Essential is compact and product-first, Editorial is image-led and spacious, and Bold is asymmetric, outlined, and promotion-forward. Desktop and fixed 390px mobile compositions remain RTL-safe, prices stay isolated, and the deterministic build plus 19/19 automated tests pass.
+The approved architecture uses one shared section document and renderer plus Essential, Editorial, and Bold presets. Applying a theme preserves content, order, visibility, and catalog references. Batch 11.1 completed renderer and Builder correctness; Batch 11.3 rebuilds the visual system with optimized original product photography and genuinely different premium compositions across Header, Hero, Slider, Benefits, products, collections, story, promotion, and Footer. Essential is calm and product-first, Editorial is cinematic and image-led, and Bold is expressive with coral/plum gradients and elevated cards. Desktop and fixed 390px mobile compositions remain RTL-safe, prices stay isolated, and real-browser review plus 20/20 automated tests pass.
 
 The dedicated [`storefront/`](storefront/README.md) folder contains the research, architecture contract, editor UX, section catalog, theme definitions, execution plan, and deferred decisions used to implement this batch.
 

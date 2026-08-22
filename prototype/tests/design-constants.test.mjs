@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import { resolve } from "node:path";
 import vm from "node:vm";
@@ -510,7 +510,7 @@ test("Batch 11.1 builder renders every addable section and restores content acce
   assert.match(builderSource, /<button type="button" @click="toggle\(section\.id\)" class="[^"]*min-h-11/, "Hide/show must be a 44px native button");
 });
 
-test("Batch 11.2 gives every preset a distinct layout while sharing one document", () => {
+test("Batch 11.3 gives every preset a distinct premium layout while sharing one document", () => {
   const previewSource = htmlFiles.find((entry) => entry.name === "theme-preview.html")?.source;
   const gallerySource = htmlFiles.find((entry) => entry.name === "themes.html")?.source;
   assert.ok(previewSource, "Theme preview is missing");
@@ -520,14 +520,33 @@ test("Batch 11.2 gives every preset a distinct layout while sharing one document
     assert.match(previewSource, new RegExp("\\." + theme), theme + " layout rules are missing");
   }
 
-  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:minmax\(0,1fr\);min-height:34rem\}/, "Editorial needs a full-bleed single-plane Hero");
-  assert.match(previewSource, /\.sf-editorial \.sf-preview-products-grid>article:first-child\{grid-column:1\/-1;display:grid/, "Editorial needs an image-led featured-product composition");
-  assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{grid-template-columns:5fr 7fr;border-bottom:3px solid #171717\}/, "Bold needs an asymmetric outlined Hero");
-  assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid>article\{border:3px solid #171717/, "Bold needs outlined promotion-forward product cards");
-  assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}/, "Essential needs the compact split Hero");
+  assert.match(previewSource, /\.sf-essential \.sf-preview-hero\{grid-template-columns:46fr 54fr;min-height:31rem\}/, "Essential needs a calm product-first split Hero");
+  assert.match(previewSource, /\.sf-editorial \.sf-preview-hero\{display:grid;grid-template-columns:minmax\(0,1fr\);min-height:36rem\}/, "Editorial needs a cinematic full-image Hero");
+  assert.match(previewSource, /\.sf-editorial \.sf-preview-products-grid>article:first-child\{grid-column:1;grid-row:1\/span 2/, "Editorial needs a magazine-style featured-product composition");
+  assert.match(previewSource, /\.sf-bold \.sf-preview-hero\{grid-template-columns:52fr 48fr;min-height:33rem;background:linear-gradient/, "Bold needs an expressive gradient Hero");
+  assert.match(previewSource, /\.sf-bold \.sf-preview-products-grid>article\{[^}]*border:1px solid rgb\(33 27 45\/.08\);[^}]*box-shadow:0 16px 34px/, "Bold needs elevated promotion-forward product cards");
   assert.match(gallerySource, /\.sf-thumb-editorial>div>div:last-child\{position:relative;display:block\}/, "Theme cards must ship their structural preview rules");
 
   assert.doesNotMatch(previewSource, /x-show="theme\s*===/, "Theme selection must not branch section content or visibility");
   assert.equal((previewSource.match(/id="products"/g) ?? []).length, 1, "All presets must reuse one Featured products section");
   assert.equal((previewSource.match(/storefront-preview-renderer/g) ?? []).length, 2, "The page must contain one shared renderer component");
+});
+
+test("Batch 11.3 uses optimized premium imagery without legacy storefront SVGs", async () => {
+  const names = ["themes.html", "theme-preview.html", "brand-settings.html", "homepage-builder.html"];
+  const files = Object.fromEntries(names.map((name) => [name, htmlFiles.find((entry) => entry.name === name)]));
+
+  for (const [name, file] of Object.entries(files)) {
+    assert.ok(file, `${name} is missing`);
+    assert.match(file.source, /\/storefront-hero-v3\.webp/, `${name} needs the premium Hero image`);
+    assert.doesNotMatch(file.source, /\/storefront-(?:hero|product-[123])\.svg/, `${name} must not use legacy storefront SVGs`);
+  }
+
+  for (const asset of ["storefront-hero-v3.webp", "storefront-night-veil-v3.webp", "storefront-spice-balm-v3.webp"]) {
+    await access(resolve(publicDirectory, asset));
+  }
+
+  const preview = files["theme-preview.html"].source;
+  assert.match(preview, /\/storefront-night-veil-v3\.webp/, "Preview needs the Night Veil product image");
+  assert.match(preview, /\/storefront-spice-balm-v3\.webp/, "Preview needs the Spice Balm product image");
 });

@@ -32,6 +32,11 @@ const appScreens = [
   "customer-identity-review.html",
   "discounts-list.html",
   "discount-editor.html",
+  "shipping-zones.html",
+  "shipping-zone-editor.html",
+  "custom-locations.html",
+  "shipping-integrations.html",
+  "bosta-connection.html",
 ];
 
 const merchantNavigationScreens = [
@@ -53,6 +58,11 @@ const merchantNavigationScreens = [
   "customer-identity-review.html",
   "discounts-list.html",
   "discount-editor.html",
+  "shipping-zones.html",
+  "shipping-zone-editor.html",
+  "custom-locations.html",
+  "shipping-integrations.html",
+  "bosta-connection.html",
 ];
 
 test("all application screens share the app container token", () => {
@@ -144,6 +154,7 @@ test("merchant primary navigation exposes current modules and no separate Catalo
     assert.match(mobilePrimary, /href="\/products-list\.html"/, `${name} must expose Products navigation`);
     assert.match(mobilePrimary, /href="\/customers-list\.html"/, `${name} must expose Customers navigation`);
     assert.match(mobilePrimary, /href="\/discounts-list\.html"/, `${name} must expose Discounts navigation`);
+    assert.match(mobilePrimary, /href="\/shipping-zones\.html"/, `${name} must expose Shipping navigation`);
     assert.doesNotMatch(mobilePrimary, /catalog-organization|Catalog|الكتالوج/, `${name} must not expose Catalog as a primary destination`);
     const aside = file.source.match(/<aside\b[\s\S]*?<\/aside>/)?.[0] ?? "";
     assert.doesNotMatch(aside, /component-gallery\.html/, `${name} must not expose review tooling to merchants`);
@@ -164,6 +175,40 @@ test("Batch 6 discounts preserve the approved coupon model", () => {
   assert.match(editor.source, /before discount|قبل الخصم/, "Minimum subtotal basis must be explicit");
   assert.match(editor.source, /excludes shipping|لا تشمل الشحن/, "Shipping exclusion must be explicit");
   assert.match(editor.source, /one coupon|كوبون واحد/, "One-coupon-per-order rule must be explicit");
+});
+
+test("Batch 7 shipping screens preserve the approved Egypt and Bosta model", () => {
+  const names = ["shipping-zones.html", "shipping-zone-editor.html", "custom-locations.html", "shipping-integrations.html", "bosta-connection.html"];
+  const files = names.map((name) => htmlFiles.find((entry) => entry.name === name));
+  for (const file of files) {
+    assert.ok(file, "Batch 7 shipping screen is missing");
+    assert.match(file.source, /Shipping|الشحن|Bosta/, `${file.name} must contain real bilingual shipping copy`);
+    assert.match(file.source, /component: shipping-section-navigation/, `${file.name} must stay inside the Shipping module`);
+    assert.match(file.source, /href="\/shipping-zones\.html"/, `${file.name} must expose Shipping zones`);
+    assert.match(file.source, /href="\/shipping-integrations\.html"/, `${file.name} must expose Integrations`);
+    assert.doesNotMatch(file.source, /name=["'](?:manual_)?(?:carrier|tracking_number)["']/i, `${file.name} must not introduce unsupported manual carrier fields`);
+  }
+
+  const zones = files[0];
+  const editor = files[1];
+  const integrations = files[3];
+  const bosta = files[4];
+  assert.match(zones.source, /Free shipping|شحن مجاني/, "Zero-price shipping must be presented as Free shipping");
+  assert.match(editor.source, /overlap|تداخل/i, "Active-zone overlap blocking must be visible");
+  assert.match(editor.source, /Unsupported location|الموقع غير مدعوم/, "Unsupported location state must be visible");
+  assert.match(integrations.source, /does not automatically change|لا يغيّر حالة الطلب تلقائيًا/, "Shipment creation must not silently change the order status");
+  for (const mapping of ["accepted", "picked up / in transit", "delivered", "cancelled", "returned"]) {
+    assert.match(bosta.source, new RegExp(mapping, "i"), `Bosta mapping is missing ${mapping}`);
+  }
+});
+
+test("Orders expose the complete Batch 7 submission lifecycle", () => {
+  const list = htmlFiles.find((entry) => entry.name === "orders-list.html");
+  const detail = htmlFiles.find((entry) => entry.name === "order-detail.html");
+  assert.match(list.source, /Bulk submission summary|ملخص الإرسال الجماعي/, "Orders list needs a bulk submission summary");
+  assert.match(list.source, /active shipment|شحنة نشطة/, "Bulk submission must explain duplicate blocking");
+  for (const label of ["Not sent", "Sending", "Sent", "Failed", "Duplicate"]) assert.match(detail.source, new RegExp(label), `Order detail is missing ${label}`);
+  assert.match(detail.source, /does not change the core order status|لا يغيّر حالة الطلب الأساسية/, "Shipment creation and core order status must stay separate");
 });
 
 test("current merchant screens expose primary navigation on mobile", () => {

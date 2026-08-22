@@ -4,18 +4,22 @@
 
 ## Immediate static-design queue
 
-1. **Review Design Batches 2 and 3** — record acceptance or requested revisions for Orders plus Products and Inventory.
-2. **Review Design Batch 6 — Discounts** at https://lala-design-system.curbs-storm-80.chatgpt.site:
-   - `discounts-list.html`
-   - `discount-editor.html`
-3. **Stop before Batch 7** — do not start Shipping zones and Bosta until the founder accepts Batch 6 or records requested changes.
-4. **On acceptance, execute Batch 7 — Shipping zones and Bosta** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) and the binding [`ux/`](ux/README.md) operating guide.
+1. **Review Design Batch 2 — Orders** and record acceptance or requested revisions.
+2. **Review Design Batch 7 — Shipping zones and Bosta** at https://lala-design-system.curbs-storm-80.chatgpt.site:
+   - `shipping-zones.html`
+   - `shipping-zone-editor.html`
+   - `custom-locations.html`
+   - `shipping-integrations.html`
+   - `bosta-connection.html`
+   - updated `orders-list.html` and `order-detail.html`
+3. **Stop before Batch 8** — do not start Dashboard and Analytics until the founder accepts Batch 7 or records requested changes.
+4. **On acceptance, execute Batch 8 — Dashboard and Analytics** using [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) and the binding [`ux/`](ux/README.md) operating guide.
 5. **Apply the UX gate to every new screen** — define navigation parent, entry/exit, primary action, mobile access, recovery, and pass every P0 item in [`ux/02-SCREEN-CHECKLIST.md`](ux/02-SCREEN-CHECKLIST.md).
 6. **Preserve the static delivery contract** — one plain HTML file per screen, Tailwind CSS v4-compatible token bridges and classes, Alpine.js CDN markup, extraction markers, real Arabic/English copy, and RTL/LTR parity.
 7. **Keep Laravel implementation postponed** — do not create application code, migrations, queues, authentication, persistence, or production integrations until the founder explicitly starts implementation.
 8. **Keep pilot-specific pricing deferred** until pilot preparation.
 
-The accepted roadmap covers Batches 4–17. Batches 4 and 5 are accepted; the current execution state is Batch 6 founder review before Batch 7.
+The accepted roadmap covers Batches 4–17. Batches 3–6 are accepted; the current execution state is Batch 7 founder review before Batch 8.
 
 ## Future implementation sequence — postponed
 

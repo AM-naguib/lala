@@ -1082,3 +1082,20 @@
 
 - Replaced abrupt modal and drawer appearance across current screens with directional, reduced-motion-safe transitions.
 - Added the motion upgrader to the static build so future HTML screens inherit the contract automatically.
+
+## 2026-08-22 — Batch 7 Shipping zones and Bosta
+
+### Added
+
+- Accepted Batch 6 Discounts and advanced the static roadmap to Batch 7.
+- Added Shipping zones, Zone editor, Custom locations, Shipping integrations, and Bosta connection screens.
+- Added overlap, unsupported-location, free-shipping, credential-error, disconnected, and connected states.
+- Added exact Bosta event mapping and clear separation between shipment creation and core order status.
+- Added single-order Not sent, Sending, Sent, Failed/retry, and duplicate-active-shipment states.
+- Added a bulk Bosta submission summary with sent, blocked, and failed outcomes.
+
+### Changed
+
+- Added Shipping as one coherent level-one Merchant module on desktop and mobile.
+- Updated the Component Gallery through Batch 7.
+- Advanced the frontend review gate to Batch 7 before Batch 8 Dashboard and Analytics.

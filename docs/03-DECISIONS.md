@@ -2000,3 +2000,23 @@ This is an append-only log. A changed decision must be marked **Superseded** and
 - **Accessibility:** `prefers-reduced-motion: reduce` collapses animation and transition duration to 0.01ms. Layout-critical width, height, and application geometry are never animated.
 - **Source:** The complete contract is recorded in `prototype/docs/MOTION-SYSTEM.md` and demonstrated in the Component Gallery.
 - **Boundary:** No animation framework or runtime dependency was added; implementation remains plain HTML, Tailwind CSS v4, and Alpine.js.
+
+## D-265 — Design Batch 6 accepted and Batch 7 authorized
+
+- **Date:** 2026-08-22
+- **Status:** Accepted
+- **Decision:** Accept the Discounts list and Coupon editor delivered in Batch 6 and authorize Batch 7 — Shipping zones and Bosta.
+- **Scope preserved:** Coupons remain limited to percentage, fixed amount, and free shipping; no payment status, automatic discount, or per-customer limit was added.
+- **Boundary:** Acceptance applies to the portable static design only and does not start Laravel implementation.
+
+## D-266 — Design Batch 7 Shipping and Bosta scope and delivery
+
+- **Date:** 2026-08-22
+- **Status:** Delivered; awaiting founder review
+- **Decision:** Batch 7 contains Shipping zones, Shipping zone editor, Custom locations, Shipping integrations, and Bosta connection as five portable static screens under one Shipping parent module.
+- **Zone rules:** Coverage follows Egypt governorate → city → area hierarchy, active-zone overlap is blocked, zero price is presented as Free shipping, custom locations remain store-specific, and old orders preserve their original shipping price.
+- **Provider rules:** Bosta is the only approved provider shown. Credentials receive connected, disconnected, and validation-error states. No manual carrier or tracking fields are introduced without a provider.
+- **Order rules:** Orders expose Not sent, Sending, Sent, Failed with reason and retry, and duplicate-active-shipment blocking. Bulk submission reports sent, blocked, and failed counts. Shipment creation alone does not change the core order status.
+- **Mapping:** `accepted` → Processing; `picked up` or `in transit` → Shipped; `delivered` → Delivered; `cancelled` → Cancelled; `returned` → Returned.
+- **UX rule:** Shipping is one level-one Merchant module with Zones, Custom locations, and Integrations as related internal sections; Bosta connection is a child of Integrations.
+- **Boundary:** Static HTML, Tailwind CSS v4, and Alpine.js only; no real credentials, provider requests, persistence, queues, or Laravel code.

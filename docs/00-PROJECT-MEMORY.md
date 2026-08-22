@@ -7,7 +7,7 @@
 - **Project name:** lala
 - **Product category:** multi-tenant SaaS e-commerce platform.
 - **Reference products named by the founder:** Easy Orders, Fodera, and Shopify.
-- **Current phase:** Static frontend delivery. Design Batches 1 and 4 are accepted; Batches 2–3 and 5 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
+- **Current phase:** Static frontend delivery. Design Batches 1, 3, 4, 5, and 6 are accepted; Batches 2 and 7 are delivered for review; the complete frontend roadmap through Batch 17 is accepted; Laravel implementation is intentionally postponed.
 - **Status date:** 2026-08-22 (Africa/Cairo).
 
 ## Latest delivery checkpoint
@@ -18,14 +18,16 @@
 - The MVP has no payment-status field or payment pills. COD is the only payment method, and cash collection is not modeled.
 - Inventory presentation uses In stock, Low stock, and Out of stock.
 - Design Batch 2 is delivered for review: Orders list, order detail, manual order creation, and print views.
-- Design Batch 3 is delivered and published for review: products list, product editor, product variants, and inventory management.
+- Design Batch 3 is accepted: products list, product editor, product variants, and inventory management.
 - Design Batch 4 is accepted after the D-259 hierarchy correction published in Sites version 8.
 - Design Batch 5 is delivered as Sites version 9: Customers list, unified Customer detail, and identity-conflict review with Guest/Account states, blocking, multiple addresses, order metrics/history, and wallet masking.
+- Design Batch 6 is accepted: Discounts list and Coupon editor with percentage, fixed amount, and free-shipping rewards only.
+- Design Batch 7 is delivered for review: Shipping zones, Zone editor, Custom locations, Shipping integrations, Bosta connection, and complete single/bulk order-submission states.
 - The Sites version 7 Catalog-as-level-one structure was rejected after review. D-259 corrects it: Products is one level-one module; Inventory, Organization, and Featured are sections; Import and Trash are Product tools; Import results is a flow child; Component Gallery is review-only. The corrected static navigation is published as Sites version 8.
 - `docs/ux/` is the binding UX operating folder for information architecture, screen acceptance, and backlog management.
 - Batch 3 preserves Published/Hidden visibility, flexible variant data, optional low-stock thresholds, soft-delete/Trash restoration as Hidden, visible disabled unavailable variants, immediate COD stock deduction, cancellation restoration, and manual return restocking.
 - The cross-screen design contract is now fixed and implemented: one 1440px app container, 248px sidebar, 64px header, 16/24/32px page padding, named inner grids, standardized controls and tables, semantic z-index layers, and automated protection against reusable arbitrary values.
-- The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 cover Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening; 65 remaining screen files are planned.
+- The full static frontend roadmap is accepted in `10-FRONTEND-DELIVERY-PLAN.md`: Batches 4–17 originally planned 65 screen files across Merchant, Storefront, Customer account, minimum confirmed Admin/Support, and final hardening. Batches 4–7 delivered 15 of them; 50 new screen files remain in Batches 8–16.
 - Review site: https://lala-design-system.curbs-storm-80.chatgpt.site
 - Design prototypes are not production Laravel or Livewire implementation. See `08-DELIVERY-STATUS.md`.
 - Current delivery remains static-only by explicit founder decision; the accepted Laravel architecture is preserved for later.
@@ -323,26 +325,26 @@
 
 ## Active objective
 
-Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2–3 and 6 open for founder review and stop before Batch 7 Shipping zones and Bosta. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet. The complete static prototype is versioned under `prototype/`.
+Use `10-FRONTEND-DELIVERY-PLAN.md` plus `docs/ux/` as the frontend source of truth. Keep Batches 2 and 7 open for founder review and stop before Batch 8 Dashboard and Analytics. Every future screen must pass the UX P0 checklist. Do not start Laravel implementation yet. The complete static prototype is versioned under `prototype/`.
 
 ## Current blockers
 
 - Laravel implementation is deliberately postponed, not blocked.
-- Design Batches 2, 3, and 5 await founder acceptance or revision.
-- Batches 4 and 5 are accepted; Batch 7 must not start until the founder passes the Batch 6 review gate.
+- Design Batches 2 and 7 await founder acceptance or revision.
+- Batches 3–6 are accepted; Batch 8 must not start until the founder passes the Batch 7 review gate.
 - The incorrect version 7 information architecture has been corrected and published as Sites version 8; founder review of that hierarchy is the active UX gate.
 
 ## GitHub sync status
 
 - **Cadence:** push after every 50 answered planning questions, or earlier on explicit request.
-- **Current explicit request:** keep the work static and apply the accepted Motion System across the current frontend before continuing past the Batch 6 review gate.
+- **Current explicit request:** keep the work static, complete Batch 7 Shipping and Bosta, sync the portable source to GitHub, and publish it for review.
 - **Working branch:** `docs/project-memory-2026-08-21`.
-- **Pending review:** founder review of delivered Batches 2–3 and 6 before Batch 7.
+- **Pending review:** founder review of delivered Batches 2 and 7 before Batch 8.
 
 ## Next decisions to obtain
 
-- Accept or revise Design Batches 2, 3, and 5.
-- After Batch 6 acceptance, execute Batch 7 Shipping zones and Bosta according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
+- Accept or revise Design Batches 2 and 7.
+- After Batch 7 acceptance, execute Batch 8 Dashboard and Analytics according to `10-FRONTEND-DELIVERY-PLAN.md` and the UX operating folder.
 - Pilot-specific pricing from Q-210 remains deferred to pilot preparation.
 
 ## Guardrails for future sessions

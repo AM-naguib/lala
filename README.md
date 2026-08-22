@@ -31,7 +31,9 @@ The actual portable HTML source is checked in under [`prototype/`](prototype/). 
 
 The shared motion contract is documented in [`prototype/docs/MOTION-SYSTEM.md`](prototype/docs/MOTION-SYSTEM.md). It defines reduced-motion-safe transitions for modals, drawers, popovers, toasts, and state changes without adding an animation framework.
 
-Current Merchant level-one modules are Dashboard, Orders, Products, Customers, and Discounts. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Component Gallery is review-only.
+Batch 7 Shipping and Bosta boundaries are documented in [`prototype/docs/BATCH-7-SHIPPING.md`](prototype/docs/BATCH-7-SHIPPING.md).
+
+Current Merchant level-one modules are Dashboard, Orders, Products, Customers, Discounts, and Shipping. Inventory, Organization, and Featured products belong inside Products; Import and Trash are Product tools; Zones, Custom locations, and Integrations belong inside Shipping; Component Gallery is review-only.
 
 ## Current snapshot
 
@@ -183,6 +185,6 @@ Current Merchant level-one modules are Dashboard, Orders, Products, Customers, a
 - When a customer provides an email address, send an order confirmation and notifications for core-status changes.
 - Tracked products and variants support a merchant-defined low-stock threshold with dashboard and email warnings.
 - Taxes: no tax configuration, calculation, or separate tax line in the initial release.
-- Immediate focus: remain static, review delivered Batches 2–3 and Batch 6, then continue with Batch 7 Shipping zones and Bosta after acceptance. Laravel implementation is postponed until explicit founder approval.
+- Immediate focus: remain static, review delivered Batches 2 and 7, then continue with Batch 8 Dashboard and Analytics after acceptance. Laravel implementation is postponed until explicit founder approval.
 
 Last updated: 2026-08-21 (Africa/Cairo)

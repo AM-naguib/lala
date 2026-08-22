@@ -457,6 +457,10 @@
     width: calc(var(--spacing) * 12);
     height: calc(var(--spacing) * 12);
   }
+  .size-14 {
+    width: calc(var(--spacing) * 14);
+    height: calc(var(--spacing) * 14);
+  }
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
@@ -631,6 +635,9 @@
     --tw-translate-x: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
   .animate-pulse {
     animation: var(--animate-pulse);
   }
@@ -681,6 +688,9 @@
   }
   .justify-center {
     justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
   }
   .gap-1 {
     gap: calc(var(--spacing) * 1);
@@ -791,6 +801,9 @@
       border-color: var(--lala-color-ink);
     }
   }
+  .self-center {
+    align-self: center;
+  }
   .self-start {
     align-self: flex-start;
   }
@@ -875,6 +888,12 @@
       border-color: color-mix(in oklab, var(--lala-color-accent) 20%, transparent);
     }
   }
+  .border-accent\/25 {
+    border-color: var(--lala-color-accent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--lala-color-accent) 25%, transparent);
+    }
+  }
   .border-accent\/30 {
     border-color: var(--lala-color-accent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -920,6 +939,12 @@
       border-color: color-mix(in oklab, var(--lala-color-info) 25%, transparent);
     }
   }
+  .border-info\/30 {
+    border-color: var(--lala-color-info);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--lala-color-info) 30%, transparent);
+    }
+  }
   .border-ink {
     border-color: var(--lala-color-ink);
   }
@@ -930,6 +955,18 @@
     border-color: var(--lala-color-success);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--lala-color-success) 20%, transparent);
+    }
+  }
+  .border-success\/25 {
+    border-color: var(--lala-color-success);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--lala-color-success) 25%, transparent);
+    }
+  }
+  .border-success\/30 {
+    border-color: var(--lala-color-success);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--lala-color-success) 30%, transparent);
     }
   }
   .border-transparent {
@@ -964,6 +1001,9 @@
   }
   .border-t-accent {
     border-top-color: var(--lala-color-accent);
+  }
+  .border-t-info {
+    border-top-color: var(--lala-color-info);
   }
   .border-t-white {
     border-top-color: var(--color-white);
@@ -1030,6 +1070,12 @@
   }
   .bg-ink {
     background-color: var(--lala-color-ink);
+  }
+  .bg-ink\/45 {
+    background-color: var(--lala-color-ink);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--lala-color-ink) 45%, transparent);
+    }
   }
   .bg-subtle {
     background-color: var(--lala-color-subtle);
@@ -1674,6 +1720,11 @@
       background-color: var(--lala-color-faint);
     }
   }
+  .disabled\:opacity-45 {
+    &:disabled {
+      opacity: 45%;
+    }
+  }
   .sm\:absolute {
     @media (width >= 40rem) {
       position: absolute;
@@ -1845,6 +1896,11 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+  .lg\:grid-cols-3 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
   .lg\:grid-cols-4 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1863,6 +1919,11 @@
   .lg\:flex-row {
     @media (width >= 64rem) {
       flex-direction: row;
+    }
+  }
+  .lg\:items-center {
+    @media (width >= 64rem) {
+      align-items: center;
     }
   }
   .lg\:items-end {
@@ -2189,6 +2250,26 @@
   inherits: false;
   initial-value: 0;
 }
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
@@ -2385,6 +2466,11 @@
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-space-y-reverse: 0;
       --tw-divide-x-reverse: 0;
       --tw-border-style: solid;

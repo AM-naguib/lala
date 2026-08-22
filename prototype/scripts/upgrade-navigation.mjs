@@ -23,11 +23,23 @@ const merchantScreens = [
   "customer-identity-review.html",
   "discounts-list.html",
   "discount-editor.html",
+  "shipping-zones.html",
+  "shipping-zone-editor.html",
+  "custom-locations.html",
+  "shipping-integrations.html",
+  "bosta-connection.html",
 ];
 
 const orderScreens = new Set(["orders-list.html", "order-detail.html", "order-create.html"]);
 const customerScreens = new Set(["customers-list.html", "customer-detail.html", "customer-identity-review.html"]);
 const discountScreens = new Set(["discounts-list.html", "discount-editor.html"]);
+const shippingScreens = new Set([
+  "shipping-zones.html",
+  "shipping-zone-editor.html",
+  "custom-locations.html",
+  "shipping-integrations.html",
+  "bosta-connection.html",
+]);
 const productScreens = new Set([
   "products-list.html",
   "product-editor.html",
@@ -76,6 +88,7 @@ function desktopSidebar(name) {
   const productsActive = productScreens.has(name);
   const customersActive = customerScreens.has(name);
   const discountsActive = discountScreens.has(name);
+  const shippingActive = shippingScreens.has(name);
   const section = productSectionByScreen[name];
   const orderBadge = '<span class="ms-auto rounded-full bg-accent-soft px-2 py-0.5 font-mono text-2xs text-accent">12</span>';
   const lowStockBadge = '<span class="ms-auto rounded-full bg-warning-soft px-2 py-0.5 font-mono text-2xs text-warning">7</span>';
@@ -104,6 +117,7 @@ function desktopSidebar(name) {
           ${productChildren}
           ${topLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customersActive })}
           ${topLink({ href: "/discounts-list.html", icon: "%", arabic: "الخصومات", english: "Discounts", active: discountsActive })}
+          ${topLink({ href: "/shipping-zones.html", icon: "⌁", arabic: "الشحن", english: "Shipping", active: shippingActive })}
         </div>
       </nav>
       <div class="border-t border-border px-5 py-4"><p class="text-xs font-semibold text-muted">${bilingual("مساحة عمل التاجر", "Merchant workspace")}</p></div>
@@ -125,6 +139,7 @@ function mobilePrimaryNavigation(name) {
         ${mobileTopLink({ href: "/products-list.html", icon: "◇", arabic: "المنتجات", english: "Products", active: productScreens.has(name) })}
         ${mobileTopLink({ href: "/customers-list.html", icon: "◎", arabic: "العملاء", english: "Customers", active: customerScreens.has(name) })}
         ${mobileTopLink({ href: "/discounts-list.html", icon: "%", arabic: "الخصومات", english: "Discounts", active: discountScreens.has(name) })}
+        ${mobileTopLink({ href: "/shipping-zones.html", icon: "⌁", arabic: "الشحن", english: "Shipping", active: shippingScreens.has(name) })}
       </nav>
       <!-- /component: mobile-primary-navigation -->`;
 }

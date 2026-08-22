@@ -26,14 +26,15 @@
 **State: Accepted by the founder.**
 
 - [`10-FRONTEND-DELIVERY-PLAN.md`](10-FRONTEND-DELIVERY-PLAN.md) is the single operating roadmap for completing the current static frontend.
-- Batches 4–17 define 65 remaining screen files across Merchant, Storefront, Customer account, and lala Admin surfaces.
+- Batches 4–17 originally define 65 screen files across Merchant, Storefront, Customer account, and lala Admin surfaces; Batches 4–7 have delivered 15, leaving 50 new screen files in Batches 8–16.
 - Every batch has explicit dependencies, required states, review gates, and a shared Definition of Done.
 - Batch 4 — Product organization and tools is accepted after the corrected Products-module hierarchy.
 - Batch 5 — Customers is accepted.
-- Batch 6 — Discounts is delivered and is the current review gate.
+- Batch 6 — Discounts is accepted.
+- Batch 7 — Shipping zones and Bosta is delivered and is the current review gate.
 - The complete portable static source is versioned under `prototype/` in the public repository.
 - The unified Motion System is implemented across all current screens: modals, drawers, popovers, toasts, and state changes now share fixed timing/easing and reduced-motion behavior.
-- Design Batches 2 and 3 remain delivered and available for review; revisions can be recorded without silently changing the approved roadmap.
+- Design Batch 2 remains delivered and available for review; Batch 3 is accepted. Revisions can be recorded without silently changing the approved roadmap.
 
 ## Design system — Batch 1
 
@@ -123,7 +124,7 @@ Wallet overdraft masks phone, email, and addresses while preserving customer IDs
 
 ## Design system — Batch 6
 
-**State: Delivered; awaiting founder review.**
+**State: Accepted by the founder.**
 
 | Screen | Review URL |
 |---|---|
@@ -131,6 +132,20 @@ Wallet overdraft masks phone, email, and addresses while preserving customer IDs
 | Coupon editor | https://lala-design-system.curbs-storm-80.chatgpt.site/discount-editor.html |
 
 Delivered behavior includes active/scheduled/expired/exhausted lifecycle states, search and type/state filters, percentage/fixed/free-shipping rewards, validity dates, total usage limit, optional minimum products subtotal, and previews for invalid dates, duplicate codes, exhausted usage, and expiry. The UI explicitly preserves whole-order scope, one coupon per order, and the minimum-subtotal basis before discount excluding shipping.
+
+## Design system — Batch 7
+
+**State: Delivered; awaiting founder review.**
+
+| Screen | Review URL |
+|---|---|
+| Shipping zones | https://lala-design-system.curbs-storm-80.chatgpt.site/shipping-zones.html |
+| Shipping zone editor | https://lala-design-system.curbs-storm-80.chatgpt.site/shipping-zone-editor.html |
+| Custom locations | https://lala-design-system.curbs-storm-80.chatgpt.site/custom-locations.html |
+| Shipping integrations | https://lala-design-system.curbs-storm-80.chatgpt.site/shipping-integrations.html |
+| Bosta connection | https://lala-design-system.curbs-storm-80.chatgpt.site/bosta-connection.html |
+
+Orders list and Order detail are also updated with bulk submission results and the complete Not sent, Sending, Sent, Failed/retry, and duplicate-active-shipment states. Creating a shipment remains separate from changing the controlled core order status.
 
 | Screen | Review URL |
 |---|---|
@@ -143,7 +158,7 @@ Implemented review states include catalog filters and empty/loading/no-results p
 
 ## Design system — Batch 4
 
-**State: Delivered and published; awaiting founder review.**
+**State: Accepted by the founder after the information-architecture correction.**
 
 Published as Sites version 6: https://lala-design-system.curbs-storm-80.chatgpt.site
 
@@ -161,7 +176,7 @@ Existing Products list now includes all/filtered export controls and a destructi
 
 ## UX navigation and ease-of-use remediation
 
-**State: Version 7 structure rejected; corrected structure published as Sites version 8 and awaiting founder review.**
+**State: Version 7 structure rejected; corrected structure published as Sites version 8 and accepted.**
 
 - Products is one level-one module across all current product, inventory, organization, merchandising, import, and recovery screens.
 - Desktop expands Products into All products, Inventory, Organization, Featured products, then separately labeled Product tools for Import and Trash.
